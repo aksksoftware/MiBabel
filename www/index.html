@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<title>MiBabel</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="lib/katex/katex.min.css">
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="menu-trigger" onclick="toggleMenu()">
+      <button class="menu-btn" onclick="event.stopPropagation();toggleMenu()">&#x2630;</button><img class="app-logo menu-logo" id="headerLogo" src="Logotipo1.png" alt="MiBabel">
+    </div>
+    <span class="header-title-side hidden" id="headerCenteredTitle"></span>
+  </div>
+  <div class="header-right" id="headerRight">
+    <button class="back-btn hidden" id="headerBackBtn" onclick="goBack()">&#x21A9;</button>
+    <button class="back-btn hidden" id="headerStudyBtn" onclick="var id=state.activeStudySetId;if(id)startStudy(id)"><span id="studyBtnLabel">Estudiar</span></button>
+  </div>
+</header>
+
+<main>
+  <div class="panel panel-notes hidden" id="panelNotes">
+    <div class="panel-body">
+      <div class="notes-content" id="noteContent">
+        <div class="empty-state">
+          <div id="emptyNotesTitle" style="font-size: 40px; opacity:0.3;">Notas</div>
+          <div id="emptyNotesSub">Selecciona o crea una nota</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel hidden" id="panelDiary">
+    <div class="panel-body">
+      <div class="diary-content" id="diaryContent">
+      </div>
+    </div>
+  </div>
+
+  <div class="panel hidden" id="panelBoard">
+    <div class="panel-body">
+      <div class="board-content" id="boardContent">
+        <div class="empty-state">
+          <div id="emptyBoardTitle" style="font-size: 40px; opacity:0.3;">Tablero</div>
+          <div id="emptyBoardSub">Selecciona o crea un tablero</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel hidden" id="panelStudy">
+    <div class="panel-body">
+      <div class="study-content" id="studyContent">
+        <div class="empty-state">
+          <div style="font-size: 40px; opacity:0.3;">Tarjetas de estudio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel hidden" id="panelCafecito">
+    <div class="panel-body">
+      <div class="cafecito-content" id="cafecitoContent">
+      </div>
+    </div>
+  </div>
+  <div class="panel hidden" id="panelTrash">
+    <div class="panel-body">
+      <div class="trash-content" id="trashContent">
+      </div>
+    </div>
+  </div>
+  <button class="fab" id="fabBtn" onclick="fabClick()">+</button>
+  <button class="fab hidden" id="tableFabBtn"></button>
+</main>
+
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+<div class="menu-sidebar" id="menuSidebar">
+  <div class="menu-header"><img class="menu-logo" id="sidebarLogo" src="Logotipo1.png" alt="MiBabel"></div>
+  <div class="menu-items">
+    <div class="menu-item active" id="menuNotes" onclick="switchView('notes');closeMenu()">
+      <span class="icon">&#x1f4dd;</span><span class="label">Notas</span>
+    </div>
+    <div class="menu-item" id="menuDiary" onclick="switchView('diary');closeMenu()">
+      <span class="icon">&#x1f4c5;</span><span class="label">Diario</span>
+    </div>
+    <div class="menu-item" id="menuBoard" onclick="switchView('board');closeMenu()">
+      <span class="icon">&#x1f4cc;</span><span class="label">Tablero</span>
+    </div>
+    <div class="menu-item" id="menuStudy" onclick="switchView('study');closeMenu()">
+      <span class="icon">&#x1f4da;</span><span class="label">Tarjetas de estudio</span>
+    </div>
+    <div class="menu-item" id="menuTrash" onclick="switchView('trash');closeMenu()">
+      <span class="icon">&#x1f5d1;</span><span class="label">Papelera</span>
+    </div>
+  </div>
+  <div class="menu-theme" id="menuTheme" onclick="toggleTheme()">
+    <span class="theme-label">Tema oscuro</span>
+    <div class="toggle-switch">
+      <div class="toggle-knob"></div>
+    </div>
+  </div>
+  <div class="menu-settings" id="menuSettings" onclick="showSettings();closeMenu()">
+    <span class="settings-icon">&#x2699;</span>
+    <span class="settings-label">Ajustes</span>
+  </div>
+  <div class="menu-item menu-cafecito" id="menuCafecito" onclick="switchView('cafecito');closeMenu()">
+    <span class="icon">&#x1f4da;</span><span class="label">Expandir la Biblioteca</span>
+  </div>
+</div>
+
+<div class="context-menu hidden" id="contextMenu"></div>
+
+<div class="dialog-overlay hidden" id="newNoteDialog">
+  <div class="dialog">
+    <h3 id="newNoteTitle_">Nueva Nota</h3>
+    <div class="field"><label id="newNoteTitleLabel">Titulo</label><input id="newNoteTitle" placeholder="Titulo de la nota" autofocus onkeydown="if(event.key==='Enter')createNote()"></div>
+    <div class="field"><label id="newNotePwdLabel">Contrasena (opcional)</label><input type="password" id="newNotePwd" placeholder="Dejar vacio si no quiere"></div>
+    <div class="dialog-actions">
+      <button class="btn" id="newNoteCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="newNoteCreateBtn" onclick="createNote()">Crear</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="newBoardDialog">
+  <div class="dialog">
+    <h3 id="newBoardTitle">Nuevo Tablero</h3>
+    <div class="field"><label id="newBoardNameLabel">Nombre</label><input id="newBoardName" placeholder="Nombre del tablero" autofocus onkeydown="if(event.key==='Enter')createBoard()"></div>
+    <div class="field"><label id="newBoardPwdLabel">Contrasena (opcional)</label><input type="password" id="newBoardPwd" placeholder="Dejar vacio si no quiere"></div>
+    <div class="dialog-actions">
+      <button class="btn" id="newBoardCancelBtn" onclick="closeDialog('newBoardDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="newBoardCreateBtn" onclick="createBoard()">Crear</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="newStudySetDialog">
+  <div class="dialog">
+    <h3 id="newStudySetTitle">New Set</h3>
+    <div class="field"><label id="newStudySetNameLabel">Name</label><input id="newStudySetName" placeholder="Set name" autofocus onkeydown="if(event.key==='Enter')createStudySet()"></div>
+    <div class="dialog-actions">
+      <button class="btn" id="newStudySetCancelBtn" onclick="closeDialog('newStudySetDialog')">Cancel</button>
+      <button class="btn btn-primary" id="newStudySetCreateBtn" onclick="createStudySet()">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="studyCardDialog">
+  <div class="dialog">
+    <h3 id="studyCardTitle">Add Card</h3>
+    <div class="field"><label id="studyCardFrontLabel">Front</label><div class="study-card-field-row"><div id="studyCardFront" class="study-card-editable" contenteditable="true" data-placeholder="Front"></div><button id="studyCardImgBtnFront" class="btn-img" onclick="triggerStudyCardImage('front')" title="Insert image">&#x1f5bc;</button></div></div>
+    <div class="field"><label id="studyCardBackLabel">Back</label><div class="study-card-field-row"><div id="studyCardBack" class="study-card-editable" contenteditable="true" data-placeholder="Back"></div><button id="studyCardImgBtnBack" class="btn-img" onclick="triggerStudyCardImage('back')" title="Insert image">&#x1f5bc;</button></div></div>
+    <input type="file" id="studyCardImageInput" accept="image/*" style="display:none" onchange="previewStudyCardImage(this)">
+    <div id="studyCardPreview" class="study-card-preview hidden">
+      <div id="studyCardPreviewLabel" style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Preview:</div>
+      <img id="studyCardPreviewImg"><br>
+      <button id="studyCardPreviewInsertBtn" class="btn btn-primary" onclick="confirmStudyCardImage()">Insert</button>
+      <button id="studyCardPreviewCancelBtn" class="btn" onclick="cancelStudyCardImage()">Cancel</button>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="studyCardCancelBtn" onclick="cancelStudyCardImage();closeDialog('studyCardDialog')">Cancel</button>
+      <button class="btn btn-primary" id="studyCardSaveBtn" onclick="saveStudyCard()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="unlockDialog">
+  <div class="dialog">
+    <h3 id="unlockTitle">Ingresar contrasena</h3>
+    <div class="field"><div id="unlockMsg" style="display:none;font-size:13px;color:var(--text-muted);padding:8px 0;text-align:center;"></div><input type="password" id="unlockPwdInput" placeholder="Contrasena" onkeydown="if(event.key==='Enter')unlockItem()"></div>
+    <div class="dialog-actions">
+      <button class="btn" id="unlockCancelBtn" onclick="closeDialog('unlockDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="unlockConfirmBtn" onclick="unlockItem()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="dialogReminder">
+  <div class="dialog">
+    <div class="dialog-title" style="font-size:16px;font-weight:600;margin-bottom:16px;">Recu&eacute;rdame</div>
+    <div class="field">
+      <label for="reminderType">Tipo</label>
+      <select id="reminderType" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;">
+        <option value="event">Evento</option>
+        <option value="task">Tarea</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="reminderTitle">T&iacute;tulo</label>
+      <input type="text" id="reminderTitle" maxlength="200" style="width:100%;box-sizing:border-box;" />
+    </div>
+    <div class="field">
+      <label for="reminderRepeat">Repetici&oacute;n</label>
+      <select id="reminderRepeat" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;"></select>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" onclick="closeDialog('dialogReminder')">Cancelar</button>
+      <button class="btn btn-primary" onclick="createReminder()">Crear</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="settingsDialog">
+  <div class="dialog">
+    <h3 id="settingsDialogTitle">Ajustes</h3>
+    <div class="field">
+      <label id="settingsLangLabel">Idioma / Language</label>
+      <select id="settingsLangSelect" onchange="setLang(this.value)">
+        <option value="en">English</option>
+        <option value="es">Espanol</option>
+        <option value="fr">Francais</option>
+        <option value="pt">Portugues</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Pусский</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+    <div class="settings-sep"></div>
+    <div class="field" style="margin-bottom:4px;">
+      <label id="weekStartLabel" style="font-size:12px;color:var(--text-muted);">Primer d&iacute;a de la semana</label>
+      <select id="weekStartSelect" onchange="setWeekStart(this.value)" style="margin-top:4px;">
+        <option value="monday" id="weekStartMonday">Lunes</option>
+        <option value="sunday" id="weekStartSunday">Domingo</option>
+      </select>
+    </div>
+    <div class="settings-sep"></div>
+    <div class="field" style="margin-bottom:4px;">
+      <label id="linkHelpTitle" style="font-size:12px;color:var(--text-muted);">Enlaces entre notas y URLs</label>
+      <div style="font-size:12px;color:var(--text);line-height:1.6;margin-top:4px;">
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">[(Nombre de la nota)]</code> <span id="linkToNoteDesc">Vincula a otra nota</span></div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">[{https://ejemplo.com}]</code> <span id="linkToUrlDesc">Vincula a una URL externa</span></div>
+      </div>
+    </div>
+    <div class="settings-sep"></div>
+    <div class="field">
+      <label id="diaryPwdLabel" style="font-size:12px;color:var(--text-muted);">Contrase&ntilde;a del diario</label>
+      <div id="diaryPwdStatus" style="font-size:13px;margin-top:4px;"></div>
+      <div id="diaryPwdActions" style="display:flex;gap:6px;margin-top:6px;"></div>
+    </div>
+    <div class="settings-sep"></div>
+    <div class="field" style="margin-bottom:4px;">
+      <label id="boardSettings" style="font-size:12px;color:var(--text-muted);">Tableros</label>
+      <div style="font-size:12px;color:var(--text);margin-top:4px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+          <span id="boardBgLabel" style="font-size:12px;color:var(--text-muted);">Fondo del tablero</span>
+          <div class="bg-group" id="boardBgBtns">
+            <button class="bg-btn" style="background:#c4a265" onclick="setDefaultBoardBg('cork')" data-bg="cork" title="Corcho"></button>
+            <button class="bg-btn" style="background:#fff" onclick="setDefaultBoardBg('white')" data-bg="white" title="Blanco"></button>
+            <button class="bg-btn" style="background:#2a2a2a" onclick="setDefaultBoardBg('black')" data-bg="black" title="Negro"></button>
+            <button class="bg-btn" style="background:#2d5a3d" onclick="setDefaultBoardBg('green')" data-bg="green" title="Verde"></button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <span id="boardShadowsLabel">Mostrar sombras en post-its</span>
+          <div class="toggle-switch" id="boardShadowsToggle" onclick="toggleBoardShadows()" style="cursor:pointer;">
+            <div class="toggle-knob"></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <span id="boardAnimationsLabel">Mostrar animaciones</span>
+          <div class="toggle-switch" id="boardAnimationsToggle" onclick="toggleBoardAnimations()" style="cursor:pointer;">
+            <div class="toggle-knob"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:4px;">
+      <label id="migrateLabel" style="font-size:12px;color:var(--text-muted);">Migrar datos</label>
+      <div style="display:flex;gap:6px;margin-top:4px;">
+        <button class="btn" id="exportBtn" onclick="exportData()">Exportar datos</button>
+        <button class="btn" id="importBtn" onclick="document.getElementById('importInput').click()">Importar datos</button>
+      </div>
+    </div>
+    <div class="settings-sep"></div>
+    <div style="display:flex;gap:6px;margin-bottom:10px;">
+      <button class="btn" onclick="showStatsDialog()" id="statsBtn" style="flex:1;">Estad&iacute;sticas</button>
+      <button class="btn" onclick="showAboutDialog()" id="aboutBtn" style="flex:1;">Acerca de</button>
+    </div>
+    <div class="dialog-actions" style="flex-direction:column;gap:6px;">
+      <button class="btn btn-primary" id="settingsCloseBtn" onclick="closeDialog('settingsDialog')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="coverInput" accept="image/*" style="display:none" onchange="importCover(this)">
+<input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="insertImage(this)">
+<input type="file" id="audioInput" accept=".mp3,.m4a,.aac" style="display:none" onchange="insertAudio(this)">
+<input type="file" id="videoInput" accept=".mp4,.webm,.ogg" style="display:none" onchange="insertVideo(this)">
+<input type="file" id="boardImageInput" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="insertBoardImage(this)">
+<input type="file" id="boardAudioInput" accept=".mp3,.m4a,.aac" style="display:none" onchange="insertBoardAudio(this)">
+<input type="file" id="boardVideoInput" accept=".mp4,.webm,.ogg" style="display:none" onchange="insertBoardVideo(this)">
+<input type="file" id="importInput" accept=".anbk" style="display:none" onchange="importData(this)">
+<input type="file" id="importSingleInput" accept=".json" style="display:none" onchange="importSingleItem(this)">
+
+<div class="dialog-overlay hidden" id="statsDialog">
+  <div class="dialog" style="max-width:360px;">
+    <h3 id="statsTitle">Estad&iacute;sticas</h3>
+    <div id="statsContent" style="font-size:13px;line-height:2;"></div>
+    <div class="dialog-actions">
+      <button class="btn btn-primary" onclick="closeDialog('statsDialog')" id="statsCloseBtn" data-i18n="close">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="aboutDialog">
+  <div class="dialog" style="max-width:400px;max-height:80vh;overflow-y:auto;">
+    <h3 id="aboutTitle">Acerca de</h3>
+    <div id="aboutContent" style="font-size:13px;line-height:1.8;"></div>
+    <div class="dialog-actions">
+      <button class="btn btn-primary" onclick="closeDialog('aboutDialog')" id="aboutCloseBtn" data-i18n="close">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="fullsizeOverlay">
+  <div class="dialog fullsize-dialog" onclick="closeFullsizeView()">
+    <div class="fullsize-close" onclick="closeFullsizeView()">&times;</div>
+    <div class="fullsize-content" id="fullsizeContent"></div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="milestoneDialog">
+  <div class="dialog" style="text-align:center;">
+    <div class="milestone-icon"><img src="Isotipo.png" alt="Isotipo" class="milestone-img"></div>
+    <p class="milestone-msg" id="milestoneMsg">Si te está resultando útil MiBabel, te invito a contribuir para que esta biblioteca siga creciendo</p>
+    <div class="cafecito-buttons" id="milestoneButtons"></div>
+    <div style="margin-top:8px;"><button class="btn" id="milestoneBtn" onclick="closeDialog('milestoneDialog')">Ahora no</button></div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="diaryPwdDialog">
+  <div class="dialog">
+    <h3 id="diaryPwdTitle">Establecer contrase&ntilde;a del diario</h3>
+    <div class="field" id="diaryOldPwdField" style="display:none;">
+      <label id="diaryOldPwdLabel">Contrase&ntilde;a actual</label>
+      <input type="password" id="diaryOldPwdInput" placeholder="Contrase&ntilde;a actual" onkeydown="if(event.key==='Enter')confirmDiaryPwd()">
+    </div>
+    <div class="field" id="diaryNewPwdField">
+      <label id="diaryNewPwdLabel">Nueva contrase&ntilde;a</label>
+      <input type="password" id="diaryNewPwdInput" placeholder="Nueva contrase&ntilde;a" onkeydown="if(event.key==='Enter')confirmDiaryPwd()">
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="diaryPwdCancelBtn" onclick="closeDialog('diaryPwdDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="diaryPwdConfirmBtn" onclick="confirmDiaryPwd()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="recoveryCodeDialog">
+  <div class="dialog" style="text-align:center;">
+    <h3 id="recoveryDialogTitle">C&oacute;digo de recuperaci&oacute;n</h3>
+    <div style="font-size:24px;font-weight:700;letter-spacing:4px;padding:16px;background:var(--surface-hover);border-radius:6px;margin:12px 0;font-family:monospace;" id="recoveryCodeDisplay">XXXX-XXXX</div>
+    <p id="recoveryDialogMsg" style="font-size:13px;color:var(--text-muted);line-height:1.6;">Guarda este c&oacute;digo en un lugar seguro. Si olvidas tu contrase&ntilde;a, podr&aacute;s usarlo para recuperar el acceso a tus notas diarias.</p>
+    <div class="dialog-actions" style="justify-content:center;">
+      <button class="btn btn-primary" id="recoveryDialogBtn" onclick="closeDialog('recoveryCodeDialog')">Ya lo guard&eacute;</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="tableDialog">
+  <div class="dialog">
+    <h3 id="tableDialogTitle">Insertar tabla</h3>
+    <div class="field">
+      <label id="tableRowsLabel">Filas</label>
+      <input type="number" id="tableRows" value="3" min="1" max="20" onkeydown="if(event.key==='Enter')createTable()">
+    </div>
+    <div class="field">
+      <label id="tableColsLabel">Columnas</label>
+      <input type="number" id="tableCols" value="3" min="1" max="20" onkeydown="if(event.key==='Enter')createTable()">
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="tableCancelBtn" onclick="closeDialog('tableDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="tableCreateBtn" onclick="createTable()">Crear</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="welcomeDialog">
+  <div class="dialog dialog-welcome">
+    <h3 id="welcomeTitle">Bienvenido a MiBabel</h3>
+    <div class="field">
+      <label id="welcomeLangLabel">Idioma / Language</label>
+      <select id="welcomeLangSelect" onchange="welcomeSetLang(this.value)">
+        <option value="en">English</option>
+        <option value="es">Espanol</option>
+        <option value="fr">Francais</option>
+        <option value="pt">Portugues</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Pусский</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+    <div class="welcome-msg" id="welcomeMsg"></div>
+    <div class="dialog-actions">
+      <button class="btn btn-primary" onclick="welcomeDone()" id="welcomeGotItBtn">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<script src="lib/fontkit.umd.min.js"></script>
+<script src="lib/pdf-lib.min.js"></script>
+<script src="lib/docx.umd.js"></script>
+<script src="lib/jszip.min.js"></script>
+<script src="lib/katex/katex.min.js"></script>
+<script src="image-manager.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+

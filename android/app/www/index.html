@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>MiBabel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <button class="menu-trigger" id="menuTrigger" aria-label="Menu">&#9776;</button>
+      <button class="header-back-btn" id="headerBackBtn" style="display:none">&#8592;</button>
+    </div>
+    <h1 id="headerTitle">MiBabel</h1>
+    <div class="header-right" id="headerRight">
+      <span id="headerLogo"><img src="" alt="logo"></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Notes Panel -->
+    <div class="panel" id="panelNotes">
+      <div class="panel-header">
+        <h2 id="panelNotesTitle">Notes</h2>
+        <button class="btn" id="showNewNoteBtn">+</button>
+      </div>
+      <div class="panel-body">
+        <div class="panel-notes" id="notesList"></div>
+        <div class="panel-content" id="noteContent">
+          <div class="empty-state" id="noteEmpty">
+            <div class="empty-icon">&#128221;</div>
+            <p id="noteEmptyText">Select a note</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Board Panel -->
+    <div class="panel" id="panelBoard">
+      <div class="panel-header">
+        <h2 id="panelBoardTitle">Board</h2>
+      </div>
+      <div class="panel-body" id="boardBody">
+        <div class="empty-state" id="boardEmpty">
+          <div class="empty-icon">&#128196;</div>
+          <p id="boardEmptyText">No boards</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diary Panel -->
+    <div class="panel" id="panelDiary">
+      <div class="panel-header">
+        <h2 id="panelDiaryTitle">Diary</h2>
+      </div>
+      <div class="panel-body" id="diaryBody">
+        <div class="empty-state" id="diaryEmpty">
+          <div class="empty-icon">&#128214;</div>
+          <p id="diaryEmptyText">No entries</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Panel -->
+    <div class="panel" id="panelStudy">
+      <div class="panel-header">
+        <h2 id="panelStudyTitle">Study Cards</h2>
+        <button class="btn" id="showNewStudySetBtn">+</button>
+        <button class="btn" id="studyBackBtn" style="display:none">&#8592;</button>
+      </div>
+      <div class="panel-body">
+        <div class="study-content" id="studyContent"></div>
+      </div>
+    </div>
+
+    <!-- Cafecito Panel -->
+    <div class="panel" id="panelCafecito">
+      <div class="cafecito-page">
+        <div class="cafecito-icon" id="cafecitoIcon"><img src="Isotipo.png" alt="Isotipo" width="180"></div>
+        <div class="cafecito-msg" id="cafecitoMsg">Support the project</div>
+        <div class="cafecito-buttons" id="cafecitoButtons"></div>
+        <div class="cafecito-footer" id="cafecitoFooter">MiBabel</div>
+      </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="panel" id="panelSettings">
+      <div class="panel-header">
+        <h2 id="panelSettingsTitle">Settings</h2>
+      </div>
+      <div class="panel-body">
+        <div class="settings-content" id="settingsContent"></div>
+      </div>
+    </div>
+
+    <!-- Trash Panel -->
+    <div class="panel" id="panelTrash">
+      <div class="panel-header">
+        <h2 id="panelTrashTitle">Trash</h2>
+      </div>
+      <div class="panel-body">
+        <div class="trash-content" id="trashContent"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Menu Overlay -->
+  <div id="menuOverlay"></div>
+
+  <!-- Menu Sidebar -->
+  <div id="menuSidebar">
+    <div class="menu-logo-area" id="sidebarLogo"><img src="" alt="logo"></div>
+    <div class="menu-items">
+      <div class="menu-item" data-view="notes"><span class="menu-icon">&#128221;</span><span id="menuNotes">Notes</span></div>
+      <div class="menu-item" data-view="diary"><span class="menu-icon">&#128214;</span><span id="menuDiary">Diary</span></div>
+      <div class="menu-item" data-view="board"><span class="menu-icon">&#128196;</span><span id="menuBoard">Board</span></div>
+      <div class="menu-item" data-view="study"><span class="menu-icon">&#127891;</span><span id="menuStudyCards">Study Cards</span></div>
+      <div class="menu-item" data-view="cafecito"><span class="menu-icon">&#9749;</span><span id="menuCafecito">Cafecito</span></div>
+      <div class="menu-item" data-view="settings"><span class="menu-icon">&#9881;</span><span id="menuSettings">Settings</span></div>
+      <div class="menu-item" data-view="trash"><span class="menu-icon">&#128465;</span><span id="menuTrash">Trash</span></div>
+      <div class="menu-item" id="menuThemeToggle"><span class="menu-icon">&#127769;</span><span id="menuThemeLabel">Dark Theme</span></div>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab hidden" id="fabBtn">+</button>
+
+  <!-- Dialogs -->
+  <div class="dialog-overlay" id="newNoteDialog">
+    <div class="dialog">
+      <h2 id="newNoteTitle">New Note</h2>
+      <div class="form-group">
+        <label id="newNoteTitleLabel">Title</label>
+        <input type="text" id="newNoteNameInput" placeholder="Note title">
+      </div>
+      <div class="form-group">
+        <label id="newNotePwdLabel">Password (optional)</label>
+        <input type="password" id="newNotePwdInput" placeholder="Leave empty for no password">
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="newNoteCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="newNoteCreateBtn">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="newBoardDialog">
+    <div class="dialog">
+      <h2 id="newBoardTitle">New Board</h2>
+      <div class="form-group">
+        <label id="newBoardNameLabel">Name</label>
+        <input type="text" id="newBoardNameInput" placeholder="Board name">
+      </div>
+      <div class="form-group">
+        <label id="newBoardPwdLabel">Password (optional)</label>
+        <input type="password" id="newBoardPwdInput" placeholder="Leave empty for no password">
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="newBoardCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="newBoardCreateBtn">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="newStudySetDialog">
+    <div class="dialog">
+      <h2 id="newStudySetTitle">New Study Set</h2>
+      <div class="form-group">
+        <label id="newStudySetNameLabel">Name</label>
+        <input type="text" id="newStudySetNameInput" placeholder="Set name">
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="newStudySetCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="newStudySetCreateBtn">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="studyCardDialog">
+    <div class="dialog">
+      <h2 id="studyCardTitle">Edit Card</h2>
+      <div class="form-group">
+        <label id="studyCardFrontLabel">Front</label>
+        <div class="fmt-toolbar" id="frontToolbar">
+          <button class="fmt-action" data-cmd="bold" title="Bold"><b>B</b></button>
+          <button class="fmt-action" data-cmd="italic" title="Italic"><i>I</i></button>
+          <button class="fmt-action" data-cmd="underline" title="Underline"><u>U</u></button>
+          <span class="fmt-sep"></span>
+          <button class="btn-img" id="studyCardImgBtnFront" title="Add Image">&#128247;</button>
+        </div>
+        <div class="study-card-editable" id="studyCardFront" contenteditable="true" data-placeholder="Front text"></div>
+      </div>
+      <div class="form-group">
+        <label id="studyCardBackLabel">Back</label>
+        <div class="fmt-toolbar" id="backToolbar">
+          <button class="fmt-action" data-cmd="bold" title="Bold"><b>B</b></button>
+          <button class="fmt-action" data-cmd="italic" title="Italic"><i>I</i></button>
+          <button class="fmt-action" data-cmd="underline" title="Underline"><u>U</u></button>
+          <span class="fmt-sep"></span>
+          <button class="btn-img" id="studyCardImgBtnBack" title="Add Image">&#128247;</button>
+        </div>
+        <div class="study-card-editable" id="studyCardBack" contenteditable="true" data-placeholder="Back text"></div>
+      </div>
+      <div class="study-card-preview" id="studyCardPreview" style="display:none">
+        <label id="studyCardPreviewLabel">Preview</label>
+        <img id="studyCardPreviewImg" src="" alt="preview">
+        <div style="display:flex;gap:4px;margin-top:4px">
+          <button class="btn btn-primary" id="studyCardPreviewInsertBtn">Insert</button>
+          <button class="btn" id="studyCardPreviewCancelBtn">Cancel</button>
+        </div>
+      </div>
+      <input type="file" id="studyCardImageInput" accept="image/*" style="display:none">
+      <div class="dialog-actions">
+        <button class="btn" id="studyCardCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="studyCardSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="notePasswordDialog">
+    <div class="dialog">
+      <h2 id="notePwdTitle">Protected</h2>
+      <div class="form-group">
+        <label id="notePwdLabel">This content is password protected. Enter password:</label>
+        <input type="password" id="notePwdInput">
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="notePwdCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="notePwdConfirmBtn">Unlock</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="settingsDialog">
+    <div class="dialog">
+      <h2 id="settingsDialogTitle">Settings</h2>
+      <div class="form-group">
+        <label id="settingsLangLabel">Language</label>
+        <select id="settingsLangSelect">
+          <option value="en">English</option>
+          <option value="es">Espa&ntilde;ol</option>
+          <option value="fr">Fran&ccedil;ais</option>
+          <option value="pt">Portugu&ecirc;s</option>
+          <option value="ru">PÑÑÑÐºÐ¸Ð¹</option>
+          <option value="it">Italiano</option>
+        </select>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="settingsCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="linkHelpDialog">
+    <div class="dialog">
+      <h2 id="linkHelpTitle">Link Help</h2>
+      <p id="linkHelpDesc">Use the following syntax:</p>
+      <p id="linkToNote">- [(Note Title)] to link to a note</p>
+      <p id="linkToUrl">- [{url}] to link to a URL</p>
+      <div class="dialog-actions">
+        <button class="btn" id="linkHelpCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="diaryPwdDialog">
+    <div class="dialog">
+      <h2 id="diaryPwdTitle">Diary Password</h2>
+      <div class="form-group" id="diaryPwdGroup">
+        <label id="diaryPwdLabel">Password</label>
+        <input type="password" id="diaryPwdInput">
+      </div>
+      <div class="form-group" id="diaryOldPwdGroup" style="display:none">
+        <label id="diaryOldPwdLabel">Old Password</label>
+        <input type="password" id="diaryOldPwdInput">
+      </div>
+      <div class="form-group" id="diaryNewPwdGroup" style="display:none">
+        <label id="diaryNewPwdLabel">New Password</label>
+        <input type="password" id="diaryNewPwdInput">
+      </div>
+      <p id="diaryPwdAlert" style="color:#f85149;font-size:12px;display:none"></p>
+      <div class="dialog-actions">
+        <button class="btn" id="diaryPwdCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="diaryPwdConfirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="recoveryDialog">
+    <div class="dialog">
+      <h2 id="recoveryDialogTitle">Recovery</h2>
+      <p id="recoveryDialogMsg">Enter recovery code to reset diary password.</p>
+      <div class="form-group">
+        <input type="text" id="recoveryCodeInput" placeholder="Recovery code">
+      </div>
+      <p id="recoveryAlert" style="color:#f85149;font-size:12px;display:none"></p>
+      <div class="dialog-actions">
+        <button class="btn" id="recoveryCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="recoveryConfirmBtn">Recover</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="milestoneDialog">
+    <div class="dialog">
+      <h2 id="milestoneTitle">Congratulations!</h2>
+      <p id="milestoneMsg">You reached a milestone!</p>
+      <div class="dialog-actions" id="milestoneButtons">
+        <button class="btn btn-primary" id="milestoneCloseBtn">Awesome!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="confirmDialog">
+    <div class="dialog">
+      <p id="confirmDialogMsg">Are you sure?</p>
+      <div class="dialog-actions">
+        <button class="btn" id="confirmDialogCancelBtn">Cancel</button>
+        <button class="btn btn-danger" id="confirmDialogConfirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-overlay" id="exportDialog">
+    <div class="dialog">
+      <h2 id="exportDialogTitle">Export</h2>
+      <p id="exportDialogMsg">Choose export format:</p>
+      <div class="dialog-actions" id="exportDialogBtns">
+        <button class="btn" id="exportJsonBtn">JSON</button>
+        <button class="btn" id="exportCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Dialog -->
+  <div class="dialog-overlay hidden" id="welcomeDialog">
+    <div class="dialog">
+      <h2>MiBabel</h2>
+      <div class="form-group">
+        <label id="welcomeLangLabel">Choose your language</label>
+        <select id="welcomeLangSelect">
+          <option value="en">English</option>
+          <option value="es">Espa&ntilde;ol</option>
+          <option value="fr">Fran&ccedil;ais</option>
+          <option value="pt">Portugu&ecirc;s</option>
+          <option value="ru">PÑÑÑÐºÐ¸Ð¹</option>
+          <option value="it">Italiano</option>
+        </select>
+      </div>
+      <p id="welcomeText" style="font-size:13px;color:var(--text-sec);margin-bottom:12px;line-height:1.5"></p>
+      <div class="dialog-actions">
+        <button class="btn btn-primary" id="welcomeStartBtn">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
