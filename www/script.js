@@ -5131,91 +5131,7 @@ document.addEventListener('touchend', function(e) {
 });
 
 // Right-click context menu on post-its and note cards (PC)
-document.addEventListener('contextmenu', function(e) {
-  var hlBtn = e.target.closest('.hl-toggle');
-  if (hlBtn) { e.preventDefault(); toggleHighlightPalette(); return; }
-  var postit = e.target.closest('.postit');
-  if (postit) {
-    e.preventDefault();
-    if (e.target.closest('.postit-close') || e.target.closest('.postit-color-dot') || e.target.closest('[contenteditable]')) return;
-    hideContextMenu();
-    showContextMenu(e.clientX, e.clientY, [
-      { label: t('connect'), action: function() { contextConnect(Number(postit.dataset.id)); } }
-    ]);
-    return;
-  }
-  var boardEl = e.target.closest('.board-element');
-  if (boardEl) {
-    e.preventDefault();
-    var elId = Number(boardEl.dataset.id);
-    var boardId = state.activeBoardId;
-    var elType = boardEl.dataset.type;
-    hideContextMenu();
-    var items = [];
-    items.push({ label: t('modify'), action: function() { toggleEditMode(boardId, elId); } });
-    items.push({ label: t('connect'), action: function() { contextConnect(elId); } });
-    items.push({ label: t('del'), action: function() { deleteBoardElement(boardId, elId); } });
-    if (elType === 'audio') items.shift(); /* audio no redimensionable */
-    showContextMenu(e.clientX, e.clientY, items);
-    return;
-  }
-  var card = e.target.closest('.card[data-note-id]');
-  if (card) {
-    e.preventDefault();
-    hideContextMenu();
-    var noteId = Number(card.dataset.noteId);
-    var note = state.notes.find(function(n) { return n.id === noteId; });
-    if (!note) return;
-    var favLabel = note.favorite ? t('removeFav') : t('addFav');
-    var coverLabel = note.cover ? t('removeCover') : t('addCover');
-    showContextMenu(e.clientX, e.clientY, [
-      { label: t('rename'), action: function() { renameNote(noteId); } },
-      { label: favLabel, action: function() { toggleFavorite(noteId); } },
-      { label: coverLabel, action: function() { if (note.cover) { removeCover(noteId); } else { triggerImportCover(noteId); } } },
-      { label: t('exportNote'), action: function() { exportSingleNote(noteId); } },
-      { label: t('del'), action: function() { confirmDeleteNote(noteId); } }
-    ]);
-    return;
-  }
-  // Board cards right-click
-  var boardCard = e.target.closest('#boardContent .card[data-board-id]');
-  if (boardCard) {
-    e.preventDefault();
-    var bid = Number(boardCard.dataset.boardId);
-    hideContextMenu();
-    showContextMenu(e.clientX, e.clientY, [
-      { label: t('rename'), action: function() { renameBoard(bid); } },
-      { label: t('exportBoard'), action: function() { exportSingleBoard(bid); } },
-      { label: t('del'), action: function() { confirmDeleteBoard(bid); } }
-    ]);
-    return;
-  }
-  // Study set cards right-click
-  var studyCard = e.target.closest('#studyContent .card[data-study-set-id]');
-  if (studyCard) {
-    e.preventDefault();
-    var sid = Number(studyCard.dataset.studySetId);
-    hideContextMenu();
-    showContextMenu(e.clientX, e.clientY, [
-      { label: t('rename'), action: function() { renameStudySet(sid); } },
-      { label: t('exportStudySet'), action: function() { exportSingleStudySet(sid); } },
-      { label: t('del'), action: function() { deleteStudySet(sid); } }
-    ]);
-  }
-  // Study card items right-click
-  var scItem = e.target.closest('#studySetCards .study-card-item');
-  if (scItem) {
-    if (e.target.closest('.card-btn')) return;
-    e.preventDefault();
-    var setId = state.activeStudySetId;
-    var cardId = Number(scItem.dataset.cardId);
-    if (!setId) return;
-    hideContextMenu();
-    showContextMenu(e.clientX, e.clientY, [
-      { label: t('del'), action: function() { deleteStudyCard(setId, cardId); } }
-    ]);
-  }
-});
+
 
 // Capture-phase guard: blocks synthesized click on hl-toggle when palette is open
 document.addEventListener('click', function(e) {
@@ -5970,16 +5886,6 @@ function getFabMenuItems() {
   }
   if (state.view === 'diary') return [];
   return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
-}
-// FAB right-click for import menu (desktop)
-var fabEl = document.getElementById('fabBtn');
-if (fabEl) {
-  fabEl.addEventListener('contextmenu', function(e) {
-    if (_fabLongPressed) return;
-    e.preventDefault();
-    e.stopPropagation();
-    showFabMenu();
-  });
 }
 function updateFab() {
   var fab = document.getElementById('fabBtn');
