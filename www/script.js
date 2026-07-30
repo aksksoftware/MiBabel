@@ -2875,21 +2875,21 @@ function cycleAlignment() {
   if (btn) btn.textContent = icons[align];
 }
 var _hlColor = '#ffff00';
-var _hlPaletteOpenedAt = 0;
-function formatHighlightColor(color) {
+function selectHighlightColor(color) {
   _hlColor = color;
-  document.execCommand('hiliteColor', false, color);
-  saveActiveItem();
   document.getElementById('hlPalette').classList.add('hidden');
   var span = document.querySelector('.hl-toggle span');
   if (span) span.style.background = color;
 }
-function removeHighlight() {
-  document.execCommand('hiliteColor', false, 'transparent');
-  saveActiveItem();
+function selectRemoveHighlight() {
+  _hlColor = 'transparent';
   document.getElementById('hlPalette').classList.add('hidden');
   var span = document.querySelector('.hl-toggle span');
   if (span) span.style.background = 'transparent';
+}
+function applyHighlight() {
+  document.execCommand('hiliteColor', false, _hlColor);
+  saveActiveItem();
 }
 function toggleHighlightPalette() {
   var palette = document.getElementById('hlPalette');
@@ -2902,7 +2902,6 @@ function toggleHighlightPalette() {
       palette.style.bottom = (window.innerHeight - r.top + 4) + 'px';
       palette.style.top = 'auto';
       palette.classList.remove('hidden');
-      _hlPaletteOpenedAt = Date.now();
       var ph = palette.offsetHeight;
       if (r.top < ph + 4) {
         if (window.innerHeight - r.bottom > ph + 4) {
@@ -3462,14 +3461,14 @@ function renderNoteContent() {
   html += '<button class="fmt-btn" id="fmtItalic" onmousedown="event.preventDefault()" onclick="formatItalic()" title="' + t('italic') + '"><i>I</i></button>';
   html += '<button class="fmt-btn" id="fmtUnderline" onmousedown="event.preventDefault()" onclick="formatUnderline()" title="' + t('underline') + '"><u>U</u></button>';
   html += '<div style="display:inline-block;">';
-  html += '<button class="fmt-btn hl-toggle" onclick="formatHighlightColor(_hlColor)" title="' + t('highlight') + '"><span style="background:' + _hlColor + ';padding:0 2px;font-weight:bold;">A</span></button>';
+  html += '<button class="fmt-btn hl-toggle" onclick="applyHighlight()" title="' + t('highlight') + '"><span style="background:' + _hlColor + ';padding:0 2px;font-weight:bold;">A</span></button>';
   html += '<div id="hlPalette" class="hidden" style="position:fixed;z-index:10000;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px;display:flex;gap:3px;">';
-  html += '<span class="hl-color" style="background:#ffff00;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#ffff00\');event.stopPropagation();" title="Yellow"></span>';
-  html += '<span class="hl-color" style="background:#87ceeb;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#87ceeb\');event.stopPropagation();" title="Celeste"></span>';
-  html += '<span class="hl-color" style="background:#ffb6c1;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#ffb6c1\');event.stopPropagation();" title="Pink"></span>';
-  html += '<span class="hl-color" style="background:#ffa500;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#ffa500\');event.stopPropagation();" title="Orange"></span>';
-  html += '<span class="hl-color" style="background:#90ee90;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#90ee90\');event.stopPropagation();" title="Green"></span>';
-  html += '<span class="hl-color" style="background:transparent;border:1px dashed var(--text-muted);display:inline-flex;align-items:center;justify-content:center;font-size:14px;" onmousedown="event.preventDefault()" onclick="removeHighlight();event.stopPropagation();" title="Remove highlight">&#x2716;</span>';
+  html += '<span class="hl-color" style="background:#ffff00;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#ffff00\');event.stopPropagation();" title="Yellow"></span>';
+  html += '<span class="hl-color" style="background:#87ceeb;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#87ceeb\');event.stopPropagation();" title="Celeste"></span>';
+  html += '<span class="hl-color" style="background:#ffb6c1;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#ffb6c1\');event.stopPropagation();" title="Pink"></span>';
+  html += '<span class="hl-color" style="background:#ffa500;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#ffa500\');event.stopPropagation();" title="Orange"></span>';
+  html += '<span class="hl-color" style="background:#90ee90;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#90ee90\');event.stopPropagation();" title="Green"></span>';
+  html += '<span class="hl-color" style="background:transparent;border:1px dashed var(--text-muted);display:inline-flex;align-items:center;justify-content:center;font-size:14px;" onmousedown="event.preventDefault()" onclick="selectRemoveHighlight();event.stopPropagation();" title="Remove highlight">&#x2716;</span>';
   html += '</div></div>';
   html += '<button class="fmt-btn" onclick="formatBulletList()" title="' + t('bulletList') + '">&#x2022;</button>';
   html += '<button class="fmt-btn" onclick="formatNumberedList()" title="' + t('numberedList') + '">1.</button>';
@@ -5218,10 +5217,20 @@ document.addEventListener('contextmenu', function(e) {
   }
 });
 
+// Capture-phase guard: blocks synthesized click on hl-toggle when palette is open
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.hl-toggle')) {
+    var hp = document.getElementById('hlPalette');
+    if (hp && !hp.classList.contains('hidden')) {
+      e.stopImmediatePropagation();
+    }
+  }
+}, true);
+
 // Click outside context menu closes it
 document.addEventListener('click', function(e) {
   if (!e.target.closest('#contextMenu')) hideContextMenu();
-  if (!e.target.closest('#hlPalette') && !e.target.closest('.hl-toggle')) { if (Date.now() - _hlPaletteOpenedAt > 200) { var hl = document.getElementById('hlPalette'); if (hl) hl.classList.add('hidden'); } }
+  if (!e.target.closest('#hlPalette') && !e.target.closest('.hl-toggle')) { var hl = document.getElementById('hlPalette'); if (hl) hl.classList.add('hidden'); }
   if (!e.target.closest('#exportPalette') && !e.target.closest('.exp-toggle')) { var exp = document.getElementById('exportPalette'); if (exp) exp.classList.add('hidden'); }
   if (!e.target.closest('.note-table')) {
     if (_activeTableId !== null) { _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = []; renderNoteContent(); }
@@ -5966,6 +5975,7 @@ function getFabMenuItems() {
 var fabEl = document.getElementById('fabBtn');
 if (fabEl) {
   fabEl.addEventListener('contextmenu', function(e) {
+    if (_fabLongPressed) return;
     e.preventDefault();
     e.stopPropagation();
     showFabMenu();
