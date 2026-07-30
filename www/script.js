@@ -79,8 +79,8 @@ var langData = {
       latexPreview:'Preview', boardInsertEquation:'Insert equation', equationPlaceholder:'Write LaTeX here...',
       stats:'Statistics', about:'About', totalNotes:'Total notes', totalBoards:'Total boards',
       totalStudySets:'Total study sets', totalPostits:'Total post-its', totalReminders:'Total reminders',
-      totalWords:'Total words', appVersion:'App version', licenses:'Licenses', changelog:'Changelog',
-      credits:'Credits', privacy:'Privacy', boardNoShadows:'Hide shadows', reduceMotion:'Reduce motion',
+      totalWords:'Total words', versionLabel:'Version', licenses:'Licenses', changelog:'Changelog',
+      developer:'Developer', contact:'Contact', privacy:'Privacy', boardNoShadows:'Hide shadows', reduceMotion:'Reduce motion',
       weekStartsMonday:'Week starts on Monday', defaultBoardBg:'Default board background',
       boardBgLabel:'Board background', boardShadowsLabel:'Show post-it shadows',
       boardAnimationsLabel:'Show animations', showStats:'Statistics', showAbout:'About',
@@ -162,8 +162,8 @@ var langData = {
       latexPreview:'Vista previa', boardInsertEquation:'Insertar ecuaci\u00f3n', equationPlaceholder:'Escribe LaTeX aqu\u00ed...',
       stats:'Estad\u00edsticas', about:'Acerca de', totalNotes:'Total de notas', totalBoards:'Total de tableros',
       totalStudySets:'Total de conjuntos', totalPostits:'Total de post-its', totalReminders:'Total de recordatorios',
-      totalWords:'Total de palabras', appVersion:'Versi\u00f3n de la app', licenses:'Licencias', changelog:'Registro de cambios',
-      credits:'Cr\u00e9ditos', privacy:'Privacidad', boardNoShadows:'Ocultar sombras', reduceMotion:'Reducir movimiento',
+      totalWords:'Total de palabras', versionLabel:'Versi\u00f3n', licenses:'Licencias', changelog:'Registro de cambios',
+      developer:'Desarrollador', contact:'Contacto', privacy:'Privacidad', boardNoShadows:'Ocultar sombras', reduceMotion:'Reducir movimiento',
       weekStartsMonday:'La semana empieza el lunes', defaultBoardBg:'Fondo de tablero predeterminado',
       boardBgLabel:'Fondo del tablero', boardShadowsLabel:'Mostrar sombras en post-its',
       boardAnimationsLabel:'Mostrar animaciones', showStats:'Estad\u00edsticas', showAbout:'Acerca de',
@@ -241,8 +241,8 @@ var langData = {
     latexPreview:'Aperçu', boardInsertEquation:'Insérer équation', equationPlaceholder:'Écrivez LaTeX ici...',
       stats:'Statistiques', about:'À propos', totalNotes:'Total notes', totalBoards:'Total tableaux',
       totalStudySets:'Total ensembles', totalPostits:'Total post-its', totalReminders:'Total rappels',
-      totalWords:'Total mots', appVersion:'Version app', licenses:'Licences', changelog:'Journal des modifications',
-      credits:'Crédits', privacy:'Confidentialité', boardNoShadows:'Masquer ombres', reduceMotion:'Réduire animations',
+      totalWords:'Total mots', versionLabel:'Version', licenses:'Licences', changelog:'Journal des modifications',
+      developer:'Développeur', contact:'Contact', privacy:'Confidentialité', boardNoShadows:'Masquer ombres', reduceMotion:'Réduire animations',
       weekStartsMonday:'Semaine commence lundi', defaultBoardBg:'Fond tableau par défaut',
       boardBgLabel:'Fond du tableau', boardShadowsLabel:'Afficher ombres post-its',
       boardAnimationsLabel:'Afficher animations', showStats:'Statistiques', showAbout:'À propos',
@@ -317,8 +317,8 @@ var langData = {
     latexPreview:'Visualiza\u00e7\u00e3o', boardInsertEquation:'Inserir equa\u00e7\u00e3o', equationPlaceholder:'Escreva LaTeX aqui...',
       stats:'Estat\u00edsticas', about:'Sobre', totalNotes:'Total de notas', totalBoards:'Total de quadros',
       totalStudySets:'Total de conjuntos', totalPostits:'Total de post-its', totalReminders:'Total de lembretes',
-      totalWords:'Total de palavras', appVersion:'Vers\u00e3o do app', licenses:'Licen\u00e7as', changelog:'Registro de altera\u00e7\u00f5es',
-      credits:'Cr\u00e9ditos', privacy:'Privacidade', boardNoShadows:'Ocultar sombras', reduceMotion:'Reduzir movimento',
+      totalWords:'Total de palavras', versionLabel:'Vers\u00e3o', licenses:'Licen\u00e7as', changelog:'Registro de altera\u00e7\u00f5es',
+      developer:'Desenvolvedor', contact:'Contato', privacy:'Privacidade', boardNoShadows:'Ocultar sombras', reduceMotion:'Reduzir movimento',
       weekStartsMonday:'Semana come\u00e7a na segunda', defaultBoardBg:'Fundo padr\u00e3o do quadro',
       boardBgLabel:'Fundo do quadro', boardShadowsLabel:'Mostrar sombras em post-its',
       boardAnimationsLabel:'Mostrar anima\u00e7\u00f5es', showStats:'Estat\u00edsticas', showAbout:'Sobre',
@@ -396,8 +396,8 @@ var langData = {
     latexPreview:'Предпросмотр', boardInsertEquation:'Вставить уравнение', equationPlaceholder:'Напишите LaTeX здесь...',
       stats:'Статистика', about:'О приложении', totalNotes:'Всего заметок', totalBoards:'Всего досок',
       totalStudySets:'Всего наборов', totalPostits:'Всего стикеров', totalReminders:'Всего напоминаний',
-      totalWords:'Всего слов', appVersion:'Версия приложения', licenses:'Лицензии', changelog:'История изменений',
-      credits:'Авторы', privacy:'Конфиденциальность', boardNoShadows:'Скрыть тени', reduceMotion:'Уменьшить анимацию',
+      totalWords:'Всего слов', versionLabel:'Версия', licenses:'Лицензии', changelog:'История изменений',
+      developer:'Разработчик', contact:'Контакт', privacy:'Конфиденциальность', boardNoShadows:'Скрыть тени', reduceMotion:'Уменьшить анимацию',
       weekStartsMonday:'Неделя начинается с понедельника', defaultBoardBg:'Фон доски по умолчанию',
       boardBgLabel:'Фон доски', boardShadowsLabel:'Показывать тени стикеров',
       boardAnimationsLabel:'Показывать анимацию', showStats:'Статистика', showAbout:'О приложении',
@@ -474,8 +474,8 @@ var langData = {
     latexPreview:'Vorschau', boardInsertEquation:'Gleichung einf\u00fcgen', equationPlaceholder:'LaTeX hier schreiben...',
       stats:'Statistiken', about:'\u00dcber', totalNotes:'Notizen insgesamt', totalBoards:'Pinnw\u00e4nde insgesamt',
       totalStudySets:'Lernsets insgesamt', totalPostits:'Post-its insgesamt', totalReminders:'Erinnerungen insgesamt',
-      totalWords:'W\u00f6rter insgesamt', appVersion:'App-Version', licenses:'Lizenzen', changelog:'\u00c4nderungsprotokoll',
-      credits:'Danksagungen', privacy:'Datenschutz', boardNoShadows:'Schatten ausblenden', reduceMotion:'Animationen reduzieren',
+      totalWords:'W\u00f6rter insgesamt', versionLabel:'Version', licenses:'Lizenzen', changelog:'\u00c4nderungsprotokoll',
+      developer:'Entwickler', contact:'Kontakt', privacy:'Datenschutz', boardNoShadows:'Schatten ausblenden', reduceMotion:'Animationen reduzieren',
       weekStartsMonday:'Woche beginnt am Montag', defaultBoardBg:'Standard-Pinnwand-Hintergrund',
       boardBgLabel:'Pinnwand-Hintergrund', boardShadowsLabel:'Post-it-Schatten anzeigen',
       boardAnimationsLabel:'Animationen anzeigen', showStats:'Statistiken', showAbout:'\u00dcber',
@@ -553,8 +553,8 @@ var langData = {
     latexPreview:'Anteprima', boardInsertEquation:'Inserisci equazione', equationPlaceholder:'Scrivi LaTeX qui...',
       stats:'Statistiche', about:'Informazioni', totalNotes:'Totale note', totalBoards:'Totale lavagne',
       totalStudySets:'Totale set', totalPostits:'Totale post-it', totalReminders:'Totale promemoria',
-      totalWords:'Totale parole', appVersion:'Versione app', licenses:'Licenze', changelog:'Registro modifiche',
-      credits:'Crediti', privacy:'Privacy', boardNoShadows:'Nascondi ombre', reduceMotion:'Riduci animazioni',
+      totalWords:'Totale parole', versionLabel:'Versione', licenses:'Licenze', changelog:'Registro modifiche',
+      developer:'Sviluppatore', contact:'Contatto', privacy:'Privacy', boardNoShadows:'Nascondi ombre', reduceMotion:'Riduci animazioni',
       weekStartsMonday:'La settimana inizia luned\u00ec', defaultBoardBg:'Sfondo lavagna predefinito',
       boardBgLabel:'Sfondo lavagna', boardShadowsLabel:'Mostra ombre post-it',
       boardAnimationsLabel:'Mostra animazioni', showStats:'Statistiche', showAbout:'Informazioni',
@@ -2875,6 +2875,7 @@ function cycleAlignment() {
   if (btn) btn.textContent = icons[align];
 }
 var _hlColor = '#ffff00';
+var _hlPaletteOpenedAt = 0;
 function formatHighlightColor(color) {
   _hlColor = color;
   document.execCommand('hiliteColor', false, color);
@@ -2882,6 +2883,13 @@ function formatHighlightColor(color) {
   document.getElementById('hlPalette').classList.add('hidden');
   var span = document.querySelector('.hl-toggle span');
   if (span) span.style.background = color;
+}
+function removeHighlight() {
+  document.execCommand('hiliteColor', false, 'transparent');
+  saveActiveItem();
+  document.getElementById('hlPalette').classList.add('hidden');
+  var span = document.querySelector('.hl-toggle span');
+  if (span) span.style.background = 'transparent';
 }
 function toggleHighlightPalette() {
   var palette = document.getElementById('hlPalette');
@@ -2894,6 +2902,7 @@ function toggleHighlightPalette() {
       palette.style.bottom = (window.innerHeight - r.top + 4) + 'px';
       palette.style.top = 'auto';
       palette.classList.remove('hidden');
+      _hlPaletteOpenedAt = Date.now();
       var ph = palette.offsetHeight;
       if (r.top < ph + 4) {
         if (window.innerHeight - r.bottom > ph + 4) {
@@ -3460,6 +3469,7 @@ function renderNoteContent() {
   html += '<span class="hl-color" style="background:#ffb6c1;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#ffb6c1\');event.stopPropagation();" title="Pink"></span>';
   html += '<span class="hl-color" style="background:#ffa500;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#ffa500\');event.stopPropagation();" title="Orange"></span>';
   html += '<span class="hl-color" style="background:#90ee90;" onmousedown="event.preventDefault()" onclick="formatHighlightColor(\'#90ee90\');event.stopPropagation();" title="Green"></span>';
+  html += '<span class="hl-color" style="background:transparent;border:1px dashed var(--text-muted);display:inline-flex;align-items:center;justify-content:center;font-size:14px;" onmousedown="event.preventDefault()" onclick="removeHighlight();event.stopPropagation();" title="Remove highlight">&#x2716;</span>';
   html += '</div></div>';
   html += '<button class="fmt-btn" onclick="formatBulletList()" title="' + t('bulletList') + '">&#x2022;</button>';
   html += '<button class="fmt-btn" onclick="formatNumberedList()" title="' + t('numberedList') + '">1.</button>';
@@ -5211,7 +5221,7 @@ document.addEventListener('contextmenu', function(e) {
 // Click outside context menu closes it
 document.addEventListener('click', function(e) {
   if (!e.target.closest('#contextMenu')) hideContextMenu();
-  if (!e.target.closest('#hlPalette') && !e.target.closest('.hl-toggle')) { var hl = document.getElementById('hlPalette'); if (hl) hl.classList.add('hidden'); }
+  if (!e.target.closest('#hlPalette') && !e.target.closest('.hl-toggle')) { if (Date.now() - _hlPaletteOpenedAt > 200) { var hl = document.getElementById('hlPalette'); if (hl) hl.classList.add('hidden'); } }
   if (!e.target.closest('#exportPalette') && !e.target.closest('.exp-toggle')) { var exp = document.getElementById('exportPalette'); if (exp) exp.classList.add('hidden'); }
   if (!e.target.closest('.note-table')) {
     if (_activeTableId !== null) { _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = []; renderNoteContent(); }
@@ -5952,22 +5962,13 @@ function getFabMenuItems() {
   if (state.view === 'diary') return [];
   return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
 }
-// FAB long-press for import menu (mouse)
+// FAB right-click for import menu (desktop)
 var fabEl = document.getElementById('fabBtn');
 if (fabEl) {
-  fabEl.addEventListener('mousedown', function(e) {
-    if (fabEl.classList.contains('hidden')) return;
-    fabLongPressTimer = setTimeout(function() {
-      fabLongPressTimer = null;
-      _fabLongPressed = true;
-      showFabMenu();
-    }, 500);
-  });
-  fabEl.addEventListener('mouseup', function() {
-    if (fabLongPressTimer) { clearTimeout(fabLongPressTimer); fabLongPressTimer = null; }
-  });
-  fabEl.addEventListener('mouseleave', function() {
-    if (fabLongPressTimer) { clearTimeout(fabLongPressTimer); fabLongPressTimer = null; }
+  fabEl.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    showFabMenu();
   });
 }
 function updateFab() {
@@ -6558,7 +6559,9 @@ function showAboutDialog() {
   var content = document.getElementById('aboutContent');
   if (!content) return;
   var html = '';
-  html += '<div class="about-section"><h4>' + t('credits') + '</h4><div>An independent project created by a student passionate about knowledge.<br>Built with vanilla JavaScript, Capacitor, and love.</div></div>';
+  html += '<div class="about-section"><h4>' + t('versionLabel') + '</h4><div>1.0.0</div></div>';
+  html += '<div class="about-section"><h4>' + t('developer') + '</h4><div>AKSK Software</div></div>';
+  html += '<div class="about-section"><h4>' + t('contact') + '</h4><div><a href="mailto:aksksoftware@gmail.com">aksksoftware@gmail.com</a></div></div>';
   html += '<div class="about-section"><h4>' + t('licenses') + '</h4>' +
     '<div class="about-license-item"><span class="about-license-name">@capacitor/core</span> <span class="about-license-text">MIT</span></div>' +
     '<div class="about-license-item"><span class="about-license-name">@capacitor/local-notifications</span> <span class="about-license-text">MIT</span></div>' +

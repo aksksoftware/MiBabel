@@ -1,33 +1,43 @@
-# Gradle files
-.gradle/
-build/
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
 
-# Local configuration file (sdk path, etc)
+# =========================
+# Capacitor
+# =========================
+android/.gradle/
+android/build/
+android/app/build/
+
+# =========================
+# Android Studio
+# =========================
+.idea/
+.gradle/
+*.iml
 local.properties
 
-# Log/OS Files
-*.log
-
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
+# =========================
+# Archivos compilados
+# =========================
 *.apk
-output.json
+*.aab
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
-
-# Keystore files
+# =========================
+# Claves de firma
+# =========================
 *.jks
 *.keystore
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+# =========================
+# Logs
+# =========================
+*.log
 
-# Android Profiling
-*.hprof
+# =========================
+# Sistema
+# =========================
+.DS_Store
+Thumbs.db
