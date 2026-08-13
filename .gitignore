@@ -1,0 +1,49 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+
+# =========================
+# Capacitor
+# =========================
+android/.gradle/
+android/build/
+android/app/build/
+
+# =========================
+# Android Studio
+# =========================
+.idea/
+.gradle/
+*.iml
+local.properties
+
+# =========================
+# Archivos compilados
+# =========================
+*.apk
+*.aab
+
+# =========================
+# Claves de firma
+# =========================
+*.jks
+*.keystore
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Sistema
+# =========================
+.DS_Store
+Thumbs.db
+
+#Repositorio Git antiguo dañado
+.git_dañado/
+
+#Copia de seguridad local en android
+android.bak/
