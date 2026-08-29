@@ -74,11 +74,23 @@
       </div>
     </div>
   </div>
+  <div class="panel hidden" id="panelHabits">
+    <div class="panel-body">
+      <div class="habits-content" id="habitsContent">
+      </div>
+    </div>
+  </div>
+  <div class="panel hidden" id="panelRegistros">
+    <div class="panel-body">
+      <div class="registros-content" id="registrosContent">
+      </div>
+    </div>
+  </div>
   <button class="fab" id="fabBtn" onclick="fabClick()">+</button>
   <button class="fab hidden" id="tableFabBtn"></button>
 </main>
 
-<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu(); hideContextMenu();"></div>
 <div class="menu-sidebar" id="menuSidebar">
   <div class="menu-header"><img class="menu-logo" id="sidebarLogo" src="Logotipo1.png" alt="MiBabel"></div>
   <div class="menu-items">
@@ -93,6 +105,12 @@
     </div>
     <div class="menu-item" id="menuStudy" onclick="switchView('study');closeMenu()">
       <span class="icon">&#x1f4da;</span><span class="label">Tarjetas de estudio</span>
+    </div>
+    <div class="menu-item" id="menuHabits" onclick="switchView('habits');closeMenu()">
+      <span class="icon">✅</span><span class="label" id="menuHabitsLabel">Hábitos</span>
+    </div>
+    <div class="menu-item" id="menuRegistros" onclick="switchView('registros');closeMenu()">
+      <span class="icon">📊</span><span class="label" id="menuRegistrosLabel">Registros</span>
     </div>
     <div class="menu-item" id="menuTrash" onclick="switchView('trash');closeMenu()">
       <span class="icon">&#x1f5d1;</span><span class="label">Papelera</span>
@@ -116,13 +134,27 @@
 <div class="context-menu hidden" id="contextMenu"></div>
 
 <div class="dialog-overlay hidden" id="newNoteDialog">
-  <div class="dialog">
-    <h3 id="newNoteTitle_">Nueva Nota</h3>
-    <div class="field"><label id="newNoteTitleLabel">Titulo</label><input id="newNoteTitle" placeholder="Titulo de la nota" autofocus onkeydown="if(event.key==='Enter')createNote()"></div>
-    <div class="field"><label id="newNotePwdLabel">Contrasena (opcional)</label><input type="password" id="newNotePwd" placeholder="Dejar vacio si no quiere"></div>
-    <div class="dialog-actions">
-      <button class="btn" id="newNoteCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
-      <button class="btn btn-primary" id="newNoteCreateBtn" onclick="createNote()">Crear</button>
+  <div class="dialog create-dialog">
+    <div class="create-tabs">
+      <button class="create-tab active" id="createTabNote" data-tab="note" onclick="switchCreateTab('note')"><span style="margin-right:6px;">&#x1f4c4;</span><span id="createTabNoteLabel">Nota</span></button>
+      <button class="create-tab" id="createTabFolder" data-tab="folder" onclick="switchCreateTab('folder')"><span style="margin-right:6px;">&#x1f4c1;</span><span id="createTabFolderLabel">Carpeta</span></button>
+    </div>
+    <div id="createNotePane">
+      <div class="field"><label id="newNoteTitleLabel">Titulo</label><input id="newNoteTitle" placeholder="Titulo de la nota" autofocus onkeydown="if(event.key==='Enter')createNote()"></div>
+      <div class="field"><label id="newNotePwdLabel">Contrasena (opcional)</label><input type="password" id="newNotePwd" placeholder="Dejar vacio si no quiere"></div>
+      <div class="dialog-actions">
+        <button class="btn" id="newNoteCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
+        <button class="btn btn-primary" id="newNoteCreateBtn" onclick="createNote()">Crear</button>
+      </div>
+    </div>
+    <div id="createFolderPane" class="hidden">
+      <div class="field"><label id="newFolderNameLabel">Nombre de la carpeta</label><input id="newFolderName" placeholder="Nombre de la carpeta" onkeydown="if(event.key==='Enter')createFolder()"></div>
+      <div class="field"><label id="newFolderPwdLabel">Contrasena (opcional)</label><input type="password" id="newFolderPwd" placeholder="Dejar vacio si no quiere"></div>
+      <div id="folderSubfolderHint" class="hidden" style="font-size:12px;color:var(--text-muted);padding:6px 8px;background:var(--surface-hover);border-radius:4px;margin-top:4px;text-align:center;"></div>
+      <div class="dialog-actions">
+        <button class="btn" id="newFolderCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
+        <button class="btn btn-primary" id="newFolderCreateBtn" onclick="createFolder()">Crear</button>
+      </div>
     </div>
   </div>
 </div>
@@ -180,31 +212,122 @@
   </div>
 </div>
 
-<div class="dialog-overlay hidden" id="dialogReminder">
-  <div class="dialog">
-    <div class="dialog-title" style="font-size:16px;font-weight:600;margin-bottom:16px;">Recu&eacute;rdame</div>
+<div class="dialog-overlay hidden" id="habitDialog">
+  <div class="dialog" style="max-width:420px;">
+    <h3 id="habitDialogTitle">Nuevo hábito</h3>
     <div class="field">
-      <label for="reminderType">Tipo</label>
-      <select id="reminderType" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;">
-        <option value="event">Evento</option>
-        <option value="task">Tarea</option>
+      <label id="habitTypeLabel">Tipo</label>
+      <select id="habitType" onchange="onHabitTypeChange()" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;">
+        <option value="task" id="habitTypeTaskOpt">Hábito tarea</option>
+        <option value="counter" id="habitTypeCounterOpt">Hábito contador</option>
       </select>
     </div>
     <div class="field">
-      <label for="reminderTitle">T&iacute;tulo</label>
-      <input type="text" id="reminderTitle" maxlength="200" style="width:100%;box-sizing:border-box;" />
+      <label id="habitNameLabel">Nombre *</label>
+      <input type="text" id="habitName" maxlength="80" placeholder="Ej: Leer" style="width:100%;box-sizing:border-box;" />
+      <div id="habitNameError" style="font-size:11px;color:#e74c3c;margin-top:2px;display:none;"></div>
     </div>
     <div class="field">
-      <label id="reminderTimeLabel" for="reminderTime">Hora</label>
-      <input type="time" id="reminderTime" style="width:100%;box-sizing:border-box;" />
+      <label id="habitDescLabel">Descripción</label>
+      <input type="text" id="habitDesc" maxlength="200" placeholder="Opcional" style="width:100%;box-sizing:border-box;" />
     </div>
     <div class="field">
-      <label for="reminderRepeat">Repetici&oacute;n</label>
-      <select id="reminderRepeat" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;"></select>
+      <label id="habitIconLabel">Ícono</label>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <input type="text" id="habitIcon" maxlength="4" placeholder="📚" style="width:60px;text-align:center;font-size:18px;" />
+        <div id="habitIconPicker" style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('📚')">📚</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('💧')">💧</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🏃')">🏃</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🧘')">🧘</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('💪')">💪</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🥗')">🥗</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('😴')">😴</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('📖')">📖</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🧠')">🧠</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🎯')">🎯</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('✅')">✅</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🔥')">🔥</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('⭐')">⭐</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🌟')">🌟</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('💡')">💡</button>
+          <button type="button" class="btn btn-sm" onclick="selectHabitIcon('🎨')">🎨</button>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label id="habitColorLabel">Color</label>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <input type="color" id="habitColor" value="#5b7db5" style="width:40px;height:32px;padding:2px;border:1px solid var(--border);border-radius:4px;background:var(--input-bg);" />
+        <div class="bg-group" id="habitColorBtns">
+          <button class="bg-btn" style="background:#5b7db5" onclick="selectHabitColor('#5b7db5')" title="Azul"></button>
+          <button class="bg-btn" style="background:#4caf50" onclick="selectHabitColor('#4caf50')" title="Verde"></button>
+          <button class="bg-btn" style="background:#ff9800" onclick="selectHabitColor('#ff9800')" title="Naranja"></button>
+          <button class="bg-btn" style="background:#e91e63" onclick="selectHabitColor('#e91e63')" title="Rosa"></button>
+          <button class="bg-btn" style="background:#9c27b0" onclick="selectHabitColor('#9c27b0')" title="Violeta"></button>
+          <button class="bg-btn" style="background:#009688" onclick="selectHabitColor('#009688')" title="Turquesa"></button>
+          <button class="bg-btn" style="background:#795548" onclick="selectHabitColor('#795548')" title="Marrón"></button>
+          <button class="bg-btn" style="background:#607d8b" onclick="selectHabitColor('#607d8b')" title="Gris"></button>
+        </div>
+      </div>
+    </div>
+    <div id="habitCounterFields">
+      <div class="field">
+        <label id="habitTotalLabel">Total *</label>
+        <input type="number" id="habitTotal" min="1" max="10000" value="10" style="width:100%;box-sizing:border-box;" />
+      </div>
+      <div class="field">
+        <label id="habitStepLabel">Saltos *</label>
+        <input type="number" id="habitStep" min="1" max="10000" value="1" style="width:100%;box-sizing:border-box;" />
+      </div>
+      <div id="habitCounterError" style="font-size:11px;color:#e74c3c;margin-top:2px;display:none;"></div>
     </div>
     <div class="dialog-actions">
-      <button class="btn" onclick="closeDialog('dialogReminder')">Cancelar</button>
-      <button class="btn btn-primary" onclick="createReminder()">Crear</button>
+      <button class="btn" id="habitCancelBtn" onclick="closeDialog('habitDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="habitSaveBtn" onclick="saveHabit()">Crear</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="habitDeleteDialog">
+  <div class="dialog" style="text-align:center;min-width:280px;">
+    <h3 id="habitDeleteTitle">¿Eliminar este hábito?</h3>
+    <p id="habitDeleteMsg" style="font-size:13px;color:var(--text-muted);margin:8px 0 16px;">Esta acción no se puede deshacer.</p>
+    <div class="dialog-actions" style="justify-content:center;">
+      <button class="btn" id="habitDeleteCancelBtn" onclick="closeDialog('habitDeleteDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="habitDeleteConfirmBtn" onclick="confirmDeleteHabit()" style="background:var(--danger);">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="registroDialog">
+  <div class="dialog" style="max-width:480px;max-height:80vh;overflow-y:auto;">
+    <h3 id="registroDialogTitle">Nuevo Registro</h3>
+    <div class="field">
+      <label id="registroNameLabel">Nombre *</label>
+      <input type="text" id="registroName" maxlength="60" placeholder="Ej: Lectura" style="width:100%;box-sizing:border-box;" />
+      <div id="registroNameError" style="font-size:11px;color:#e74c3c;margin-top:2px;display:none;"></div>
+    </div>
+    <div class="field">
+      <label id="registroFieldsLabel">Variables</label>
+      <div id="registroFieldsList" style="display:flex;flex-direction:column;gap:8px;margin-top:6px;"></div>
+      <div id="registroFieldsError" style="font-size:11px;color:#e74c3c;margin-top:6px;display:none;"></div>
+      <button type="button" class="btn btn-sm" id="registroAddFieldBtn" onclick="registroAddField()" style="margin-top:8px;">+ Agregar variable</button>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="registroCancelBtn" onclick="closeDialog('registroDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="registroSaveBtn" onclick="saveRegistro()">Crear</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="registroDeleteDialog">
+  <div class="dialog" style="text-align:center;min-width:300px;">
+    <h3 id="registroDeleteTitle">¿Eliminar este Registro?</h3>
+    <p id="registroDeleteMsg" style="font-size:13px;color:var(--text-muted);margin:8px 0 16px;">Se eliminarán todas sus variables y su historial. Esta acción no se puede deshacer.</p>
+    <div class="dialog-actions" style="justify-content:center;">
+      <button class="btn" id="registroDeleteCancelBtn" onclick="closeDialog('registroDeleteDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="registroDeleteConfirmBtn" onclick="confirmDeleteRegistro()" style="background:var(--danger);">Eliminar</button>
     </div>
   </div>
 </div>

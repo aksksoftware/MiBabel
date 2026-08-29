@@ -88,7 +88,12 @@ var langData = {
       import:'Import', importSuccess:'Item imported successfully',
       invalidFile:'Invalid or corrupted file',
       uuidConflict:'An item with this ID already exists. A new ID will be generated.',
-      exportNote:'Export as note', exportBoard:'Export as board', exportStudySet:'Export as card set'
+      exportNote:'Export as note', exportBoard:'Export as board', exportStudySet:'Export as card set',
+      habits:'Habits', habitsPending:'Habits', habitsCompleted:'Completed habits', habitTask:'Task habit', habitCounter:'Counter habit',
+      habitName:'Name', habitDesc:'Description', habitIcon:'Icon', habitColor:'Color', habitTotal:'Goal', habitStep:'Step',
+      habitStreak:'Streak', resetToday:'Reset today', editHabit:'Edit', deleteHabit:'Delete',
+      confirmDeleteHabit:'Delete this habit?', habitNameRequired:'Name is required.', habitTotalInvalid:'Goal must be a number greater than 0.', habitStepInvalid:'Step must be a number greater than 0 and not greater than goal.', habitStepIncoherent:'Step must allow reaching the goal exactly (goal must be divisible by step).', createHabit:'Create', habitEmpty:'No habits yet. Tap + to create one.', habitNeedsTotal:'Goal and Step are required for counter habits.', habitCreateTitle:'New habit', habitEditTitle:'Edit habit',
+      registros:'Records', registrosEmpty:'No records yet. Tap + to create one.', newRegistro:'New Record', editRegistro:'Edit Record', deleteRegistro:'Delete Record', registroName:'Name', addVariable:'Add variable', noRegistros:'No records yet.', confirmDeleteRegistro:'Delete this record?', confirmDeleteVariable:'Delete this variable?', registroNameRequired:'Name is required.', registroExists:'A record with this name already exists.', variableExists:'A variable with this name already exists.', invalidRegistroName:'Invalid name. Use letters, numbers and underscore, starting with letter or underscore.', variableNameRequired:'Variable name is required.', invalidType:'Invalid type.', variableType:'Type', registroCreateTitle:'New record', registroEditTitle:'Edit record', registroDeleteMsg:'All variables and history will be deleted. This cannot be undone.', exportRegistro:'Export record', importRegistro:'Import record', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total records', fromDate:'From', toDate:'To', clearFilter:'Clear', invalidDate:'Invalid date.', invalidRange:'Invalid range.', valueMismatch:'Value does not match type.', registroNotFound:'Record not found.', variableNotFound:'Variable not found.', trashTypeRegistro:'Record', folder:'Folder', folders:'Folders', newFolder:'New Folder', newFolderLabel:'New folder', folderName:'Folder name', folderNamePlaceholder:'Folder name', protectedFolder:'Protected folder: ', deleteFolder:'Delete folder: ', deleteFolderMsg:'The {n} notes inside will be moved to the main view.', deleteFolderEmpty:'The folder is empty.', emptyFolderHint:'This folder is empty. Tap + to create a note inside.', subfoldersNotAllowed:'Subfolders are not allowed.', moveToFolder:'Move to folder', moveToNotes:'Move to Notes', changePassword:'Change password', invalidFolder:'Invalid folder.', enterFolderId:'Enter folder ID:', countNote:'note', countNotes:'notes', renameFolder:'Rename folder', folderExists:'Folder already exists'
     },
    es: {
     notes:'Notas', diary:'Diario', board:'Tablero', boards:'Tableros', studyCards:'Tarjetas de estudio', settings:'Ajustes', rename:'Renombrar',
@@ -171,7 +176,12 @@ var langData = {
       import:'Importar', importSuccess:'Elemento importado correctamente',
       invalidFile:'Archivo inv\u00e1lido o corrupto',
       uuidConflict:'Ya existe un elemento con este ID. Se generar\u00e1 un nuevo ID.',
-      exportNote:'Exportar como nota', exportBoard:'Exportar como tablero', exportStudySet:'Exportar como set'
+      exportNote:'Exportar como nota', exportBoard:'Exportar como tablero', exportStudySet:'Exportar como set',
+      habits:'Hábitos', habitsPending:'Hábitos', habitsCompleted:'Hábitos completos', habitTask:'Hábito tarea', habitCounter:'Hábito contador',
+      habitName:'Nombre', habitDesc:'Descripción', habitIcon:'Ícono', habitColor:'Color', habitTotal:'Total', habitStep:'Saltos',
+      habitStreak:'Racha', resetToday:'Resetear hoy', editHabit:'Editar', deleteHabit:'Eliminar',
+      confirmDeleteHabit:'¿Eliminar este hábito?', habitNameRequired:'El nombre es obligatorio.', habitTotalInvalid:'El total debe ser un número mayor que 0.', habitStepInvalid:'Los saltos deben ser un número mayor que 0 y no mayor que el total.', habitStepIncoherent:'Los saltos deben permitir alcanzar el total de forma coherente (el total debe ser divisible por los saltos).', createHabit:'Crear', habitEmpty:'Aún no hay hábitos. Pulsa + para crear uno.', habitNeedsTotal:'Total y Saltos son obligatorios para hábitos contador.', habitCreateTitle:'Nuevo hábito', habitEditTitle:'Editar hábito',
+      registros:'Registros', registrosEmpty:'Aún no hay registros. Pulsa + para crear uno.', newRegistro:'Nuevo Registro', editRegistro:'Editar Registro', deleteRegistro:'Eliminar Registro', registroName:'Nombre', addVariable:'Agregar variable', noRegistros:'Aún no hay registros.', confirmDeleteRegistro:'¿Eliminar este registro?', confirmDeleteVariable:'¿Eliminar esta variable?', registroNameRequired:'El nombre es obligatorio.', registroExists:'Ya existe un registro con ese nombre.', variableExists:'Ya existe una variable con ese nombre.', invalidRegistroName:'Nombre inválido. Usa letras, números y guión bajo, empezando por letra o guión bajo.', variableNameRequired:'El nombre de la variable es obligatorio.', invalidType:'Tipo inválido.', variableType:'Tipo', registroCreateTitle:'Nuevo registro', registroEditTitle:'Editar registro', registroDeleteMsg:'Se eliminarán todas sus variables y su historial. Esta acción no se puede deshacer.', exportRegistro:'Exportar registro', importRegistro:'Importar registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registros', fromDate:'Desde', toDate:'Hasta', clearFilter:'Limpiar', invalidDate:'Fecha inválida.', invalidRange:'Rango inválido.', valueMismatch:'El valor no coincide con el tipo.', registroNotFound:'Registro no encontrado.', variableNotFound:'Variable no encontrada.', trashTypeRegistro:'Registro', folder:'Carpeta', folders:'Carpetas', newFolder:'Nueva Carpeta', newFolderLabel:'Nueva carpeta', folderName:'Nombre de la carpeta', folderNamePlaceholder:'Nombre de la carpeta', protectedFolder:'Carpeta protegida: ', deleteFolder:'Eliminar carpeta: ', deleteFolderMsg:'Las {n} Notas contenidas serán movidas a la vista principal.', deleteFolderEmpty:'La carpeta está vacía.', emptyFolderHint:'Esta carpeta está vacía. Pulsa + para crear una nota dentro.', subfoldersNotAllowed:'No se permiten subcarpetas.', moveToFolder:'Mover a carpeta', moveToNotes:'Mover a Notas', changePassword:'Cambiar contraseña', invalidFolder:'Carpeta inválida.', enterFolderId:'Ingrese ID de la carpeta:', countNote:'nota', countNotes:'notas', renameFolder:'Renombrar carpeta', folderExists:'Ya existe una carpeta con ese nombre'
     },
    fr: {
     notes:'Notes', diary:'Journal', board:'Tableau', boards:'Tableaux', studyCards:'Cartes memoire', settings:'Parametres', rename:'Renommer',
@@ -250,7 +260,12 @@ var langData = {
       import:'Importer', importSuccess:'\u00c9l\u00e9ment import\u00e9 avec succ\u00e8s',
       invalidFile:'Fichier invalide ou corrompu',
       uuidConflict:'Un \u00e9l\u00e9ment avec cet ID existe d\u00e9j\u00e0. Un nouvel ID sera g\u00e9n\u00e9r\u00e9.',
-      exportNote:'Exporter comme note', exportBoard:'Exporter comme tableau', exportStudySet:'Exporter comme jeu de cartes'
+      exportNote:'Exporter comme note', exportBoard:'Exporter comme tableau', exportStudySet:'Exporter comme jeu de cartes',
+      habits:'Habitudes', habitsPending:'Habitudes', habitsCompleted:'Habitudes terminées', habitTask:'Habitude tâche', habitCounter:'Habitude compteur',
+      habitName:'Nom', habitDesc:'Description', habitIcon:'Icône', habitColor:'Couleur', habitTotal:'Objectif', habitStep:'Pas',
+      habitStreak:'Série', resetToday:'Réinitialiser aujourd\'hui', editHabit:'Modifier', deleteHabit:'Supprimer',
+      confirmDeleteHabit:'Supprimer cette habitude ?', habitNameRequired:'Le nom est obligatoire.', habitTotalInvalid:'L\'objectif doit être supérieur à 0.', habitStepInvalid:'Le pas doit être supérieur à 0 et pas supérieur à l\'objectif.', habitStepIncoherent:'Le pas doit permettre d\'atteindre l\'objectif exactement (objectif divisible par pas).', createHabit:'Créer', habitEmpty:'Aucune habitude. Appuyez sur + pour en créer.', habitNeedsTotal:'Objectif et Pas requis pour compteur.', habitCreateTitle:'Nouvelle habitude', habitEditTitle:'Modifier habitude',
+      registros:'Registres', registrosEmpty:'Pas encore de registres. Appuyez sur + pour en créer.', newRegistro:'Nouveau registre', editRegistro:'Modifier registre', deleteRegistro:'Supprimer registre', registroName:'Nom', addVariable:'Ajouter variable', noRegistros:'Pas de registres.', confirmDeleteRegistro:'Supprimer ce registre ?', confirmDeleteVariable:'Supprimer cette variable ?', registroNameRequired:'Le nom est obligatoire.', registroExists:'Un registre avec ce nom existe déjà.', variableExists:'Une variable avec ce nom existe déjà.', invalidRegistroName:'Nom invalide.', variableNameRequired:'Le nom de la variable est obligatoire.', invalidType:'Type invalide.', variableType:'Type', registroCreateTitle:'Nouveau registre', registroEditTitle:'Modifier registre', registroDeleteMsg:'Toutes les variables et l\'historique seront supprimés.', exportRegistro:'Exporter registre', importRegistro:'Importer registre', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registres', fromDate:'Du', toDate:'Au', clearFilter:'Effacer', invalidDate:'Date invalide.', invalidRange:'Plage invalide.', valueMismatch:'Valeur incompatible.', registroNotFound:'Registre introuvable.', variableNotFound:'Variable introuvable.', trashTypeRegistro:'Registre', folder:'Dossier', folders:'Dossiers', newFolder:'Nouveau dossier', newFolderLabel:'Nouveau dossier', folderName:'Nom du dossier', folderNamePlaceholder:'Nom du dossier', protectedFolder:'Dossier protégé : ', deleteFolder:'Supprimer le dossier : ', deleteFolderMsg:'Les {n} notes contenues seront déplacées vers la vue principale.', deleteFolderEmpty:'Le dossier est vide.', emptyFolderHint:'Ce dossier est vide. Appuyez sur + pour créer une note.', subfoldersNotAllowed:'Les sous-dossiers ne sont pas autorisés.', moveToFolder:'Déplacer vers dossier', moveToNotes:'Déplacer vers Notes', changePassword:'Changer le mot de passe', invalidFolder:'Dossier invalide.', enterFolderId:'Entrez l\'ID du dossier :', countNote:'note', countNotes:'notes', renameFolder:'Renommer dossier', folderExists:'Le dossier existe déjà'
     },
   pt: {
     notes:'Notas', diary:'Diario', board:'Quadro', boards:'Quadros', studyCards:'Cartoes de estudo', settings:'Configuracoes', rename:'Renomear',
@@ -327,8 +342,13 @@ var langData = {
       import:'Importar', importSuccess:'Elemento importado com sucesso',
       invalidFile:'Arquivo inv\u00e1lido ou corrompido',
       uuidConflict:'J\u00e1 existe um elemento com este ID. Um novo ID ser\u00e1 gerado.',
-      exportNote:'Exportar como nota', exportBoard:'Exportar como quadro', exportStudySet:'Exportar como conjunto'
-    },
+      exportNote:'Exportar como nota', exportBoard:'Exportar como quadro', exportStudySet:'Exportar como conjunto',
+      habits:'Hábitos', habitsPending:'Hábitos', habitsCompleted:'Hábitos concluídos', habitTask:'Hábito tarefa', habitCounter:'Hábito contador',
+      habitName:'Nome', habitDesc:'Descrição', habitIcon:'Ícone', habitColor:'Cor', habitTotal:'Meta', habitStep:'Passo',
+      habitStreak:'Sequência', resetToday:'Reiniciar hoje', editHabit:'Editar', deleteHabit:'Excluir',
+      confirmDeleteHabit:'Excluir este hábito?', habitNameRequired:'O nome é obrigatório.', habitTotalInvalid:'A meta deve ser maior que 0.', habitStepInvalid:'O passo deve ser maior que 0 e não maior que a meta.', habitStepIncoherent:'O passo deve permitir atingir a meta exatamente (meta divisível por passo).', createHabit:'Criar', habitEmpty:'Nenhum hábito ainda. Toque em + para criar.', habitNeedsTotal:'Meta e Passo obrigatórios para contador.', habitCreateTitle:'Novo hábito', habitEditTitle:'Editar hábito',
+
+      registros:'Registros', registrosEmpty:'Ainda não há registros. Toque em + para criar.', newRegistro:'Novo registro', editRegistro:'Editar registro', deleteRegistro:'Excluir registro', registroName:'Nome', addVariable:'Adicionar variável', noRegistros:'Nenhum registro.', confirmDeleteRegistro:'Excluir este registro?', confirmDeleteVariable:'Excluir esta variável?', registroNameRequired:'O nome é obrigatório.', registroExists:'Já existe um registro com esse nome.', variableExists:'Já existe uma variável com esse nome.', invalidRegistroName:'Nome inválido.', variableNameRequired:'O nome da variável é obrigatório.', invalidType:'Tipo inválido.', variableType:'Tipo', registroCreateTitle:'Novo registro', registroEditTitle:'Editar registro', registroDeleteMsg:'Todas as variáveis e histórico serão excluídos.', exportRegistro:'Exportar registro', importRegistro:'Importar registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registros', fromDate:'De', toDate:'Até', clearFilter:'Limpar', invalidDate:'Data inválida.', invalidRange:'Intervalo inválido.', valueMismatch:'Valor incompatível.', registroNotFound:'Registro não encontrado.', variableNotFound:'Variável não encontrada.', trashTypeRegistro:'Registro', folder:'Pasta', folders:'Pastas', newFolder:'Nova pasta', newFolderLabel:'Nova pasta', folderName:'Nome da pasta', folderNamePlaceholder:'Nome da pasta', protectedFolder:'Pasta protegida: ', deleteFolder:'Excluir pasta: ', deleteFolderMsg:'As {n} notas dentro serão movidas para a visão principal.', deleteFolderEmpty:'A pasta está vazia.', emptyFolderHint:'Esta pasta está vazia. Toque em + para criar uma nota.', subfoldersNotAllowed:'Subpastas não são permitidas.', moveToFolder:'Mover para pasta', moveToNotes:'Mover para Notas', changePassword:'Alterar senha', invalidFolder:'Pasta inválida.', enterFolderId:'Digite o ID da pasta:', countNote:'nota', countNotes:'notas', renameFolder:'Renomear pasta', folderExists:'A pasta já existe'    },
   ru: {
     notes:'Заметки', diary:'Дневник', board:'Доска', boards:'Доски', studyCards:'Учебные карточки', settings:'Настройки', rename:'Переименовать',
     newSet:'Новый набор', editSet:'Редактировать', deleteSet:'Удалить', addCard:'Добавить карточку',
@@ -406,8 +426,13 @@ var langData = {
       import:'Импорт', importSuccess:'Элемент успешно импортирован',
       invalidFile:'Неверный или поврежденный файл',
       uuidConflict:'Элемент с таким ID уже существует. Будет сгенерирован новый ID.',
-      exportNote:'Экспорт как заметку', exportBoard:'Экспорт как доску', exportStudySet:'Экспорт как набор карточек'
-    },
+      exportNote:'Экспорт как заметку', exportBoard:'Экспорт как доску', exportStudySet:'Экспорт как набор карточек',
+      habits:'Привычки', habitsPending:'Привычки', habitsCompleted:'Выполненные привычки', habitTask:'Привычка-задача', habitCounter:'Привычка-счётчик',
+      habitName:'Название', habitDesc:'Описание', habitIcon:'Иконка', habitColor:'Цвет', habitTotal:'Цель', habitStep:'Шаг',
+      habitStreak:'Серия', resetToday:'Сбросить сегодня', editHabit:'Редактировать', deleteHabit:'Удалить',
+      confirmDeleteHabit:'Удалить эту привычку?', habitNameRequired:'Название обязательно.', habitTotalInvalid:'Цель должна быть больше 0.', habitStepInvalid:'Шаг должен быть больше 0 и не больше цели.', habitStepIncoherent:'Шаг должен позволять точно достичь цели (цель делится на шаг).', createHabit:'Создать', habitEmpty:'Пока нет привычек. Нажмите +.', habitNeedsTotal:'Цель и Шаг обязательны для счётчика.', habitCreateTitle:'Новая привычка', habitEditTitle:'Редактировать привычку',
+
+      registros:'Записи', registrosEmpty:'Пока нет записей.', newRegistro:'Новая запись', editRegistro:'Редактировать запись', deleteRegistro:'Удалить запись', registroName:'Имя', addVariable:'Добавить переменную', noRegistros:'Нет записей.', confirmDeleteRegistro:'Удалить эту запись?', confirmDeleteVariable:'Удалить эту переменную?', registroNameRequired:'Имя обязательно.', registroExists:'Запись с таким именем уже существует.', variableExists:'Переменная с таким именем уже существует.', invalidRegistroName:'Неверное имя.', variableNameRequired:'Имя переменной обязательно.', invalidType:'Неверный тип.', variableType:'Тип', registroCreateTitle:'Новая запись', registroEditTitle:'Редактировать запись', registroDeleteMsg:'Все переменные и история будут удалены.', exportRegistro:'Экспорт записи', importRegistro:'Импорт записи', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Всего записей', fromDate:'С', toDate:'По', clearFilter:'Очистить', invalidDate:'Неверная дата.', invalidRange:'Неверный диапазон.', valueMismatch:'Значение не соответствует типу.', registroNotFound:'Запись не найдена.', variableNotFound:'Переменная не найдена.', trashTypeRegistro:'Запись', folder:'Папка', folders:'Папки', newFolder:'Новая папка', newFolderLabel:'Новая папка', folderName:'Имя папки', folderNamePlaceholder:'Имя папки', protectedFolder:'Защищенная папка: ', deleteFolder:'Удалить папку: ', deleteFolderMsg:'{n} заметок будут перемещены в основной вид.', deleteFolderEmpty:'Папка пуста.', emptyFolderHint:'Эта папка пуста. Нажмите +, чтобы создать заметку.', subfoldersNotAllowed:'Подпапки не разрешены.', moveToFolder:'Переместить в папку', moveToNotes:'Переместить в Заметки', changePassword:'Сменить пароль', invalidFolder:'Неверная папка.', enterFolderId:'Введите ID папки:', countNote:'заметка', countNotes:'заметок', renameFolder:'Переименовать папку', folderExists:'Папка уже существует'    },
   de: {
     notes:'Notizen', diary:'Tagebuch', board:'Pinnwand', boards:'Pinnw\u00e4nde', studyCards:'Lernkarten', settings:'Einstellungen', rename:'Umbenennen',
     newSet:'Neues Set', editSet:'Set bearbeiten', deleteSet:'Set l\u00f6schen', addCard:'Karte hinzuf\u00fcgen',
@@ -484,8 +509,13 @@ var langData = {
       import:'Importieren', importSuccess:'Element erfolgreich importiert',
       invalidFile:'Ung\u00fcltige oder besch\u00e4digte Datei',
       uuidConflict:'Ein Element mit dieser ID existiert bereits. Eine neue ID wird generiert.',
-      exportNote:'Als Notiz exportieren', exportBoard:'Als Pinnwand exportieren', exportStudySet:'Als Kartenset exportieren'
-    },
+      exportNote:'Als Notiz exportieren', exportBoard:'Als Pinnwand exportieren', exportStudySet:'Als Kartenset exportieren',
+      habits:'Gewohnheiten', habitsPending:'Gewohnheiten', habitsCompleted:'Erledigte Gewohnheiten', habitTask:'Aufgaben-Gewohnheit', habitCounter:'Zähler-Gewohnheit',
+      habitName:'Name', habitDesc:'Beschreibung', habitIcon:'Symbol', habitColor:'Farbe', habitTotal:'Ziel', habitStep:'Schritt',
+      habitStreak:'Serie', resetToday:'Heute zurücksetzen', editHabit:'Bearbeiten', deleteHabit:'Löschen',
+      confirmDeleteHabit:'Diese Gewohnheit löschen?', habitNameRequired:'Name ist erforderlich.', habitTotalInvalid:'Ziel muss größer als 0 sein.', habitStepInvalid:'Schritt muss größer als 0 und nicht größer als Ziel sein.', habitStepIncoherent:'Schritt muss Ziel exakt erreichen (Ziel teilbar durch Schritt).', createHabit:'Erstellen', habitEmpty:'Noch keine Gewohnheiten. Tippe auf +.', habitNeedsTotal:'Ziel und Schritt für Zähler erforderlich.', habitCreateTitle:'Neue Gewohnheit', habitEditTitle:'Gewohnheit bearbeiten',
+
+      registros:'Aufzeichnungen', registrosEmpty:'Noch keine Aufzeichnungen.', newRegistro:'Neue Aufzeichnung', editRegistro:'Aufzeichnung bearbeiten', deleteRegistro:'Aufzeichnung löschen', registroName:'Name', addVariable:'Variable hinzufügen', noRegistros:'Keine Aufzeichnungen.', confirmDeleteRegistro:'Diese Aufzeichnung löschen?', confirmDeleteVariable:'Diese Variable löschen?', registroNameRequired:'Name ist erforderlich.', registroExists:'Eine Aufzeichnung mit diesem Namen existiert bereits.', variableExists:'Eine Variable mit diesem Namen existiert bereits.', invalidRegistroName:'Ungültiger Name.', variableNameRequired:'Variablenname ist erforderlich.', invalidType:'Ungültiger Typ.', variableType:'Typ', registroCreateTitle:'Neue Aufzeichnung', registroEditTitle:'Aufzeichnung bearbeiten', registroDeleteMsg:'Alle Variablen und Verläufe werden gelöscht.', exportRegistro:'Aufzeichnung exportieren', importRegistro:'Aufzeichnung importieren', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Aufzeichnungen gesamt', fromDate:'Von', toDate:'Bis', clearFilter:'Löschen', invalidDate:'Ungültiges Datum.', invalidRange:'Ungültiger Bereich.', valueMismatch:'Wert passt nicht zum Typ.', registroNotFound:'Aufzeichnung nicht gefunden.', variableNotFound:'Variable nicht gefunden.', trashTypeRegistro:'Aufzeichnung', folder:'Ordner', folders:'Ordner', newFolder:'Neuer Ordner', newFolderLabel:'Neuer Ordner', folderName:'Ordnername', folderNamePlaceholder:'Ordnername', protectedFolder:'Geschützter Ordner: ', deleteFolder:'Ordner löschen: ', deleteFolderMsg:'Die {n} Notizen werden in die Hauptansicht verschoben.', deleteFolderEmpty:'Der Ordner ist leer.', emptyFolderHint:'Dieser Ordner ist leer. Tippe auf +, um eine Notiz zu erstellen.', subfoldersNotAllowed:'Unterordner sind nicht erlaubt.', moveToFolder:'In Ordner verschieben', moveToNotes:'Zu Notizen verschieben', changePassword:'Passwort ändern', invalidFolder:'Ungültiger Ordner.', enterFolderId:'Ordner-ID eingeben:', countNote:'Notiz', countNotes:'Notizen', renameFolder:'Ordner umbenennen', folderExists:'Ordner existiert bereits'    },
   it: {
     notes:'Note', diary:'Diario', board:'Lavagna', boards:'Lavagne', studyCards:'Carte di studio', settings:'Impostazioni', rename:'Rinomina',
     newSet:'Nuovo set', editSet:'Modifica set', deleteSet:'Elimina set', addCard:'Aggiungi carta',
@@ -563,8 +593,13 @@ var langData = {
       import:'Importa', importSuccess:'Elemento importato con successo',
       invalidFile:'File non valido o danneggiato',
       uuidConflict:'Esiste gi\u00e0 un elemento con questo ID. Verr\u00e0 generato un nuovo ID.',
-      exportNote:'Esporta come nota', exportBoard:'Esporta come lavagna', exportStudySet:'Esporta come set'
-    }
+      exportNote:'Esporta come nota', exportBoard:'Esporta come lavagna', exportStudySet:'Esporta come set',
+      habits:'Abitudini', habitsPending:'Abitudini', habitsCompleted:'Abitudini completate', habitTask:'Abitudine compito', habitCounter:'Abitudine contatore',
+      habitName:'Nome', habitDesc:'Descrizione', habitIcon:'Icona', habitColor:'Colore', habitTotal:'Obiettivo', habitStep:'Passo',
+      habitStreak:'Serie', resetToday:'Reimposta oggi', editHabit:'Modifica', deleteHabit:'Elimina',
+      confirmDeleteHabit:'Eliminare questa abitudine?', habitNameRequired:'Il nome è obbligatorio.', habitTotalInvalid:'L\'obiettivo deve essere maggiore di 0.', habitStepInvalid:'Il passo deve essere maggiore di 0 e non maggiore dell\'obiettivo.', habitStepIncoherent:'Il passo deve permettere di raggiungere l\'obiettivo esattamente (obiettivo divisibile per passo).', createHabit:'Crea', habitEmpty:'Nessuna abitudine. Tocca + per crearne una.', habitNeedsTotal:'Obiettivo e Passo richiesti per contatore.', habitCreateTitle:'Nuova abitudine', habitEditTitle:'Modifica abitudine',
+
+      registros:'Registri', registrosEmpty:'Nessun registro ancora.', newRegistro:'Nuovo registro', editRegistro:'Modifica registro', deleteRegistro:'Elimina registro', registroName:'Nome', addVariable:'Aggiungi variabile', noRegistros:'Nessun registro.', confirmDeleteRegistro:'Eliminare questo registro?', confirmDeleteVariable:'Eliminare questa variabile?', registroNameRequired:'Il nome è obbligatorio.', registroExists:'Esiste già un registro con questo nome.', variableExists:'Esiste già una variabile con questo nome.', invalidRegistroName:'Nome non valido.', variableNameRequired:'Il nome della variabile è obbligatorio.', invalidType:'Tipo non valido.', variableType:'Tipo', registroCreateTitle:'Nuovo registro', registroEditTitle:'Modifica registro', registroDeleteMsg:'Tutte le variabili e la cronologia verranno eliminate.', exportRegistro:'Esporta registro', importRegistro:'Importa registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Registri totali', fromDate:'Da', toDate:'A', clearFilter:'Cancella', invalidDate:'Data non valida.', invalidRange:'Intervallo non valido.', valueMismatch:'Valore non compatibile.', registroNotFound:'Registro non trovato.', variableNotFound:'Variabile non trovata.', trashTypeRegistro:'Registro', folder:'Cartella', folders:'Cartelle', newFolder:'Nuova cartella', newFolderLabel:'Nuova cartella', folderName:'Nome cartella', folderNamePlaceholder:'Nome cartella', protectedFolder:'Cartella protetta: ', deleteFolder:'Elimina cartella: ', deleteFolderMsg:'Le {n} note verranno spostate nella vista principale.', deleteFolderEmpty:'La cartella è vuota.', emptyFolderHint:'Questa cartella è vuota. Tocca + per creare una nota.', subfoldersNotAllowed:'Le sottocartelle non sono consentite.', moveToFolder:'Sposta in cartella', moveToNotes:'Sposta in Note', changePassword:'Cambia password', invalidFolder:'Cartella non valida.', enterFolderId:'Inserisci ID cartella:', countNote:'nota', countNotes:'note', renameFolder:'Rinomina cartella', folderExists:'La cartella esiste già'    }
 };
 function t(key) { var l = langData[state.lang] || langData.en; return l[key] || key; }
 function setLang(code) { state.lang = code; save(); applyLang(); applyTheme(); renderAll(); document.documentElement.lang = code; }
@@ -694,18 +729,35 @@ function exportSingleStudySet(id) {
   var set = state.studySets.find(function(s) { return s.id === id; });
   if (set) exportItem(set, 'studySet');
 }
+function exportSingleFolder(id){
+  var folder=getFolderById(id); if(!folder) return;
+  var notes=state.notes.filter(function(n){return n.folderId===id;});
+  var pkg={ formatVersion:2, type:'folder', app:'AppNotas', exportedAt:new Date().toISOString(), data: JSON.parse(JSON.stringify(folder)), notes: JSON.parse(JSON.stringify(notes)), hasEmbeddedMedia:true, _media:{} };
+  var refs=[];
+  notes.forEach(function(n){ (n.items||[]).forEach(function(it){ var r=it.src||it.ref; if((it.type==='image'||it.type==='audio'||it.type==='video')&&r) refs.push(r); }); });
+  if(refs.length===0){ saveFile(sanitizeFilename(folder.name||'folder')+'.json', JSON.stringify(pkg,null,2), 'application/json'); return; }
+  Promise.all(refs.map(function(ref){ return ImageManager.read(ref).then(function(b64){ if(b64) pkg._media[ref]=b64; }); })).then(function(){
+    saveFile(sanitizeFilename(folder.name||'folder')+'.json', JSON.stringify(pkg,null,2), 'application/json');
+  });
+}
 
 function exportData() {
   var manifest = {
-    formatVersion: 2,
+    formatVersion: 5,
     app: 'AppNotas',
     createdAt: new Date().toISOString(),
-    notesCount: state.notes.length
+    notesCount: state.notes.length,
+    foldersCount: (state.folders||[]).length
   };
   var config = {
     boards: state.boards,
     studySets: state.studySets,
     trash: state.trash,
+    habits: state.habits,
+    registros: state.registros || [],
+    activeRegistroId: state.activeRegistroId || null,
+    registrosFilter: state.registrosFilter || { from: null, to: null },
+    diaryVariables: state.diaryVariables || {},
     view: state.view,
     theme: state.theme,
     lang: state.lang,
@@ -721,7 +773,10 @@ function exportData() {
     weekStartsMonday: state.weekStartsMonday,
     defaultBoardBg: state.defaultBoardBg,
     boardShowShadows: state.boardShowShadows,
-    boardShowAnimations: state.boardShowAnimations
+    boardShowAnimations: state.boardShowAnimations,
+    folders: state.folders || [],
+    rootOrder: state.rootOrder || [],
+    activeFolderId: state.activeFolderId || null
   };
   state.lastBackupAt = Date.now();
   save();
@@ -788,7 +843,7 @@ function importData(input) {
       return manifestFile.async('string').then(function(manifestStr) {
         var manifest = JSON.parse(manifestStr);
         var version = manifest.formatVersion || 1;
-        if (version !== 1 && version !== 2) {
+        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5) {
           alert('Este archivo fue creado con una versión incompatible de la aplicación.');
           return;
         }
@@ -831,10 +886,28 @@ function importData(input) {
       });
       return Promise.all(imgRestorePromises).then(function() {
         state.notes = notas || [];
-        state.notes.forEach(function(n) { if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; });
+        state.notes.forEach(function(n) { if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; n.events = (n.events||[]).filter(function(e){ return e.repetition !== 'daily'; }); n.tasks = (n.tasks||[]).filter(function(t){ return t.repetition !== 'daily'; }); });
         state.boards = config.boards || [];
         state.studySets = config.studySets || [];
         state.trash = config.trash || [];
+        state.habits = config.habits || [];
+        state.registros = config.registros && Array.isArray(config.registros) ? config.registros : [];
+        state.activeRegistroId = config.activeRegistroId || null;
+        state.registrosFilter = config.registrosFilter && typeof config.registrosFilter === 'object' ? config.registrosFilter : { from: null, to: null };
+        // Normalizar registros importados
+        state.registros.forEach(function(r){
+          if (!r.fields) r.fields=[];
+          if (!r.entries || typeof r.entries!=='object') r.entries={};
+          if (!r.name) r.name='Registro';
+          if (!r.id) r.id=genId();
+        });
+        state.diaryVariables = config.diaryVariables && typeof config.diaryVariables === 'object' && !Array.isArray(config.diaryVariables) ? config.diaryVariables : {};
+        // Sanitizar diaryVariables importadas
+        for (var _ik in state.diaryVariables) if (Object.prototype.hasOwnProperty.call(state.diaryVariables,_ik)) {
+          var _a = state.diaryVariables[_ik];
+          if (!Array.isArray(_a)) { state.diaryVariables[_ik]=[]; continue; }
+          _a.sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+        }
         state.view = config.view || 'notes';
         state.theme = config.theme || 'dark';
         state.lang = config.lang || 'en';
@@ -847,6 +920,20 @@ function importData(input) {
         state.diaryPwdHash = config.diaryPwdHash || '';
         state.diaryRecoveryCode = config.diaryRecoveryCode || '';
         state.firstVisit = config.firstVisit !== undefined ? config.firstVisit : false;
+        // Carpetas
+        state.folders = config.folders && Array.isArray(config.folders) ? config.folders : [];
+        state.rootOrder = config.rootOrder && Array.isArray(config.rootOrder) ? config.rootOrder : [];
+        state.activeFolderId = config.activeFolderId || null;
+        // Normalizar notas con folderId y carpetas
+        state.notes.forEach(function(n){ if(n.folderId===undefined) n.folderId=null; });
+        state.folders.forEach(function(f){ if(!f.name) f.name='Carpeta'; if(f.pwdHash===undefined) f.pwdHash=''; if(!f.createdAt) f.createdAt=Date.now(); });
+        // validar huérfanos
+        (function(){
+          var validFolderIds={}; state.folders.forEach(function(f){ validFolderIds[f.id]=true; });
+          state.notes.forEach(function(n){ if(n.folderId!=null && !validFolderIds[n.folderId]) n.folderId=null; });
+          ensureRootOrder();
+          if(state.activeFolderId!=null && !validFolderIds[state.activeFolderId]) state.activeFolderId=null;
+        })();
         save();
         closeDialog('settingsDialog');
         renderAll();
@@ -874,13 +961,17 @@ function importSingleItem(input) {
     var pkg;
     try { pkg = JSON.parse(jsonStr); } catch(e) { alert(t('invalidFile')); return; }
     if (!pkg || !pkg.type || !pkg.data || !pkg.data.id) { alert(t('invalidFile')); return; }
-    if (pkg.formatVersion !== 1 && pkg.formatVersion !== 2) { alert(t('invalidFile')); return; }
+    if (pkg.formatVersion !== 1 && pkg.formatVersion !== 2 && pkg.formatVersion !== 3) { alert(t('invalidFile')); return; }
     var type = pkg.type;
     var data = pkg.data;
     if (type === 'note' && !data.title) { alert(t('invalidFile')); return; }
     if (type === 'board' && !data.name) { alert(t('invalidFile')); return; }
     if (type === 'studySet' && !data.name) { alert(t('invalidFile')); return; }
-    if (type !== 'note' && type !== 'board' && type !== 'studySet') { alert(t('invalidFile')); return; }
+    if (type === 'registro' && !data.name) { alert(t('invalidFile')); return; }
+    if (type === 'folder' && !data.name) { alert(t('invalidFile')); return; }
+    if (type !== 'note' && type !== 'board' && type !== 'studySet' && type !== 'registro' && type !== 'folder') { alert(t('invalidFile')); return; }
+    // Ensure note has folderId
+    if(type==='note' && data.folderId===undefined) data.folderId=null;
 
     var restoreMedia = Promise.resolve();
     if (pkg.hasEmbeddedMedia && pkg._media) {
@@ -895,6 +986,8 @@ function importSingleItem(input) {
       var existingArr, key;
       if (type === 'note') { existingArr = state.notes; key = 'title'; }
       else if (type === 'board') { existingArr = state.boards; key = 'name'; }
+      else if (type === 'registro') { existingArr = state.registros; key = 'name'; }
+      else if (type === 'folder') { existingArr = state.folders; key = 'name'; }
       else { existingArr = state.studySets; key = 'name'; }
 
       var conflict = existingArr.find(function(ex) { return ex.id === data.id; });
@@ -903,6 +996,27 @@ function importSingleItem(input) {
         data.id = genId();
       }
       existingArr.push(data);
+      if(type==='note'){
+        if(data.folderId!=null && !getFolderById(data.folderId)) data.folderId=null;
+        ensureRootOrder();
+        if(data.folderId==null && !state.rootOrder.find(function(e){return e.type==='note'&&e.id===data.id;})){
+          state.rootOrder.push({type:'note', id:data.id});
+        }
+      }
+      if(type==='folder'){
+        if(!state.rootOrder.find(function(e){return e.type==='folder'&&e.id===data.id;})){
+          ensureRootOrder();
+          state.rootOrder.push({type:'folder', id:data.id});
+        }
+        // also import embedded notes if folder pkg contains notes (future)
+        if(pkg.notes && Array.isArray(pkg.notes)){
+          pkg.notes.forEach(function(n){
+            if(state.notes.find(function(ex){return ex.id===n.id;})) n.id=genId();
+            n.folderId=data.id;
+            state.notes.push(n);
+          });
+        }
+      }
       save();
       renderAll();
       showToast(t('importSuccess'));
@@ -1038,6 +1152,12 @@ function applyLang() {
   if (cm) cm.querySelector('.label').textContent = 'Expandir la Biblioteca';
   document.getElementById('menuTheme').querySelector('.theme-label').textContent = state.theme === 'light' ? t('lightTheme') : t('darkTheme');
   l('newNoteTitleLabel','title'); l('newNotePwdLabel','passwordOptional');
+  l('newFolderNameLabel','folderName'); l('newFolderPwdLabel','passwordOptional');
+  var ctN=document.getElementById('createTabNoteLabel'); if(ctN){ var v=t('countNote'); ctN.textContent=v.charAt(0).toUpperCase()+v.slice(1); }
+  var ctF=document.getElementById('createTabFolderLabel'); if(ctF){ var v2=t('folder'); ctF.textContent=v2.charAt(0).toUpperCase()+v2.slice(1); }
+  var nfn=document.getElementById('newFolderName'); if(nfn) nfn.placeholder=t('folderNamePlaceholder');
+  var nfp=document.getElementById('newFolderPwd'); if(nfp) nfp.placeholder=t('leaveEmpty');
+  l('newFolderCreateBtn','create'); l('newFolderCancelBtn','cancel');
   l('newBoardNameLabel','name'); l('newBoardPwdLabel','passwordOptional');
   l('settingsLangLabel','language');
   var nnt = document.getElementById('newNoteTitle');
@@ -1126,23 +1246,42 @@ function applyLang() {
   if (wge) wge.textContent = t('understood');
   var wls = document.getElementById('welcomeLangSelect');
   if (wls) wls.value = state.lang || 'en';
-  /* Reminder dialog */
-  var rdTitle = document.querySelector('#dialogReminder .dialog-title');
-  if (rdTitle) rdTitle.textContent = t('remindMe');
-  var rdTypeLbl = document.querySelector('#dialogReminder label[for="reminderType"]');
-  if (rdTypeLbl) rdTypeLbl.textContent = t('type');
-  var rdTypeOpts = document.querySelectorAll('#reminderType option');
-  if (rdTypeOpts.length >= 2) { rdTypeOpts[0].textContent = t('event'); rdTypeOpts[1].textContent = t('task'); }
-  var rdRepeatLbl = document.querySelector('#dialogReminder label[for="reminderRepeat"]');
-  if (rdRepeatLbl) rdRepeatLbl.textContent = t('repeat');
-  var rdTitleLbl = document.querySelector('#dialogReminder label[for="reminderTitle"]');
-  if (rdTitleLbl) rdTitleLbl.textContent = t('title');
-  var rdTimeLbl = document.getElementById('reminderTimeLabel');
-  if (rdTimeLbl) rdTimeLbl.textContent = t('time');
-  var rdTitleInput = document.getElementById('reminderTitle');
-  if (rdTitleInput) rdTitleInput.placeholder = t('title');
-  var rdBtns = document.querySelectorAll('#dialogReminder .dialog-actions .btn');
-  if (rdBtns.length >= 2) { rdBtns[0].textContent = t('cancel'); rdBtns[1].textContent = t('create'); }
+  /* Hábitos menu */
+  var mh = document.getElementById('menuHabitsLabel');
+  if (mh) mh.textContent = t('habits');
+  var rmL = document.getElementById('menuRegistrosLabel');
+  if (rmL) rmL.textContent = t('registros');
+  /* Hábitos dialog */
+  var hdl = document.getElementById('habitDialogTitle');
+  if (hdl) hdl.textContent = state._editingHabitId ? t('habitEditTitle') : t('habitCreateTitle');
+  var htl = document.getElementById('habitTypeLabel');
+  if (htl) htl.textContent = t('type');
+  var htto = document.getElementById('habitTypeTaskOpt');
+  if (htto) htto.textContent = t('habitTask');
+  var htco = document.getElementById('habitTypeCounterOpt');
+  if (htco) htco.textContent = t('habitCounter');
+  var hnl = document.getElementById('habitNameLabel');
+  if (hnl) hnl.textContent = t('habitName') + ' *';
+  var hdl2 = document.getElementById('habitDescLabel');
+  if (hdl2) hdl2.textContent = t('habitDesc');
+  var hil = document.getElementById('habitIconLabel');
+  if (hil) hil.textContent = t('habitIcon');
+  var hcl = document.getElementById('habitColorLabel');
+  if (hcl) hcl.textContent = t('habitColor');
+  var htot = document.getElementById('habitTotalLabel');
+  if (htot) htot.textContent = t('habitTotal') + ' *';
+  var hsll = document.getElementById('habitStepLabel');
+  if (hsll) hsll.textContent = t('habitStep') + ' *';
+  var hcb = document.getElementById('habitCancelBtn');
+  if (hcb) hcb.textContent = t('cancel');
+  var hsb = document.getElementById('habitSaveBtn');
+  if (hsb) hsb.textContent = t('createHabit');
+  var hddt = document.getElementById('habitDeleteTitle');
+  if (hddt) hddt.textContent = t('confirmDeleteHabit');
+  var hdcb = document.getElementById('habitDeleteCancelBtn');
+  if (hdcb) hdcb.textContent = t('cancel');
+  var hdcfb = document.getElementById('habitDeleteConfirmBtn');
+  if (hdcfb) hdcfb.textContent = t('deleteHabit');
   /* New settings labels */
   l('statsTitle','stats'); l('aboutTitle','about');
   l('statsBtn','showStats'); l('aboutBtn','showAbout');
@@ -1152,13 +1291,32 @@ function applyLang() {
   l('statsCloseBtn', 'close'); l('aboutCloseBtn', 'close');
   /* Week start options */
   l('weekStartMonday','monday'); l('weekStartSunday','sunday');
+  /* Registros dialog */
+  var rdl = document.getElementById('registroDialogTitle');
+  if (rdl) rdl.textContent = _editingRegistroId ? t('registroEditTitle') : t('registroCreateTitle');
+  var rnl = document.getElementById('registroNameLabel');
+  if (rnl) rnl.textContent = t('registroName') + ' *';
+  var rfl = document.getElementById('registroFieldsLabel');
+  if (rfl) rfl.textContent = t('variableType') + 's';
+  var rab = document.getElementById('registroAddFieldBtn');
+  if (rab) rab.textContent = '+ ' + t('addVariable');
+  var rcb = document.getElementById('registroCancelBtn');
+  if (rcb) rcb.textContent = t('cancel');
+  var rsb = document.getElementById('registroSaveBtn');
+  if (rsb) rsb.textContent = _editingRegistroId ? t('save') : t('create');
+  var rdt = document.getElementById('registroDeleteTitle');
+  if (rdt) rdt.textContent = t('confirmDeleteRegistro');
+  var rdcb = document.getElementById('registroDeleteCancelBtn');
+  if (rdcb) rdcb.textContent = t('cancel');
+  var rdcfb = document.getElementById('registroDeleteConfirmBtn');
+  if (rdcfb) rdcfb.textContent = t('deleteRegistro');
   /* Diary password section */
   renderDiaryPwdSection();
   /* Settings toggle states */
   updateSettingsToggleStates();
 }
 
-var state = { notes: [], boards: [], studySets: [], trash: [], activeNoteId: null, activeBoardId: null, activeStudySetId: null, view: 'notes', theme: 'dark', lang: 'en', nextId: Date.now(), _exportCount: 0, _triggeredMilestones: [], diaryPwdHash: '', diaryRecoveryCode: '', firstVisit: true, weekStartsMonday: true, defaultBoardBg: 'cork', boardShowShadows: true, boardShowAnimations: true, lastBackupAt: null };
+var state = { notes: [], boards: [], studySets: [], trash: [], habits: [], registros: [], activeRegistroId: null, activeNoteId: null, activeBoardId: null, activeStudySetId: null, view: 'notes', theme: 'dark', lang: 'en', nextId: Date.now(), _exportCount: 0, _triggeredMilestones: [], diaryPwdHash: '', diaryRecoveryCode: '', firstVisit: true, weekStartsMonday: true, defaultBoardBg: 'cork', boardShowShadows: true, boardShowAnimations: true, lastBackupAt: null, diaryVariables: {}, registrosFilter: { from: null, to: null }, folders: [], activeFolderId: null, rootOrder: [] };
 var dragState = null;
 var cardDragState = null;
 var connectState = null;
@@ -1166,6 +1324,52 @@ var postitDragState = null;
 var boardPanState = null;
 var diaryUnlocked = false;
 var _calMonth, _calYear, _calSelectedDay;
+
+/* Folders helpers */
+var _createTab = 'note';
+var pendingFolderDrop = null;
+var _folderBackStack = null;
+function getFolderById(id){ return state.folders.find(function(f){ return f.id===id; }); }
+function isFolderUnlocked(id){ return !getFolderById(id) || !getFolderById(id).pwdHash || unlockedIds['f'+id]; }
+function ensureRootOrder(){
+  if(!state.rootOrder) state.rootOrder=[];
+  var validNoteIds={}; state.notes.forEach(function(n){ if(!n.diary && (n.folderId==null)) validNoteIds[n.id]=true; });
+  var validFolderIds={}; state.folders.forEach(function(f){ validFolderIds[f.id]=true; });
+  var filtered=[]; state.rootOrder.forEach(function(e){
+    if(e.type==='note' && validNoteIds[e.id]) { filtered.push(e); delete validNoteIds[e.id]; }
+    else if(e.type==='folder' && validFolderIds[e.id]) { filtered.push(e); delete validFolderIds[e.id]; }
+  });
+  // append missing root notes in state.notes order
+  state.notes.forEach(function(n){ if(!n.diary && n.folderId==null && validNoteIds[n.id]) { filtered.push({type:'note',id:n.id}); delete validNoteIds[n.id]; }});
+  // append missing folders
+  state.folders.forEach(function(f){ if(validFolderIds[f.id]) filtered.push({type:'folder',id:f.id}); });
+  state.rootOrder = filtered;
+}
+function moveNoteToFolder(noteId, folderId){
+  var note = state.notes.find(function(n){ return n.id===noteId; });
+  if(!note || note.diary) return false;
+  if(folderId!=null){
+    var folder = getFolderById(folderId);
+    if(!folder) return false;
+    if(note.folderId===folderId) return true;
+    note.folderId = folderId;
+    // remove from rootOrder
+    state.rootOrder = state.rootOrder.filter(function(e){ return !(e.type==='note' && e.id===noteId); });
+  } else {
+    if(note.folderId==null) return true;
+    note.folderId = null;
+    // add to rootOrder at end (or keep order by appending)
+    if(!state.rootOrder.find(function(e){ return e.type==='note'&&e.id===noteId; })){
+      state.rootOrder.push({type:'note', id:noteId});
+    }
+  }
+  save();
+  renderAll();
+  return true;
+}
+function countNotesInFolder(folderId){
+  var c=0; state.notes.forEach(function(n){ if(n.folderId===folderId) c++; }); return c;
+}
 
 /* Media blob URLs cache to avoid reloading */
 var _mediaBlobUrls = {};
@@ -1641,13 +1845,168 @@ function load() {
     if (state.boardShowShadows === undefined) state.boardShowShadows = true;
     if (state.boardShowAnimations === undefined) state.boardShowAnimations = true;
     if (state.lastBackupAt === undefined) state.lastBackupAt = null;
+    if (!state.habits) state.habits = [];
+    if (!state.registros) state.registros = [];
+    if (state.activeRegistroId === undefined) state.activeRegistroId = null;
+    if (!state.registrosFilter || typeof state.registrosFilter !== 'object') state.registrosFilter = { from: null, to: null };
+    if (!state.diaryVariables || typeof state.diaryVariables !== 'object' || Array.isArray(state.diaryVariables)) state.diaryVariables = {};
+    // Migrar registros: asegurar estructura
+    state.registros.forEach(function(r){
+      if (!r.fields) r.fields = [];
+      if (!r.entries || typeof r.entries !== 'object' || Array.isArray(r.entries)) r.entries = {};
+      if (!r.name) r.name = 'Registro';
+      if (!r.id) r.id = genId();
+      if (!r.createdAt) r.createdAt = Date.now();
+      // Normalizar fields
+      var seenNames = {};
+      var cleanFields = [];
+      r.fields.forEach(function(f){
+        if (!f || !f.name) return;
+        if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(f.name)) return;
+        if (seenNames[f.name]) return;
+        if (['int','float','bool','texto'].indexOf(f.type)===-1) f.type='texto';
+        if (!f.id) f.id = genId();
+        seenNames[f.name]=true;
+        cleanFields.push(f);
+      });
+      r.fields = cleanFields;
+      // Normalizar entries: cada fecha -> objeto field->value tipado
+      var newEntries = {};
+      for (var d in r.entries) if (Object.prototype.hasOwnProperty.call(r.entries,d)) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) continue;
+        var row = r.entries[d];
+        if (!row || typeof row!=='object') continue;
+        var cleanRow = {};
+        for (var fk in row) if (Object.prototype.hasOwnProperty.call(row,fk)) {
+          // solo fields existentes
+          var field = r.fields.find(function(ff){ return ff.name===fk; });
+          if (!field) continue;
+          var v = row[fk];
+          // validar tipo
+          if (field.type==='int' && typeof v==='string' && /^-?\d+$/.test(v.trim())) v=parseInt(v,10);
+          if (field.type==='float' && typeof v==='string' && /^-?\d+(\.\d+)?$/.test(v.trim())) v=parseFloat(v);
+          if (field.type==='bool' && typeof v==='string') {
+            var low=v.toLowerCase().trim();
+            if (low==='true'||low==='1') v=true; else if (low==='false'||low==='0') v=false;
+          }
+          cleanRow[fk]=v;
+        }
+        if (Object.keys(cleanRow).length>0) newEntries[d]=cleanRow;
+      }
+      r.entries=newEntries;
+    });
+    // Unicidad global de variables entre registros
+    (function(){
+      var globalSeen={};
+      state.registros.forEach(function(r){
+        var toKeep=[];
+        r.fields.forEach(function(f){
+          if (globalSeen[f.name]) return; // duplicado global -> eliminar
+          globalSeen[f.name]=true;
+          toKeep.push(f);
+        });
+        // Si se eliminaron fields por duplicado, también limpiar entries
+        if (toKeep.length!==r.fields.length) {
+          var keepNames={}; toKeep.forEach(function(f){ keepNames[f.name]=true; });
+          for (var d in r.entries) if(Object.prototype.hasOwnProperty.call(r.entries,d)){
+            for (var fk in r.entries[d]) if(!keepNames[fk]) delete r.entries[d][fk];
+            if(Object.keys(r.entries[d]).length===0) delete r.entries[d];
+          }
+        }
+        r.fields=toKeep;
+      });
+    })();
+    // Migrar diaryVariables: asegurar arrays ordenados y valores saneados
+    for (var _dvk in state.diaryVariables) if (Object.prototype.hasOwnProperty.call(state.diaryVariables, _dvk)) {
+      var _arr = state.diaryVariables[_dvk];
+      if (!Array.isArray(_arr)) { state.diaryVariables[_dvk] = []; continue; }
+      // Filtrar entradas malformadas y normalizar
+      var _clean = [];
+      var _seen = {};
+      for (var _vi=0; _vi<_arr.length; _vi++) {
+        var _e = _arr[_vi];
+        if (!_e || ! _e.date) continue;
+        if (_seen[_e.date]) continue;
+        // Normalizar value: si es numeric string, convertir
+        if (typeof _e.value === 'string' && /^-?\d+(\.\d+)?$/.test(_e.value.trim())) _e.value = Number(_e.value.trim());
+        if (_e.raw === undefined) _e.raw = String(_e.value);
+        _clean.push(_e);
+        _seen[_e.date]=true;
+      }
+      _clean.sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+      state.diaryVariables[_dvk] = _clean;
+    }
     delete state.persistentNotifActive;
+    // Migración carpetas
+    if(!state.folders) state.folders=[];
+    if(state.activeFolderId===undefined) state.activeFolderId=null;
+    if(!state.rootOrder || !Array.isArray(state.rootOrder)) state.rootOrder=[];
+    // Normalizar notas: folderId
+    state.notes.forEach(function(n){
+      if(n.folderId===undefined) n.folderId=null;
+      if(typeof n.folderId==='string') n.folderId = Number(n.folderId)||null;
+      if(n.folderId!=null && typeof n.folderId!=='number') n.folderId=null;
+    });
+    // Normalizar folders
+    state.folders.forEach(function(f){
+      if(typeof f.id==='string') f.id=Number(f.id);
+      if(!f.name) f.name='Carpeta';
+      f.name=String(f.name).trim()||'Carpeta';
+      if(f.pwdHash===undefined) f.pwdHash='';
+      if(!f.createdAt) f.createdAt=Date.now();
+    });
+    // Validar folderId huérfano
+    (function(){
+      var validFolderIds={}; state.folders.forEach(function(f){ validFolderIds[f.id]=true; });
+      state.notes.forEach(function(n){ if(n.folderId!=null && !validFolderIds[n.folderId]) n.folderId=null; });
+      // Validar y regenerar rootOrder si es necesario
+      var validNoteIds={}; state.notes.forEach(function(n){ if(!n.diary && n.folderId==null) validNoteIds[n.id]=true; });
+      var validFolderSet={}; state.folders.forEach(function(f){ validFolderSet[f.id]=true; });
+      var filtered=[]; var seenRO={};
+      state.rootOrder.forEach(function(e){
+        if(!e || !e.type || e.id==null) return;
+        var key=e.type+':'+e.id; if(seenRO[key]) return; seenRO[key]=true;
+        if(e.type==='note' && validNoteIds[e.id]){ filtered.push(e); delete validNoteIds[e.id]; }
+        else if(e.type==='folder' && validFolderSet[e.id]){ filtered.push(e); delete validFolderSet[e.id]; }
+      });
+      // Append missing en orden original
+      state.notes.forEach(function(n){ if(!n.diary && n.folderId==null && validNoteIds[n.id]){ filtered.push({type:'note',id:n.id}); delete validNoteIds[n.id]; }});
+      state.folders.forEach(function(f){ if(validFolderSet[f.id]) filtered.push({type:'folder',id:f.id}); });
+      state.rootOrder = filtered;
+      if(state.activeFolderId!=null && !validFolderSet[state.activeFolderId] && !state.folders.find(function(f){return f.id===state.activeFolderId;})) state.activeFolderId=null;
+    })();
     if (state.boards) state.boards.forEach(function(b) { if (!b.elements) b.elements = []; });
   }
     if (state.notes) state.notes.forEach(function(n) {
       if (!n.events) n.events = [];
       if (!n.tasks) n.tasks = [];
+      // Eliminar recordatorios diarios antiguos (repetition daily)
+      if (n.events) n.events = n.events.filter(function(e){ return e.repetition !== 'daily'; });
+      if (n.tasks) n.tasks = n.tasks.filter(function(t){ return t.repetition !== 'daily'; });
     });
+    if (state.habits) state.habits.forEach(function(h){
+      if (h.current == null) h.current = 0;
+      if (!h.status) h.status = 'pending';
+      if (h.streak == null) h.streak = 0;
+      if (!h.lastProcessedDate) h.lastProcessedDate = getDateStr(new Date());
+      if (!h.history) h.history = [];
+      if (h.total != null) h.total = Number(h.total);
+      if (h.step != null) h.step = Number(h.step);
+    });
+    // Migración: si diaryVariables está vacío pero hay asignaciones en notas del Diario ya existentes, reconstruir historial
+    if (state.diaryVariables && Object.keys(state.diaryVariables).length===0 && state.notes) {
+      var _didMigrateVars = false;
+      state.notes.forEach(function(n){
+        if (!n.diary || !n.items) return;
+        n.items.forEach(function(it){
+          if (!it.text || it.text.indexOf('@')===-1) return;
+          if (processDiaryVariableAssignments(n, it.text)) _didMigrateVars = true;
+        });
+      });
+      if (_didMigrateVars) {
+        try { localStorage.setItem('appnotas', JSON.stringify(state)); } catch(e){}
+      }
+    }
     cleanupTrash();
   } catch(e) { console.warn('Error loading', e); }
 }
@@ -1752,7 +2111,7 @@ document.addEventListener('touchend', function(e) {
 });
 
 
-function showDialog(id) { document.getElementById(id).classList.remove('hidden'); }
+function showDialog(id) { hideContextMenu(); document.getElementById(id).classList.remove('hidden'); }
 function closeDialog(id) {
   document.getElementById(id).classList.add('hidden');
   if (id === 'unlockDialog') { pendingDelete = null; pendingUnlock = null; resetUnlockDialog(); }
@@ -1815,6 +2174,416 @@ function unparseNoteLinks(html) {
   html = html.replace(/<a\s+class="note-link"[^>]*data-target="([^"]*)"[^>]*>[\s\S]*?<\/a>/g, '[($1)]');
   html = html.replace(/<a\s+class="ext-link"[^>]*href="([^"]*)"[^>]*>[\s\S]*?<\/a>/g, '[{$1}]');
   return html;
+}
+
+/* === Diario - Variables históricas (@var = valor / @var) === */
+var _diaryVarNameRegex = '[a-zA-Z_][a-zA-Z0-9_]*';
+var _diaryVarAssignmentRegex = new RegExp('@(' + _diaryVarNameRegex + ')\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s@]+))', 'g');
+var _diaryVarQueryRegex = new RegExp('@(' + _diaryVarNameRegex + ')\\b(?!\\s*=)(?!/)', 'g');
+
+function isValidVarName(name) {
+  return /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(name);
+}
+function diaryDateISO(note) {
+  if (note && note.diary && note.title) {
+    var p = note.title.split('-').map(function(x){ return parseInt(x,10); });
+    if (p.length===3 && !isNaN(p[0]) && !isNaN(p[1]) && !isNaN(p[2])) {
+      var d = new Date(p[2], p[1]-1, p[0]);
+      if (!isNaN(d.getTime())) return getDateStr(d);
+    }
+  }
+  return getDateStr(new Date());
+}
+function parseVariableValue(rawQuotedDouble, rawQuotedSingle, rawUnquoted) {
+  var raw = rawQuotedDouble !== undefined && rawQuotedDouble !== null ? rawQuotedDouble : (rawQuotedSingle !== undefined && rawQuotedSingle !== null ? rawQuotedSingle : rawUnquoted);
+  if (raw === undefined || raw === null) raw = '';
+  // raw ya sin comillas; para valores con comillas vacías es ""
+  var trimmed = raw.trim();
+  // Si era con comillas, respeta espacios internos, no castear vacio a 0
+  var isQuoted = rawQuotedDouble !== undefined || rawQuotedSingle !== undefined;
+  if (!isQuoted && trimmed === '') return null;
+  // Intentar numero solo si no fue quoted? Pero "37" entre comillas debe quedar string según spec? Spec ejemplo libro_actual = "Cumbres Borrascosas" string. Para numeros entre comillas, dejar string? Decidimos: si quoted, siempre string.
+  if (!isQuoted && /^-?\d+(\.\d+)?$/.test(trimmed)) {
+    return { value: Number(trimmed), raw: trimmed };
+  }
+  return { value: trimmed, raw: trimmed };
+}
+function ensureDiaryVariables() {
+  if (!state.diaryVariables || typeof state.diaryVariables !== 'object' || Array.isArray(state.diaryVariables)) state.diaryVariables = {};
+}
+function processDiaryVariableAssignments(note, textHtml) {
+  if (!note || !note.diary) return false;
+  ensureDiaryVariables();
+  // Extraer texto plano sin tags para detectar asignaciones
+  var plain = textHtml || '';
+  // Quitar tags HTML pero preservar espacios y saltos
+  plain = plain.replace(/<br\s*\/?>/gi, '\n');
+  plain = plain.replace(/<[^>]*>/g, ' ');
+  // Decodificar entidades básicas
+  plain = plain.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&nbsp;/g,' ');
+  var dateISO = diaryDateISO(note);
+  var changed = false;
+  var match;
+  _diaryVarAssignmentRegex.lastIndex = 0;
+  while ((match = _diaryVarAssignmentRegex.exec(plain)) !== null) {
+    var varName = match[1];
+    if (!isValidVarName(varName)) continue;
+    // match[2]=double quoted, match[3]=single quoted, match[4]=unquoted
+    var hasDouble = match[2] !== undefined;
+    var hasSingle = match[3] !== undefined;
+    var parsed = null;
+    if (hasDouble) parsed = parseVariableValue(match[2], undefined, undefined);
+    else if (hasSingle) parsed = parseVariableValue(undefined, match[3], undefined);
+    else parsed = parseVariableValue(undefined, undefined, match[4]);
+    if (!parsed) continue;
+    // Validación: valor vacío con comillas "" es valido como string vacío? Permitir pero si es "" y no quoted vacio? Para no quoted ya retornó null arriba. Para quoted vacío, trimmed=='' pero isQuoted true, parseVariableValue retorna {value:'', raw:''} -> permitir string vacío? Mejor permitir.
+    // Si valor es string vacío y es asignación con comillas, igualmente almacenar (puede ser intencional). Si no, ignorar.
+    if (parsed.raw === '' && !hasDouble && !hasSingle) continue;
+    var arr = state.diaryVariables[varName];
+    if (!arr) { arr = state.diaryVariables[varName] = []; }
+    var existing = null;
+    for (var i=0;i<arr.length;i++) if (arr[i].date === dateISO) { existing = arr[i]; break; }
+    if (existing) {
+      if (existing.value !== parsed.value || existing.raw !== parsed.raw) {
+        existing.value = parsed.value;
+        existing.raw = parsed.raw;
+        changed = true;
+      }
+    } else {
+      arr.push({ date: dateISO, value: parsed.value, raw: parsed.raw });
+      changed = true;
+    }
+  }
+  if (changed) {
+    // Ordenar por fecha ascendente
+    for (var k in state.diaryVariables) if (Object.prototype.hasOwnProperty.call(state.diaryVariables,k)) {
+      state.diaryVariables[k].sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+    }
+  }
+  return changed;
+}
+function formatDisplayDate(dateISO) {
+  // dateISO YYYY-MM-DD -> DD/MM/YYYY
+  if (!dateISO) return '';
+  var p = dateISO.split('-');
+  if (p.length!==3) return dateISO;
+  return p[2].padStart(2,'0') + '/' + p[1].padStart(2,'0') + '/' + p[0];
+}
+function buildVariableHistoryHtml(varName) {
+  ensureDiaryVariables();
+  var arr = state.diaryVariables[varName];
+  if (!arr || arr.length===0) {
+    return '<span class="diary-var diary-var-unknown" title="Variable inexistente">@' + escapeHtml(varName) + ' <span class="var-unknown-label">(sin datos)</span></span>';
+  }
+  var html = '<span class="diary-var" data-var="' + escapeHtml(varName) + '">';
+  html += '<span class="diary-var-name">@' + escapeHtml(varName) + '</span>';
+  html += '<span class="diary-var-history">';
+  for (var i=0;i<arr.length;i++) {
+    var e = arr[i];
+    var dispVal = (typeof e.value === 'string' && e.value.indexOf('<')!==-1) ? escapeHtml(e.value) : escapeHtml(String(e.value));
+    // Si raw tenía comillas originalmente, ya está sin ellas en value; mostrar value
+    html += '<span class="var-entry"><span class="var-date">' + escapeHtml(formatDisplayDate(e.date)) + '</span> \u2192 <span class="var-value">' + dispVal + '</span></span>';
+    if (i < arr.length-1) html += '<br>';
+  }
+  html += '</span></span>';
+  return html;
+}
+function parseDiaryVariablesForRender(text) {
+  if (!text) return '';
+  // No procesar si no hay @
+  if (text.indexOf('@') === -1) return text;
+  // Asegurar estructura
+  ensureDiaryVariables();
+  // Reemplazar consultas (@var sin =) por historial. Asignaciones (@var = val) se dejan como texto.
+  return text.replace(_diaryVarQueryRegex, function(match, varName) {
+    // Si es parte de asignación, la regex con negative lookahead ya lo excluye, pero por seguridad verificar que no hay = después
+    // Construir historial
+    return buildVariableHistoryHtml(varName);
+  });
+}
+function hasDiaryVariableAssignment(textHtml) {
+  if (!textHtml || textHtml.indexOf('@')===-1 || textHtml.indexOf('=')===-1) return false;
+  var plain = textHtml.replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]*>/g,' ');
+  plain = plain.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&nbsp;/g,' ');
+  _diaryVarAssignmentRegex.lastIndex = 0;
+  return _diaryVarAssignmentRegex.test(plain);
+}
+
+/* === Registros (struct) === */
+var _registroNameRegex = '[a-zA-Z_][a-zA-Z0-9_]*';
+var _registroAssignmentRegex = new RegExp('@(' + _registroNameRegex + ')\\/(' + _registroNameRegex + ')\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s@\\[]+))', 'g');
+var _registroQueryRegex = new RegExp('@(' + _registroNameRegex + ')(?:\\/(' + _registroNameRegex + '))?(?:\\[([^\\]]*)\\])?(?!\\s*=)', 'g');
+var _registroValidTypes = ['int','float','bool','texto'];
+
+function ensureRegistros() {
+  if (!state.registros || !Array.isArray(state.registros)) state.registros = [];
+  if (state.activeRegistroId === undefined) state.activeRegistroId = null;
+  if (!state.registrosFilter || typeof state.registrosFilter !== 'object') state.registrosFilter = { from: null, to: null };
+}
+function getRegistroById(id) {
+  ensureRegistros();
+  return state.registros.find(function(r){ return r.id===id; });
+}
+function getRegistroByName(name) {
+  ensureRegistros();
+  return state.registros.find(function(r){ return r.name===name; });
+}
+function isValidRegistroName(name) {
+  return /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(name);
+}
+function isRegistroNameUnique(name, excludeId) {
+  ensureRegistros();
+  return !state.registros.some(function(r){ return r.name===name && r.id!==excludeId; });
+}
+function isFieldNameUniqueGlobal(fieldName, exclude) {
+  ensureRegistros();
+  // exclude = { registroId, fieldId } para edición
+  for (var i=0;i<state.registros.length;i++) {
+    var r=state.registros[i];
+    for (var j=0;j<r.fields.length;j++) {
+      var f=r.fields[j];
+      if (f.name===fieldName) {
+        if (exclude && exclude.registroId===r.id && exclude.fieldId===f.id) continue;
+        return false;
+      }
+    }
+  }
+  // también contra diaryVariables legacy para evitar confusión
+  if (state.diaryVariables && state.diaryVariables[fieldName]) return false;
+  return true;
+}
+function validateValueForType(raw, type, isQuoted) {
+  var trimmed = (raw||'').trim();
+  if (type==='texto') {
+    // texto: si no está entre comillas y contiene espacios, ya habría sido cortado; pero permitimos cualquier string
+    // Si isQuoted es true, trimmed puede ser "" (vacío) permitido
+    // Si no quoted, trimmed no debe estar vacío
+    if (!isQuoted && trimmed==='') return null;
+    return trimmed;
+  }
+  if (type==='int') {
+    if (!/^-?\d+$/.test(trimmed)) return null;
+    var n=parseInt(trimmed,10);
+    if (isNaN(n)) return null;
+    return n;
+  }
+  if (type==='float') {
+    if (!/^-?\d+(\.\d+)?$/.test(trimmed)) return null;
+    var f=parseFloat(trimmed);
+    if (isNaN(f)) return null;
+    return f;
+  }
+  if (type==='bool') {
+    var low=trimmed.toLowerCase();
+    if (low==='true' || low==='1') return true;
+    if (low==='false' || low==='0') return false;
+    return null;
+  }
+  return null;
+}
+function registroDateISO(note) {
+  return diaryDateISO(note);
+}
+function isValidISODate(s) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+  var p=s.split('-').map(function(x){ return parseInt(x,10); });
+  var y=p[0], m=p[1], d=p[2];
+  if (m<1||m>12||d<1||d>31) return false;
+  var date=new Date(y,m-1,d);
+  return date.getFullYear()===y && date.getMonth()===m-1 && date.getDate()===d;
+}
+function parseDateFilter(filterStr) {
+  if (!filterStr) return null;
+  filterStr=filterStr.trim();
+  if (filterStr==='') return null;
+  if (filterStr.indexOf(':')!==-1) {
+    var parts=filterStr.split(':');
+    if (parts.length!==2) return { invalid:true };
+    var from=parts[0].trim(), to=parts[1].trim();
+    if (!isValidISODate(from) || !isValidISODate(to)) return { invalid:true };
+    if (from>to) return { invalid:true };
+    return { from:from, to:to };
+  } else {
+    if (!isValidISODate(filterStr)) return { invalid:true };
+    return { from:filterStr, to:filterStr };
+  }
+}
+function isDateInFilter(dateISO, filter) {
+  if (!filter || (!filter.from && !filter.to)) return true;
+  if (filter.invalid) return false;
+  return dateISO >= filter.from && dateISO <= filter.to;
+}
+function processRegistroAssignments(note, textHtml) {
+  if (!note || !note.diary) return false;
+  ensureRegistros();
+  if (state.registros.length===0) return false;
+  var plain=textHtml||'';
+  plain=plain.replace(/<br\s*\/?>/gi,'\n');
+  plain=plain.replace(/<[^>]*>/g,' ');
+  plain=plain.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&nbsp;/g,' ');
+  var dateISO=registroDateISO(note);
+  var changed=false;
+  var match;
+  _registroAssignmentRegex.lastIndex=0;
+  while ((match=_registroAssignmentRegex.exec(plain))!==null) {
+    var regName=match[1], fieldName=match[2];
+    var hasDouble=match[3]!==undefined, hasSingle=match[4]!==undefined;
+    var rawVal = hasDouble ? match[3] : (hasSingle ? match[4] : match[5]);
+    var isQuoted = hasDouble || hasSingle;
+    var registro=getRegistroByName(regName);
+    if (!registro) continue;
+    var field=registro.fields.find(function(f){ return f.name===fieldName; });
+    if (!field) continue;
+    // Validar tipo: si texto con espacios sin comillas, rawVal solo tiene primera palabra -> pero según spec debe usar comillas, así que si type texto y plain contenía espacios sin comillas, igualmente rawVal sería solo primera palabra; lo almacenamos como tal (no intentamos recuperar resto)
+    var typed=validateValueForType(rawVal, field.type, isQuoted);
+    if (typed===null && !(field.type==='texto' && isQuoted && rawVal==='')) continue; // texto vacío con comillas permitido
+    if (typed===null) continue;
+    if (!registro.entries) registro.entries={};
+    if (!registro.entries[dateISO]) registro.entries[dateISO]={};
+    // Solo un valor por día por campo, pero entries es por fecha con todos los fields
+    if (registro.entries[dateISO][fieldName]!==typed) {
+      registro.entries[dateISO][fieldName]=typed;
+      changed=true;
+    }
+  }
+  return changed;
+}
+function formatRegistroValue(v, type) {
+  if (v===undefined || v===null) return '';
+  if (type==='bool') return v ? 'true' : 'false';
+  return String(v);
+}
+function buildRegistroFieldHistoryHtml(registro, fieldName, filter) {
+  if (!registro) return '<span class="diary-var diary-var-unknown" title="Registro inexistente">@' + escapeHtml(fieldName) + ' (registro no encontrado)</span>';
+  var field=registro.fields.find(function(f){ return f.name===fieldName; });
+  if (!field) return '<span class="diary-var diary-var-unknown" title="Variable inexistente">@' + escapeHtml(registro.name+'/'+fieldName) + ' <span class="var-unknown-label">(sin datos)</span></span>';
+  if (filter && filter.invalid) return '<span class="diary-var diary-var-unknown" title="Filtro inválido">@' + escapeHtml(registro.name+'/'+fieldName) + '[' + escapeHtml(filter.raw||'') + '] <span class="var-unknown-label">(filtro inválido)</span></span>';
+  var dates=Object.keys(registro.entries||{}).sort();
+  var filtered=dates.filter(function(d){ return isDateInFilter(d, filter); });
+  if (filtered.length===0) {
+    // Si no hay datos en rango, mostrar vacío
+    return '<span class="diary-var" data-var="' + escapeHtml(registro.name+'/'+fieldName) + '"><span class="diary-var-name">@' + escapeHtml(registro.name+'/'+fieldName) + '</span><span class="diary-var-history"><span class="var-unknown-label">(sin datos en rango)</span></span></span>';
+  }
+  var html='<span class="diary-var" data-var="' + escapeHtml(registro.name+'/'+fieldName) + '"><span class="diary-var-name">@' + escapeHtml(registro.name+'/'+fieldName) + '</span><span class="diary-var-history">';
+  for (var i=0;i<filtered.length;i++) {
+    var d=filtered[i];
+    var row=registro.entries[d];
+    var val=row[fieldName];
+    if (val===undefined) continue;
+    html+='<span class="var-entry"><span class="var-date">' + escapeHtml(formatDisplayDate(d)) + '</span> \u2192 <span class="var-value">' + escapeHtml(formatRegistroValue(val, field.type)) + '</span></span>';
+    if (i<filtered.length-1) html+='<br>';
+  }
+  html+='</span></span>';
+  return html;
+}
+function buildRegistroFullHistoryHtml(registro, filter) {
+  if (!registro) return '<span class="diary-var diary-var-unknown" title="Registro inexistente">@? <span class="var-unknown-label">(inexistente)</span></span>';
+  if (filter && filter.invalid) return '<span class="diary-var diary-var-unknown" title="Filtro inválido">@' + escapeHtml(registro.name) + '[' + escapeHtml(filter.raw||'') + '] <span class="var-unknown-label">(filtro inválido)</span></span>';
+  var dates=Object.keys(registro.entries||{}).sort();
+  var filtered=dates.filter(function(d){ return isDateInFilter(d, filter); });
+  if (filtered.length===0) {
+    return '<span class="diary-var" data-var="' + escapeHtml(registro.name) + '"><span class="diary-var-name">@' + escapeHtml(registro.name) + '</span><span class="diary-var-history"><span class="var-unknown-label">(sin datos)</span></span></span>';
+  }
+  var html='<span class="diary-var diary-var-full" data-var="' + escapeHtml(registro.name) + '">';
+  html+='<span class="diary-var-name">@' + escapeHtml(registro.name) + '</span>';
+  html+='<span class="diary-var-history diary-var-history-full">';
+  for (var i=0;i<filtered.length;i++) {
+    var d=filtered[i];
+    var row=registro.entries[d];
+    html+='<span class="var-entry var-entry-full"><span class="var-date">' + escapeHtml(formatDisplayDate(d)) + '</span>';
+    for (var j=0;j<registro.fields.length;j++) {
+      var f=registro.fields[j];
+      var v=row[f.name];
+      var disp = v!==undefined ? escapeHtml(formatRegistroValue(v,f.type)) : '<span style="opacity:0.4">—</span>';
+      html+='<br><span class="var-field-name">' + escapeHtml(f.name) + ':</span> <span class="var-value">' + disp + '</span>';
+    }
+    html+='</span>';
+    if (i<filtered.length-1) html+='<br><br>';
+  }
+  html+='</span></span>';
+  return html;
+}
+function parseRegistrosForRender(text) {
+  if (!text || text.indexOf('@')===-1) return text;
+  ensureRegistros();
+  // No procesar si no hay registros
+  // Reemplazar @Registro[/var][filter]
+  return text.replace(_registroQueryRegex, function(match, regName, fieldName, filterStr) {
+    var registro=getRegistroByName(regName);
+    var filter=null;
+    if (filterStr!==undefined) {
+      filter=parseDateFilter(filterStr);
+      if (filter) filter.raw=filterStr;
+      else filter=null;
+    }
+    if (!registro) {
+      return '<span class="diary-var diary-var-unknown" title="Registro inexistente">@' + escapeHtml(regName) + (fieldName?'/'+escapeHtml(fieldName):'') + (filterStr!==undefined?'['+escapeHtml(filterStr)+']':'') + ' <span class="var-unknown-label">(inexistente)</span></span>';
+    }
+    if (fieldName) {
+      // variable concreta
+      return buildRegistroFieldHistoryHtml(registro, fieldName, filter);
+    } else {
+      // registro completo
+      return buildRegistroFullHistoryHtml(registro, filter);
+    }
+  });
+}
+function renameRegistroReferences(oldName, newName) {
+  if (!oldName || !newName || oldName===newName) return;
+  var escOld = oldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  var re1 = new RegExp('@' + escOld + '\\b', 'g');
+  var re2 = new RegExp('@' + escOld + '\\/', 'g');
+  var changed=false;
+  state.notes.forEach(function(n){
+    if (!n.items) return;
+    n.items.forEach(function(it){
+      if (!it.text || it.text.indexOf('@'+oldName)===-1) return;
+      var newText = it.text.replace(re1, '@'+newName).replace(re2, '@'+newName+'/');
+      // Usar replace con cuidado: re1 y re2 ya cubren casos; para @Old/var usamos re2
+      // Hacemos dos pasadas: primero @Old/ -> @New/, luego @Old (solo) -> @New (cuando es @Registro sin /)
+      // Pero re1 ya haría @Old -> @New incluso en @Old/var, por eso hacemos re2 primero
+      // Implementación simple: reemplazar @oldName/ primero, luego @oldName seguido de no letra
+      var t = it.text;
+      t = t.replace(new RegExp('@' + escOld + '/', 'g'), '@' + newName + '/');
+      t = t.replace(new RegExp('@' + escOld + '(?![a-zA-Z0-9_])', 'g'), '@' + newName);
+      if (t!==it.text) { it.text=t; changed=true; }
+    });
+  });
+  state.boards.forEach(function(b){
+    if (!b.postits) return;
+    b.postits.forEach(function(p){
+      if (!p.text || p.text.indexOf('@'+oldName)===-1) return;
+      var t=p.text;
+      t = t.replace(new RegExp('@' + escOld + '/', 'g'), '@' + newName + '/');
+      t = t.replace(new RegExp('@' + escOld + '(?![a-zA-Z0-9_])', 'g'), '@' + newName);
+      if (t!==p.text) { p.text=t; changed=true; }
+    });
+  });
+  if (changed) save();
+}
+function renameFieldReferences(registroName, oldField, newField) {
+  if (!oldField || !newField || oldField===newField) return;
+  var escOld = oldField.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  var escReg = registroName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  var changed=false;
+  var re = new RegExp('@' + escReg + '\\/' + escOld + '\\b', 'g');
+  state.notes.forEach(function(n){
+    if (!n.items) return;
+    n.items.forEach(function(it){
+      if (!it.text || it.text.indexOf('@'+registroName+'/'+oldField)===-1) return;
+      var t=it.text.replace(re, '@' + registroName + '/' + newField);
+      if (t!==it.text) { it.text=t; changed=true; }
+    });
+  });
+  state.boards.forEach(function(b){
+    if (!b.postits) return;
+    b.postits.forEach(function(p){
+      if (!p.text || p.text.indexOf('@'+registroName+'/'+oldField)===-1) return;
+      var t=p.text.replace(re, '@' + registroName + '/' + newField);
+      if (t!==p.text) { p.text=t; changed=true; }
+    });
+  });
+  if (changed) save();
 }
 /* === LaTeX / KaTeX utility functions === */
 var _latexCache = {};
@@ -2116,18 +2885,51 @@ function navigateToNoteLink(target) {
   alert('Nota/tablero "' + target + '" no encontrado');
 }
 
+function openFolder(id){
+  if(preventCardClick){ preventCardClick=false; return; }
+  var folder=getFolderById(id); if(!folder) return;
+  if(folder.pwdHash && !unlockedIds['f'+id]){
+    pendingUnlock={type:'folder', id:id, action:'open'};
+    document.getElementById('unlockPwdInput').value='';
+    document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+    showDialog('unlockDialog');
+    setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
+    return;
+  }
+  state.activeFolderId=id;
+  state.activeNoteId=null;
+  save();
+  renderAll();
+}
+function closeFolder(){
+  if(state.activeFolderId!=null){
+    if(state.activeFolderId) delete unlockedIds['f'+state.activeFolderId];
+    state.activeFolderId=null;
+    save();
+    renderAll();
+  } else {
+    goBack();
+  }
+}
 function updateBackBtn() {
   var btn = document.getElementById('headerBackBtn');
   var studyBtn = document.getElementById('headerStudyBtn');
   var titleEl = document.getElementById('headerCenteredTitle');
   if (!btn) return;
   if (state.view === 'notes') {
-    btn.classList.toggle('hidden', !state.activeNoteId);
+    var insideFolder = state.activeFolderId!=null && !state.activeNoteId;
+    var insideNote = !!state.activeNoteId;
+    btn.classList.toggle('hidden', !insideNote && !insideFolder);
+    btn.onclick = insideFolder ? closeFolder : goBack;
     if (studyBtn) studyBtn.classList.add('hidden');
     if (titleEl) {
       if (state.activeNoteId) {
         var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
         if (note) { titleEl.textContent = note.title; titleEl.classList.remove('hidden'); }
+        else titleEl.classList.add('hidden');
+      } else if(insideFolder){
+        var folder=getFolderById(state.activeFolderId);
+        if(folder){ titleEl.textContent='📁 '+folder.name; titleEl.classList.remove('hidden'); }
         else titleEl.classList.add('hidden');
       } else titleEl.classList.add('hidden');
     }
@@ -2170,6 +2972,21 @@ function updateBackBtn() {
         studyBtn.classList.toggle('hidden', !set || !set.cards || set.cards.length === 0 || window._studyingSetId === set.id);
       }
     }
+  } else if (state.view === 'habits') {
+    btn.classList.add('hidden');
+    if (studyBtn) studyBtn.classList.add('hidden');
+    if (titleEl) { titleEl.textContent = t('habits'); titleEl.classList.remove('hidden'); }
+  } else if (state.view === 'registros') {
+    var regActive = !!state.activeRegistroId;
+    btn.classList.toggle('hidden', !regActive);
+    if (studyBtn) studyBtn.classList.add('hidden');
+    if (titleEl) {
+      if (regActive) {
+        var reg = getRegistroById(state.activeRegistroId);
+        titleEl.textContent = reg ? reg.name : t('registros');
+        titleEl.classList.remove('hidden');
+      } else { titleEl.textContent = t('registros'); titleEl.classList.remove('hidden'); }
+    }
   } else if (state.view === 'cafecito') {
     btn.classList.add('hidden');
     if (studyBtn) studyBtn.classList.add('hidden');
@@ -2181,10 +2998,11 @@ function updateBackBtn() {
   }
   var sl = document.getElementById('studyBtnLabel');
   if (sl) sl.textContent = t('study');
-  var compact = (state.view === 'notes' && state.activeNoteId) ||
+  var compact = (state.view === 'notes' && (state.activeNoteId || state.activeFolderId)) ||
                 (state.view === 'board' && state.activeBoardId) ||
                 (state.view === 'diary' && state.activeNoteId) ||
-                (state.view === 'study' && state.activeStudySetId);
+                (state.view === 'study' && state.activeStudySetId) ||
+                (state.view === 'registros' && state.activeRegistroId);
   var trigger = document.querySelector('.menu-trigger');
   if (trigger) trigger.classList.toggle('compact', compact);
 }
@@ -2192,13 +3010,32 @@ function updateBackBtn() {
 function clearCurrentUnlock() {
   if (state.activeNoteId) delete unlockedIds['n' + state.activeNoteId];
   if (state.activeBoardId) delete unlockedIds['b' + state.activeBoardId];
+  if (state.activeFolderId) delete unlockedIds['f' + state.activeFolderId];
 }
 function goBack() {
   clearCurrentUnlock();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
+  if (state.view === 'notes' && state.activeFolderId!=null && !state.activeNoteId){
+    state.activeFolderId=null;
+    save(); renderAll(); return;
+  }
+  if (state.view === 'notes' && state.activeNoteId){
+    // if note was inside folder, go back to folder view, not root
+    var note=state.notes.find(function(n){return n.id===state.activeNoteId;});
+    var wasFolderId = note && note.folderId!=null ? note.folderId : null;
+    state.activeNoteId = null;
+    if(wasFolderId!=null && getFolderById(wasFolderId)){
+      state.activeFolderId=wasFolderId;
+    }
+    save(); renderAll(); return;
+  }
   if (state.view === 'board') state.activeBoardId = null;
   else if (state.view === 'diary') { state.activeNoteId = null; }
   else if (state.view === 'study') { state.activeStudySetId = null; }
+  else if (state.view === 'registros') {
+    if (state.activeRegistroId) state.activeRegistroId = null;
+    else state.activeRegistroId = null;
+  }
   else state.activeNoteId = null;
   save();
   renderAll();
@@ -2236,10 +3073,77 @@ function hashPwd(s) {
 
 var unlockedIds = {};
 
+function switchCreateTab(tab){
+  _createTab = tab;
+  var notePane = document.getElementById('createNotePane');
+  var folderPane = document.getElementById('createFolderPane');
+  var tabNote = document.getElementById('createTabNote');
+  var tabFolder = document.getElementById('createTabFolder');
+  if(notePane) notePane.classList.toggle('hidden', tab!=='note');
+  if(folderPane) folderPane.classList.toggle('hidden', tab!=='folder');
+  if(tabNote) tabNote.classList.toggle('active', tab==='note');
+  if(tabFolder) tabFolder.classList.toggle('active', tab==='folder');
+  // handle subfolder hint
+  var hint = document.getElementById('folderSubfolderHint');
+  var folderBtn = document.getElementById('newFolderCreateBtn');
+  var insideFolder = state.activeFolderId != null;
+  if(hint){
+    if(insideFolder){
+      hint.textContent = t('subfoldersNotAllowed');
+      hint.classList.remove('hidden');
+    } else {
+      hint.classList.add('hidden');
+    }
+  }
+  if(folderBtn){
+    folderBtn.disabled = insideFolder;
+    folderBtn.style.opacity = insideFolder ? '0.4' : '';
+    folderBtn.style.pointerEvents = insideFolder ? 'none' : '';
+  }
+  if(tabFolder) tabFolder.disabled = insideFolder;
+  setTimeout(function(){
+    if(tab==='note'){ var el=document.getElementById('newNoteTitle'); if(el) el.focus(); }
+    else { var el2=document.getElementById('newFolderName'); if(el2 && !insideFolder) el2.focus(); }
+  }, 80);
+}
 function showNewNoteDialog() {
-  document.getElementById('newNotePwd').value = '';
+  // Unified create dialog with tabs; default to Note
+  _createTab = 'note';
+  var pwdEl=document.getElementById('newNotePwd'); if(pwdEl) pwdEl.value='';
+  var pwdF=document.getElementById('newFolderPwd'); if(pwdF) pwdF.value='';
+  var nameF=document.getElementById('newFolderName'); if(nameF) nameF.value='';
+  switchCreateTab('note');
   showDialog('newNoteDialog');
-  setTimeout(function(){ document.getElementById('newNoteTitle').focus(); }, 100);
+  setTimeout(function(){ var el=document.getElementById('newNoteTitle'); if(el) el.focus(); }, 100);
+}
+function showCreateDialog(){ showNewNoteDialog(); }
+function createFolder(){
+  if(state.activeFolderId!=null){
+    var hint=document.getElementById('folderSubfolderHint');
+    if(hint){ hint.textContent=t('subfoldersNotAllowed'); hint.classList.remove('hidden'); }
+    return;
+  }
+  var nameEl=document.getElementById('newFolderName');
+  var pwdEl=document.getElementById('newFolderPwd');
+  var name = nameEl ? nameEl.value.trim() : '';
+  if(!name) name = t('newFolderLabel');
+  if(name.length>60) name=name.substring(0,60);
+  var pwd = pwdEl ? pwdEl.value : '';
+  var folder = { id: genId(), name: name, pwdHash: hashPwd(pwd), createdAt: Date.now() };
+  state.folders.push(folder);
+  ensureRootOrder();
+  // rootOrder already handled by ensure, but if folder new ensure append
+  if(!state.rootOrder.find(function(e){return e.type==='folder'&&e.id===folder.id;})){
+    state.rootOrder.push({type:'folder', id: folder.id});
+  }
+  if(pwd) unlockedIds['f'+folder.id]=true;
+  closeDialog('newNoteDialog');
+  if(nameEl) nameEl.value='';
+  if(pwdEl) pwdEl.value='';
+  var titleEl=document.getElementById('newNoteTitle'); if(titleEl) titleEl.value='';
+  var nPwd=document.getElementById('newNotePwd'); if(nPwd) nPwd.value='';
+  save();
+  renderAll();
 }
 
 var _coverNoteId = null;
@@ -2321,13 +3225,24 @@ function insertImage(input) {
 function createNote() {
   var title = document.getElementById('newNoteTitle').value.trim() || t('newNoteLabel');
   var pwd = document.getElementById('newNotePwd').value;
-  var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now() };
+  var folderId = state.activeFolderId != null ? state.activeFolderId : null;
+  // if creating from inside folder, ensure folder exists and unlocked (should be already)
+  var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), folderId: folderId };
   state.notes.push(note);
+  if(folderId==null){
+    ensureRootOrder();
+    if(!state.rootOrder.find(function(e){return e.type==='note'&&e.id===note.id;})){
+      state.rootOrder.push({type:'note', id: note.id});
+    }
+  }
   state.activeNoteId = note.id;
+  state.activeFolderId = null;
   if (pwd) unlockedIds['n' + note.id] = true;
   closeDialog('newNoteDialog');
   document.getElementById('newNoteTitle').value = '';
   document.getElementById('newNotePwd').value = '';
+  var nf=document.getElementById('newFolderName'); if(nf) nf.value='';
+  var fp=document.getElementById('newFolderPwd'); if(fp) fp.value='';
   save();
   checkMilestones();
   renderAll();
@@ -2342,6 +3257,20 @@ function selectNote(id) {
   var note = state.notes.find(function(n) { return n.id === id; });
   if (!note) return;
   if (note.diary && !diaryUnlockFlow()) return;
+  // Si la nota está dentro de carpeta protegida y carpeta no desbloqueada, pedir pwd de carpeta primero
+  if(note.folderId!=null){
+    var folder=getFolderById(note.folderId);
+    if(folder && folder.pwdHash && !unlockedIds['f'+folder.id]){
+      pendingUnlock={type:'folder', id:folder.id, action:'open'};
+      // After folder unlock, open the note
+      pendingFolderDrop={noteId:id, action:'openNote'};
+      document.getElementById('unlockPwdInput').value='';
+      document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+      showDialog('unlockDialog');
+      setTimeout(function(){ document.getElementById('unlockPwdInput').focus(); }, 100);
+      return;
+    }
+  }
   if (note.pwdHash && !unlockedIds['n' + id]) {
     pendingUnlock = { type: 'note', id: id };
     document.getElementById('unlockPwdInput').value = '';
@@ -2417,6 +3346,73 @@ function unlockItem() {
     switchView('diary');
     return;
   }
+  if (pendingUnlock.type === 'folder') {
+    var folder = getFolderById(pendingUnlock.id);
+    if (!folder || hashPwd(pwd) !== folder.pwdHash) {
+      setStatus(t('wrongPassword'));
+      document.getElementById('unlockPwdInput').value = '';
+      document.getElementById('unlockPwdInput').focus();
+      return;
+    }
+    unlockedIds['f'+pendingUnlock.id]=true;
+    var action = pendingUnlock.action;
+    var fid = pendingUnlock.id;
+    closeDialog('unlockDialog');
+    pendingUnlock=null;
+    if(action==='open'){
+      // Check if this was actually an openNote request
+      if(pendingFolderDrop && pendingFolderDrop.action==='openNote'){
+        var nid=pendingFolderDrop.noteId;
+        pendingFolderDrop=null;
+        var note=state.notes.find(function(n){return n.id===nid;});
+        if(note){
+          // If note also protected, need to check its pwd now
+          if(note.pwdHash && !unlockedIds['n'+nid]){
+            pendingUnlock={type:'note', id:nid};
+            document.getElementById('unlockPwdInput').value='';
+            document.getElementById('unlockTitle').textContent=t('protectedNote')+note.title;
+            showDialog('unlockDialog');
+            setTimeout(function(){ document.getElementById('unlockPwdInput').focus(); }, 100);
+            resetUnlockDialog();
+            return;
+          }
+          state.activeNoteId=nid;
+          state.activeFolderId=null;
+          save(); renderAll();
+        }
+      } else {
+        state.activeFolderId=fid;
+        state.activeNoteId=null;
+        save(); renderAll();
+      }
+    } else if(action==='drop'){
+      if(pendingFolderDrop){
+        moveNoteToFolder(pendingFolderDrop.noteId, pendingFolderDrop.folderId);
+        pendingFolderDrop=null;
+      }
+    } else if(action==='delete'){
+      // after unlock, proceed to delete confirmation already handled via pendingDeleteFolder
+      if(window._pendingDeleteFolderId!=null){
+        var dfId=window._pendingDeleteFolderId;
+        window._pendingDeleteFolderId=null;
+        confirmDeleteFolder(dfId);
+      }
+    } else if(action==='rename' || action==='pwd'){
+      // handled via pending action reopen
+      if(pendingFolderDrop && pendingFolderDrop.action){
+        var act=pendingFolderDrop.action;
+        pendingFolderDrop=null;
+        if(act==='rename') renameFolder(fid);
+        else if(act==='editPwd') editFolderPassword(fid);
+      }
+    }
+    // also handle pendingFolderDrop for generic edit
+    if(pendingFolderDrop && pendingFolderDrop.folderId===fid){
+      // fallback
+    }
+    resetUnlockDialog();
+    return;
+  }
   var item = pendingUnlock.type === 'note'
     ? state.notes.find(function(n) { return n.id === pendingUnlock.id; })
     : state.boards.find(function(b) { return b.id === pendingUnlock.id; });
@@ -2486,9 +3482,109 @@ function deleteNote(id) {
   cancelNoteNotifications(id);
   state.trash.push({ type: 'note', data: note, deletedAt: Date.now() });
   state.notes = state.notes.filter(function(n) { return n.id !== id; });
-  if (state.activeNoteId === id) state.activeNoteId = state.notes.length > 0 ? state.notes[0].id : null;
+  // remove from rootOrder if present
+  if(state.rootOrder) state.rootOrder = state.rootOrder.filter(function(e){ return !(e.type==='note'&&e.id===id); });
+  if (state.activeNoteId === id){
+    var wasFolder = note.folderId;
+    state.activeNoteId = null;
+    // if note was in folder, stay in folder view (goBack logic will handle but here we are deleting)
+    // keep activeFolderId as before (if was in folder and folder still exists, stay)
+  }
   save();
   renderAll();
+}
+function renameFolder(id){
+  var folder=getFolderById(id); if(!folder) return;
+  if(folder.pwdHash && !unlockedIds['f'+id]){
+    pendingUnlock={type:'folder', id:id, action:'rename'};
+    pendingFolderDrop={action:'rename'};
+    document.getElementById('unlockPwdInput').value='';
+    document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+    showDialog('unlockDialog');
+    setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
+    return;
+  }
+  var newName = prompt(t('rename')+' - '+folder.name, folder.name);
+  if(newName===null) return;
+  newName=newName.trim();
+  if(!newName) return;
+  if(newName.length>60) newName=newName.substring(0,60);
+  folder.name=newName;
+  save(); renderAll();
+}
+function editFolderPassword(id){
+  var folder=getFolderById(id); if(!folder) return;
+  if(folder.pwdHash && !unlockedIds['f'+id]){
+    pendingUnlock={type:'folder', id:id, action:'pwd'};
+    pendingFolderDrop={action:'editPwd'};
+    document.getElementById('unlockPwdInput').value='';
+    document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+    showDialog('unlockDialog');
+    setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
+    return;
+  }
+  var current = folder.pwdHash ? prompt(t('enterPassword')+' ('+t('protectedFolder')+folder.name+')') : null;
+  if(folder.pwdHash){
+    if(current===null) return;
+    if(hashPwd(current)!==folder.pwdHash){ alert(t('wrongPassword')); return; }
+  }
+  var newPwd = prompt(t('passwordOptional')+'\n'+t('leaveEmpty')+' - '+folder.name, '');
+  if(newPwd===null) return;
+  folder.pwdHash = hashPwd(newPwd);
+  if(newPwd) unlockedIds['f'+id]=true; else delete unlockedIds['f'+id];
+  save(); renderAll();
+}
+function confirmDeleteFolder(id){
+  var folder=getFolderById(id); if(!folder) return;
+  if(folder.pwdHash && !unlockedIds['f'+id]){
+    window._pendingDeleteFolderId=id;
+    pendingUnlock={type:'folder', id:id, action:'delete'};
+    document.getElementById('unlockPwdInput').value='';
+    document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+    showDialog('unlockDialog');
+    setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
+    return;
+  }
+  var cnt=countNotesInFolder(id);
+  var msg = t('deleteFolder')+' "'+folder.name+'"?';
+  if(cnt>0) msg += '\n\n' + t('deleteFolderMsg').replace('{n}', cnt);
+  else msg += '\n\n' + t('deleteFolderEmpty');
+  if(!confirm(msg)) return;
+  // mover notas a raíz
+  var moved=[];
+  state.notes.forEach(function(n){ if(n.folderId===id){ n.folderId=null; moved.push(n.id); }});
+  // eliminar carpeta
+  state.folders = state.folders.filter(function(f){ return f.id!==id; });
+  state.rootOrder = state.rootOrder.filter(function(e){ return !(e.type==='folder'&&e.id===id); });
+  // agregar notas movidas al final de rootOrder en orden de aparición
+  moved.forEach(function(nid){
+    if(!state.rootOrder.find(function(e){return e.type==='note'&&e.id===nid;})){
+      state.rootOrder.push({type:'note', id:nid});
+    }
+  });
+  if(state.activeFolderId===id) state.activeFolderId=null;
+  delete unlockedIds['f'+id];
+  save(); renderAll();
+}
+function showMoveToFolderDialog(noteId){
+  var note=state.notes.find(function(n){return n.id===noteId;}); if(!note) return;
+  if(state.folders.length===0) return;
+  var opts = state.folders.map(function(f){ return f.id+': '+f.name+(f.pwdHash?' 🔒':'')+' ('+countNotesInFolder(f.id)+')'; }).join('\n');
+  var input = prompt(t('moveToFolder')+'\n'+opts+'\n\n'+t('enterFolderId'), '');
+  if(input===null) return;
+  var fid=Number(input.trim().split(':')[0]);
+  if(!fid || !getFolderById(fid)){ alert(t('invalidFolder')); return; }
+  var folder=getFolderById(fid);
+  if(folder.pwdHash && !unlockedIds['f'+fid]){
+    pendingFolderDrop={noteId:noteId, folderId:fid};
+    pendingUnlock={type:'folder', id:fid, action:'drop'};
+    document.getElementById('unlockPwdInput').value='';
+    document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+    showDialog('unlockDialog');
+    setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
+    return;
+  }
+  moveNoteToFolder(noteId, fid);
 }
 function deleteBoard(id) {
   var board = state.boards.find(function(b) { return b.id === id; });
@@ -2511,9 +3607,20 @@ function deleteStudySet(id) {
 function restoreFromTrash(index) {
   var item = state.trash[index];
   if (!item) return;
-  if (item.type === 'note') state.notes.push(item.data);
+  if (item.type === 'note'){
+    if(item.data.folderId===undefined) item.data.folderId=null;
+    if(item.data.folderId!=null && !getFolderById(item.data.folderId)) item.data.folderId=null;
+    state.notes.push(item.data);
+    if(item.data.folderId==null){
+      ensureRootOrder();
+      if(!state.rootOrder.find(function(e){return e.type==='note'&&e.id===item.data.id;})){
+        state.rootOrder.push({type:'note', id:item.data.id});
+      }
+    }
+  }
   else if (item.type === 'board') state.boards.push(item.data);
   else if (item.type === 'studySet') state.studySets.push(item.data);
+  else if (item.type === 'registro') state.registros.push(item.data);
   state.trash.splice(index, 1);
   save();
   renderAll();
@@ -2825,14 +3932,46 @@ function toggleItem(noteId, itemId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   var item = note.items.find(function(i) { return i.id === itemId; });
-  if (item) { item.checked = !item.checked; save(); renderNoteContent(); }
+  if (!item) return;
+  item.checked = !item.checked;
+  var idx = note.items.indexOf(item);
+  note.items.splice(idx, 1);
+  function isListType(it) { return !it.type || it.type === 'list'; }
+  var insertAt = -1;
+  if (item.checked) {
+    insertAt = note.items.length;
+    for (var i = 0; i < note.items.length; i++) {
+      if (isListType(note.items[i])) insertAt = i + 1;
+    }
+  } else {
+    for (var i = 0; i < note.items.length; i++) {
+      if (isListType(note.items[i]) && note.items[i].checked) { insertAt = i; break; }
+    }
+    if (insertAt < 0) {
+      insertAt = note.items.length;
+      for (var i = 0; i < note.items.length; i++) {
+        if (isListType(note.items[i])) insertAt = i + 1;
+      }
+    }
+  }
+  note.items.splice(insertAt, 0, item);
+  save();
+  renderNoteContent();
 }
 
 function updateItemText(noteId, itemId, html) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   var item = note.items.find(function(i) { return i.id === itemId; });
-  if (item) { item.text = unparseNoteLinks(unrenderLatexInHtml(html || '')); save(); }
+  if (item) {
+    var newText = unparseNoteLinks(unrenderLatexInHtml(html || ''));
+    item.text = newText;
+    if (note.diary) {
+      processDiaryVariableAssignments(note, html || '');
+      processRegistroAssignments(note, html || '');
+    }
+    save();
+  }
 }
 /* Evaluador aritmético seguro (shunting-yard) sin eval/Function */
 function evaluateExpression(expr) {
@@ -3084,7 +4223,7 @@ function renderStudySetList(container) {
   var html = '<div class="selection-view"><div class="selection-header"><h2>' + t('studyCards') + '</h2></div><div class="selection-grid">';
   state.studySets.forEach(function(set) {
     var cardCount = set.cards ? set.cards.length : 0;
-    html += '<div class="card" data-study-set-id="' + set.id + '" onclick="selectStudySet(' + set.id + ')" style="cursor:pointer;position:relative;"><span class="card-drag-handle" onclick="event.stopPropagation()">&#x2630;</span><div style="font-weight:600;padding:36px 12px 0;">' + escapeHtml(set.name) + '</div><div style="font-size:12px;opacity:0.6;padding:4px 12px 36px;">' + cardCount + ' ' + t('cardList').toLowerCase() + '</div><button class="card-btn" onclick="event.stopPropagation();renameStudySet(' + set.id + ')" style="position:absolute;bottom:8px;right:8px;" title="' + t('edit') + '">&#x270F;</button></div>';
+    html += '<div class="card" data-study-set-id="' + set.id + '" onclick="selectStudySet(' + set.id + ')" style="cursor:pointer;position:relative;"><span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span><div style="font-weight:600;padding:36px 12px 0;">' + escapeHtml(set.name) + '</div><div style="font-size:12px;opacity:0.6;padding:4px 12px 36px;">' + cardCount + ' ' + t('cardList').toLowerCase() + '</div><button class="card-btn" onclick="event.stopPropagation();renameStudySet(' + set.id + ')" style="position:absolute;bottom:8px;right:8px;" title="' + t('edit') + '">&#x270F;</button></div>';
   });
   html += '</div></div>';
   container.innerHTML = html;
@@ -3121,7 +4260,7 @@ function renderStudySetCards(container) {
   else {
     html += '<div class="study-set-cards" style="display:flex;flex-wrap:wrap;gap:16px;">';
     set.cards.forEach(function(card, i) {
-      html += '<div class="study-card-item" data-card-id="' + card.id + '" style="flex:0 0 100%;min-height:160px;background:var(--surface);border-radius:10px;padding:36px 12px 36px;border:1px solid var(--border);display:flex;flex-direction:column;gap:4px;box-sizing:border-box;position:relative;"><span class="card-drag-handle" onclick="event.stopPropagation()">&#x2630;</span><div style="font-weight:600;font-size:18px;"><span style="opacity:0.4;">' + (i+1) + '.</span> ' + renderCardContent(card.front) + '</div><div style="opacity:0.7;font-size:15px;">' + renderCardContent(card.back) + '</div><button class="card-btn" onclick="deleteStudyCard(' + set.id + ',' + card.id + ')" style="position:absolute;top:8px;right:8px;" title="' + t('del') + '">&#x2716;</button><button class="card-btn" onclick="editStudyCard(' + set.id + ',' + card.id + ')" style="position:absolute;bottom:8px;right:8px;" title="' + t('edit') + '">&#x270F;</button></div>';
+      html += '<div class="study-card-item" data-card-id="' + card.id + '" style="flex:0 0 100%;min-height:160px;background:var(--surface);border-radius:10px;padding:36px 12px 36px;border:1px solid var(--border);display:flex;flex-direction:column;gap:4px;box-sizing:border-box;position:relative;"><span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span><div style="font-weight:600;font-size:18px;"><span style="opacity:0.4;">' + (i+1) + '.</span> ' + renderCardContent(card.front) + '</div><div style="opacity:0.7;font-size:15px;">' + renderCardContent(card.back) + '</div><button class="card-btn" onclick="deleteStudyCard(' + set.id + ',' + card.id + ')" style="position:absolute;top:8px;right:8px;" title="' + t('del') + '">&#x2716;</button><button class="card-btn" onclick="editStudyCard(' + set.id + ',' + card.id + ')" style="position:absolute;bottom:8px;right:8px;" title="' + t('edit') + '">&#x270F;</button></div>';
     });
     html += '</div>';
   }
@@ -3392,8 +4531,8 @@ function renderCafecitoContent() {
 }
 function renderTrashContent() {
   var container = document.getElementById('trashContent');
-  var typeIcons = { note: '\uD83D\uDCC4', board: '\uD83D\uDCCB', studySet: '\uD83C\uDCC7' };
-  var typeLabels = { note: t('trashTypeNote'), board: t('trashTypeBoard'), studySet: t('trashTypeStudySet') };
+  var typeIcons = { note: '\uD83D\uDCC4', board: '\uD83D\uDCCB', studySet: '\uD83C\uDCC7', registro: '📊' };
+  var typeLabels = { note: t('trashTypeNote'), board: t('trashTypeBoard'), studySet: t('trashTypeStudySet'), registro: t('trashTypeRegistro') };
   var html = '<div class="selection-view"><div class="selection-header"><h2>&#x1f5d1; ' + t('trash') + '</h2></div>';
   html += '<div style="font-size:12px;color:var(--text-muted);padding:12px 20px;border-bottom:1px solid var(--border);">' + t('trashSubtitle') + '</div>';
   if (state.trash.length === 0) {
@@ -3420,32 +4559,137 @@ function renderTrashContent() {
 function renderNoteContent() {
   var container = document.getElementById('noteContent');
   var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
-  if (!note) {
-    var regularNotes = state.notes.filter(function(n) { return !n.diary; });
-    var html = '<div class="selection-view"><div class="selection-header"><h2>' + t('notes') + '</h2></div><div class="selection-grid">';
-    if (regularNotes.length === 0) {
-      html += '<div class="selection-empty">' + t('noNotes') + '</div>';
+  if (note) { /* handled below */ } else if (state.activeFolderId != null) {
+    // Vista dentro de carpeta
+    var folder = getFolderById(state.activeFolderId);
+    if(!folder){ state.activeFolderId=null; return renderNoteContent(); }
+    ensureRootOrder();
+    var notesInFolder = state.notes.filter(function(n){ return !n.diary && n.folderId===folder.id; });
+    // sort by state.notes order
+    notesInFolder.sort(function(a,b){
+      var ia=state.notes.indexOf(a), ib=state.notes.indexOf(b);
+      return ia-ib;
+    });
+    var html='<div class="selection-view"><div class="selection-grid" data-folder-grid="'+folder.id+'">';
+    if(notesInFolder.length===0){
+      html+='<div class="folder-empty">'+t('emptyFolderHint')+'</div>';
     } else {
-      var pendingCovers = [];
-      regularNotes.forEach(function(n) {
-        var locked = n.pwdHash && !unlockedIds['n' + n.id];
+      var pendingCovers=[];
+      notesInFolder.forEach(function(n){
+        var locked = n.pwdHash && !unlockedIds['n'+n.id];
         var lock = locked ? '<span class="card-lock">&#x1f512;</span>' : '';
         var fav = n.favorite ? '<span class="card-fav">&#x2605;</span>' : '';
         var coverUrl = getCoverUrl(n);
-        var coverStyle = coverUrl ? ' style="background-image:url(' + coverUrl + ');background-size:cover;background-position:center;"' : '';
-        html += '<div class="card' + (coverUrl ? ' card-has-cover' : '') + '" data-note-id="' + n.id + '" onclick="selectNote(' + n.id + ')">' +
-          '<span class="card-drag-handle" onclick="event.stopPropagation()">&#x2630;</span>' +
-          lock + fav +
-          '<span class="card-date">' + fmtDate(n.createdAt) + '</span>' +
-          '<div class="card-title">' + escapeHtml(n.title) + '</div>' +
-          '<div class="card-preview"' + coverStyle + '>' + (coverUrl ? '' : getNotePreview(n)) + '</div></div>';
-        if (n.cover && n.cover.indexOf('ref:') === 0 && !_coverUrls[n.cover.substring(4)]) pendingCovers.push(n);
+        var coverStyle = coverUrl ? ' style="background-image:url('+coverUrl+');background-size:cover;background-position:center;"' : '';
+        html+='<div class="card'+(coverUrl?' card-has-cover':'')+'" data-note-id="'+n.id+'" onclick="selectNote('+n.id+')">'+
+          '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>'+lock+fav+
+          '<span class="card-date">'+fmtDate(n.createdAt)+'</span>'+
+          '<div class="card-title">'+escapeHtml(n.title)+'</div>'+
+          '<div class="card-preview"'+coverStyle+'>'+(coverUrl?'':getNotePreview(n))+'</div></div>';
+        if(n.cover && n.cover.indexOf('ref:')===0 && !_coverUrls[n.cover.substring(4)]) pendingCovers.push(n);
       });
       var gridContainer = container;
-      pendingCovers.forEach(function(n) {
+      pendingCovers.forEach(function(n){
+        loadCoverUrl(n).then(function(url){
+          if(!url) return;
+          var card=gridContainer.querySelector('.card[data-note-id="'+n.id+'"]');
+          if(card){ var preview=card.querySelector('.card-preview'); if(preview){ preview.style.backgroundImage='url('+url+')'; preview.innerHTML=''; } card.classList.add('card-has-cover'); }
+        });
+      });
+    }
+    html+='</div></div>';
+    var savedGridTop=document.querySelector('.selection-grid');
+    var savedGridScroll=savedGridTop?savedGridTop.scrollTop:0;
+    container.innerHTML=html;
+    updateBackBtn();
+    // enable long-press on notes inside folder for "Sacar" and also drag handle
+    if(savedGridScroll>0){ var ng=document.querySelector('.selection-grid'); if(ng) ng.scrollTop=savedGridScroll; }
+    return;
+  } else if (!note) {
+    ensureRootOrder();
+    var html = '<div class="selection-view"><div class="selection-header"><h2>' + t('notes') + '</h2></div><div class="selection-grid" id="rootGrid">';
+    var hasItems = state.rootOrder.length>0;
+    // also need to consider root notes not in rootOrder? ensureRootOrder covers
+    if (!hasItems) {
+      // check if there are notes but not in rootOrder? Could be empty folders too
+      if(state.folders.length===0 && state.notes.filter(function(n){return !n.diary && n.folderId==null;}).length===0){
+        html += '<div class="selection-empty">' + t('noNotes') + '</div>';
+      } else if(state.folders.length===0){
+        // fallback to notes
+        var regularNotes = state.notes.filter(function(n) { return !n.diary && n.folderId==null; });
+        if(regularNotes.length===0) html += '<div class="selection-empty">' + t('noNotes') + '</div>';
+        else {
+          var pendingCovers = [];
+          regularNotes.forEach(function(n) {
+            var locked = n.pwdHash && !unlockedIds['n' + n.id];
+            var lock = locked ? '<span class="card-lock">&#x1f512;</span>' : '';
+            var fav = n.favorite ? '<span class="card-fav">&#x2605;</span>' : '';
+            var coverUrl = getCoverUrl(n);
+            var coverStyle = coverUrl ? ' style="background-image:url(' + coverUrl + ');background-size:cover;background-position:center;"' : '';
+            html += '<div class="card' + (coverUrl ? ' card-has-cover' : '') + '" data-note-id="' + n.id + '" onclick="selectNote(' + n.id + ')">' +
+              '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
+              lock + fav +
+              '<span class="card-date">' + fmtDate(n.createdAt) + '</span>' +
+              '<div class="card-title">' + escapeHtml(n.title) + '</div>' +
+              '<div class="card-preview"' + coverStyle + '>' + (coverUrl ? '' : getNotePreview(n)) + '</div></div>';
+            if (n.cover && n.cover.indexOf('ref:') === 0 && !_coverUrls[n.cover.substring(4)]) pendingCovers.push(n);
+          });
+          var gridContainer = container;
+          pendingCovers.forEach(function(n) {
+            loadCoverUrl(n).then(function(url) {
+              if (!url) return;
+              var card = gridContainer.querySelector('.card[data-note-id="' + n.id + '"]');
+              if (card) {
+                var preview = card.querySelector('.card-preview');
+                if (preview) {
+                  preview.style.backgroundImage = 'url(' + url + ')';
+                  preview.innerHTML = '';
+                }
+                card.classList.add('card-has-cover');
+              }
+            });
+          });
+        }
+      } else {
+        hasItems = true;
+      }
+    }
+    if(hasItems){
+      var pendingCovers2=[];
+      state.rootOrder.forEach(function(entry){
+        if(entry.type==='note'){
+          var n=state.notes.find(function(x){return x.id===entry.id && !x.diary && x.folderId==null;});
+          if(!n) return;
+          var locked = n.pwdHash && !unlockedIds['n' + n.id];
+          var lock = locked ? '<span class="card-lock">&#x1f512;</span>' : '';
+          var fav = n.favorite ? '<span class="card-fav">&#x2605;</span>' : '';
+          var coverUrl = getCoverUrl(n);
+          var coverStyle = coverUrl ? ' style="background-image:url(' + coverUrl + ');background-size:cover;background-position:center;"' : '';
+          html += '<div class="card' + (coverUrl ? ' card-has-cover' : '') + '" data-note-id="' + n.id + '" onclick="selectNote(' + n.id + ')">' +
+            '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
+            lock + fav +
+            '<span class="card-date">' + fmtDate(n.createdAt) + '</span>' +
+            '<div class="card-title">' + escapeHtml(n.title) + '</div>' +
+            '<div class="card-preview"' + coverStyle + '>' + (coverUrl ? '' : getNotePreview(n)) + '</div></div>';
+          if (n.cover && n.cover.indexOf('ref:') === 0 && !_coverUrls[n.cover.substring(4)]) pendingCovers2.push(n);
+        } else if(entry.type==='folder'){
+          var f=getFolderById(entry.id); if(!f) return;
+          var lockedF = f.pwdHash && !unlockedIds['f'+f.id];
+          var lockF = lockedF ? '<span class="card-lock">&#x1f512;</span>' : '';
+          var cnt=countNotesInFolder(f.id);
+          html += '<div class="card card-folder" data-folder-id="' + f.id + '" onclick="openFolder(' + f.id + ')">' +
+            '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
+            lockF +
+            '<div class="card-folder-icon">&#x1f4c1;</div>' +
+            '<div class="card-title">' + escapeHtml(f.name) + '</div>' +
+            '<div class="card-preview">' + cnt + ' ' + (cnt===1? t('countNote'): t('countNotes')) + (f.pwdHash? ' &middot; &#x1f512;':'') + '</div></div>';
+        }
+      });
+      var gridContainer2 = container;
+      pendingCovers2.forEach(function(n) {
         loadCoverUrl(n).then(function(url) {
           if (!url) return;
-          var card = gridContainer.querySelector('.card[data-note-id="' + n.id + '"]');
+          var card = gridContainer2.querySelector('.card[data-note-id="' + n.id + '"]');
           if (card) {
             var preview = card.querySelector('.card-preview');
             if (preview) {
@@ -3511,7 +4755,7 @@ function renderNoteContent() {
         html += '<div class="list-item' + (isText ? ' text' : '') + '" data-id="' + item.id + '" data-level="' + item.level + '">';
         if (!isText) html += '<span class="drag-handle">&#x2630;</span>';
         if (!isText) html += '<input type="checkbox" class="item-check"' + (item.checked ? ' checked' : '') + ' onchange="toggleItem(' + note.id + ', ' + item.id + ')" />';
-         html += '<div contenteditable="true" class="item-text' + (item.checked ? ' checked' : '') + '" data-placeholder="' + (isText ? t('textPlaceholder') : t('itemPlaceholder')) + '" oninput="updateItemText(' + note.id + ', ' + item.id + ', this.innerHTML);computeOnEquals(this,' + note.id + ',' + item.id + ')" onfocus="activeItemId=' + item.id + '" onblur="if (activeItemId==' + item.id + ') { activeItemId=null; }">' + renderLatexInHtml(parseNoteLinks(item.text || '')) + '</div>';
+         html += '<div contenteditable="true" class="item-text' + (item.checked ? ' checked' : '') + '" data-placeholder="' + (isText ? t('textPlaceholder') : t('itemPlaceholder')) + '" oninput="updateItemText(' + note.id + ', ' + item.id + ', this.innerHTML);computeOnEquals(this,' + note.id + ',' + item.id + ')" onfocus="activeItemId=' + item.id + '" onblur="if (activeItemId==' + item.id + ') { activeItemId=null; }">' + renderLatexInHtml(parseRegistrosForRender(parseDiaryVariablesForRender(parseNoteLinks(item.text || '')))) + '</div>';
         html += '<span class="item-actions">';
         if (!isText) html += '<button class="btn btn-sm btn-icon" onclick="indentItem(' + note.id + ', ' + item.id + ')">&rarr;</button>';
         if (!isText) html += '<button class="btn btn-sm btn-icon" onclick="outdentItem(' + note.id + ', ' + item.id + ')">&larr;</button>';
@@ -3605,7 +4849,7 @@ function renderNoteContent() {
   html += '<button class="btn fmt-action" onclick="document.getElementById(\'audioInput\').click()" title="' + t('insertAudio') + '">&#x1F3A4; ' + t('insertAudio') + '</button>';
   html += '<button class="btn fmt-action" onclick="document.getElementById(\'videoInput\').click()" title="' + t('insertVideo') + '">&#x1F3AC; ' + t('insertVideo') + '</button>';
   html += '<button class="btn fmt-action" onclick="showTableDialog()" title="' + t('insertTable') + '">&#x229E;</button>';
-  html += '<button class="btn fmt-action" onclick="openReminderDialog()" title="' + t('remindMe') + '">' + t('remindMe') + '</button>';
+  // Botón Recuérdame eliminado - reemplazado por Hábitos
   html += '<button class="btn fmt-action" onclick="insertLatexBlock()" title="' + t('insertEquation') + '" style="font-weight:bold;font-size:15px;">&#x2211;</button>';
   html += '<span style="flex:1"></span>';
   html += '<div style="position:relative;display:inline-block;">';
@@ -3787,11 +5031,22 @@ function showContextMenu(x, y, items) {
   menu.style.left = x + 'px';
   menu.style.top = y + 'px';
   menu.classList.remove('hidden');
+  var mw = menu.offsetWidth || 140;
+  if (x + mw > window.innerWidth - 8) {
+    menu.style.left = Math.max(8, x - mw) + 'px';
+  }
+  var overlay = document.getElementById('menuOverlay');
+  if (overlay) overlay.classList.add('open');
 }
 
 function hideContextMenu() {
-  document.getElementById('contextMenu').classList.add('hidden');
+  var menu = document.getElementById('contextMenu');
+  if (menu) menu.classList.add('hidden');
   _fabLongPressed = false;
+  var overlay = document.getElementById('menuOverlay');
+  var sidebar = document.getElementById('menuSidebar');
+  var menuOpen = sidebar && sidebar.classList.contains('open');
+  if (overlay && !menuOpen) overlay.classList.remove('open');
 }
 
 function contextConnect(elementId) {
@@ -4364,7 +5619,9 @@ function insertBoardImage(input) {
   ImageConverter.toWebP(file, 0.85).then(function(result) {
     var ref = 'imagenes/' + generateImageId() + '.webp';
     return ImageManager.save(ref, result.base64).then(function() {
-      addBoardElement('image', ref, result.width, result.height, { origWidth: result.width, origHeight: result.height });
+      var h = 180;
+      var w = Math.round(h * (result.width / result.height));
+      addBoardElement('image', ref, w, h, { origWidth: result.width, origHeight: result.height });
     });
   }).catch(function(err) {
     console.error('Error inserting board image:', err);
@@ -4409,9 +5666,11 @@ function insertBoardVideo(input) {
     var ref = 'videos/' + generateImageId() + '.' + ext;
     return ImageManager.save(ref, base64).then(function() {
       return VideoConverter.getDimensions(file).then(function(dims) {
-        addBoardElement('video', ref, dims.width, dims.height, { origWidth: dims.width, origHeight: dims.height });
+        var h = 180;
+        var w = Math.round(h * (dims.width / dims.height));
+        addBoardElement('video', ref, w, h, { origWidth: dims.width, origHeight: dims.height });
       }).catch(function() {
-        addBoardElement('video', ref, 320, 240);
+        addBoardElement('video', ref, 240, 180);
       });
     });
   }).catch(function(err) {
@@ -4649,7 +5908,7 @@ function renderBoardContent() {
         var lock = locked ? '<span class="card-lock">&#x1f512;</span>' : '';
         var preview = locked ? t('passwordProtected') : pc + ' elemento' + (pc !== 1 ? 's' : '');
         html += '<div class="card" data-board-id="' + b.id + '" onclick="selectBoard(' + b.id + ')">' +
-          '<span class="card-drag-handle" onclick="event.stopPropagation()">&#x2630;</span>' +
+          '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
           lock +
           '<span class="card-date">' + fmtDate(b.createdAt) + '</span>' +
           '<div class="card-title">' + escapeHtml(b.name) + '</div>' +
@@ -4731,7 +5990,7 @@ function renderBoardContent() {
     });
     html += '</div>';
     html += '<button class="postit-close" onclick="deletePostit(' + board.id + ', ' + p.id + ')">&times;</button>';
-    html += '<div class="postit-body"><div contenteditable="true" class="postit-text" data-placeholder="' + t('itemPlaceholder') + '" oninput="updatePostitText(' + board.id + ', ' + p.id + ', this.innerHTML)">' + renderLatexInHtml(parseNoteLinks(p.text || '')) + '</div></div>';
+    html += '<div class="postit-body"><div contenteditable="true" class="postit-text" data-placeholder="' + t('itemPlaceholder') + '" oninput="updatePostitText(' + board.id + ', ' + p.id + ', this.innerHTML)">' + renderLatexInHtml(parseRegistrosForRender(parseDiaryVariablesForRender(parseNoteLinks(p.text || '')))) + '</div></div>';
     html += '</div>';
   });
   /* Render elementos multimedia */
@@ -5476,6 +6735,7 @@ function findTouch(e, id) {
 // Long-press on note cards (Android)
 var noteLongPressTimer = null;
 var preventCardClick = false;
+var folderLongPressTimer = null;
 
 // Long-press on highlight button
 var hlLongPressTimer = null;
@@ -5504,16 +6764,44 @@ document.addEventListener('touchstart', function(e) {
         if (!note) return;
         var favLabel = note.favorite ? t('removeFav') : t('addFav');
         var coverLabel = note.cover ? t('removeCover') : t('addCover');
-        showContextMenu(x, y, [
+        var items = [
           { label: t('rename'), action: function() { renameNote(noteId); } },
           { label: favLabel, action: function() { toggleFavorite(noteId); } },
           { label: coverLabel, action: function() { if (note.cover) { removeCover(noteId); } else { triggerImportCover(noteId); } } },
-          { label: t('exportNote'), action: function() { exportSingleNote(noteId); } },
-          { label: t('del'), action: function() { confirmDeleteNote(noteId); } }
-        ]);
+          { label: t('exportNote'), action: function() { exportSingleNote(noteId); } }
+        ];
+        if(note.folderId!=null){
+          items.push({ label: t('moveToNotes'), action: function(){ moveNoteToFolder(noteId, null); } });
+        } else {
+          // offer move to folder if folders exist
+          if(state.folders.length>0){
+            // quick submenu: we add move to first folder? Instead show dialog to choose
+            items.push({ label: t('moveToFolder'), action: function(){ showMoveToFolderDialog(noteId); } });
+          }
+        }
+        items.push({ label: t('del'), action: function() { confirmDeleteNote(noteId); } });
+        showContextMenu(x, y, items);
       preventCardClick = true;
       setTimeout(function() { preventCardClick = false; }, 400);
     }, 500);
+    return;
+  }
+  var folderCard = e.target.closest('.card-folder[data-folder-id]');
+  if(folderCard){
+    var touch = e.touches[0];
+    var fid = Number(folderCard.dataset.folderId);
+    var x = touch.clientX, y = touch.clientY;
+    folderLongPressTimer = setTimeout(function(){
+      folderLongPressTimer=null;
+      hideContextMenu();
+      showContextMenu(x,y,[
+        { label: t('rename'), action: function(){ renameFolder(fid); } },
+        { label: t('changePassword'), action: function(){ editFolderPassword(fid); } },
+        { label: t('del'), action: function(){ confirmDeleteFolder(fid); } }
+      ]);
+      preventCardClick=true;
+      setTimeout(function(){preventCardClick=false;},400);
+    },500);
     return;
   }
   var boardCard = e.target.closest('.card[data-board-id]');
@@ -5582,20 +6870,58 @@ document.addEventListener('touchstart', function(e) {
 
 document.addEventListener('touchmove', function(e) {
   if (noteLongPressTimer) { clearTimeout(noteLongPressTimer); noteLongPressTimer = null; }
+  if (folderLongPressTimer) { clearTimeout(folderLongPressTimer); folderLongPressTimer = null; }
   if (hlLongPressTimer) { clearTimeout(hlLongPressTimer); hlLongPressTimer = null; }
   if (boardLongPressTimer) { clearTimeout(boardLongPressTimer); boardLongPressTimer = null; }
   if (studyLongPressTimer) { clearTimeout(studyLongPressTimer); studyLongPressTimer = null; }
   if (studyCardLongPressTimer) { clearTimeout(studyCardLongPressTimer); studyCardLongPressTimer = null; }
   if (fabLongPressTimer) { clearTimeout(fabLongPressTimer); fabLongPressTimer = null; }
+  if (typeof clearRegistroLongPress==='function') clearRegistroLongPress();
 }, { passive: true });
 
 document.addEventListener('touchend', function(e) {
   if (noteLongPressTimer) { clearTimeout(noteLongPressTimer); noteLongPressTimer = null; }
+  if (folderLongPressTimer) { clearTimeout(folderLongPressTimer); folderLongPressTimer = null; }
   if (hlLongPressTimer) { clearTimeout(hlLongPressTimer); hlLongPressTimer = null; }
   if (boardLongPressTimer) { clearTimeout(boardLongPressTimer); boardLongPressTimer = null; }
   if (studyLongPressTimer) { clearTimeout(studyLongPressTimer); studyLongPressTimer = null; }
   if (studyCardLongPressTimer) { clearTimeout(studyCardLongPressTimer); studyCardLongPressTimer = null; }
   if (fabLongPressTimer) { clearTimeout(fabLongPressTimer); fabLongPressTimer = null; }
+  if (typeof clearRegistroLongPress==='function') clearRegistroLongPress();
+});
+
+// Context menu via right-click (desktop)
+document.addEventListener('contextmenu', function(e){
+  var folderCard = e.target.closest('.card-folder[data-folder-id]');
+  if(folderCard){
+    e.preventDefault();
+    var fid=Number(folderCard.dataset.folderId);
+    showContextMenu(e.clientX, e.clientY, [
+      { label: t('rename'), action: function(){ renameFolder(fid); } },
+      { label: t('changePassword'), action: function(){ editFolderPassword(fid); } },
+      { label: t('del'), action: function(){ confirmDeleteFolder(fid); } }
+    ]);
+    return;
+  }
+  var card = e.target.closest('.card[data-note-id]');
+  if(card){
+    e.preventDefault();
+    var noteId=Number(card.dataset.noteId);
+    var note=state.notes.find(function(n){return n.id===noteId;}); if(!note) return;
+    var favLabel = note.favorite ? t('removeFav') : t('addFav');
+    var coverLabel = note.cover ? t('removeCover') : t('addCover');
+    var items=[
+      { label: t('rename'), action: function(){ renameNote(noteId); } },
+      { label: favLabel, action: function(){ toggleFavorite(noteId); } },
+      { label: coverLabel, action: function(){ if(note.cover) removeCover(noteId); else triggerImportCover(noteId); } },
+      { label: t('exportNote'), action: function(){ exportSingleNote(noteId); } }
+    ];
+    if(note.folderId!=null) items.push({ label: t('moveToNotes'), action: function(){ moveNoteToFolder(noteId,null); } });
+    else if(state.folders.length>0) items.push({ label: t('moveToFolder'), action: function(){ showMoveToFolderDialog(noteId); } });
+    items.push({ label: t('del'), action: function(){ confirmDeleteNote(noteId); } });
+    showContextMenu(e.clientX, e.clientY, items);
+    return;
+  }
 });
 
 // Long-press on note detail view removed
@@ -5612,7 +6938,10 @@ document.addEventListener('mousedown', function(e) {
   if (!noteId) return;
   var note = state.notes.find(function(n) { return n.id == noteId; });
   if (!note) return;
-  dragState = { noteId: noteId, itemId: item.dataset.id, note: note, clone: null, lastY: 0 };
+  dragState = { noteId: noteId, itemId: item.dataset.id, note: note, clone: null, lastY: 0, offsetX: 0, offsetY: 0 };
+  var noteRect = item.getBoundingClientRect();
+  dragState.offsetX = e.clientX - noteRect.left;
+  dragState.offsetY = e.clientY - noteRect.top;
   e.preventDefault();
 });
 // Notes drag touch support
@@ -5627,10 +6956,13 @@ document.addEventListener('touchstart', function(e) {
   if (!noteId) return;
   var note = state.notes.find(function(n) { return n.id == noteId; });
   if (!note) return;
-  dragState = { noteId: noteId, itemId: item.dataset.id, note: note, clone: null, lastY: 0 };
+  dragState = { noteId: noteId, itemId: item.dataset.id, note: note, clone: null, lastY: 0, offsetX: 0, offsetY: 0 };
+  var noteRect = item.getBoundingClientRect();
+  dragState.offsetX = e.touches[0].clientX - noteRect.left;
+  dragState.offsetY = e.touches[0].clientY - noteRect.top;
 }, { passive: true });
 
-// Card drag (notes, boards, study sets, study cards)
+// Card drag (notes, boards, study sets, study cards, folders)
 document.addEventListener('mousedown', function(e) {
   var handle = e.target.closest('.card-drag-handle');
   if (!handle) return;
@@ -5640,12 +6972,18 @@ document.addEventListener('mousedown', function(e) {
   if (!grid) return;
   var type, id, setId = null;
   if (card.dataset.noteId) { type = 'notes'; id = Number(card.dataset.noteId); }
+  else if (card.dataset.folderId) { type = 'folders'; id = Number(card.dataset.folderId); }
   else if (card.dataset.boardId) { type = 'boards'; id = Number(card.dataset.boardId); }
   else if (card.dataset.studySetId) { type = 'studySets'; id = Number(card.dataset.studySetId); }
   else if (card.dataset.cardId) { type = 'studyCards'; id = Number(card.dataset.cardId); setId = state.activeStudySetId; }
   else return;
+  // detect if dragging inside folder
+  if(grid && grid.hasAttribute('data-folder-grid') && type==='notes'){
+    type='notesInsideFolder';
+  }
   card.classList.add('dragging');
-  cardDragState = { el: card, type: type, id: id, setId: setId, clone: null, grid: grid, lastOverId: null };
+  var rect = card.getBoundingClientRect();
+  cardDragState = { el: card, type: type, id: id, setId: setId, clone: null, grid: grid, lastOverId: null, dropFolderId: null, dropToRoot: false, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top };
   e.preventDefault();
 });
 
@@ -5659,12 +6997,17 @@ document.addEventListener('touchstart', function(e) {
   if (!grid) return;
   var type, id, setId = null;
   if (card.dataset.noteId) { type = 'notes'; id = Number(card.dataset.noteId); }
+  else if (card.dataset.folderId) { type = 'folders'; id = Number(card.dataset.folderId); }
   else if (card.dataset.boardId) { type = 'boards'; id = Number(card.dataset.boardId); }
   else if (card.dataset.studySetId) { type = 'studySets'; id = Number(card.dataset.studySetId); }
   else if (card.dataset.cardId) { type = 'studyCards'; id = Number(card.dataset.cardId); setId = state.activeStudySetId; }
   else return;
+  if(grid && grid.hasAttribute('data-folder-grid') && type==='notes'){
+    type='notesInsideFolder';
+  }
   card.classList.add('dragging');
-  cardDragState = { el: card, type: type, id: id, setId: setId, clone: null, grid: grid, lastOverId: null };
+  var rect = card.getBoundingClientRect();
+  cardDragState = { el: card, type: type, id: id, setId: setId, clone: null, grid: grid, lastOverId: null, dropFolderId: null, dropToRoot: false, offsetX: e.touches[0].clientX - rect.left, offsetY: e.touches[0].clientY - rect.top };
 }, { passive: true });
 
 document.addEventListener('touchmove', function(e) {
@@ -5678,9 +7021,40 @@ document.addEventListener('touchmove', function(e) {
     if (dh) dh.style.display = 'none';
     document.body.appendChild(cardDragState.clone);
   }
-  cardDragState.clone.style.left = (touch.clientX + 12) + 'px';
-  cardDragState.clone.style.top = (touch.clientY - 8) + 'px';
+  cardDragState.clone.style.left = (touch.clientX - cardDragState.offsetX) + 'px';
+  cardDragState.clone.style.top = (touch.clientY - cardDragState.offsetY) + 'px';
   e.preventDefault();
+  // Folder drop detection
+  if(cardDragState.type==='notes'){
+    // check hover over folder card at root
+    var elBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+    var folderCard = elBelow ? elBelow.closest('.card-folder[data-folder-id]') : null;
+    // clear previous highlight
+    document.querySelectorAll('.folder-drop-target').forEach(function(el){ el.classList.remove('folder-drop-target'); });
+    if(folderCard && Number(folderCard.dataset.folderId)!==cardDragState.id){
+      folderCard.classList.add('folder-drop-target');
+      cardDragState.dropFolderId = Number(folderCard.dataset.folderId);
+      return;
+    } else {
+      cardDragState.dropFolderId=null;
+    }
+  }
+  if(cardDragState.type==='notesInsideFolder'){
+    var elBelow2 = document.elementFromPoint(touch.clientX, touch.clientY);
+    var header = elBelow2 ? elBelow2.closest('header') : null;
+    document.querySelectorAll('header.drop-target').forEach(function(el){ el.classList.remove('drop-target'); });
+    if(header){
+      header.classList.add('drop-target');
+      cardDragState.dropToRoot = true;
+      return;
+    } else {
+      cardDragState.dropToRoot=false;
+    }
+  }
+  // clear folder header highlight if not applicable
+  if(cardDragState.type!=='notesInsideFolder'){
+    document.querySelectorAll('header.drop-target').forEach(function(el){ el.classList.remove('drop-target'); });
+  }
   var grid = cardDragState.grid;
   var closestEl = null;
   var closestDist = Infinity;
@@ -5694,7 +7068,7 @@ document.addEventListener('touchmove', function(e) {
     if (dist < closestDist) { closestDist = dist; closestEl = allItems[i]; }
   }
   if (closestEl) {
-    var closestId = Number(closestEl.dataset.noteId || closestEl.dataset.boardId || closestEl.dataset.studySetId || closestEl.dataset.cardId);
+    var closestId = Number(closestEl.dataset.noteId || closestEl.dataset.boardId || closestEl.dataset.studySetId || closestEl.dataset.cardId || closestEl.dataset.folderId);
     if (closestId !== cardDragState.lastOverId) {
       var crect = closestEl.getBoundingClientRect();
       var midY = crect.top + crect.height / 2;
@@ -5731,8 +7105,8 @@ document.addEventListener('touchmove', function(e) {
     document.body.appendChild(dragState.clone);
     orig.classList.add('dragging');
   }
-  dragState.clone.style.left = (touch.clientX + 12) + 'px';
-  dragState.clone.style.top = (touch.clientY - 8) + 'px';
+  dragState.clone.style.left = (touch.clientX - dragState.offsetX) + 'px';
+  dragState.clone.style.top = (touch.clientY - dragState.offsetY) + 'px';
   var itemsArea = document.querySelector('.items-area');
   if (itemsArea) {
     Array.prototype.forEach.call(itemsArea.querySelectorAll('.list-item'), function(el) {
@@ -5803,16 +7177,139 @@ document.addEventListener('touchend', function(e) {
 function cardDragFinish() {
   var draggedEl = cardDragState.el;
   if (draggedEl) draggedEl.classList.remove('dragging');
+  // clear folder drop highlights
+  document.querySelectorAll('.folder-drop-target').forEach(function(el){ el.classList.remove('folder-drop-target'); });
+  document.querySelectorAll('header.drop-target').forEach(function(el){ el.classList.remove('drop-target'); });
+  // Handle dropping note onto folder (touch and mouse)
+  if(cardDragState.type==='notes' && cardDragState.dropFolderId!=null){
+    var folder=getFolderById(cardDragState.dropFolderId);
+    var noteId=cardDragState.id;
+    var dropId=cardDragState.dropFolderId;
+    cleanupCardDrag();
+    if(folder){
+      if(folder.pwdHash && !unlockedIds['f'+dropId]){
+        pendingFolderDrop={noteId:noteId, folderId:dropId};
+        pendingUnlock={type:'folder', id:dropId, action:'drop'};
+        document.getElementById('unlockPwdInput').value='';
+        document.getElementById('unlockTitle').textContent=t('protectedFolder')+folder.name;
+        showDialog('unlockDialog');
+        setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
+        return;
+      }
+      moveNoteToFolder(noteId, dropId);
+    }
+    return;
+  }
+  if(cardDragState.type==='notesInsideFolder' && cardDragState.dropToRoot){
+    var nid=cardDragState.id;
+    cleanupCardDrag();
+    moveNoteToFolder(nid, null);
+    return;
+  }
+  if(cardDragState.type==='notesInsideFolder'){
+    // reorder inside folder: orderedIds from grid
+    var grid = cardDragState.grid;
+    var items = grid.querySelectorAll('.card[data-note-id]');
+    var orderedIds=[];
+    for(var i=0;i<items.length;i++){ var nid2=Number(items[i].dataset.noteId); if(!isNaN(nid2)) orderedIds.push(nid2); }
+    // rebuild state.notes order for those notes in this folder
+    var folderId = Number(grid.getAttribute('data-folder-grid'));
+    var otherNotes = state.notes.filter(function(n){ return n.folderId!==folderId; });
+    var inFolderMap={}; state.notes.forEach(function(n){ if(n.folderId===folderId) inFolderMap[n.id]=n; });
+    var newInFolder=[]; orderedIds.forEach(function(id){ if(inFolderMap[id]) newInFolder.push(inFolderMap[id]); });
+    // append any missing (should not)
+    state.notes.forEach(function(n){ if(n.folderId===folderId && orderedIds.indexOf(n.id)===-1) newInFolder.push(n); });
+    // reconstruct state.notes preserving otherNotes order, inserting newInFolder in place? Simplest: rebuild as otherNotes + newInFolder at original position?
+    // Instead, keep global order: we will splice newInFolder maintaining relative order among themselves, but keep other notes positions
+    // Simplistic: create newNotes = []; iterate original state.notes, replace folder notes segment with newInFolder in order
+    // For now, just reorder globally as otherNotes concatenated with newInFolder (stable)
+    // Better: keep state.notes filtered: otherNotes + newInFolder, but that moves folder notes to end. Instead reorder by mapping.
+    // Create newNotes where folder notes appear in orderedIds order, keeping original interleaving positions of folder notes
+    var newNotes=[];
+    var idxFolder=0;
+    state.notes.forEach(function(n){
+      if(n.folderId===folderId){
+        if(idxFolder<newInFolder.length) newNotes.push(newInFolder[idxFolder++]);
+      } else {
+        newNotes.push(n);
+      }
+    });
+    state.notes=newNotes;
+    save(); renderAll();
+    cleanupCardDrag();
+    return;
+  }
   var grid = cardDragState.grid;
+  var isRootGrid = grid && grid.id==='rootGrid';
   var items = grid.querySelectorAll('.card, .study-card-item');
   var orderedIds = [];
   for (var i = 0; i < items.length; i++) {
-    var id = Number(items[i].dataset.noteId || items[i].dataset.boardId || items[i].dataset.studySetId || items[i].dataset.cardId);
+    var id = Number(items[i].dataset.noteId || items[i].dataset.boardId || items[i].dataset.studySetId || items[i].dataset.cardId || items[i].dataset.folderId);
     if (!isNaN(id)) orderedIds.push(id);
   }
   var arr;
-  if (cardDragState.type === 'notes') arr = state.notes;
-  else if (cardDragState.type === 'boards') arr = state.boards;
+  if (cardDragState.type === 'notes' && isRootGrid) {
+    // reorder rootOrder, not state.notes
+    var newOrder=[];
+    orderedIds.forEach(function(id){
+      // find entry in rootOrder by id, determine type by matching data attribute? need to infer
+      // we check if this id corresponds to folder
+      var isFolder = !!state.folders.find(function(f){return f.id===id;});
+      // but if both note and folder share id (unlikely but possible), prefer checking DOM element
+      // We can look at original rootOrder mapping: build map
+    });
+    // Build map of current rootOrder by key
+    var map={}; state.rootOrder.forEach(function(e){ map[e.type+':'+e.id]=e; });
+    // Need to know type for each orderedId: inspect DOM element at position i
+    var domTypes=[];
+    for(var i=0;i<items.length;i++){
+      if(items[i].dataset.noteId) domTypes.push('note');
+      else if(items[i].dataset.folderId) domTypes.push('folder');
+      else if(items[i].dataset.boardId) domTypes.push('board');
+      else if(items[i].dataset.studySetId) domTypes.push('studySet');
+      else if(items[i].dataset.cardId) domTypes.push('studyCards');
+    }
+    for(var k=0;k<orderedIds.length;k++){
+      var t=domTypes[k];
+      if(t==='note' || t==='folder'){
+        var key=t+':'+orderedIds[k];
+        if(map[key]) newOrder.push(map[key]);
+      }
+    }
+    // append missing (should not)
+    state.rootOrder.forEach(function(e){ if(!newOrder.find(function(x){return x.type===e.type&&x.id===e.id;})) newOrder.push(e); });
+    state.rootOrder=newOrder;
+    // also need to keep state.notes order in sync for root notes? No, rootOrder is source for root display, notes order remains for folder internal.
+    save(); renderAll();
+    cleanupCardDrag();
+    return;
+  }
+  if (cardDragState.type === 'notes' && !isRootGrid) {
+    // fallback old behavior for non-root (should not happen as inside folder handled above)
+    arr = state.notes;
+  } else if (cardDragState.type === 'folders' && isRootGrid) {
+    // same as root reorder for folders
+    var newOrder2=[];
+    var map2={}; state.rootOrder.forEach(function(e){ map2[e.type+':'+e.id]=e; });
+    var domTypes2=[];
+    for(var i=0;i<items.length;i++){
+      if(items[i].dataset.noteId) domTypes2.push('note');
+      else if(items[i].dataset.folderId) domTypes2.push('folder');
+      else continue;
+    }
+    for(var k=0;k<orderedIds.length;k++){
+      var t=domTypes2[k];
+      if(t==='note' || t==='folder'){
+        var key=t+':'+orderedIds[k];
+        if(map2[key]) newOrder2.push(map2[key]);
+      }
+    }
+    state.rootOrder.forEach(function(e){ if(!newOrder2.find(function(x){return x.type===e.type&&x.id===e.id;})) newOrder2.push(e); });
+    state.rootOrder=newOrder2;
+    save(); renderAll();
+    cleanupCardDrag();
+    return;
+  } else if (cardDragState.type === 'boards') arr = state.boards;
   else if (cardDragState.type === 'studySets') arr = state.studySets;
   else if (cardDragState.type === 'studyCards') {
     var set = state.studySets.find(function(s) { return s.id === cardDragState.setId; });
@@ -5825,10 +7322,13 @@ function cardDragFinish() {
     for (var k = 0; k < orderedIds.length; k++) {
       if (itemMap[orderedIds[k]]) newArr.push(itemMap[orderedIds[k]]);
     }
-    if (cardDragState.type === 'notes') state.notes = newArr;
-    else if (cardDragState.type === 'boards') state.boards = newArr;
+    if (cardDragState.type === 'boards') state.boards = newArr;
     else if (cardDragState.type === 'studySets') state.studySets = newArr;
     else if (cardDragState.type === 'studyCards' && set) set.cards = newArr;
+    else if (cardDragState.type === 'notes' && !isRootGrid){
+      // legacy fallback
+      state.notes = newArr;
+    }
     save();
     renderAll();
   }
@@ -5846,8 +7346,8 @@ document.addEventListener('mousemove', function(e) {
       document.body.appendChild(dragState.clone);
       orig.classList.add('dragging');
     }
-    dragState.clone.style.left = (e.clientX + 12) + 'px';
-    dragState.clone.style.top = (e.clientY - 8) + 'px';
+    dragState.clone.style.left = (e.clientX - dragState.offsetX) + 'px';
+    dragState.clone.style.top = (e.clientY - dragState.offsetY) + 'px';
     var itemsArea = document.querySelector('.items-area');
     if (itemsArea) {
       Array.prototype.forEach.call(itemsArea.querySelectorAll('.list-item'), function(el) {
@@ -5870,8 +7370,36 @@ document.addEventListener('mousemove', function(e) {
       document.body.appendChild(cardDragState.clone);
       orig.classList.add('dragging');
     }
-    cardDragState.clone.style.left = (e.clientX + 12) + 'px';
-    cardDragState.clone.style.top = (e.clientY - 8) + 'px';
+    cardDragState.clone.style.left = (e.clientX - cardDragState.offsetX) + 'px';
+    cardDragState.clone.style.top = (e.clientY - cardDragState.offsetY) + 'px';
+    // Folder drop detection (desktop)
+    if(cardDragState.type==='notes'){
+      var elBelow = document.elementFromPoint(e.clientX, e.clientY);
+      var folderCard = elBelow ? elBelow.closest('.card-folder[data-folder-id]') : null;
+      document.querySelectorAll('.folder-drop-target').forEach(function(el){ el.classList.remove('folder-drop-target'); });
+      if(folderCard && Number(folderCard.dataset.folderId)!==cardDragState.id){
+        folderCard.classList.add('folder-drop-target');
+        cardDragState.dropFolderId = Number(folderCard.dataset.folderId);
+        return;
+      } else {
+        cardDragState.dropFolderId=null;
+      }
+    }
+    if(cardDragState.type==='notesInsideFolder'){
+      var elBelow2 = document.elementFromPoint(e.clientX, e.clientY);
+      var header = elBelow2 ? elBelow2.closest('header') : null;
+      document.querySelectorAll('header.drop-target').forEach(function(el){ el.classList.remove('drop-target'); });
+      if(header){
+        header.classList.add('drop-target');
+        cardDragState.dropToRoot = true;
+        return;
+      } else {
+        cardDragState.dropToRoot=false;
+      }
+    }
+    if(cardDragState.type!=='notesInsideFolder'){
+      document.querySelectorAll('header.drop-target').forEach(function(el){ el.classList.remove('drop-target'); });
+    }
     var grid = cardDragState.grid;
     var closestEl = null;
     var closestDist = Infinity;
@@ -5885,7 +7413,7 @@ document.addEventListener('mousemove', function(e) {
       if (dist < closestDist) { closestDist = dist; closestEl = allItems[i]; }
     }
     if (closestEl) {
-      var closestId = Number(closestEl.dataset.noteId || closestEl.dataset.boardId || closestEl.dataset.studySetId || closestEl.dataset.cardId);
+      var closestId = Number(closestEl.dataset.noteId || closestEl.dataset.boardId || closestEl.dataset.studySetId || closestEl.dataset.cardId || closestEl.dataset.folderId);
       if (closestId !== cardDragState.lastOverId) {
         var crect = closestEl.getBoundingClientRect();
         var midY = crect.top + crect.height / 2;
@@ -5974,7 +7502,8 @@ if (/android/i.test(navigator.userAgent)) {
 
 // Init
 load();
-state.notes.forEach(function(n) { if (typeof n.id === 'string') n.id = Number(n.id); if (!n.cover) n.cover = ''; if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; if (n.items) n.items.forEach(function(i) { if (typeof i.id === 'string') i.id = Number(i.id); }); });
+state.notes.forEach(function(n) { if (typeof n.id === 'string') n.id = Number(n.id); if (!n.cover) n.cover = ''; if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; n.events = n.events.filter(function(e){ return e.repetition !== 'daily'; }); n.tasks = n.tasks.filter(function(t){ return t.repetition !== 'daily'; }); if (n.items) n.items.forEach(function(i) { if (typeof i.id === 'string') i.id = Number(i.id); }); });
+if (!state.habits) state.habits = [];
 state.notes.forEach(function(n) {
   if (n.diary) {
     var p = n.title.split('-').map(Number);
@@ -5997,6 +7526,26 @@ state.studySets.forEach(function(s) {
 if (typeof state.activeNoteId === 'string') state.activeNoteId = Number(state.activeNoteId);
 if (typeof state.activeBoardId === 'string') state.activeBoardId = Number(state.activeBoardId);
 if (typeof state.activeStudySetId === 'string') state.activeStudySetId = Number(state.activeStudySetId);
+// Migrar hábitos: asegurar campos y filtrar datos inválidos
+state.habits.forEach(function(h){ if(!h.uuid) h.uuid = generateUUID(); if(h.current==null) h.current=0; if(!h.status) h.status='pending'; if(h.streak==null) h.streak=0; if(!h.lastProcessedDate) h.lastProcessedDate=getDateStr(new Date()); if(!h.history) h.history=[]; if(h.total!=null) h.total=Number(h.total); if(h.step!=null) h.step=Number(h.step); if(h.type==='counter' && (h.total==null||h.step==null)){ h.type='task'; } });
+// Migrar carpetas en Init (por si load no se ejecutó completo)
+if(!state.folders) state.folders=[];
+if(state.activeFolderId===undefined) state.activeFolderId=null;
+if(!state.rootOrder) state.rootOrder=[];
+state.notes.forEach(function(n){ if(n.folderId===undefined) n.folderId=null; });
+state.folders.forEach(function(f){ if(typeof f.id==='string') f.id=Number(f.id); });
+if(typeof state.activeFolderId==='string') state.activeFolderId=Number(state.activeFolderId)||null;
+if(state.activeFolderId!=null && !state.folders.find(function(f){return f.id===state.activeFolderId;})) state.activeFolderId=null;
+ensureRootOrder();
+// Al reabrir tras cierre completo, siempre arrancar en Notas (no dentro de nota/tablero protegido)
+state.view = 'notes';
+state.activeNoteId = null;
+state.activeBoardId = null;
+state.activeStudySetId = null;
+state.activeFolderId = null;
+if (typeof window._studyingSetId !== 'undefined') window._studyingSetId = null;
+save();
+processHabitsDayChange();
 renderAll();
 applyTheme();
 applyLang();
@@ -6050,27 +7599,39 @@ if (state.firstVisit) {
 }
 
 /* Verificar notificaciones al iniciar */
-resetDailyTasks();
+processHabitsDayChange();
 checkTodayNotifications();
+checkHabitNotifications();
 updateSettingsToggleStates();
 
-/* Comprobar notificaciones peri\u00f3dicamente cada 60 segundos */
-setInterval(function() { resetDailyTasks(); checkTodayNotifications(); }, 60000);
+/* Comprobar notificaciones y cambio de día periódicamente cada 60 segundos */
+setInterval(function() { processHabitsDayChange(); checkTodayNotifications(); checkHabitNotifications(); }, 60000);
 
 /* Volver a verificar al reanudar la app */
 document.addEventListener('visibilitychange', function() {
-  if (!document.hidden) { resetDailyTasks(); checkTodayNotifications(); }
+  if (!document.hidden) { processHabitsDayChange(); checkTodayNotifications(); checkHabitNotifications(); }
 });
 
 function toggleMenu() {
+  hideContextMenu();
   document.getElementById('menuOverlay').classList.toggle('open');
   document.getElementById('menuSidebar').classList.toggle('open');
+  var overlay = document.getElementById('menuOverlay');
+  var menu = document.getElementById('contextMenu');
+  if (overlay && menu && !menu.classList.contains('hidden')) {
+    overlay.classList.add('open');
+  }
 }
 var _fabLongPressed = false;
 function fabClick() {
   if (_fabLongPressed) { _fabLongPressed = false; return; }
   if (state.view === 'board') showNewBoardDialog();
   else if (state.view === 'diary') openTodayDiary();
+  else if (state.view === 'habits') openHabitDialog('task');
+  else if (state.view === 'registros') {
+    if (state.activeRegistroId) { editRegistro(state.activeRegistroId); return; }
+    openRegistroDialog();
+  }
   else if (state.view === 'study') {
     if (state.activeStudySetId) showAddStudyCard(state.activeStudySetId);
     else showNewStudySetDialog();
@@ -6095,6 +7656,8 @@ function getFabMenuItems() {
     return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
   }
   if (state.view === 'diary') return [];
+  if (state.view === 'habits') return [{ label: t('habitTask'), action: function(){ openHabitDialog('task'); } }, { label: t('habitCounter'), action: function(){ openHabitDialog('counter'); } }];
+  if (state.view === 'registros') return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
   return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
 }
 function updateFab() {
@@ -6102,9 +7665,22 @@ function updateFab() {
   if (!fab) return;
   var inStudying = window._studyingSetId != null;
   var insideItem = (state.view === 'notes' && state.activeNoteId) || (state.view === 'board' && state.activeBoardId) || (state.view === 'diary' && state.activeNoteId);
+  // inside folder still shows FAB
+  if (state.view==='notes' && state.activeFolderId!=null && !state.activeNoteId) insideItem=false;
   if (inStudying) { fab.classList.add('hidden'); return; }
   var diaryCalendar = state.view === 'diary' && !state.activeNoteId;
+  if (state.view === 'habits') { fab.classList.remove('hidden'); fab.className = 'fab fab-add'; return; }
+  if (state.view === 'registros') {
+    var inRegistroDetail = !!state.activeRegistroId;
+    fab.classList.remove('hidden');
+    fab.className = 'fab';
+    if (inRegistroDetail) document.body.classList.add('registro-edit-mode');
+    else document.body.classList.remove('registro-edit-mode');
+    return;
+  }
   fab.classList.toggle('hidden', (state.view !== 'notes' && state.view !== 'board' && state.view !== 'diary' && state.view !== 'study') || insideItem || diaryCalendar);
+  document.body.classList.remove('registro-edit-mode');
+  if (state.view !== 'habits') fab.className = 'fab fab-add';
 }
 function updateTableFab() {
   var fab = document.getElementById('tableFabBtn');
@@ -6142,20 +7718,30 @@ function showSettings() {
 }
 
 function closeMenu() {
-  document.getElementById('menuOverlay').classList.remove('open');
   document.getElementById('menuSidebar').classList.remove('open');
+  var menu = document.getElementById('contextMenu');
+  var menuHidden = !menu || menu.classList.contains('hidden');
+  if (menuHidden) {
+    document.getElementById('menuOverlay').classList.remove('open');
+  }
 }
 
 function switchView(view) {
+  hideContextMenu();
   clearCurrentUnlock();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (state.view === 'diary' && view !== 'diary') diaryUnlocked = false;
-  if (view === 'notes') state.activeNoteId = null;
+  if (view === 'notes') { state.activeNoteId = null; state.activeFolderId=null; }
   if (view === 'board') state.activeBoardId = null;
   if (view === 'diary') {
     if (!diaryUnlockFlow()) return;
     state.activeNoteId = null;
     resetDiaryCalendarToToday();
+  }
+  if (view === 'registros') {
+    // No limpiar activeRegistroId al entrar a lista; solo si ya estaba en detalle y cambia a otro view, se mantiene
+  } else {
+    // Si sale de registros, no limpiar filtro
   }
   state.view = view;
   var inDiaryNote = view === 'diary' && state.activeNoteId;
@@ -6165,6 +7751,10 @@ function switchView(view) {
   document.getElementById('panelStudy').classList.toggle('hidden', view !== 'study');
   document.getElementById('panelCafecito').classList.toggle('hidden', view !== 'cafecito');
   document.getElementById('panelTrash').classList.toggle('hidden', view !== 'trash');
+  var hp = document.getElementById('panelHabits');
+  if (hp) hp.classList.toggle('hidden', view !== 'habits');
+  var rp = document.getElementById('panelRegistros');
+  if (rp) rp.classList.toggle('hidden', view !== 'registros');
   document.getElementById('menuNotes').classList.toggle('active', view === 'notes');
   document.getElementById('menuBoard').classList.toggle('active', view === 'board');
   var dm = document.getElementById('menuDiary');
@@ -6175,6 +7765,10 @@ function switchView(view) {
   if (cm) cm.classList.toggle('active', view === 'cafecito');
   var tm = document.getElementById('menuTrash');
   if (tm) tm.classList.toggle('active', view === 'trash');
+  var hm = document.getElementById('menuHabits');
+  if (hm) hm.classList.toggle('active', view === 'habits');
+  var rm = document.getElementById('menuRegistros');
+  if (rm) rm.classList.toggle('active', view === 'registros');
   updateFab();
   save();
   if (view === 'diary') { renderDiaryView(); }
@@ -6182,6 +7776,8 @@ function switchView(view) {
   else if (view === 'study') { renderStudyContent(); }
   else if (view === 'cafecito') { renderCafecitoContent(); }
   else if (view === 'trash') { renderTrashContent(); }
+  else if (view === 'habits') { processHabitsDayChange(); renderHabitsView(); }
+  else if (view === 'registros') { renderRegistrosView(); }
   else { renderNoteContent(); }
 }
 
@@ -6198,7 +7794,13 @@ function renderAll() {
   document.getElementById('panelStudy').classList.toggle('hidden', view !== 'study');
   document.getElementById('panelCafecito').classList.toggle('hidden', view !== 'cafecito');
   document.getElementById('panelTrash').classList.toggle('hidden', view !== 'trash');
+  var hp = document.getElementById('panelHabits');
+  if (hp) hp.classList.toggle('hidden', view !== 'habits');
+  var rp = document.getElementById('panelRegistros');
+  if (rp) rp.classList.toggle('hidden', view !== 'registros');
   renderTrashContent();
+  if (view === 'habits') renderHabitsView();
+  if (view === 'registros') renderRegistrosView();
   document.getElementById('menuNotes').classList.toggle('active', view === 'notes');
   document.getElementById('menuBoard').classList.toggle('active', view === 'board');
   var dm = document.getElementById('menuDiary');
@@ -6209,6 +7811,10 @@ function renderAll() {
   if (cm) cm.classList.toggle('active', view === 'cafecito');
   var tm = document.getElementById('menuTrash');
   if (tm) tm.classList.toggle('active', view === 'trash');
+  var hm = document.getElementById('menuHabits');
+  if (hm) hm.classList.toggle('active', view === 'habits');
+  var rm = document.getElementById('menuRegistros');
+  if (rm) rm.classList.toggle('active', view === 'registros');
   updateFab();
   if (view === 'diary' && !state.activeNoteId) renderDiaryCalendar();
 }
@@ -6220,7 +7826,14 @@ document.addEventListener('keydown', function(e) {
     closeDialog('newBoardDialog');
     closeDialog('unlockDialog'); closeDialog('settingsDialog');
     closeDialog('fullsizeOverlay');
+    closeDialog('habitDialog');
+    closeDialog('habitDeleteDialog');
+    closeDialog('registroDialog');
+    closeDialog('registroDeleteDialog');
     pendingUnlock = null; pendingDelete = null;
+    clearHabitHold();
+    clearHabitLongPress();
+    clearRegistroLongPress();
     cancelConnect();
     _exitEditMode();
     hideContextMenu();
@@ -6313,84 +7926,6 @@ function getNoteById(id) {
   return state.notes.find(function(n) { return n.id === id; });
 }
 
-function openReminderDialog() {
-  var note = getNoteById(state.activeNoteId);
-  if (!note) return;
-  var isDiary = note.diary === true;
-  var typeSel = document.getElementById('reminderType');
-  var repeatSel = document.getElementById('reminderRepeat');
-  document.getElementById('reminderTitle').value = '';
-  var timeInput = document.getElementById('reminderTime');
-  if (timeInput) timeInput.value = '09:00';
-  typeSel.value = 'event';
-  repeatSel.innerHTML = '';
-  var opts;
-  if (isDiary) {
-    opts = [
-      { value: 'none', label: t('noRepeat') },
-      { value: 'weekly', label: t('everyWeek') },
-      { value: 'monthly', label: t('everyMonth') },
-      { value: 'yearly', label: t('everyYear') }
-    ];
-  } else {
-    opts = [
-      { value: 'none', label: t('noRepeat') },
-      { value: 'daily', label: t('everyDay') }
-    ];
-  }
-  opts.forEach(function(o) {
-    var opt = document.createElement('option');
-    opt.value = o.value;
-    opt.textContent = o.label;
-    repeatSel.appendChild(opt);
-  });
-  showDialog('dialogReminder');
-  checkTodayNotifications();
-  setTimeout(function(){ document.getElementById('reminderTitle').focus(); }, 100);
-}
-
-function createReminder() {
-  var note = getNoteById(state.activeNoteId);
-  if (!note) return;
-  var title = document.getElementById('reminderTitle').value.trim();
-  if (!title) {
-    document.getElementById('reminderTitle').focus();
-    return;
-  }
-  var type = document.getElementById('reminderType').value;
-  var repeat = document.getElementById('reminderRepeat').value;
-  var timeInput = document.getElementById('reminderTime');
-  var time = timeInput && timeInput.value ? timeInput.value : '09:00';
-  var uuid = generateUUID();
-  var refDate = Date.now();
-  if (note.diary) {
-    var parts = note.title.split('-').map(Number);
-    if (parts.length === 3)
-      refDate = new Date(parts[2], parts[1] - 1, parts[0]).getTime();
-  }
-  var obj = {
-    uuid: uuid,
-    title: title,
-    repetition: repeat,
-    time: time,
-    createdAt: refDate
-  };
-  if (type === 'event') {
-    obj.type = 'event';
-    if (!note.events) note.events = [];
-    note.events.push(obj);
-  } else {
-    obj.type = 'task';
-    obj.status = 'pending';
-    if (!note.tasks) note.tasks = [];
-    note.tasks.push(obj);
-  }
-  closeDialog('dialogReminder');
-  save();
-  renderNoteContent();
-  checkTodayNotifications();
-}
-
 function deleteReminder(noteId, uuid) {
   var note = getNoteById(noteId);
   if (!note) return;
@@ -6440,8 +7975,6 @@ function repetitionMatchesToday(element, today) {
   switch (element.repetition) {
     case 'none':
       return isSameDay(created, today);
-    case 'daily':
-      return true;
     case 'weekly':
       return created.getDay() === today.getDay();
     case 'monthly':
@@ -6462,7 +7995,6 @@ function parseReminderTime(el) {
 function matchesReminderDay(el, d) {
   var created = new Date(el.createdAt);
   switch (el.repetition) {
-    case 'daily': return true;
     case 'weekly': return d.getDay() === created.getDay();
     case 'monthly': return d.getDate() === created.getDate();
     case 'yearly': return d.getMonth() === created.getMonth() && d.getDate() === created.getDate();
@@ -6589,26 +8121,6 @@ function scheduleTestNotification() {
   });
 }
 
-function resetDailyTasks() {
-  var todayStr = getDateStr(new Date());
-  var changed = false;
-  state.notes.forEach(function(note) {
-    (note.tasks || []).forEach(function(t) {
-      if (t.repetition === 'daily' && t.status === 'completed' && t.completedDate !== todayStr) {
-        t.status = 'pending';
-        t.completedDate = '';
-        t._scheduledIds = [];
-        t._nextAt = null;
-        changed = true;
-      }
-    });
-  });
-  if (changed) {
-    save();
-    checkTodayNotifications();
-  }
-}
-
 function openNoteById(noteId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
@@ -6664,6 +8176,819 @@ function cancelReminderNotifications(noteId, uuid) {
     }).catch(function() {});
   }
 }
+
+/* ===================== Hábitos ===================== */
+var _editingHabitId = null;
+var _habitDeleteId = null;
+var _habitHoldTimer = null;
+var _habitHoldInterval = null;
+var _habitLongPressTimer = null;
+var _habitLongPressTarget = null;
+
+function getHabitByUuid(uuid){
+  return (state.habits||[]).find(function(h){ return h.uuid===uuid; });
+}
+
+function getDateStrLocal(d){ return getDateStr(d); }
+
+function processHabitsDayChange(){
+  if(!state.habits) state.habits=[];
+  var todayStr = getDateStr(new Date());
+  var changed=false;
+  function parseDateStr(s){ var p=s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
+  state.habits.forEach(function(h){
+    if(!h.lastProcessedDate){
+      h.lastProcessedDate = todayStr;
+      changed=true;
+      return;
+    }
+    if(h.lastProcessedDate === todayStr) return;
+    var last = parseDateStr(h.lastProcessedDate);
+    var today = parseDateStr(todayStr);
+    var diffDays = Math.round((today - last)/86400000);
+    if(diffDays<=0){ h.lastProcessedDate=todayStr; return; }
+    var completedLastDay = h.lastCompletedDate === h.lastProcessedDate;
+    if(!completedLastDay || diffDays>1){
+      if(h.streak!==0){ h.streak=0; changed=true; }
+    }
+    if(h.status==='completed' || h.current!==0){
+      h.status='pending';
+      h.current=0;
+      changed=true;
+    }
+    h.lastProcessedDate = todayStr;
+  });
+  if(changed){ save(); if(state.view==='habits') renderHabitsView(); checkHabitNotifications(); }
+}
+
+function onHabitTypeChange(){
+  var type = document.getElementById('habitType').value;
+  var cf = document.getElementById('habitCounterFields');
+  if(cf) cf.style.display = type==='counter' ? 'block' : 'none';
+}
+
+function selectHabitIcon(icon){
+  var el = document.getElementById('habitIcon');
+  if(el) el.value = icon;
+}
+
+function selectHabitColor(color){
+  var el = document.getElementById('habitColor');
+  if(el) el.value = color;
+}
+
+function openHabitDialog(type){
+  _editingHabitId = null;
+  var dlgTitle = document.getElementById('habitDialogTitle');
+  if(dlgTitle) dlgTitle.textContent = t('habitCreateTitle');
+  var saveBtn = document.getElementById('habitSaveBtn');
+  if(saveBtn) saveBtn.textContent = t('createHabit');
+  document.getElementById('habitType').value = type||'task';
+  document.getElementById('habitName').value = '';
+  document.getElementById('habitDesc').value = '';
+  document.getElementById('habitIcon').value = '';
+  document.getElementById('habitColor').value = '#5b7db5';
+  document.getElementById('habitTotal').value = '10';
+  document.getElementById('habitStep').value = '1';
+  var ne = document.getElementById('habitNameError');
+  if(ne){ ne.style.display='none'; ne.textContent=''; }
+  var ce = document.getElementById('habitCounterError');
+  if(ce){ ce.style.display='none'; ce.textContent=''; }
+  onHabitTypeChange();
+  applyLang();
+  showDialog('habitDialog');
+  setTimeout(function(){ var i=document.getElementById('habitName'); if(i) i.focus(); },100);
+}
+
+function editHabit(uuid){
+  var h = getHabitByUuid(uuid);
+  if(!h) return;
+  _editingHabitId = uuid;
+  var dlgTitle = document.getElementById('habitDialogTitle');
+  if(dlgTitle) dlgTitle.textContent = t('habitEditTitle');
+  var saveBtn = document.getElementById('habitSaveBtn');
+  if(saveBtn) saveBtn.textContent = t('save');
+  document.getElementById('habitType').value = h.type;
+  document.getElementById('habitName').value = h.name||'';
+  document.getElementById('habitDesc').value = h.description||'';
+  document.getElementById('habitIcon').value = h.icon||'';
+  document.getElementById('habitColor').value = h.color||'#5b7db5';
+  if(h.type==='counter'){
+    document.getElementById('habitTotal').value = String(h.total);
+    document.getElementById('habitStep').value = String(h.step);
+  }
+  var ne = document.getElementById('habitNameError');
+  if(ne){ ne.style.display='none'; ne.textContent=''; }
+  var ce = document.getElementById('habitCounterError');
+  if(ce){ ce.style.display='none'; ce.textContent=''; }
+  onHabitTypeChange();
+  applyLang();
+  hideContextMenu();
+  showDialog('habitDialog');
+}
+
+function validateHabitForm(){
+  var name = document.getElementById('habitName').value.trim();
+  var type = document.getElementById('habitType').value;
+  var ne = document.getElementById('habitNameError');
+  var ce = document.getElementById('habitCounterError');
+  if(ne){ ne.style.display='none'; ne.textContent=''; }
+  if(ce){ ce.style.display='none'; ce.textContent=''; }
+  if(!name){
+    if(ne){ ne.textContent = t('habitNameRequired'); ne.style.display='block'; }
+    document.getElementById('habitName').focus();
+    return null;
+  }
+  var obj = { name:name, description: document.getElementById('habitDesc').value.trim(), icon: document.getElementById('habitIcon').value.trim(), color: document.getElementById('habitColor').value||'#5b7db5', type:type };
+  if(type==='counter'){
+    var total = parseInt(document.getElementById('habitTotal').value,10);
+    var step = parseInt(document.getElementById('habitStep').value,10);
+    if(isNaN(total) || total<=0){
+      if(ce){ ce.textContent = t('habitTotalInvalid'); ce.style.display='block'; }
+      return null;
+    }
+    if(isNaN(step) || step<=0 || step>total){
+      if(ce){ ce.textContent = t('habitStepInvalid'); ce.style.display='block'; }
+      return null;
+    }
+    if(total % step !== 0){
+      if(ce){ ce.textContent = t('habitStepIncoherent'); ce.style.display='block'; }
+      return null;
+    }
+    obj.total = total;
+    obj.step = step;
+  }
+  return obj;
+}
+
+function saveHabit(){
+  var data = validateHabitForm();
+  if(!data) return;
+  if(_editingHabitId){
+    var h = getHabitByUuid(_editingHabitId);
+    if(!h) return;
+    h.name = data.name;
+    h.description = data.description;
+    h.icon = data.icon;
+    h.color = data.color;
+    // tipo no se cambia si ya tiene progreso? permitimos pero ajustamos
+    if(h.type !== data.type){
+      h.type = data.type;
+      if(data.type==='counter'){ h.total=data.total; h.step=data.step; h.current=Math.min(h.current||0, h.total); }
+      else { delete h.total; delete h.step; }
+      // si cambia a task y estaba completado con counter, mantener completado lógica
+    } else if(h.type==='counter'){
+      var oldTotal = h.total;
+      h.total = data.total;
+      h.step = data.step;
+      if(h.current > h.total) h.current = h.total;
+      if(h.current===h.total && h.status==='pending'){ /* si ahora alcanza total, completar */ }
+      if(h.status==='completed' && h.current < h.total) h.status='pending';
+      if(h.current===h.total) { h.status='completed'; handleHabitCompleted(h); }
+    }
+  } else {
+    var todayStr = getDateStr(new Date());
+    var nh = {
+      uuid: generateUUID(),
+      name: data.name,
+      description: data.description,
+      icon: data.icon,
+      color: data.color,
+      type: data.type,
+      current: 0,
+      status: 'pending',
+      streak: 0,
+      lastCompletedDate: null,
+      lastProcessedDate: todayStr,
+      createdAt: Date.now(),
+      history: []
+    };
+    if(data.type==='counter'){ nh.total=data.total; nh.step=data.step; }
+    if(!state.habits) state.habits=[];
+    state.habits.push(nh);
+  }
+  _editingHabitId=null;
+  closeDialog('habitDialog');
+  save();
+  processHabitsDayChange();
+  renderHabitsView();
+  checkHabitNotifications();
+}
+
+function handleHabitCompleted(h){
+  var todayStr = getDateStr(new Date());
+  if(h.lastCompletedDate === todayStr) return; // ya contado hoy
+  h.streak = (h.streak||0)+1;
+  h.lastCompletedDate = todayStr;
+  if(!h.history) h.history=[];
+  h.history.push(todayStr);
+}
+
+function completeHabitTask(uuid){
+  var h = getHabitByUuid(uuid);
+  if(!h || h.type!=='task' || h.status==='completed') return;
+  h.status='completed';
+  handleHabitCompleted(h);
+  save();
+  renderHabitsView();
+  checkHabitNotifications();
+}
+
+function incrementHabit(uuid, isAuto){
+  var h = getHabitByUuid(uuid);
+  if(!h || h.type!=='counter' || h.status==='completed') return;
+  var next = h.current + h.step;
+  if(next > h.total) return;
+  // regla: auto-repeat debe detenerse a un salto del total
+  if(isAuto && next===h.total) return;
+  if(next===h.total){
+    h.current = h.total;
+    h.status='completed';
+    handleHabitCompleted(h);
+  } else {
+    h.current = next;
+  }
+  save();
+  renderHabitsView();
+}
+
+function decrementHabit(uuid){
+  var h = getHabitByUuid(uuid);
+  if(!h || h.type!=='counter' || h.status==='completed') return;
+  var next = h.current - h.step;
+  if(next < 0) next = 0;
+  h.current = next;
+  save();
+  renderHabitsView();
+}
+
+function startHabitHold(uuid, dir){
+  clearHabitHold();
+  var isInc = dir==='inc';
+  _habitHoldTimer = setTimeout(function(){
+    _habitHoldInterval = setInterval(function(){
+      if(isInc) incrementHabit(uuid, true);
+      else decrementHabit(uuid);
+    }, 150);
+  }, 400);
+}
+function clearHabitHold(){
+  if(_habitHoldTimer){ clearTimeout(_habitHoldTimer); _habitHoldTimer=null; }
+  if(_habitHoldInterval){ clearInterval(_habitHoldInterval); _habitHoldInterval=null; }
+}
+document.addEventListener('mouseup', clearHabitHold);
+document.addEventListener('touchend', clearHabitHold);
+document.addEventListener('touchcancel', clearHabitHold);
+
+function resetHabitToday(uuid){
+  var h = getHabitByUuid(uuid);
+  if(!h || h.status!=='completed') return;
+  h.status='pending';
+  h.current=0;
+  // conservar streak y lastCompletedDate/history
+  save();
+  hideContextMenu();
+  renderHabitsView();
+  checkHabitNotifications();
+}
+
+function deleteHabit(uuid){
+  _habitDeleteId = uuid;
+  hideContextMenu();
+  showDialog('habitDeleteDialog');
+}
+function confirmDeleteHabit(){
+  if(!_habitDeleteId) return;
+  var id=_habitDeleteId;
+  _habitDeleteId=null;
+  closeDialog('habitDeleteDialog');
+  // cancelar notificaciones si hay
+  cancelHabitNotifications(id);
+  state.habits = (state.habits||[]).filter(function(h){ return h.uuid!==id; });
+  save();
+  renderHabitsView();
+}
+
+function renderHabitsView(){
+  var container = document.getElementById('habitsContent');
+  if(!container) return;
+  processHabitsDayChange();
+  var pending = (state.habits||[]).filter(function(h){ return h.status==='pending'; });
+  var completed = (state.habits||[]).filter(function(h){ return h.status==='completed'; });
+  var html='';
+  html+='<div class="habits-header"><h2 style="font-size:18px;font-weight:600;color:var(--text);margin:0;">'+escapeHtml(t('habits'))+'</h2></div>';
+  html+='<div class="habits-section"><div class="habits-section-title">'+escapeHtml(t('habitsPending'))+'</div>';
+  if(pending.length===0){
+    html+='<div class="habits-empty">'+escapeHtml(t('habitEmpty'))+'</div>';
+  } else {
+    pending.forEach(function(h){
+      html+= renderHabitCard(h, false);
+    });
+  }
+  html+='</div>';
+  html+='<div class="habits-section"><div class="habits-section-title">'+escapeHtml(t('habitsCompleted'))+'</div>';
+  if(completed.length===0){
+    html+='<div class="habits-empty" style="opacity:0.5;">—</div>';
+  } else {
+    completed.forEach(function(h){
+      html+= renderHabitCard(h, true);
+    });
+  }
+  html+='</div>';
+  container.innerHTML = html;
+  updateBackBtn();
+}
+
+function renderHabitCard(h, isCompleted){
+  var icon = h.icon ? escapeHtml(h.icon) : (h.type==='counter' ? '🔢' : '✅');
+  var color = h.color || 'var(--accent)';
+  var name = escapeHtml(h.name);
+  var desc = h.description ? '<div class="habit-desc">'+escapeHtml(h.description)+'</div>' : '';
+  var streak = isCompleted && h.streak>0 ? '<span class="habit-streak">🔥 '+h.streak+'</span>' : '';
+  var progress = '';
+  var controls = '';
+  if(h.type==='counter' && !isCompleted){
+    progress = '<div class="habit-progress">'+h.current+' / '+h.total+'</div>';
+    var disInc = (h.current + h.step > h.total) ? ' disabled' : '';
+    var disDec = (h.current===0) ? ' disabled' : '';
+    controls = '<div class="habit-controls"><button class="habit-btn habit-dec"'+disDec+' onclick="decrementHabit(\''+h.uuid+'\')" onmousedown="startHabitHold(\''+h.uuid+'\',\'dec\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'dec\')" title="-">↓</button><button class="habit-btn habit-inc"'+disInc+' onclick="incrementHabit(\''+h.uuid+'\', false)" onmousedown="startHabitHold(\''+h.uuid+'\',\'inc\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'inc\')" title="+">↑</button></div>';
+  } else if(h.type==='task' && !isCompleted){
+    controls = '<div class="habit-controls"><button class="habit-btn habit-complete" onclick="completeHabitTask(\''+h.uuid+'\')" title="'+escapeHtml(t('completed'))+'">✓</button></div>';
+  }
+  var cls = isCompleted ? 'habit-card completed' : 'habit-card pending';
+  var longPress = isCompleted ? ' onmousedown="startHabitLongPress(event,\''+h.uuid+'\')" ontouchstart="startHabitLongPress(event,\''+h.uuid+'\')" onmouseup="clearHabitLongPress()" ontouchend="clearHabitLongPress()" ontouchcancel="clearHabitLongPress()"' : '';
+  return '<div class="'+cls+'" data-uuid="'+h.uuid+'"'+longPress+' style="border-left:4px solid '+escapeHtml(color)+'"><div class="habit-card-main"><span class="habit-icon">'+icon+'</span><div class="habit-info"><div class="habit-name">'+name+' '+streak+'</div>'+desc+progress+'</div>'+controls+'</div></div>';
+}
+
+function startHabitLongPress(e, uuid){
+  clearHabitLongPress();
+  _habitLongPressTarget = uuid;
+  _habitLongPressTimer = setTimeout(function(){
+    showHabitContextMenu(uuid, e);
+  }, 600);
+  // prevent context menu default
+  // no preventDefault to allow click
+}
+function clearHabitLongPress(){
+  if(_habitLongPressTimer){ clearTimeout(_habitLongPressTimer); _habitLongPressTimer=null; }
+  _habitLongPressTarget=null;
+}
+function showHabitContextMenu(uuid, e){
+  var h = getHabitByUuid(uuid);
+  if(!h || h.status!=='completed') return;
+  hideContextMenu();
+  var items = [
+    { label: t('resetToday'), action: function(){ resetHabitToday(uuid); } },
+    { label: t('editHabit'), action: function(){ editHabit(uuid); } },
+    { label: t('deleteHabit'), action: function(){ deleteHabit(uuid); } }
+  ];
+  var x = 20, y = 20;
+  if(e){
+    if(e.touches && e.touches[0]){ x = e.touches[0].clientX; y = e.touches[0].clientY; }
+    else if(e.clientX){ x = e.clientX; y = e.clientY; }
+    // clamp
+    x = Math.min(window.innerWidth-160, Math.max(8, x));
+    y = Math.min(window.innerHeight-120, Math.max(8, y));
+  }
+  showContextMenu(x, y, items);
+  if(e) e.preventDefault();
+}
+
+/* === Registros (struct) UI === */
+var _editingRegistroId = null;
+var _deletingRegistroId = null;
+var _registroEditFields = [];
+
+function registroAddField() {
+  _registroEditFields.push({ id: genId(), name: '', type: 'texto' });
+  renderRegistroFieldsList();
+}
+function registroRemoveField(idx) {
+  if (idx<0 || idx>=_registroEditFields.length) return;
+  var fname = _registroEditFields[idx].name;
+  if (fname && !confirm(t('confirmDeleteVariable') + ' "' + fname + '"?')) return;
+  _registroEditFields.splice(idx,1);
+  renderRegistroFieldsList();
+}
+function renderRegistroFieldsList() {
+  var container = document.getElementById('registroFieldsList');
+  if (!container) return;
+  var html='';
+  _registroEditFields.forEach(function(f, i){
+    html+='<div class="registro-field-row" data-idx="'+i+'">';
+    html+='<input type="text" placeholder="'+escapeHtml(t('variableName'))+'" value="'+escapeHtml(f.name)+'" oninput="_registroEditFields['+i+'].name=this.value.trim()" style="flex:1;" />';
+    html+='<select onchange="_registroEditFields['+i+'].type=this.value">';
+    _registroValidTypes.forEach(function(tp){
+      html+='<option value="'+tp+'"'+(f.type===tp?' selected':'')+'>'+escapeHtml(t('type'+tp.charAt(0).toUpperCase()+tp.slice(1))||tp)+'</option>';
+    });
+    html+='</select>';
+    html+='<button type="button" class="btn btn-sm btn-icon" onclick="registroRemoveField('+i+')" title="'+escapeHtml(t('deleteHabit'))+'">&times;</button>';
+    html+='</div>';
+  });
+  container.innerHTML=html;
+}
+function validateRegistroForm() {
+  var nameEl=document.getElementById('registroName');
+  var name=nameEl ? nameEl.value.trim() : '';
+  var nameErr=document.getElementById('registroNameError');
+  var fieldsErr=document.getElementById('registroFieldsError');
+  if (nameErr) { nameErr.style.display='none'; nameErr.textContent=''; }
+  if (fieldsErr) { fieldsErr.style.display='none'; fieldsErr.textContent=''; }
+  if (!name) {
+    if (nameErr){ nameErr.textContent=t('registroNameRequired'); nameErr.style.display=''; }
+    return null;
+  }
+  if (!isValidRegistroName(name)) {
+    if (nameErr){ nameErr.textContent=t('invalidRegistroName'); nameErr.style.display=''; }
+    return null;
+  }
+  if (!isRegistroNameUnique(name, _editingRegistroId)) {
+    if (nameErr){ nameErr.textContent=t('registroExists'); nameErr.style.display=''; }
+    return null;
+  }
+  if (_registroEditFields.length===0) {
+    if (fieldsErr){ fieldsErr.textContent=t('variableNameRequired'); fieldsErr.style.display=''; }
+    return null;
+  }
+  var seen={};
+  var globalSeen={};
+  // Build global seen excluding current registro fields (for edit)
+  ensureRegistros();
+  state.registros.forEach(function(r){
+    if (_editingRegistroId && r.id===_editingRegistroId) return;
+    r.fields.forEach(function(f){ globalSeen[f.name]=true; });
+  });
+  // Also diaryVariables
+  if (state.diaryVariables) {
+    for (var k in state.diaryVariables) if(Object.prototype.hasOwnProperty.call(state.diaryVariables,k)) globalSeen[k]=true;
+  }
+  for (var i=0;i<_registroEditFields.length;i++) {
+    var f=_registroEditFields[i];
+    if (!f.name) {
+      if (fieldsErr){ fieldsErr.textContent=t('variableNameRequired') + ' ('+(i+1)+')'; fieldsErr.style.display=''; }
+      return null;
+    }
+    if (!isValidVarName(f.name)) {
+      if (fieldsErr){ fieldsErr.textContent=t('invalidRegistroName') + ': '+f.name; fieldsErr.style.display=''; }
+      return null;
+    }
+    if (seen[f.name]) {
+      if (fieldsErr){ fieldsErr.textContent=t('variableExists') + ': '+f.name; fieldsErr.style.display=''; }
+      return null;
+    }
+    if (globalSeen[f.name]) {
+      if (fieldsErr){ fieldsErr.textContent=t('variableExists') + ' (global): '+f.name; fieldsErr.style.display=''; }
+      return null;
+    }
+    if (_registroValidTypes.indexOf(f.type)===-1) {
+      if (fieldsErr){ fieldsErr.textContent=t('invalidType')+': '+f.type; fieldsErr.style.display=''; }
+      return null;
+    }
+    seen[f.name]=true;
+  }
+  return { name:name, fields: _registroEditFields.map(function(f){ return { id:f.id, name:f.name, type:f.type }; }) };
+}
+function openRegistroDialog() {
+  _editingRegistroId=null;
+  _registroEditFields=[{id:genId(), name:'', type:'texto'}];
+  document.getElementById('registroName').value='';
+  document.getElementById('registroNameError').style.display='none';
+  document.getElementById('registroFieldsError').style.display='none';
+  document.getElementById('registroDialogTitle').textContent=t('registroCreateTitle');
+  document.getElementById('registroSaveBtn').textContent=t('create');
+  renderRegistroFieldsList();
+  showDialog('registroDialog');
+  setTimeout(function(){ var el=document.getElementById('registroName'); if(el) el.focus(); },100);
+}
+function editRegistro(id) {
+  var r=getRegistroById(id);
+  if(!r) return;
+  _editingRegistroId=id;
+  _registroEditFields = r.fields.map(function(f){ return { id:f.id, name:f.name, type:f.type }; });
+  document.getElementById('registroName').value=r.name;
+  document.getElementById('registroNameError').style.display='none';
+  document.getElementById('registroFieldsError').style.display='none';
+  document.getElementById('registroDialogTitle').textContent=t('registroEditTitle');
+  document.getElementById('registroSaveBtn').textContent=t('save');
+  renderRegistroFieldsList();
+  hideContextMenu();
+  showDialog('registroDialog');
+}
+function saveRegistro() {
+  var data=validateRegistroForm();
+  if(!data) return;
+  ensureRegistros();
+  if (_editingRegistroId) {
+    var r=getRegistroById(_editingRegistroId);
+    if(!r) return;
+    var oldName=r.name;
+    var oldFieldsMap={};
+    r.fields.forEach(function(f){ oldFieldsMap[f.id]=f.name; });
+    // Detect renamed registro
+    var isRename = oldName!==data.name;
+    // Build map old field name -> new name per id
+    var fieldRenameMap={};
+    // Keep track of fields that changed type
+    var changedTypeFields={};
+    // Determine deleted fields
+    var oldFieldIds = r.fields.map(function(f){ return f.id; });
+    var newFieldIds = data.fields.map(function(f){ return f.id; });
+    var deletedFieldNames=[];
+    r.fields.forEach(function(f){
+      if (newFieldIds.indexOf(f.id)===-1) deletedFieldNames.push(f.name);
+    });
+    // Update fields
+    r.fields = data.fields;
+    // Handle rename registro references
+    if (isRename) renameRegistroReferences(oldName, data.name);
+    // Handle field renames and deletions
+    data.fields.forEach(function(nf){
+      var oldFieldName = oldFieldsMap[nf.id];
+      if (oldFieldName && oldFieldName!==nf.name) {
+        renameFieldReferences(data.name, oldFieldName, nf.name);
+        fieldRenameMap[oldFieldName]=nf.name;
+        // Also migrate entries: rename key in each date row
+        for (var d in r.entries) if(Object.prototype.hasOwnProperty.call(r.entries,d)){
+          if (r.entries[d][oldFieldName]!==undefined) {
+            r.entries[d][nf.name]=r.entries[d][oldFieldName];
+            delete r.entries[d][oldFieldName];
+          }
+        }
+      }
+      // Check type change: need to validate existing values
+      var oldField = null;
+      // Find old field object by id (need original list before overwrite? We have oldFieldsMap but not type)
+      // For simplicity, if type changed, try to keep values that still validate, else delete
+    });
+    // For type changes, validate each entry
+    // We need oldFields type map; reconstruct from previous r before update? We saved oldFieldsMap name only, not type.
+    // So we need to capture oldFieldsById before
+    // Instead, we already have r.fields updated, so we need to have stored old fields types earlier
+    // Workaround: if type changed, entries for that field may become invalid; we clean below by re-validating all entries
+    for (var d in r.entries) if(Object.prototype.hasOwnProperty.call(r.entries,d)){
+      for (var fn in r.entries[d]) if(Object.prototype.hasOwnProperty.call(r.entries[d],fn)){
+        var field = r.fields.find(function(f){ return f.name===fn; });
+        if (!field) { delete r.entries[d][fn]; continue; }
+        var v=r.entries[d][fn];
+        // Validate type
+        var valid = validateValueForType(String(v), field.type, typeof v==='string' && v.indexOf(' ')!==-1);
+        // For bool, need special handling: v is boolean, String(v) is "true"/"false" which will validate
+        if (valid===null) {
+          // Try direct validation: if v is already typed (boolean/number), check type
+          if (field.type==='int' && typeof v==='number' && Number.isInteger(v)) valid=v;
+          else if (field.type==='float' && typeof v==='number') valid=v;
+          else if (field.type==='bool' && typeof v==='boolean') valid=v;
+          else if (field.type==='texto' && typeof v==='string') valid=v;
+          else valid=null;
+        }
+        if (valid===null) delete r.entries[d][fn];
+        else r.entries[d][fn]=valid;
+      }
+      if(Object.keys(r.entries[d]).length===0) delete r.entries[d];
+    }
+    // Handle deleted fields already: entries cleaned via type loop, but also ensure deletedFieldNames removed
+    deletedFieldNames.forEach(function(fname){
+      for (var d in r.entries) if(Object.prototype.hasOwnProperty.call(r.entries,d)){
+        if (r.entries[d][fname]!==undefined) delete r.entries[d][fname];
+        if(Object.keys(r.entries[d]).length===0) delete r.entries[d];
+      }
+    });
+    r.name=data.name;
+  } else {
+    var newR={ id:genId(), name:data.name, fields:data.fields, entries:{}, createdAt:Date.now() };
+    state.registros.push(newR);
+  }
+  closeDialog('registroDialog');
+  _editingRegistroId=null;
+  _registroEditFields=[];
+  save();
+  renderRegistrosView();
+}
+function deleteRegistro(id) {
+  var r=getRegistroById(id);
+  if(!r) return;
+  _deletingRegistroId=id;
+  document.getElementById('registroDeleteTitle').textContent=t('confirmDeleteRegistro') + ' "' + r.name + '"?';
+  showDialog('registroDeleteDialog');
+}
+function confirmDeleteRegistro() {
+  if(!_deletingRegistroId) return;
+  var r=getRegistroById(_deletingRegistroId);
+  if(!r) { closeDialog('registroDeleteDialog'); return; }
+  // Push to trash for undo
+  state.trash.push({ type:'registro', data: JSON.parse(JSON.stringify(r)), deletedAt: Date.now() });
+  state.registros = state.registros.filter(function(x){ return x.id!==_deletingRegistroId; });
+  if(state.activeRegistroId===_deletingRegistroId) state.activeRegistroId=null;
+  closeDialog('registroDeleteDialog');
+  _deletingRegistroId=null;
+  save();
+  renderRegistrosView();
+  renderTrashContent();
+}
+function selectRegistro(id) {
+  state.activeRegistroId=id;
+  save();
+  updateFab();
+  renderRegistrosView();
+}
+function backToRegistros() {
+  state.activeRegistroId=null;
+  save();
+  updateFab();
+  renderRegistrosView();
+}
+function exportRegistro(id) {
+  var r=getRegistroById(id);
+  if(!r) return;
+  exportItem(r, 'registro');
+}
+function setRegistroFilter() {
+  var fromEl=document.getElementById('registroFilterFrom');
+  var toEl=document.getElementById('registroFilterTo');
+  var from=fromEl ? fromEl.value : null;
+  var to=toEl ? toEl.value : null;
+  // from/to are YYYY-MM-DD from input type=date
+  // If one empty, set null
+  if(from==='') from=null;
+  if(to==='') to=null;
+  state.registrosFilter={ from:from, to:to };
+  save();
+  renderRegistrosView();
+}
+function clearRegistroFilter() {
+  state.registrosFilter={ from:null, to:null };
+  var f=document.getElementById('registroFilterFrom'); if(f) f.value='';
+  var t=document.getElementById('registroFilterTo'); if(t) t.value='';
+  save();
+  renderRegistrosView();
+}
+function renderRegistrosView() {
+  var container=document.getElementById('registrosContent');
+  if(!container) return;
+  ensureRegistros();
+  var active=getRegistroById(state.activeRegistroId);
+  if (active) {
+    // Detail view (header removido, título va en headerBackBtn)
+    var html='<div class="registros-detail">';
+    // Fields summary
+    html+='<div class="habits-section" style="padding:10px;"><div class="habits-section-title">'+escapeHtml(t('variableType'))+'s</div>';
+    if(active.fields.length===0) html+='<div class="habits-empty">'+escapeHtml(t('noRegistros'))+'</div>';
+    else {
+      active.fields.forEach(function(f){
+        html+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--border);"><span style="flex:1;font-size:13px;">'+escapeHtml(f.name)+' : '+escapeHtml(f.type)+'</span></div>';
+      });
+    }
+    html+='</div>';
+    // Filter
+    var fromVal = state.registrosFilter && state.registrosFilter.from ? state.registrosFilter.from : '';
+    var toVal = state.registrosFilter && state.registrosFilter.to ? state.registrosFilter.to : '';
+    html+='<div class="registros-filter"><div class="field"><label style="font-size:11px;color:var(--text-muted);">'+escapeHtml(t('fromDate'))+'</label><input type="date" id="registroFilterFrom" value="'+fromVal+'" onchange="setRegistroFilter()" style="width:100%;" /></div><div class="field"><label style="font-size:11px;color:var(--text-muted);">'+escapeHtml(t('toDate'))+'</label><input type="date" id="registroFilterTo" value="'+toVal+'" onchange="setRegistroFilter()" style="width:100%;" /></div><button class="btn btn-sm" onclick="clearRegistroFilter()">'+escapeHtml(t('clearFilter'))+'</button></div>';
+    // Table
+    var filter=null;
+    if(fromVal || toVal){
+      var fStr='';
+      if(fromVal && toVal) fStr=fromVal+':'+toVal;
+      else if(fromVal) fStr=fromVal+':'+fromVal;
+      else if(toVal) fStr=toVal+':'+toVal;
+      filter=parseDateFilter(fStr);
+      if(filter) filter.raw=fStr;
+    }
+    var dates=Object.keys(active.entries||{}).sort();
+    var filtered=dates.filter(function(d){ return isDateInFilter(d, filter); });
+    if (filtered.length===0) {
+      html+='<div class="registros-empty" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;">'+escapeHtml(t('noRegistros'))+'</div>';
+    } else {
+      html+='<div class="registros-table-wrap"><table class="registros-table"><thead><tr><th class="col-fecha">Fecha</th>';
+      active.fields.forEach(function(f){ html+='<th>'+escapeHtml(f.name)+' <span style="font-size:10px;opacity:0.6;">'+escapeHtml(f.type)+'</span></th>'; });
+      html+='</tr></thead><tbody>';
+      filtered.forEach(function(d){
+        var row=active.entries[d];
+        html+='<tr><td class="col-fecha">'+escapeHtml(formatDisplayDate(d))+'</td>';
+        active.fields.forEach(function(f){
+          var v=row[f.name];
+          var disp = v!==undefined ? escapeHtml(formatRegistroValue(v,f.type)) : '<span style="opacity:0.3">—</span>';
+          html+='<td>'+disp+'</td>';
+        });
+        html+='</tr>';
+      });
+      html+='</tbody></table></div>';
+    }
+    html+='</div>';
+    container.innerHTML=html;
+    updateBackBtn();
+    return;
+  }
+  // List view (header removido)
+  var html='';
+  if(state.registros.length===0){
+    html+='<div class="habits-empty">'+escapeHtml(t('registrosEmpty'))+'</div>';
+  } else {
+    state.registros.forEach(function(r){
+      var varCount=r.fields.length;
+      var entryCount=Object.keys(r.entries||{}).length;
+      html+='<div class="registro-card" onclick="handleRegistroClick(event,'+r.id+')" onmousedown="startRegistroLongPress(event,'+r.id+')" ontouchstart="startRegistroLongPress(event,'+r.id+')" onmouseup="clearRegistroLongPress()" ontouchend="clearRegistroLongPress()" ontouchcancel="clearRegistroLongPress()" oncontextmenu="event.preventDefault(); showRegistroContextMenu('+r.id+',event); return false;">';
+      html+='<div class="registro-card-title">'+escapeHtml(r.name)+'</div>';
+      html+='<div class="registro-card-meta">'+varCount+' variables &middot; '+entryCount+' días</div>';
+      html+='</div>';
+    });
+  }
+  container.innerHTML=html;
+  updateBackBtn();
+}
+var _registroLongPressTimer=null;
+var _registroLongPressTarget=null;
+var _registroLongPressFired=false;
+function startRegistroLongPress(e, id){
+  clearRegistroLongPress();
+  _registroLongPressTarget=id;
+  _registroLongPressTimer=setTimeout(function(){
+    _registroLongPressFired=true;
+    showRegistroContextMenu(id, e);
+    setTimeout(function(){ _registroLongPressFired=false; }, 800);
+  }, 600);
+}
+function clearRegistroLongPress(){
+  if(_registroLongPressTimer){ clearTimeout(_registroLongPressTimer); _registroLongPressTimer=null; }
+  _registroLongPressTarget=null;
+}
+function handleRegistroClick(e, id){
+  if(_registroLongPressFired){ _registroLongPressFired=false; return; }
+  if(_registroLongPressTarget!==null){ clearRegistroLongPress(); }
+  selectRegistro(id);
+}
+function showRegistroContextMenu(id, e){
+  var r=getRegistroById(id);
+  if(!r) return;
+  hideContextMenu();
+  var items=[
+    { label: t('edit'), action: function(){ editRegistro(id); } },
+    { label: t('exportRegistro'), action: function(){ exportRegistro(id); } },
+    { label: t('deleteRegistro'), action: function(){ deleteRegistro(id); } }
+  ];
+  var x=20, y=20;
+  if(e){
+    if(e.touches && e.touches[0]){ x=e.touches[0].clientX; y=e.touches[0].clientY; }
+    else if(e.clientX){ x=e.clientX; y=e.clientY; }
+    x=Math.min(window.innerWidth-160, Math.max(8, x));
+    y=Math.min(window.innerHeight-120, Math.max(8, y));
+  }
+  showContextMenu(x, y, items);
+  if(e) e.preventDefault();
+}
+
+/* Notificaciones Hábitos */
+function checkHabitNotifications(){
+  if(typeof Capacitor==='undefined' || !Capacitor.Plugins || !Capacitor.Plugins.LocalNotifications) return;
+  Capacitor.Plugins.LocalNotifications.checkPermissions().then(function(perm){
+    if(perm.display==='granted') doCheckHabitNotifications();
+    else Capacitor.Plugins.LocalNotifications.requestPermissions().then(function(p){ if(p.display==='granted') doCheckHabitNotifications(); }).catch(function(){});
+  }).catch(function(){});
+}
+function doCheckHabitNotifications(){
+  if(!state.habits || state.habits.length===0) return;
+  var pending = state.habits.filter(function(h){ return h.status==='pending'; });
+  if(pending.length===0) return;
+  // Cancelar anteriores hábito
+  // Para simplificar, programar una notificación diaria agregada a las 09:00 si hay pendientes
+  // Si ya existe _habitNotifIds, cancelar
+  var now = new Date();
+  var next = new Date(now);
+  next.setHours(9,0,0,0);
+  if(next.getTime() <= now.getTime()) next.setDate(next.getDate()+1);
+  // usar un id fijo derivado para hábitos agregada
+  var habitNotifId = 999999;
+  // Cancelar previa si existe (usamos cancel con id fijo)
+  if(window._habitNextAt === next.getTime()) return;
+  if(typeof Capacitor!=='undefined' && Capacitor.Plugins && Capacitor.Plugins.LocalNotifications){
+    Capacitor.Plugins.LocalNotifications.cancel({ notifications:[{id:habitNotifId}] }).catch(function(){});
+    var title = t('habits');
+    var body = pending.length===1 ? pending[0].name : pending.length + ' ' + t('habitsPending').toLowerCase();
+    Capacitor.Plugins.LocalNotifications.schedule({
+      notifications: [{
+        id: habitNotifId,
+        title: title + ' - ' + t('habitsPending'),
+        body: body,
+        schedule: { at: next, allowWhileIdle:true },
+        data: { habitReminder:true }
+      }]
+    }).catch(function(err){ console.warn('habit notif error',err); });
+    window._habitNextAt = next.getTime();
+  }
+}
+function cancelHabitNotifications(uuid){
+  // por ahora solo notificación agregada, no per-hábito. Si per-hábito, cancelar por uuid
+  // placeholder para futuro per-hábito ids
+  if(typeof Capacitor!=='undefined' && Capacitor.Plugins && Capacitor.Plugins.LocalNotifications){
+    // cancelar agregada si se elimina último pendiente
+    var pending = (state.habits||[]).filter(function(h){ return h.status==='pending' && h.uuid!==uuid; });
+    if(pending.length===0){
+      Capacitor.Plugins.LocalNotifications.cancel({ notifications:[{id:999999}] }).catch(function(){});
+      window._habitNextAt=null;
+    }
+  }
+}
+
+
 
 /* Registrar listener para apertura desde notificaciones */
 if (typeof Capacitor !== 'undefined' && Capacitor.Plugins && Capacitor.Plugins.LocalNotifications) {
@@ -6769,6 +9094,8 @@ function showStatsDialog() {
   if (state.boards) state.boards.forEach(function(b) { totalPostits += (b.postits ? b.postits.length : 0) + ((b.elements && b.elements.length) || 0); });
   var totalReminders = 0;
   if (state.notes) state.notes.forEach(function(n) { totalReminders += ((n.events ? n.events.length : 0) + (n.tasks ? n.tasks.length : 0)); });
+  var totalHabits = state.habits ? state.habits.length : 0;
+  var totalRegistros = state.registros ? state.registros.length : 0;
   var totalWords = 0;
   if (state.notes) state.notes.forEach(function(n) {
     if (n.items) n.items.forEach(function(item) { if (item.text) totalWords += item.text.split(/\s+/).filter(function(w) { return w.length > 0; }).length; });
@@ -6780,6 +9107,8 @@ function showStatsDialog() {
     '<div class="stats-row"><span class="stats-label">' + t('totalStudySets') + '</span><span class="stats-value">' + totalStudySets + '</span></div>' +
     '<div class="stats-row"><span class="stats-label">' + t('totalPostits') + '</span><span class="stats-value">' + totalPostits + '</span></div>' +
     '<div class="stats-row"><span class="stats-label">' + t('totalReminders') + '</span><span class="stats-value">' + totalReminders + '</span></div>' +
+    '<div class="stats-row"><span class="stats-label">' + t('habits') + '</span><span class="stats-value">' + totalHabits + '</span></div>' +
+    '<div class="stats-row"><span class="stats-label">' + t('totalRegistros') + '</span><span class="stats-value">' + totalRegistros + '</span></div>' +
     '<div class="stats-row"><span class="stats-label">' + t('totalWords') + '</span><span class="stats-value">' + totalWords + '</span></div>';
   showDialog('statsDialog');
 }
