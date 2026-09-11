@@ -424,9 +424,9 @@ body.light .diary-calendar { color: #333; }
 .cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); padding: 4px 16px 0; flex-shrink: 0; }
 .cal-weekday { text-align: center; font-size: 12px; font-weight: 600; color: #999; padding: 6px 0; }
 
-.cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; padding: 4px 16px 16px; flex: 1; align-content: start; }
+.cal-days { display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(6, 1fr); gap: 2px; padding: 4px 16px 16px; flex: 1; align-content: stretch; }
 
-.cal-day { position: relative; display: flex; align-items: center; justify-content: center; border: none; border-radius: 50%; cursor: pointer; font-size: 14px; background: transparent; color: #333; transition: background 0.15s; aspect-ratio: 1; max-height: 52px; min-width: 0; padding: 0; font-family: inherit; }
+.cal-day { position: relative; display: flex; align-items: center; justify-content: center; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; background: transparent; color: #333; transition: background 0.15s; aspect-ratio: 1 / 1; width: 100%; max-width: 52px; justify-self: center; align-self: center; min-width: 0; min-height: 0; padding: 0; font-family: inherit; }
 .cal-day:hover { background: #f0f0f0; }
 .cal-day.other-month { color: #ccc; }
 .cal-day.today { background: #4caf50; color: #fff; }
@@ -438,6 +438,22 @@ body.light .diary-calendar { color: #333; }
 .cal-day.has-reminder { outline: 2px solid #666; outline-offset: -2px; }
 body.diary-reminder-alt .cal-day.has-reminder { outline-color: #333; }
 .cal-day .cal-day-num { line-height: 1; }
+.cal-count { position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; padding: 0 3px; border-radius: 4px; background: #5b7db5; color: #fff; font-size: 10px; font-weight: 700; line-height: 16px; text-align: center; pointer-events: none; }
+.cal-day.today .cal-count { background: #fff; color: #4caf50; }
+.cal-day.selected .cal-count { background: #fff; color: #5b7db5; }
+
+/* Selector flotante compacto de notas del Diario (3x3) */
+.diary-selector-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 2500; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; }
+.diary-selector { background: var(--surface, #fff); border: 1px solid var(--border, #ddd); border-radius: 12px; padding: 12px; width: min(92vw, 360px); max-width: 100%; max-height: 80vh; overflow-y: auto; box-shadow: 0 8px 30px rgba(0,0,0,0.25); box-sizing: border-box; }
+.diary-selector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.diary-note-card, .diary-add-card { aspect-ratio: 1 / 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; position: relative; min-width: 0; min-height: 0; padding: 8px; box-sizing: border-box; font-size: 13px; }
+.diary-note-card { background: var(--surface-hover, #f0f0f0); border: 1px solid var(--border, #ddd); color: var(--text, #333); overflow: hidden; }
+.diary-note-card:hover { filter: brightness(0.97); }
+.diary-note-card-title { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; word-break: break-word; line-height: 1.3; }
+.diary-note-card-del { position: absolute; top: 2px; right: 2px; width: 22px; height: 22px; border-radius: 50%; border: none; background: rgba(0,0,0,0.12); color: inherit; font-size: 14px; line-height: 1; cursor: pointer; padding: 0; }
+.diary-note-card-del:hover { background: rgba(0,0,0,0.25); color: #fff; }
+.diary-add-card { background: #fff; border: 1px dashed #bbb; color: #888; font-size: 28px; font-weight: 300; }
+.diary-add-card:hover { background: #fafafa; border-color: #999; }
 
 .cal-picker-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 2000; display: flex; align-items: center; justify-content: center; }
 .cal-picker { background: #fff; border-radius: 12px; max-height: 60vh; overflow-y: auto; min-width: 200px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); scrollbar-width: thin; }

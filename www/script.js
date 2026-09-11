@@ -743,7 +743,7 @@ function exportSingleFolder(id){
 
 function exportData() {
   var manifest = {
-    formatVersion: 5,
+    formatVersion: 6,
     app: 'AppNotas',
     createdAt: new Date().toISOString(),
     notesCount: state.notes.length,
@@ -843,7 +843,7 @@ function importData(input) {
       return manifestFile.async('string').then(function(manifestStr) {
         var manifest = JSON.parse(manifestStr);
         var version = manifest.formatVersion || 1;
-        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5) {
+        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5 && version !== 6) {
           alert('Este archivo fue creado con una versión incompatible de la aplicación.');
           return;
         }
@@ -887,10 +887,41 @@ function importData(input) {
       return Promise.all(imgRestorePromises).then(function() {
         state.notes = notas || [];
         state.notes.forEach(function(n) { if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; n.events = (n.events||[]).filter(function(e){ return e.repetition !== 'daily'; }); n.tasks = (n.tasks||[]).filter(function(t){ return t.repetition !== 'daily'; }); });
+        migrateDiaryNotes();
         state.boards = config.boards || [];
         state.studySets = config.studySets || [];
         state.trash = config.trash || [];
         state.habits = config.habits || [];
+        // Normalizar hábitos importados y congelar fecha para no romper racha en migración
+        (function(){
+          var todayStrImp = getDateStr(new Date());
+          (state.habits||[]).forEach(function(h){
+            if(!h.uuid) h.uuid = generateUUID();
+            if(h.current==null) h.current=0;
+            if(!h.status) h.status='pending';
+            if(h.streak==null) h.streak=0;
+            if(!h.history) h.history=[];
+            if(h.total!=null) h.total=Number(h.total);
+            if(h.step!=null) h.step=Number(h.step);
+            if(h.type==='counter' && (h.total==null||h.step==null)) h.type='task';
+            // Defensa: si streak 0 pero history indica racha reciente, restaurar
+            if(h.streak===0 && h.history.length>0){
+              var rec=recalcStreakFromHistory(h);
+              if(rec>0){
+                var lastDone=h.lastCompletedDate||h.history[h.history.length-1];
+                if(lastDone){
+                  var pp=lastDone.split('-').map(Number);
+                  var tp=todayStrImp.split('-').map(Number);
+                  var d1=new Date(pp[0],pp[1]-1,pp[2]);
+                  var d2=new Date(tp[0],tp[1]-1,tp[2]);
+                  var diff=Math.round((d2-d1)/86400000);
+                  if(diff<=1) h.streak=rec;
+                }
+              }
+            }
+            h.lastProcessedDate = todayStrImp;
+          });
+        })();
         state.registros = config.registros && Array.isArray(config.registros) ? config.registros : [];
         state.activeRegistroId = config.activeRegistroId || null;
         state.registrosFilter = config.registrosFilter && typeof config.registrosFilter === 'object' ? config.registrosFilter : { from: null, to: null };
@@ -936,6 +967,7 @@ function importData(input) {
         })();
         save();
         closeDialog('settingsDialog');
+        // No llamar processHabitsDayChange destructivo justo tras importar
         renderAll();
         if (missingImages.length > 0) {
           alert('Datos restaurados. Faltaron ' + missingImages.length + ' archivo(s) multimedia que no pudieron restaurarse. Revisa la consola para más detalles.');
@@ -998,8 +1030,10 @@ function importSingleItem(input) {
       existingArr.push(data);
       if(type==='note'){
         if(data.folderId!=null && !getFolderById(data.folderId)) data.folderId=null;
+        if (data.diary) { data.folderId = undefined; }
+        migrateDiaryNotes();
         ensureRootOrder();
-        if(data.folderId==null && !state.rootOrder.find(function(e){return e.type==='note'&&e.id===data.id;})){
+        if(!data.diary && data.folderId==null && !state.rootOrder.find(function(e){return e.type==='note'&&e.id===data.id;})){
           state.rootOrder.push({type:'note', id:data.id});
         }
       }
@@ -1246,6 +1280,23 @@ function applyLang() {
   if (wge) wge.textContent = t('understood');
   var wls = document.getElementById('welcomeLangSelect');
   if (wls) wls.value = state.lang || 'en';
+  /* Reminder dialog (solo Diario) */
+  var rdTitle = document.querySelector('#dialogReminder .dialog-title');
+  if (rdTitle) rdTitle.textContent = t('remindMe');
+  var rdTypeLbl = document.querySelector('#dialogReminder label[for="reminderType"]');
+  if (rdTypeLbl) rdTypeLbl.textContent = t('type');
+  var rdTypeOpts = document.querySelectorAll('#reminderType option');
+  if (rdTypeOpts.length >= 2) { rdTypeOpts[0].textContent = t('event'); rdTypeOpts[1].textContent = t('task'); }
+  var rdRepeatLbl = document.querySelector('#dialogReminder label[for="reminderRepeat"]');
+  if (rdRepeatLbl) rdRepeatLbl.textContent = t('repeat');
+  var rdTitleLbl = document.querySelector('#dialogReminder label[for="reminderTitle"]');
+  if (rdTitleLbl) rdTitleLbl.textContent = t('title');
+  var rdTimeLbl = document.getElementById('reminderTimeLabel');
+  if (rdTimeLbl) rdTimeLbl.textContent = t('time');
+  var rdTitleInput = document.getElementById('reminderTitle');
+  if (rdTitleInput) rdTitleInput.placeholder = t('title');
+  var rdBtns = document.querySelectorAll('#dialogReminder .dialog-actions .btn');
+  if (rdBtns.length >= 2) { rdBtns[0].textContent = t('cancel'); rdBtns[1].textContent = t('create'); }
   /* Hábitos menu */
   var mh = document.getElementById('menuHabitsLabel');
   if (mh) mh.textContent = t('habits');
@@ -1324,6 +1375,39 @@ var postitDragState = null;
 var boardPanState = null;
 var diaryUnlocked = false;
 var _calMonth, _calYear, _calSelectedDay;
+
+/* Diario multi-nota: fecha -> coleccion (max 9) */
+var MAX_DIARY_NOTES_PER_DAY = 9;
+var _diarySelector = null; /* {day, month, year} dia con selector abierto */
+var _pendingDiaryDate = null; /* dateStr "d-m-yyyy" pendiente de crear via dialogo existente */
+function getDiaryDateKey(note) {
+  if (!note) return '';
+  if (note.diaryDate) return note.diaryDate;
+  return note.title || '';
+}
+function getDiaryNotes(d, m, y) {
+  var s = dateStr(d, m, y);
+  return state.notes.filter(function(n) { return n.diary && getDiaryDateKey(n) === s; });
+}
+function migrateDiaryNotes() {
+  if (!state.notes) return;
+  state.notes.forEach(function(n) {
+    if (!n.diary) return;
+    if (!n.diaryDate) {
+      var t = n.title || '';
+      var p = String(t).split('-').map(function(x){ return parseInt(x,10); });
+      if (p.length === 3 && !isNaN(p[0]) && !isNaN(p[1]) && !isNaN(p[2])) {
+        n.diaryDate = p[0] + '-' + p[1] + '-' + p[2];
+      } else {
+        n.diaryDate = t;
+      }
+    }
+    if (!n.events) n.events = [];
+    if (!n.tasks) n.tasks = [];
+    if (n.items === undefined || n.items === null) n.items = [];
+    if (n.pwdHash === undefined) n.pwdHash = '';
+  });
+}
 
 /* Folders helpers */
 var _createTab = 'note';
@@ -1407,14 +1491,17 @@ function resetDiaryCalendarToToday() {
 function dateStr(d, m, y) { return d + '-' + (m + 1) + '-' + y; }
 
 function getDiaryNote(d, m, y) {
-  var s = dateStr(d, m, y);
-  return state.notes.find(function(n) { return n.diary && n.title === s; });
+  var list = getDiaryNotes(d, m, y);
+  return list.length > 0 ? list[0] : undefined;
 }
 function doesDayHaveReminder(d, m, y) {
   var targetDate = new Date(y, m, d);
-  var ownNote = getDiaryNote(d, m, y);
-  if (ownNote && ((ownNote.events && ownNote.events.length > 0) || (ownNote.tasks && ownNote.tasks.length > 0))) {
-    return true;
+  var ownNotes = getDiaryNotes(d, m, y);
+  for (var k = 0; k < ownNotes.length; k++) {
+    var on = ownNotes[k];
+    if ((on.events && on.events.length > 0) || (on.tasks && on.tasks.length > 0)) {
+      return true;
+    }
   }
   for (var i = 0; i < state.notes.length; i++) {
     var n = state.notes[i];
@@ -1433,17 +1520,127 @@ function selectCalendarDay(d, m, y) {
 }
 
 function openCalendarDay(d, m, y) {
+  openDiarySelector(d, m, y);
+}
+
+function openDiarySelector(d, m, y) {
   if (!diaryUnlockFlow()) return;
-  var note = getDiaryNote(d, m, y);
-  if (!note) {
-    note = { id: genId(), title: dateStr(d, m, y), items: [], pwdHash: '', diary: true };
-    state.notes.push(note);
-    save();
+  _calSelectedDay = { day: d, month: m, year: y };
+  _diarySelector = { day: d, month: m, year: y };
+  renderCalendarGrid();
+  renderDiarySelector();
+}
+
+function closeDiarySelector() {
+  _diarySelector = null;
+  var ov = document.getElementById('diarySelectorOverlay');
+  if (ov) ov.remove();
+}
+
+function hideDiarySelectorOverlay() {
+  var ov = document.getElementById('diarySelectorOverlay');
+  if (ov) ov.remove();
+}
+
+function setDiaryCreateMode(on) {
+  var tabFolder = document.getElementById('createTabFolder');
+  var tabs = document.querySelector('.create-tabs');
+  if (on) {
+    if (tabFolder) tabFolder.style.display = 'none';
+    if (tabs) tabs.style.display = 'none';
+    _createTab = 'note';
+    var notePane = document.getElementById('createNotePane');
+    var folderPane = document.getElementById('createFolderPane');
+    var tabNote = document.getElementById('createTabNote');
+    if (notePane) notePane.classList.remove('hidden');
+    if (folderPane) folderPane.classList.add('hidden');
+    if (tabNote) tabNote.classList.add('active');
+  } else {
+    if (tabFolder) tabFolder.style.display = '';
+    if (tabs) tabs.style.display = '';
   }
-  state.activeNoteId = note.id;
+}
+
+function refreshDiarySelectorIfOpen() {
+  if (!_diarySelector) return;
+  renderCalendarGrid();
+  renderDiarySelector();
+}
+
+function getSelectorNotes() {
+  if (!_diarySelector) return [];
+  return getDiaryNotes(_diarySelector.day, _diarySelector.month, _diarySelector.year);
+}
+
+function renderDiarySelector() {
+  var old = document.getElementById('diarySelectorOverlay');
+  if (old) old.remove();
+  if (!_diarySelector) return;
+  var d = _diarySelector.day, m = _diarySelector.month, y = _diarySelector.year;
+  var notes = getDiaryNotes(d, m, y);
+  var ov = document.createElement('div');
+  ov.id = 'diarySelectorOverlay';
+  ov.className = 'diary-selector-overlay';
+  ov.setAttribute('onclick', 'if(event.target===this) closeDiarySelector()');
+  var box = document.createElement('div');
+  box.className = 'diary-selector';
+  box.setAttribute('onclick', 'event.stopPropagation()');
+  var grid = document.createElement('div');
+  grid.className = 'diary-selector-grid';
+  notes.forEach(function(n) {
+    var card = document.createElement('div');
+    card.className = 'diary-note-card';
+    card.setAttribute('data-note-id', String(n.id));
+    card.setAttribute('onclick', 'openDiaryNoteById(' + n.id + ')');
+    var title = document.createElement('div');
+    title.className = 'diary-note-card-title';
+    title.textContent = n.title || '';
+    card.appendChild(title);
+    var del = document.createElement('button');
+    del.className = 'diary-note-card-del';
+    del.textContent = '×';
+    del.setAttribute('onclick', 'event.stopPropagation(); confirmDeleteNote(' + n.id + ')');
+    card.appendChild(del);
+    grid.appendChild(card);
+  });
+  if (notes.length < MAX_DIARY_NOTES_PER_DAY) {
+    var add = document.createElement('div');
+    add.className = 'diary-add-card';
+    add.textContent = '+';
+    add.setAttribute('onclick', 'openDiaryCreate(' + d + ',' + m + ',' + y + ')');
+    grid.appendChild(add);
+  }
+  box.appendChild(grid);
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+}
+
+function openDiaryNoteById(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note || !note.diary) return;
+  if (!diaryUnlockFlow()) return;
+  closeDiarySelector();
+  state.activeNoteId = noteId;
   state.view = 'diary';
   save();
   renderAll();
+}
+
+function openDiaryCreate(d, m, y) {
+  if (!diaryUnlockFlow()) return;
+  var existing = getDiaryNotes(d, m, y);
+  if (existing.length >= MAX_DIARY_NOTES_PER_DAY) return;
+  _pendingDiaryDate = dateStr(d, m, y);
+  _diarySelector = { day: d, month: m, year: y };
+  hideDiarySelectorOverlay();
+  var titleEl = document.getElementById('newNoteTitle');
+  if (titleEl) titleEl.value = '';
+  var pwdEl = document.getElementById('newNotePwd');
+  if (pwdEl) pwdEl.value = '';
+  _createTab = 'note';
+  setDiaryCreateMode(true);
+  showDialog('newNoteDialog');
+  setTimeout(function(){ var el = document.getElementById('newNoteTitle'); if (el) el.focus(); }, 100);
 }
 
 function updateCalendarHeader() {
@@ -1543,7 +1740,7 @@ function renderCalendarGrid() {
     html += '<div class="cal-weekday">' + dayAbbrs[w] + '</div>';
   }
   html += '</div><div class="cal-days">';
-  var totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+  var totalCells = 42;
   for (var i = 0; i < totalCells; i++) {
     var cellDay, cellMonth, cellYear, cls = 'cal-day';
     if (i < firstDay) {
@@ -1569,13 +1766,15 @@ function renderCalendarGrid() {
     if (cellDay === today.getDate() && cellMonth === today.getMonth() && cellYear === today.getFullYear()) {
       cls += ' today';
     }
-    var note = getDiaryNote(cellDay, cellMonth, cellYear);
-    if (note) cls += ' has-note';
+    var dayNotes = getDiaryNotes(cellDay, cellMonth, cellYear);
+    if (dayNotes.length > 0) cls += ' has-note';
     if (doesDayHaveReminder(cellDay, cellMonth, cellYear)) {
       cls += ' has-reminder';
     }
     html += '<div class="' + cls + '" data-day="' + cellDay + '" data-month="' + cellMonth + '" data-year="' + cellYear + '" onclick="selectCalendarDay(' + cellDay + ',' + cellMonth + ',' + cellYear + ')" ondblclick="openCalendarDay(' + cellDay + ',' + cellMonth + ',' + cellYear + ')">' +
-      '<span class="cal-day-num">' + cellDay + '</span></div>';
+      '<span class="cal-day-num">' + cellDay + '</span>';
+    if (dayNotes.length > 0) html += '<span class="cal-count">' + dayNotes.length + '</span>';
+    html += '</div>';
   }
   html += '</div>';
   wrap.innerHTML = html;
@@ -1984,6 +2183,7 @@ function load() {
       if (n.events) n.events = n.events.filter(function(e){ return e.repetition !== 'daily'; });
       if (n.tasks) n.tasks = n.tasks.filter(function(t){ return t.repetition !== 'daily'; });
     });
+    migrateDiaryNotes();
     if (state.habits) state.habits.forEach(function(h){
       if (h.current == null) h.current = 0;
       if (!h.status) h.status = 'pending';
@@ -1992,6 +2192,21 @@ function load() {
       if (!h.history) h.history = [];
       if (h.total != null) h.total = Number(h.total);
       if (h.step != null) h.step = Number(h.step);
+      // Defensa migración: si streak es 0 pero history indica racha reciente (último completado ayer/hoy), recalcular
+      if(h.streak===0 && h.history.length>0){
+        var rec = recalcStreakFromHistory(h);
+        if(rec>0){
+          var todayStr = getDateStr(new Date());
+          function parseDS(s){ var p=s.split('-').map(Number); return new Date(p[0],p[1]-1,p[2]); }
+          var lastDone = h.lastCompletedDate || h.history[h.history.length-1];
+          if(lastDone){
+            var dLast = parseDS(lastDone);
+            var dToday = parseDS(todayStr);
+            var diff = Math.round((dToday - dLast)/86400000);
+            if(diff<=1){ h.streak = rec; }
+          }
+        }
+      }
     });
     // Migración: si diaryVariables está vacío pero hay asignaciones en notas del Diario ya existentes, reconstruir historial
     if (state.diaryVariables && Object.keys(state.diaryVariables).length===0 && state.notes) {
@@ -2115,6 +2330,12 @@ function showDialog(id) { hideContextMenu(); document.getElementById(id).classLi
 function closeDialog(id) {
   document.getElementById(id).classList.add('hidden');
   if (id === 'unlockDialog') { pendingDelete = null; pendingUnlock = null; resetUnlockDialog(); }
+  if (id === 'newNoteDialog') {
+    var wasDiaryPending = !!_pendingDiaryDate;
+    _pendingDiaryDate = null;
+    setDiaryCreateMode(false);
+    if (wasDiaryPending && _diarySelector) renderDiarySelector();
+  }
 }
 function welcomeSetLang(code) {
   state.lang = code;
@@ -2185,11 +2406,14 @@ function isValidVarName(name) {
   return /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(name);
 }
 function diaryDateISO(note) {
-  if (note && note.diary && note.title) {
-    var p = note.title.split('-').map(function(x){ return parseInt(x,10); });
-    if (p.length===3 && !isNaN(p[0]) && !isNaN(p[1]) && !isNaN(p[2])) {
-      var d = new Date(p[2], p[1]-1, p[0]);
-      if (!isNaN(d.getTime())) return getDateStr(d);
+  if (note && note.diary) {
+    var key = note.diaryDate || note.title;
+    if (key) {
+      var p = String(key).split('-').map(function(x){ return parseInt(x,10); });
+      if (p.length===3 && !isNaN(p[0]) && !isNaN(p[1]) && !isNaN(p[2])) {
+        var d = new Date(p[2], p[1]-1, p[0]);
+        if (!isNaN(d.getTime())) return getDateStr(d);
+      }
     }
   }
   return getDateStr(new Date());
@@ -3046,22 +3270,18 @@ function backToBoards() { clearCurrentUnlock(); state.activeBoardId = null; save
 function todayDateStr() { var d = new Date(); return d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear(); }
 
 function getOrCreateDiaryNote() {
-  var dateStr = todayDateStr();
-  var note = state.notes.find(function(n) { return n.diary && n.title === dateStr; });
-  if (!note) {
-    note = { id: genId(), title: dateStr, items: [], pwdHash: '', diary: true };
-    state.notes.push(note);
-    save();
-  }
+  var ds = todayDateStr();
+  var list = state.notes.filter(function(n) { return n.diary && getDiaryDateKey(n) === ds; });
+  if (list.length > 0) return list[0];
+  var note = { id: genId(), title: ds, diaryDate: ds, items: [], pwdHash: '', diary: true, events: [], tasks: [], cover: '', createdAt: Date.now() };
+  state.notes.push(note);
+  save();
   return note;
 }
 function openTodayDiary() {
   if (!diaryUnlockFlow()) return;
-  var note = getOrCreateDiaryNote();
-  state.activeNoteId = note.id;
-  state.view = 'diary';
-  save();
-  renderAll();
+  var now = new Date();
+  openDiarySelector(now.getDate(), now.getMonth(), now.getFullYear());
 }
 
 function hashPwd(s) {
@@ -3074,6 +3294,7 @@ function hashPwd(s) {
 var unlockedIds = {};
 
 function switchCreateTab(tab){
+  if (_pendingDiaryDate && tab === 'folder') tab = 'note';
   _createTab = tab;
   var notePane = document.getElementById('createNotePane');
   var folderPane = document.getElementById('createFolderPane');
@@ -3109,6 +3330,7 @@ function switchCreateTab(tab){
 function showNewNoteDialog() {
   // Unified create dialog with tabs; default to Note
   _createTab = 'note';
+  setDiaryCreateMode(false);
   var pwdEl=document.getElementById('newNotePwd'); if(pwdEl) pwdEl.value='';
   var pwdF=document.getElementById('newFolderPwd'); if(pwdF) pwdF.value='';
   var nameF=document.getElementById('newFolderName'); if(nameF) nameF.value='';
@@ -3225,6 +3447,30 @@ function insertImage(input) {
 function createNote() {
   var title = document.getElementById('newNoteTitle').value.trim() || t('newNoteLabel');
   var pwd = document.getElementById('newNotePwd').value;
+  if (_pendingDiaryDate) {
+    var ds = _pendingDiaryDate;
+    var parts = String(ds).split('-').map(function(x){ return parseInt(x,10); });
+    var dd = parts.length === 3 ? parts[0] : 1;
+    var mm = parts.length === 3 ? parts[1] - 1 : 0;
+    var yy = parts.length === 3 ? parts[2] : new Date().getFullYear();
+    var existing = getDiaryNotes(dd, mm, yy);
+    if (existing.length >= MAX_DIARY_NOTES_PER_DAY) {
+      _pendingDiaryDate = null;
+      closeDialog('newNoteDialog');
+      refreshDiarySelectorIfOpen();
+      return;
+    }
+    var dnote = { id: genId(), title: title, diaryDate: ds, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), diary: true, events: [], tasks: [] };
+    state.notes.push(dnote);
+    if (pwd) unlockedIds['n' + dnote.id] = true;
+    _pendingDiaryDate = null;
+    closeDialog('newNoteDialog');
+    document.getElementById('newNoteTitle').value = '';
+    document.getElementById('newNotePwd').value = '';
+    save();
+    refreshDiarySelectorIfOpen();
+    return;
+  }
   var folderId = state.activeFolderId != null ? state.activeFolderId : null;
   // if creating from inside folder, ensure folder exists and unlocked (should be already)
   var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), folderId: folderId };
@@ -3479,6 +3725,7 @@ function confirmDeleteBoard(id) {
 function deleteNote(id) {
   var note = state.notes.find(function(n) { return n.id === id; });
   if (!note) return;
+  var wasDiary = !!note.diary;
   cancelNoteNotifications(id);
   state.trash.push({ type: 'note', data: note, deletedAt: Date.now() });
   state.notes = state.notes.filter(function(n) { return n.id !== id; });
@@ -3492,6 +3739,7 @@ function deleteNote(id) {
   }
   save();
   renderAll();
+  if (wasDiary) refreshDiarySelectorIfOpen();
 }
 function renameFolder(id){
   var folder=getFolderById(id); if(!folder) return;
@@ -3610,8 +3858,10 @@ function restoreFromTrash(index) {
   if (item.type === 'note'){
     if(item.data.folderId===undefined) item.data.folderId=null;
     if(item.data.folderId!=null && !getFolderById(item.data.folderId)) item.data.folderId=null;
+    if (item.data.diary) { item.data.folderId = undefined; }
     state.notes.push(item.data);
-    if(item.data.folderId==null){
+    migrateDiaryNotes();
+    if(!item.data.diary && item.data.folderId==null){
       ensureRootOrder();
       if(!state.rootOrder.find(function(e){return e.type==='note'&&e.id===item.data.id;})){
         state.rootOrder.push({type:'note', id:item.data.id});
@@ -4800,7 +5050,8 @@ function renderNoteContent() {
   }
   /* Replicados de otras notas del diario por repeticion */
   if (note.diary) {
-    var todayParts = note.title.split('-').map(function(x){return parseInt(x,10);});
+    var dkey2 = note.diaryDate || note.title;
+    var todayParts = String(dkey2).split('-').map(function(x){return parseInt(x,10);});
     if (todayParts.length === 3) {
       var targetDate = new Date(todayParts[2], todayParts[1] - 1, todayParts[0]);
       var replicatedHtml = '';
@@ -4849,7 +5100,7 @@ function renderNoteContent() {
   html += '<button class="btn fmt-action" onclick="document.getElementById(\'audioInput\').click()" title="' + t('insertAudio') + '">&#x1F3A4; ' + t('insertAudio') + '</button>';
   html += '<button class="btn fmt-action" onclick="document.getElementById(\'videoInput\').click()" title="' + t('insertVideo') + '">&#x1F3AC; ' + t('insertVideo') + '</button>';
   html += '<button class="btn fmt-action" onclick="showTableDialog()" title="' + t('insertTable') + '">&#x229E;</button>';
-  // Botón Recuérdame eliminado - reemplazado por Hábitos
+  if (note && note.diary) html += '<button class="btn fmt-action" onclick="openReminderDialog()" title="' + t('remindMe') + '">' + t('remindMe') + '</button>';
   html += '<button class="btn fmt-action" onclick="insertLatexBlock()" title="' + t('insertEquation') + '" style="font-weight:bold;font-size:15px;">&#x2211;</button>';
   html += '<span style="flex:1"></span>';
   html += '<div style="position:relative;display:inline-block;">';
@@ -7502,11 +7753,14 @@ if (/android/i.test(navigator.userAgent)) {
 
 // Init
 load();
+migrateDiaryNotes();
 state.notes.forEach(function(n) { if (typeof n.id === 'string') n.id = Number(n.id); if (!n.cover) n.cover = ''; if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; n.events = n.events.filter(function(e){ return e.repetition !== 'daily'; }); n.tasks = n.tasks.filter(function(t){ return t.repetition !== 'daily'; }); if (n.items) n.items.forEach(function(i) { if (typeof i.id === 'string') i.id = Number(i.id); }); });
+migrateDiaryNotes();
 if (!state.habits) state.habits = [];
 state.notes.forEach(function(n) {
   if (n.diary) {
-    var p = n.title.split('-').map(Number);
+    var dkey = n.diaryDate || n.title;
+    var p = String(dkey).split('-').map(Number);
     if (p.length === 3) {
       var noteDate = new Date(p[2], p[1] - 1, p[0]).getTime();
       (n.events || []).forEach(function(e) { e.createdAt = noteDate; });
@@ -7527,7 +7781,7 @@ if (typeof state.activeNoteId === 'string') state.activeNoteId = Number(state.ac
 if (typeof state.activeBoardId === 'string') state.activeBoardId = Number(state.activeBoardId);
 if (typeof state.activeStudySetId === 'string') state.activeStudySetId = Number(state.activeStudySetId);
 // Migrar hábitos: asegurar campos y filtrar datos inválidos
-state.habits.forEach(function(h){ if(!h.uuid) h.uuid = generateUUID(); if(h.current==null) h.current=0; if(!h.status) h.status='pending'; if(h.streak==null) h.streak=0; if(!h.lastProcessedDate) h.lastProcessedDate=getDateStr(new Date()); if(!h.history) h.history=[]; if(h.total!=null) h.total=Number(h.total); if(h.step!=null) h.step=Number(h.step); if(h.type==='counter' && (h.total==null||h.step==null)){ h.type='task'; } });
+state.habits.forEach(function(h){ if(!h.uuid) h.uuid = generateUUID(); if(h.current==null) h.current=0; if(!h.status) h.status='pending'; if(h.streak==null) h.streak=0; if(!h.lastProcessedDate) h.lastProcessedDate=getDateStr(new Date()); if(!h.history) h.history=[]; if(h.total!=null) h.total=Number(h.total); if(h.step!=null) h.step=Number(h.step); if(h.type==='counter' && (h.total==null||h.step==null)){ h.type='task'; } if(h.streak===0 && h.history.length>0){ var rec=recalcStreakFromHistory(h); if(rec>0){ var todayStr2=getDateStr(new Date()); var lastDone=h.lastCompletedDate||h.history[h.history.length-1]; if(lastDone){ var p1=lastDone.split('-').map(Number); var p2=todayStr2.split('-').map(Number); var d1=new Date(p1[0],p1[1]-1,p1[2]); var d2=new Date(p2[0],p2[1]-1,p2[2]); var diff=Math.round((d2-d1)/86400000); if(diff<=1) h.streak=rec; } } } });
 // Migrar carpetas en Init (por si load no se ejecutó completo)
 if(!state.folders) state.folders=[];
 if(state.activeFolderId===undefined) state.activeFolderId=null;
@@ -7673,14 +7927,19 @@ function updateFab() {
   if (state.view === 'registros') {
     var inRegistroDetail = !!state.activeRegistroId;
     fab.classList.remove('hidden');
-    fab.className = 'fab';
-    if (inRegistroDetail) document.body.classList.add('registro-edit-mode');
-    else document.body.classList.remove('registro-edit-mode');
+    if (inRegistroDetail) {
+      fab.className = 'fab';
+      document.body.classList.add('registro-edit-mode');
+    } else {
+      fab.className = 'fab fab-add';
+      document.body.classList.remove('registro-edit-mode');
+    }
     return;
   }
-  fab.classList.toggle('hidden', (state.view !== 'notes' && state.view !== 'board' && state.view !== 'diary' && state.view !== 'study') || insideItem || diaryCalendar);
-  document.body.classList.remove('registro-edit-mode');
+  // Asignar clase base antes de aplicar visibilidad para no sobrescribir 'hidden'
   if (state.view !== 'habits') fab.className = 'fab fab-add';
+  document.body.classList.remove('registro-edit-mode');
+  fab.classList.toggle('hidden', (state.view !== 'notes' && state.view !== 'board' && state.view !== 'diary' && state.view !== 'study') || insideItem || diaryCalendar);
 }
 function updateTableFab() {
   var fab = document.getElementById('tableFabBtn');
@@ -7729,6 +7988,7 @@ function closeMenu() {
 function switchView(view) {
   hideContextMenu();
   clearCurrentUnlock();
+  closeDiarySelector();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (state.view === 'diary' && view !== 'diary') diaryUnlocked = false;
   if (view === 'notes') { state.activeNoteId = null; state.activeFolderId=null; }
@@ -7915,7 +8175,7 @@ document.addEventListener('keydown', function(e) {
   if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); formatUnderline(); }
 });
 
-/* Funciones para Eventos y Tareas */
+/* Funciones para Eventos y Tareas (solo Diario) */
 function getDateStr(d) {
   return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 }
@@ -7924,6 +8184,74 @@ function isSameDay(a, b) {
 }
 function getNoteById(id) {
   return state.notes.find(function(n) { return n.id === id; });
+}
+
+function openReminderDialog() {
+  var note = getNoteById(state.activeNoteId);
+  if (!note || !note.diary) return;
+  var typeSel = document.getElementById('reminderType');
+  var repeatSel = document.getElementById('reminderRepeat');
+  document.getElementById('reminderTitle').value = '';
+  var timeInput = document.getElementById('reminderTime');
+  if (timeInput) timeInput.value = '09:00';
+  typeSel.value = 'event';
+  repeatSel.innerHTML = '';
+  var opts = [
+    { value: 'none', label: t('noRepeat') },
+    { value: 'weekly', label: t('everyWeek') },
+    { value: 'monthly', label: t('everyMonth') },
+    { value: 'yearly', label: t('everyYear') }
+  ];
+  opts.forEach(function(o) {
+    var opt = document.createElement('option');
+    opt.value = o.value;
+    opt.textContent = o.label;
+    repeatSel.appendChild(opt);
+  });
+  showDialog('dialogReminder');
+  checkTodayNotifications();
+  setTimeout(function(){ document.getElementById('reminderTitle').focus(); }, 100);
+}
+
+function createReminder() {
+  var note = getNoteById(state.activeNoteId);
+  if (!note || !note.diary) return;
+  var title = document.getElementById('reminderTitle').value.trim();
+  if (!title) {
+    document.getElementById('reminderTitle').focus();
+    return;
+  }
+  var type = document.getElementById('reminderType').value;
+  var repeat = document.getElementById('reminderRepeat').value;
+  var timeInput = document.getElementById('reminderTime');
+  var time = timeInput && timeInput.value ? timeInput.value : '09:00';
+  var uuid = generateUUID();
+  var refDate = Date.now();
+  var dkey = note.diaryDate || note.title;
+  var parts = String(dkey).split('-').map(Number);
+  if (parts.length === 3)
+    refDate = new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+  var obj = {
+    uuid: uuid,
+    title: title,
+    repetition: repeat,
+    time: time,
+    createdAt: refDate
+  };
+  if (type === 'event') {
+    obj.type = 'event';
+    if (!note.events) note.events = [];
+    note.events.push(obj);
+  } else {
+    obj.type = 'task';
+    obj.status = 'pending';
+    if (!note.tasks) note.tasks = [];
+    note.tasks.push(obj);
+  }
+  closeDialog('dialogReminder');
+  save();
+  renderNoteContent();
+  checkTodayNotifications();
 }
 
 function deleteReminder(noteId, uuid) {
@@ -8127,7 +8455,8 @@ function openNoteById(noteId) {
   state.activeNoteId = noteId;
   state.view = note.diary ? 'diary' : 'notes';
   if (note.diary) {
-    var parts = note.title.split('-');
+    var key = note.diaryDate || note.title;
+    var parts = String(key).split('-');
     if (parts.length === 3) {
       var d = parseInt(parts[0], 10), m = parseInt(parts[1], 10) - 1, y = parseInt(parts[2], 10);
       _calMonth = m;
@@ -8191,8 +8520,9 @@ function getHabitByUuid(uuid){
 
 function getDateStrLocal(d){ return getDateStr(d); }
 
-function processHabitsDayChange(){
+function processHabitsDayChange(opts){
   if(!state.habits) state.habits=[];
+  var isImport = opts && opts.isImport;
   var todayStr = getDateStr(new Date());
   var changed=false;
   function parseDateStr(s){ var p=s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
@@ -8206,10 +8536,21 @@ function processHabitsDayChange(){
     var last = parseDateStr(h.lastProcessedDate);
     var today = parseDateStr(todayStr);
     var diffDays = Math.round((today - last)/86400000);
-    if(diffDays<=0){ h.lastProcessedDate=todayStr; return; }
+    if(diffDays<=0){ h.lastProcessedDate=todayStr; changed=true; return; }
+    if(isImport){
+      // En migración no romper racha, solo actualizar fecha
+      h.lastProcessedDate = todayStr;
+      changed=true;
+      return;
+    }
     var completedLastDay = h.lastCompletedDate === h.lastProcessedDate;
     if(!completedLastDay || diffDays>1){
-      if(h.streak!==0){ h.streak=0; changed=true; }
+      if(h.streak!==0){
+        // Solo resetear si no hay historia reciente que justifique mantenerla (defensa migración)
+        // Si lastCompletedDate está vacío, streak ya es 0
+        console.warn('Habit streak reset', h.uuid, 'diff', diffDays, 'lastCompleted', h.lastCompletedDate, 'lastProcessed', h.lastProcessedDate);
+        h.streak=0; changed=true;
+      }
     }
     if(h.status==='completed' || h.current!==0){
       h.status='pending';
@@ -8373,6 +8714,29 @@ function saveHabit(){
   processHabitsDayChange();
   renderHabitsView();
   checkHabitNotifications();
+}
+
+function recalcStreakFromHistory(h, todayStr){
+  if(!h.history || h.history.length===0) return 0;
+  // ordenar y dedup
+  var uniq = {};
+  h.history.forEach(function(d){ if(/^\d{4}-\d{2}-\d{2}$/.test(d)) uniq[d]=true; });
+  var sorted = Object.keys(uniq).sort();
+  if(sorted.length===0) return 0;
+  // contar consecutivos desde el final
+  var streak = 1;
+  for(var i=sorted.length-1; i>0; i--){
+    var curr = sorted[i];
+    var prev = sorted[i-1];
+    var cp = curr.split('-').map(Number);
+    var pp = prev.split('-').map(Number);
+    var dCurr = new Date(cp[0], cp[1]-1, cp[2]);
+    var dPrev = new Date(pp[0], pp[1]-1, pp[2]);
+    var diff = Math.round((dCurr - dPrev)/86400000);
+    if(diff===1) streak++;
+    else break;
+  }
+  return streak;
 }
 
 function handleHabitCompleted(h){

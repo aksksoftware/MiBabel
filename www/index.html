@@ -212,6 +212,35 @@
   </div>
 </div>
 
+<div class="dialog-overlay hidden" id="dialogReminder">
+  <div class="dialog">
+    <div class="dialog-title" style="font-size:16px;font-weight:600;margin-bottom:16px;">Recu&eacute;rdame</div>
+    <div class="field">
+      <label for="reminderType">Tipo</label>
+      <select id="reminderType" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;">
+        <option value="event">Evento</option>
+        <option value="task">Tarea</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="reminderTitle">T&iacute;tulo</label>
+      <input type="text" id="reminderTitle" maxlength="200" style="width:100%;box-sizing:border-box;" />
+    </div>
+    <div class="field">
+      <label id="reminderTimeLabel" for="reminderTime">Hora</label>
+      <input type="time" id="reminderTime" style="width:100%;box-sizing:border-box;" />
+    </div>
+    <div class="field">
+      <label for="reminderRepeat">Repetici&oacute;n</label>
+      <select id="reminderRepeat" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;"></select>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" onclick="closeDialog('dialogReminder')">Cancelar</button>
+      <button class="btn btn-primary" onclick="createReminder()">Crear</button>
+    </div>
+  </div>
+</div>
+
 <div class="dialog-overlay hidden" id="habitDialog">
   <div class="dialog" style="max-width:420px;">
     <h3 id="habitDialogTitle">Nuevo hábito</h3>
