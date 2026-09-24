@@ -71,8 +71,7 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); co
 ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
 /* Eliminar delay de 300ms en WebView */
 .card, .btn, .menu-item, .menu-trigger, .back-btn, .color-btn, .bg-btn, .fmt-btn { touch-action: manipulation; }
-header { background: var(--header-bg); padding: max(8px, env(safe-area-inset-top, 8px)) 20px 8px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); flex-shrink: 0; position:relative; }
-.android header { padding-top: max(calc(var(--status-bar-h, 24px) + 4px), env(safe-area-inset-top, 24px)); }
+header { background: var(--header-bg); padding: calc(8px + env(safe-area-inset-top, 0px)) 20px 8px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); flex-shrink: 0; position:relative; }
 header .header-left { display: flex; align-items: center; padding: 4px 0; border-radius: 6px; background: var(--header-bg); overflow: hidden; flex: 1; min-width: 0; }
 header .header-left:hover { background: var(--header-bg); }
 header h1 { font-size: 24px; font-weight: 700; color: var(--accent-gold); }
@@ -92,7 +91,7 @@ header h1 { font-size: 24px; font-weight: 700; color: var(--accent-gold); }
 .menu-overlay.open { opacity: 1; pointer-events: auto; }
 .menu-sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100%; background: var(--surface); border-right: 1px solid var(--border); z-index: 3001; transform: translateX(-100%); transition: transform 0.25s ease; display: flex; flex-direction: column; }
 .menu-sidebar.open { transform: translateX(0); }
-.menu-sidebar .menu-header { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 16px; font-weight: 600; color: var(--accent-gold); background: var(--header-bg); }
+.menu-sidebar .menu-header { padding: calc(16px + env(safe-area-inset-top, 0px)) 20px 16px; border-bottom: 1px solid var(--border); font-size: 16px; font-weight: 600; color: var(--accent-gold); background: var(--header-bg); }
 .app-logo { height: 28px; vertical-align: middle; }
 .menu-logo { height: 28px; vertical-align: middle; }
 .menu-sidebar .menu-items { flex: 1; padding: 8px; }
@@ -135,7 +134,363 @@ input:focus, textarea:focus { outline: none; border-color: var(--accent); }
 .notes-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
 .notes-content .note-title-input { background: transparent; border: none; font-size: 22px; font-weight: 600; color: var(--text); }
 .notes-content .note-title-input:focus { border: none; outline: none; }
-.notes-content .items-area { flex: 1; min-height: 0; padding: 8px 20px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.notes-content .items-area { flex: 1; min-height: 0; padding: 8px 20px 20px; overflow-y: auto; overflow-x: auto; -webkit-overflow-scrolling: touch; position: relative; }
+
+/* ==================================================
+   ANCHO ADAPTATIVO DE NOTA (solo Android portrait).
+   Las clases note-locked / note-wide las aplica JS solo en
+   Android; en escritorio y en landscape no existen y nada cambia.
+   - note-locked: la nota se adapta al ancho vertical, pero las
+     tablas conservan su ancho propio (scroll horizontal del wrap).
+   - note-wide: los items conservan el ancho de referencia landscape
+     (--note-ref-w) y la nota usa el scroll horizontal de .items-area.
+   ================================================== */
+#noteContent.note-locked .note-table,
+#noteContent.note-wide .note-table { width: max-content; min-width: 100%; }
+#noteContent.note-wide .items-area > .list-item { min-width: var(--note-ref-w, 600px); }
+
+/* ==================================================
+   SISTEMA DE FONDOS PAPEL MiBabel
+   Responsabilidades separadas:
+   1) COLOR / MATERIAL -> data-bg-color
+   2) DISEÑO -> data-bg-design
+   3) SINCRONIZACIÓN -> reglas con unidad 32px
+   Unidad vertical común: 32px
+   ================================================== */
+:root {
+  --paper-unit: 32px;
+  --paper-line-dark: rgba(255,255,255,0.14);
+  --paper-line-light: rgba(0,0,0,0.16);
+  --paper-line-paper: rgba(90,130,190,0.42);
+  --paper-dot-paper: rgba(90,130,190,0.55);
+}
+
+/* ---------- 1) COLOR / MATERIAL ---------- */
+/* default: aspecto original (sin override, hereda tema claro/oscuro) */
+.items-area[data-bg-color="default"] {
+  background-color: transparent;
+}
+/* papel blanco: textura repetible */
+.items-area[data-bg-color="white"] {
+  background-color: #ffffff;
+  background-image: url('fondoBlanco.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+/* papel amarillo: textura repetible */
+.items-area[data-bg-color="yellow"] {
+  background-color: #fdf0b0;
+  background-image: url('fondoAmarillo.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+/* Legibilidad sobre papel: texto oscuro independiente del tema */
+.items-area[data-bg-color="white"] .item-text,
+.items-area[data-bg-color="yellow"] .item-text,
+.items-area[data-bg-color="white"] .image-caption,
+.items-area[data-bg-color="yellow"] .image-caption,
+.items-area[data-bg-color="white"] .note-table td,
+.items-area[data-bg-color="yellow"] .note-table td,
+.items-area[data-bg-color="white"] .note-table th,
+.items-area[data-bg-color="yellow"] .note-table th,
+.items-area[data-bg-color="white"] .katex-block,
+.items-area[data-bg-color="yellow"] .katex-block {
+  color: #222;
+}
+.items-area[data-bg-color="white"] .list-item:hover,
+.items-area[data-bg-color="yellow"] .list-item:hover,
+.items-area[data-bg-color="white"] .item-text[contenteditable="true"]:focus,
+.items-area[data-bg-color="yellow"] .item-text[contenteditable="true"]:focus {
+  background: rgba(0,0,0,0.05);
+}
+.items-area[data-bg-color="white"] .list-item.text,
+.items-area[data-bg-color="yellow"] .list-item.text {
+  border-left-color: rgba(0,0,0,0.2);
+}
+.items-area[data-bg-color="white"] .note-table td,
+.items-area[data-bg-color="yellow"] .note-table td,
+.items-area[data-bg-color="white"] .note-table th,
+.items-area[data-bg-color="yellow"] .note-table th {
+  border-color: rgba(0,0,0,0.25);
+}
+
+/* ---------- 2) DISEÑO (patrones CSS, sin imágenes enormes) ---------- */
+/* Fondo anclado al contenido: patrón y textura se desplazan con el scroll
+   (background-attachment: local), no fijos respecto de la ventana. */
+.items-area[data-bg-color][data-bg-design] {
+  background-attachment: local;
+}
+/* Sin fondo: ningún patrón (default+none = original) */
+.items-area[data-bg-design="none"] {
+  /* sin patrón adicional */
+}
+/* Renglones: gradiente horizontal cada 32px. El área empieza justo después
+   del header, por lo que la primera línea queda a 32px sin tocar el header. */
+.items-area[data-bg-color="default"][data-bg-design="lined"] {
+  background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-dark) 31px, var(--paper-line-dark) 32px);
+}
+body.light .items-area[data-bg-color="default"][data-bg-design="lined"] {
+  background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-light) 31px, var(--paper-line-light) 32px);
+}
+.items-area[data-bg-color="white"][data-bg-design="lined"] {
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-paper) 31px, var(--paper-line-paper) 32px),
+    url('fondoBlanco.png');
+  background-repeat: repeat, repeat;
+}
+.items-area[data-bg-color="yellow"][data-bg-design="lined"] {
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-paper) 31px, var(--paper-line-paper) 32px),
+    url('fondoAmarillo.png');
+  background-repeat: repeat, repeat;
+}
+/* Cuadrícula: dos gradientes separados 32px */
+.items-area[data-bg-color="default"][data-bg-design="grid"] {
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-dark) 31px, var(--paper-line-dark) 32px),
+    repeating-linear-gradient(to right, transparent 0px, transparent 31px, var(--paper-line-dark) 31px, var(--paper-line-dark) 32px);
+}
+body.light .items-area[data-bg-color="default"][data-bg-design="grid"] {
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-light) 31px, var(--paper-line-light) 32px),
+    repeating-linear-gradient(to right, transparent 0px, transparent 31px, var(--paper-line-light) 31px, var(--paper-line-light) 32px);
+}
+.items-area[data-bg-color="white"][data-bg-design="grid"] {
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-paper) 31px, var(--paper-line-paper) 32px),
+    repeating-linear-gradient(to right, transparent 0px, transparent 31px, var(--paper-line-paper) 31px, var(--paper-line-paper) 32px),
+    url('fondoBlanco.png');
+  background-repeat: repeat, repeat, repeat;
+}
+.items-area[data-bg-color="yellow"][data-bg-design="grid"] {
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, var(--paper-line-paper) 31px, var(--paper-line-paper) 32px),
+    repeating-linear-gradient(to right, transparent 0px, transparent 31px, var(--paper-line-paper) 31px, var(--paper-line-paper) 32px),
+    url('fondoAmarillo.png');
+  background-repeat: repeat, repeat, repeat;
+}
+/* Puntos: cuadrícula de puntos cada 32px x 32px, solo visual.
+   Primera fila/columna a 32px como renglones/cuadrícula: el radial se centra
+   en la baldosa (caería a 16px), así que la capa de puntos se desplaza 16px
+   en ambos ejes. */
+.items-area[data-bg-color="default"][data-bg-design="dotted"] {
+  background-image: radial-gradient(circle, var(--paper-line-dark) 1.5px, transparent 1.6px);
+  background-size: 32px 32px;
+  background-position: 16px 16px;
+}
+body.light .items-area[data-bg-color="default"][data-bg-design="dotted"] {
+  background-image: radial-gradient(circle, var(--paper-line-light) 1.5px, transparent 1.6px);
+  background-size: 32px 32px;
+  background-position: 16px 16px;
+}
+.items-area[data-bg-color="white"][data-bg-design="dotted"] {
+  background-image:
+    radial-gradient(circle, var(--paper-dot-paper) 1.6px, transparent 1.7px),
+    url('fondoBlanco.png');
+  background-size: 32px 32px, auto;
+  background-repeat: repeat, repeat;
+  background-position: 16px 16px, 0 0;
+}
+.items-area[data-bg-color="yellow"][data-bg-design="dotted"] {
+  background-image:
+    radial-gradient(circle, var(--paper-dot-paper) 1.6px, transparent 1.7px),
+    url('fondoAmarillo.png');
+  background-size: 32px 32px, auto;
+  background-repeat: repeat, repeat;
+  background-position: 16px 16px, 0 0;
+}
+
+/* ---------- 3) SINCRONIZACIÓN DEL CONTENIDO (unidad 32px) ---------- */
+/* Solo cuando hay diseño (lined/grid/dotted). none conserva aspecto original. */
+.items-area[data-bg-design="lined"],
+.items-area[data-bg-design="grid"],
+.items-area[data-bg-design="dotted"] {
+  padding-top: 32px;
+}
+/* Cajas de texto: interlineado 32px, altura = n*32, alineadas al renglón */
+.items-area[data-bg-design="lined"] .list-item.text,
+.items-area[data-bg-design="grid"] .list-item.text,
+.items-area[data-bg-design="dotted"] .list-item.text {
+  margin: 0 0 32px 0;
+  padding: 0;
+  border: none;
+  border-left: none;
+}
+.items-area[data-bg-design="lined"] .list-item.text .item-text,
+.items-area[data-bg-design="grid"] .list-item.text .item-text,
+.items-area[data-bg-design="dotted"] .list-item.text .item-text {
+  line-height: 32px !important;
+  min-height: 32px;
+  padding: 0 4px;
+  margin: 0;
+  font-size: 16px;
+}
+/* Listas: bloque con items consecutivos sin separación interna */
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item),
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item),
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 32px;
+}
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item) .item-text,
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item) .item-text,
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) .item-text {
+  line-height: 32px !important;
+  min-height: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  font-size: 15px;
+}
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item) .item-check,
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item) .item-check,
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) .item-check,
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item) .drag-handle,
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item) .drag-handle,
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) .drag-handle {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+/* Separación 32px entre bloques: cuando un bloque sigue a una lista,
+   la lista previa tiene margin-bottom 0, así que se agrega margin-top */
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.text,
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.text,
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.text,
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.image-item,
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.image-item,
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.image-item,
+.items-area[data-bg-design="lined"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.table-item,
+.items-area[data-bg-design="grid"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.table-item,
+.items-area[data-bg-design="dotted"] .list-item:not(.text):not(.image-item):not(.table-item) + .list-item.table-item {
+  margin-top: 32px;
+}
+/* Texto / tabla: separación base 32px inferior (el siguiente bloque ya queda a 32px) */
+.items-area[data-bg-design="lined"] .list-item.table-item,
+.items-area[data-bg-design="grid"] .list-item.table-item,
+.items-area[data-bg-design="dotted"] .list-item.table-item {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+/* Imágenes / audio / video: no limitados a múltiplos de 32px, pero con
+   32px respecto al texto. Sin separación entre medios consecutivos. */
+.items-area[data-bg-design="lined"] .list-item.image-item,
+.items-area[data-bg-design="grid"] .list-item.image-item,
+.items-area[data-bg-design="dotted"] .list-item.image-item {
+  margin-top: 0;
+  margin-bottom: 32px;
+  padding: 0;
+}
+.items-area[data-bg-design="lined"] .list-item.image-item + .list-item.image-item,
+.items-area[data-bg-design="grid"] .list-item.image-item + .list-item.image-item,
+.items-area[data-bg-design="dotted"] .list-item.image-item + .list-item.image-item {
+  margin-top: -32px;
+  padding-top: 0;
+}
+.items-area[data-bg-design="lined"] .list-item.text + .list-item.image-item,
+.items-area[data-bg-design="grid"] .list-item.text + .list-item.image-item,
+.items-area[data-bg-design="dotted"] .list-item.text + .list-item.image-item,
+.items-area[data-bg-design="lined"] .list-item.table-item + .list-item.image-item,
+.items-area[data-bg-design="grid"] .list-item.table-item + .list-item.image-item,
+.items-area[data-bg-design="dotted"] .list-item.table-item + .list-item.image-item {
+  margin-top: 0;
+}
+.items-area[data-bg-design="lined"] .list-item.image-item + .list-item.text,
+.items-area[data-bg-design="grid"] .list-item.image-item + .list-item.text,
+.items-area[data-bg-design="dotted"] .list-item.image-item + .list-item.text,
+.items-area[data-bg-design="lined"] .list-item.image-item + .list-item.table-item,
+.items-area[data-bg-design="grid"] .list-item.image-item + .list-item.table-item,
+.items-area[data-bg-design="dotted"] .list-item.image-item + .list-item.table-item,
+.items-area[data-bg-design="lined"] .list-item.image-item + .list-item:not(.text):not(.image-item):not(.table-item),
+.items-area[data-bg-design="grid"] .list-item.image-item + .list-item:not(.text):not(.image-item):not(.table-item),
+.items-area[data-bg-design="dotted"] .list-item.image-item + .list-item:not(.text):not(.image-item):not(.table-item) {
+  margin-top: 0;
+}
+/* LaTeX bloque: misma lógica que imágenes (no-textual), solo visual */
+.items-area[data-bg-design="lined"] .katex-block,
+.items-area[data-bg-design="grid"] .katex-block,
+.items-area[data-bg-design="dotted"] .katex-block {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.items-area[data-bg-design="lined"] .katex-block + .katex-block,
+.items-area[data-bg-design="grid"] .katex-block + .katex-block,
+.items-area[data-bg-design="dotted"] .katex-block + .katex-block {
+  margin-top: -32px;
+}
+/* Tablas: expansión horizontal (la nota crece y desplaza en X) */
+.items-area[data-bg-design="lined"] .list-item.table-item,
+.items-area[data-bg-design="grid"] .list-item.table-item,
+.items-area[data-bg-design="dotted"] .list-item.table-item {
+  max-width: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 10px;
+}
+.items-area[data-bg-design="lined"] .note-table-wrap,
+.items-area[data-bg-design="grid"] .note-table-wrap,
+.items-area[data-bg-design="dotted"] .note-table-wrap {
+  overflow-x: visible;
+  max-width: none;
+}
+.items-area[data-bg-design="lined"] .note-table,
+.items-area[data-bg-design="grid"] .note-table,
+.items-area[data-bg-design="dotted"] .note-table {
+  width: max-content;
+  min-width: 100%;
+}
+/* Tablas en cuadrícula y punteado: base múltiplos de 32px (el JS redondea al expandir) */
+.items-area[data-bg-design="grid"] .note-table td,
+.items-area[data-bg-design="grid"] .note-table th,
+.items-area[data-bg-design="dotted"] .note-table td,
+.items-area[data-bg-design="dotted"] .note-table th {
+  min-width: 32px;
+  min-height: 32px;
+  box-sizing: border-box;
+}
+/* Tablas en fondos con diseño: el texto queda ENTRE los renglones y las
+   aristas horizontales caen sobre los renglones (rayado, cuadrícula, puntos).
+   Estructural (sin desplazamientos fijos): las líneas se dibujan con
+   box-shadow inset (costo de layout cero, verificado: border-collapse suma
+   ~1px por fila y rompe la cuadrícula), cada fila mide exactamente n*32px,
+   contenido centrado verticalmente y line-height 32px. Robusto a wrap,
+   crecimiento, resize y cambios de contenido. */
+.items-area[data-bg-design="lined"] .note-table-wrap,
+.items-area[data-bg-design="grid"] .note-table-wrap,
+.items-area[data-bg-design="dotted"] .note-table-wrap {
+  margin: 0;
+}
+.items-area[data-bg-design="lined"] .note-table,
+.items-area[data-bg-design="grid"] .note-table,
+.items-area[data-bg-design="dotted"] .note-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-right: 1px solid #000000;
+}
+.items-area[data-bg-design="lined"] .note-table td,
+.items-area[data-bg-design="grid"] .note-table td,
+.items-area[data-bg-design="dotted"] .note-table td,
+.items-area[data-bg-design="lined"] .note-table th,
+.items-area[data-bg-design="grid"] .note-table th,
+.items-area[data-bg-design="dotted"] .note-table th {
+  vertical-align: middle;
+  line-height: 32px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  min-height: 32px;
+  border: none;
+  box-shadow: inset 0 1px 0 #000000, inset 1px 0 0 #000000;
+}
+.items-area[data-bg-design="lined"] .note-table tr:last-child td,
+.items-area[data-bg-design="grid"] .note-table tr:last-child td,
+.items-area[data-bg-design="dotted"] .note-table tr:last-child td,
+.items-area[data-bg-design="lined"] .note-table tr:last-child th,
+.items-area[data-bg-design="grid"] .note-table tr:last-child th,
+.items-area[data-bg-design="dotted"] .note-table tr:last-child th {
+  box-shadow: inset 0 1px 0 #000000, inset 1px 0 0 #000000, inset 0 -1px 0 #000000;
+}
 .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--empty); font-size: 14px; gap: 8px; }
 .list-item { display: flex; align-items: center; gap: 6px; padding: 4px 4px 4px 0; border-radius: 4px; position: relative; }
 .list-item:hover { background: var(--item-hover); }
@@ -192,8 +547,9 @@ input:focus, textarea:focus { outline: none; border-color: var(--accent); }
 .item-text audio, .postit-text audio { display: block; margin: 4px 0; max-width: 100%; }
 .item-text ul, .item-text ol { margin: 4px 0; padding-left: 24px; }
 .item-text li { margin: 2px 0; }
-.hl-color { width: 20px; height: 20px; border-radius: 50%; cursor: pointer; border: 1.5px solid transparent; flex-shrink: 0; }
+.hl-color { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 1.5px solid var(--text-muted); flex-shrink: 0; }
 .hl-color:hover { border-color: var(--text); }
+.hl-color:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .export-opt { display:block;width:100%;background:none;border:none;padding:4px 12px;cursor:pointer;font-size:12px;color:var(--text);border-radius:4px;text-align:left;font-family:inherit; }
 .export-opt:hover { background:var(--item-hover); }
 .note-table-wrap { overflow-x: auto; margin: 8px 0; }
@@ -301,6 +657,11 @@ svg.connections .connection-line { stroke: #e74c3c; stroke-width: 2; fill: none;
 .dialog .field { margin-bottom: 12px; }
 .dialog .field label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
 .dialog .field input { width: 100%; }
+/* Editar nota: radios de color/diseño con justificación izquierda
+   (sin el width:100% genérico de .dialog .field input). */
+#editNoteDialog input[type="radio"] { width: auto; margin: 0; flex-shrink: 0; }
+#editNoteDialog input[type="checkbox"] { width: auto; margin: 0; flex-shrink: 0; }
+#editNoteDialog .field label { justify-content: flex-start; text-align: left; }
 .study-card-field-row { display:flex;gap:6px;align-items:flex-start; }
 .study-card-editable { flex:1;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:14px;color:var(--text);outline:none;min-height:40px;word-break:break-word;white-space:pre-wrap; }
 .study-card-editable:focus { border-color:var(--accent); }
@@ -340,10 +701,12 @@ header.drop-target { background:var(--surface-hover) !important; box-shadow:inse
 .context-menu .context-item:hover { background: var(--accent); color: #fff; }
 .fab { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--accent); background-repeat: no-repeat; background-position: center; background-size: contain; border: none; font-size: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 100; transition: transform 0.15s, box-shadow 0.15s; }
 .fab-add { background-image: url('fabAgregar.png'); }
+.fab-merge { background-image: url('fabFusionar.png'); }
+.fab-split { background-image: url('fabDividir.png'); }
 body.registro-edit-mode .fab { background-image: url('fabEditar.png'); }
 .fab:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 .fab:active { transform: scale(0.95); }
-#tableFabBtn { bottom: 90px; font-size: 14px; width: 48px; height: 48px; }
+#tableFabBtn { bottom: 90px; font-size: 0; width: 48px; height: 48px; }
 .hidden { display: none !important; }
 .card-btn { background:none;border:none;cursor:pointer;font-size:14px;opacity:0.5;padding:2px 6px;border-radius:4px;color:var(--text); }
 .card-btn:hover { opacity:1;background:var(--item-hover); }
@@ -356,8 +719,7 @@ body.registro-edit-mode .fab { background-image: url('fabEditar.png'); }
 .study-card-back { font-size:18px;line-height:1.5;word-break:break-word;color:var(--text-sec);padding-top:12px; }
 .study-card-divider { width:60px;height:2px;background:var(--border);margin:16px 0;border-radius:1px; }
 .study-mode-wrapper { width:100%;min-height:100%;display:flex;flex-direction:column;align-items:center; }
-.study-mode-header { position:fixed;top:0;left:0;right:0;display:flex;align-items:center;padding:12px 20px;z-index:11;background:var(--bg); }
-.android .study-mode-header { padding-top: max(calc(var(--status-bar-h, 24px) + 4px), env(safe-area-inset-top, 24px)); }
+.study-mode-header { position:fixed;top:0;left:0;right:0;display:flex;align-items:center;padding:calc(12px + env(safe-area-inset-top, 0px)) 20px 12px;z-index:11;background:var(--bg); }
 .study-mode-title { font-size:16px;font-weight:600;color:var(--text);flex:1; }
 .study-mode-card-area { width:100%;max-width:600px;margin:0 auto;padding:40px 16px 40px;box-sizing:border-box; }
 .study-mode-actions { display:flex; gap:16px; justify-content:center; margin-top:20px; }
@@ -452,6 +814,9 @@ body.diary-reminder-alt .cal-day.has-reminder { outline-color: #333; }
 .diary-note-card-title { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; word-break: break-word; line-height: 1.3; }
 .diary-note-card-del { position: absolute; top: 2px; right: 2px; width: 22px; height: 22px; border-radius: 50%; border: none; background: rgba(0,0,0,0.12); color: inherit; font-size: 14px; line-height: 1; cursor: pointer; padding: 0; }
 .diary-note-card-del:hover { background: rgba(0,0,0,0.25); color: #fff; }
+.diary-note-card-edit { position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; border: none; background: rgba(0,0,0,0.12); color: inherit; font-size: 12px; line-height: 1; cursor: pointer; padding: 0; }
+.diary-note-card-edit:hover { background: rgba(0,0,0,0.25); color: #fff; }
+#editNoteDialog { z-index: 2600; }
 .diary-add-card { background: #fff; border: 1px dashed #bbb; color: #888; font-size: 28px; font-weight: 300; }
 .diary-add-card:hover { background: #fafafa; border-color: #999; }
 
@@ -611,6 +976,48 @@ body.light .board-equation { background: #fff; border-color: #e0e0e0; }
 .habit-btn.habit-complete { background:var(--accent); color:#fff; border-color:var(--accent); font-size:18px; }
 .habit-btn.habit-inc { color:var(--accent); }
 .habit-btn.habit-dec { color:var(--text-muted); }
+.habit-btn.habit-hist { font-size:16px; }
+
+/* Historial del hábito */
+.habit-history-top { display:flex; align-items:center; gap:10px; padding:4px 4px 0; }
+.habit-history-title { flex:1; min-width:0; }
+.habit-history-name { font-size:17px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:8px; min-width:0; }
+.habit-history-nametext { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.habit-history-sub { font-size:12px; color:var(--text-muted); margin-top:2px; }
+.habit-history-nav { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.habit-history-nav .cal-nav-title { flex:1; text-align:center; font-size:15px; font-weight:600; color:var(--text); }
+.habit-nav-btn { background:transparent; border:1px solid var(--border); color:var(--text-sec); min-width:30px; height:30px; border-radius:6px; cursor:pointer; font-size:15px; line-height:1; padding:0 8px; }
+.habit-nav-btn:hover:not(:disabled) { background:var(--surface-hover); color:#fff; }
+.habit-nav-btn:disabled { opacity:0.35; cursor:default; }
+.habit-cal-weekdays { display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:4px; }
+.habit-cal-weekday { text-align:center; font-size:11px; font-weight:600; color:var(--text-muted); padding:4px 0; }
+.habit-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+.habit-cal-day { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; aspect-ratio:1/1; border-radius:8px; border:1px solid transparent; background:transparent; color:var(--text); cursor:pointer; font-size:13px; min-width:0; padding:0; font-family:inherit; }
+.habit-cal-day .n { line-height:1.2; }
+.habit-cal-day .mk { font-size:10px; line-height:1; opacity:0.85; }
+.habit-cal-day.other { opacity:0.45; }
+.habit-cal-day.missed { color:var(--text-muted); }
+.habit-cal-day.missed .mk { opacity:0.5; }
+.habit-cal-day.future { opacity:0.28; color:var(--text-muted); cursor:default; }
+.habit-cal-day.today { outline:2px solid var(--accent); outline-offset:-2px; }
+.habit-cal-day.sel { outline:2px solid var(--accent-gold); outline-offset:-2px; }
+.habit-legend { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; font-size:11px; color:var(--text-muted); margin-top:8px; }
+.habit-streak-row { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:7px 2px; border-bottom:1px solid var(--border); font-size:13px; }
+.habit-streak-row:last-child { border-bottom:none; }
+.habit-streak-range { color:var(--text-sec); line-height:1.6; }
+.habit-streak-len { font-weight:700; color:var(--text); white-space:nowrap; }
+.habit-year-scroll { overflow-x:auto; padding-bottom:6px; }
+.habit-heat-labels { display:grid; grid-auto-flow:column; gap:3px; margin-bottom:4px; width:max-content; }
+.habit-heat-labels span { width:11px; overflow:visible; white-space:nowrap; font-size:9px; color:var(--text-muted); line-height:1.2; }
+.habit-heat-grid { display:grid; grid-template-rows:repeat(7,11px); grid-auto-flow:column; grid-auto-columns:11px; gap:3px; width:max-content; }
+.habit-heat { width:11px; height:11px; border-radius:2px; background:var(--surface-hover); border:1px solid var(--border); cursor:pointer; padding:0; }
+.habit-heat.pad { background:transparent; border-color:transparent; cursor:default; }
+.habit-heat.future { background:transparent; border-style:dashed; opacity:0.5; cursor:default; }
+.habit-heat.sel { outline:2px solid var(--accent-gold); outline-offset:0; }
+.habit-day-detail { margin-top:10px; background:var(--surface-hover); border:1px solid var(--border); border-radius:8px; padding:10px 12px; font-size:13px; line-height:1.7; }
+.habit-day-detail .dd-date { font-weight:700; color:var(--text); }
+.habit-day-detail .dd-done { color:#4caf50; font-weight:600; }
+.habit-day-detail .dd-missed { color:var(--text-muted); }
 
 /* About dialog */
 .about-section { margin-bottom: 14px; }
@@ -662,3 +1069,43 @@ body.light .board-equation { background: #fff; border-color: #e0e0e0; }
 .var-entry-full { display:block; padding:6px 0; border-bottom:1px solid var(--border); }
 .var-entry-full:last-child { border-bottom:none; }
 .var-field-name { font-size:11px; color:var(--text-muted); }
+
+/* === Búsqueda de texto dentro de la nota abierta === */
+.note-search { display:flex; align-items:center; gap:4px; min-width:0; }
+.note-search input { width:120px; max-width:32vw; padding:4px 8px; font-size:12px; background:var(--input-bg); border:1px solid var(--input-border); color:var(--text); border-radius:4px; font-family:inherit; }
+.note-search input:focus { outline:none; border-color:var(--accent); width:150px; }
+.note-search input::placeholder { color:var(--placeholder); font-size:12px; }
+.note-search-btn { background:transparent; border:1px solid var(--border); color:var(--text-sec); padding:4px 8px; border-radius:4px; cursor:pointer; font-size:13px; line-height:1; white-space:nowrap; }
+.note-search-btn:hover { background:var(--surface-hover); color:#fff; }
+.mibabel-search-hit { background:#2f80ed; color:#fff; border-radius:2px; padding:0 1px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+@media (max-width:480px) {
+  .note-search input { width:84px; }
+  .note-search input:focus { width:110px; }
+}
+
+/* === Videos pesados (modo archivo): placeholder visual tipo video === */
+.board-element.board-video.heavy { background: #141414; display: block; }
+.board-element.board-video.heavy .hv-video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+.hv-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 10px; box-sizing: border-box; text-align: center; background: #141414; color: #eee; overflow: hidden; }
+.hv-placeholder.hv-playing { display: none; }
+.hv-placeholder.hv-missing .hv-icon { opacity: 0.4; }
+.hv-icon { font-size: 34px; line-height: 1; opacity: 0.9; }
+.hv-name { font-size: 12px; font-weight: 600; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hv-size { font-size: 11px; color: #aaa; }
+.hv-play { margin-top: 6px; background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.hv-play:hover { background: rgba(255,255,255,0.25); }
+.hv-play:disabled { opacity: 0.6; cursor: wait; }
+.hv-error { margin-top: 6px; font-size: 11px; max-width: 100%; }
+.hv-warn { color: #f5c542; font-weight: 600; font-size: 12px; }
+.hv-warn-desc { color: #bbb; font-size: 11px; margin-top: 2px; }
+.hv-btn-row { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; justify-content: center; }
+.hv-relink, .hv-retry, .hv-external { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.35); border-radius: 14px; padding: 4px 10px; font-size: 11px; cursor: pointer; }
+.hv-relink:hover, .hv-retry:hover, .hv-external:hover { background: rgba(255,255,255,0.25); }
+/* Placeholder de video pesado dentro de notas */
+.hv-placeholder.hv-note { position: relative; width: 100%; min-height: 150px; border-radius: 6px; }
+.hv-placeholder.hv-note .hv-video { width: 100%; border-radius: 6px; }
+.hv-placeholder.hv-note.hv-playing { display: block; }
+.hv-placeholder.hv-note.hv-playing .hv-icon,
+.hv-placeholder.hv-note.hv-playing .hv-name,
+.hv-placeholder.hv-note.hv-playing .hv-size,
+.hv-placeholder.hv-note.hv-playing .hv-play { display: none; }

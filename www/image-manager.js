@@ -44,6 +44,11 @@ var ImageManager = (function() {
       });
     },
 
+    /* ¿Operando contra Filesystem nativo (persistente) o fallback memoria? */
+    isNative: function() {
+      return !!(_useCapacitor && _initialized);
+    },
+
     /* Guarda un archivo multimedia. ref: 'imagenes/uuid.ext' | 'audios/uuid.ext' | 'videos/uuid.ext', data: base64 */
     save: function(ref, base64Data) {
       if (!ref || !base64Data) return Promise.reject('Invalid args');
@@ -101,6 +106,60 @@ var ImageManager = (function() {
       }
       delete _store[ref];
       return Promise.resolve();
+    },
+
+    /* Escribe un chunk base64. Si isFirst, crea/trunca el archivo;
+     * si no, lo agrega al final. Permite copiar archivos grandes sin
+     * mantener el contenido completo en memoria JS. */
+    writeChunk: function(ref, base64Data, isFirst) {
+      if (!ref) return Promise.reject('Invalid ref');
+      if (_useCapacitor && _initialized) {
+        var op = isFirst ? 'writeFile' : 'appendFile';
+        return _capacitor()[op]({
+          path: ref,
+          data: base64Data || '',
+          directory: 'DATA',
+          encoding: 'base64'
+        });
+      }
+      if (isFirst) _store[ref] = base64Data || '';
+      else _store[ref] = (_store[ref] || '') + (base64Data || '');
+      return Promise.resolve();
+    },
+
+    /* Metadatos del archivo SIN leer su contenido (barato, sin memoria).
+     * Devuelve { size, mtime, ... } o null si no existe. */
+    stat: function(ref) {
+      if (!ref) return Promise.resolve(null);
+      if (_useCapacitor && _initialized) {
+        return _capacitor().stat({
+          path: ref,
+          directory: 'DATA'
+        }).then(function(info) {
+          return info || null;
+        }).catch(function() {
+          return null;
+        });
+      }
+      if (_store[ref] !== undefined) {
+        return Promise.resolve({ size: Math.floor(_store[ref].length * 3 / 4), mtime: Date.now() });
+      }
+      return Promise.resolve(null);
+    },
+
+    /* URI nativa del archivo SIN leer su contenido. Útil junto a
+     * Capacitor.convertFileSrc() para reproducir sin pasar por JS. */
+    getUri: function(ref) {
+      if (!ref) return Promise.reject('No ref');
+      if (_useCapacitor && _initialized) {
+        return _capacitor().getUri({
+          path: ref,
+          directory: 'DATA'
+        }).then(function(result) {
+          return result.uri;
+        });
+      }
+      return Promise.reject('getUri no disponible sin Capacitor');
     },
 
     /* Verifica si un archivo existe */

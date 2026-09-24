@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="mobile-web-app-capable" content="yes">
 <title>MiBabel</title>
 <link rel="stylesheet" href="style.css">
@@ -18,6 +18,11 @@
     <span class="header-title-side hidden" id="headerCenteredTitle"></span>
   </div>
   <div class="header-right" id="headerRight">
+    <div class="note-search hidden" id="noteSearchBar">
+      <input id="noteSearchInput" type="text" placeholder="Buscar en la nota..." onkeydown="if(event.key==='Enter'){event.preventDefault();runNoteSearch();}else if(event.key==='Escape'){clearNoteSearch(true);}" oninput="updateNoteSearchClearBtn();if(!this.value)clearNoteSearch(false);">
+      <button class="note-search-btn" id="noteSearchBtn" onclick="runNoteSearch()" title="Buscar">&#x1F50D;</button>
+      <button class="note-search-btn note-search-clear hidden" id="noteSearchClearBtn" onclick="clearNoteSearch(true)">&times;</button>
+    </div>
     <button class="back-btn hidden" id="headerBackBtn" onclick="goBack()">&#x21A9;</button>
     <button class="back-btn hidden" id="headerStudyBtn" onclick="var id=state.activeStudySetId;if(id)startStudy(id)"><span id="studyBtnLabel">Estudiar</span></button>
   </div>
@@ -150,6 +155,22 @@
     <div id="createFolderPane" class="hidden">
       <div class="field"><label id="newFolderNameLabel">Nombre de la carpeta</label><input id="newFolderName" placeholder="Nombre de la carpeta" onkeydown="if(event.key==='Enter')createFolder()"></div>
       <div class="field"><label id="newFolderPwdLabel">Contrasena (opcional)</label><input type="password" id="newFolderPwd" placeholder="Dejar vacio si no quiere"></div>
+      <div class="field">
+        <label id="newFolderColorLabel">Color</label>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <input type="color" id="newFolderColor" value="#5b7db5" style="width:40px;height:32px;padding:2px;border:1px solid var(--border);border-radius:4px;background:var(--input-bg);" />
+          <div class="bg-group" id="newFolderColorBtns">
+            <button class="bg-btn" style="background:#5b7db5" onclick="selectNewFolderColor('#5b7db5')" title="Azul"></button>
+            <button class="bg-btn" style="background:#4caf50" onclick="selectNewFolderColor('#4caf50')" title="Verde"></button>
+            <button class="bg-btn" style="background:#ff9800" onclick="selectNewFolderColor('#ff9800')" title="Naranja"></button>
+            <button class="bg-btn" style="background:#e91e63" onclick="selectNewFolderColor('#e91e63')" title="Rosa"></button>
+            <button class="bg-btn" style="background:#9c27b0" onclick="selectNewFolderColor('#9c27b0')" title="Violeta"></button>
+            <button class="bg-btn" style="background:#009688" onclick="selectNewFolderColor('#009688')" title="Turquesa"></button>
+            <button class="bg-btn" style="background:#795548" onclick="selectNewFolderColor('#795548')" title="Marrón"></button>
+            <button class="bg-btn" style="background:#607d8b" onclick="selectNewFolderColor('#607d8b')" title="Gris"></button>
+          </div>
+        </div>
+      </div>
       <div id="folderSubfolderHint" class="hidden" style="font-size:12px;color:var(--text-muted);padding:6px 8px;background:var(--surface-hover);border-radius:4px;margin-top:4px;text-align:center;"></div>
       <div class="dialog-actions">
         <button class="btn" id="newFolderCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
@@ -390,6 +411,13 @@
       <div style="font-size:12px;color:var(--text);line-height:1.6;margin-top:4px;">
         <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">[(Nombre de la nota)]</code> <span id="linkToNoteDesc">Vincula a otra nota</span></div>
         <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">[{https://ejemplo.com}]</code> <span id="linkToUrlDesc">Vincula a una URL externa</span></div>
+        <div id="cmdRegistroTitle" style="margin-top:8px;font-weight:600;">Registros</div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">@MiRegistro{variable="texto"}</code> <span id="cmdRegAssignTextDesc">Asigna un valor de texto</span></div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">@MiRegistro{variable=valor}</code> <span id="cmdRegAssignValueDesc">Asigna un valor numérico o booleano (int, float o true/false)</span></div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">@MiRegistro</code> <span id="cmdRegInvokeFullDesc">Muestra el historial completo del registro</span></div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">@MiRegistro/variable</code> <span id="cmdRegInvokeVarDesc">Muestra todo el historial de una variable</span></div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">@MiRegistro/variable[YYYY-MM-DD]</code> <span id="cmdRegInvokeDateDesc">Muestra el valor en una fecha específica</span></div>
+        <div><code style="background:var(--input-bg);padding:1px 4px;border-radius:3px;">@MiRegistro/variable[YYYY-MM-DD:YYYY-MM-DD]</code> <span id="cmdRegInvokeRangeDesc">Muestra los valores en un intervalo de tiempo</span></div>
       </div>
     </div>
     <div class="settings-sep"></div>
@@ -537,6 +565,69 @@
   </div>
 </div>
 
+<div class="dialog-overlay hidden" id="editNoteDialog">
+  <div class="dialog">
+    <h3 id="editNoteTitle">Editar nota</h3>
+    <div class="field">
+      <label id="editNoteNameLabel" for="editNoteName">Nombre</label>
+      <input id="editNoteName" placeholder="Nombre de la nota" onkeydown="if(event.key==='Enter')saveEditNoteDialog()">
+    </div>
+    <div class="field">
+      <label id="editNoteBgLabel">Fondo</label>
+      <div style="font-size:12px;color:var(--text-muted);margin:8px 0 4px;" id="editNoteColorLabel">Color</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px;">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteColor" value="default"> <span id="editNoteColorDefault">Default</span></label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteColor" value="white"> <span id="editNoteColorWhite">Papel blanco</span></label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteColor" value="yellow"> <span id="editNoteColorYellow">Papel amarillo</span></label>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);margin:8px 0 4px;" id="editNoteDesignLabel">Diseño</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteDesign" value="none"> <span id="editNoteDesignNone">Sin fondo</span></label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteDesign" value="lined"> <span id="editNoteDesignLined">Renglones</span></label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteDesign" value="grid"> <span id="editNoteDesignGrid">Cuadriculado</span></label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="radio" name="editNoteDesign" value="dotted"> <span id="editNoteDesignDotted">Puntos</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="checkbox" id="editNoteLockWidth"> <span id="editNoteLockWidthLabel">Bloquear ancho</span></label>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="editNoteCancelBtn" onclick="closeDialog('editNoteDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="editNoteSaveBtn" onclick="saveEditNoteDialog()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="folderEditDialog">
+  <div class="dialog">
+    <h3 id="folderEditTitle">Editar carpeta</h3>
+    <div class="field">
+      <label id="folderEditNameLabel" for="folderEditName">Nombre</label>
+      <input id="folderEditName" placeholder="Nombre de la carpeta" onkeydown="if(event.key==='Enter')saveFolderEditDialog()">
+    </div>
+    <div class="field">
+      <label id="folderEditColorLabel">Color</label>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <input type="color" id="folderEditColor" value="#5b7db5" style="width:40px;height:32px;padding:2px;border:1px solid var(--border);border-radius:4px;background:var(--input-bg);" />
+        <div class="bg-group" id="folderEditColorBtns">
+          <button class="bg-btn" style="background:#5b7db5" onclick="selectFolderEditColor('#5b7db5')" title="Azul"></button>
+          <button class="bg-btn" style="background:#4caf50" onclick="selectFolderEditColor('#4caf50')" title="Verde"></button>
+          <button class="bg-btn" style="background:#ff9800" onclick="selectFolderEditColor('#ff9800')" title="Naranja"></button>
+          <button class="bg-btn" style="background:#e91e63" onclick="selectFolderEditColor('#e91e63')" title="Rosa"></button>
+          <button class="bg-btn" style="background:#9c27b0" onclick="selectFolderEditColor('#9c27b0')" title="Violeta"></button>
+          <button class="bg-btn" style="background:#009688" onclick="selectFolderEditColor('#009688')" title="Turquesa"></button>
+          <button class="bg-btn" style="background:#795548" onclick="selectFolderEditColor('#795548')" title="Marrón"></button>
+          <button class="bg-btn" style="background:#607d8b" onclick="selectFolderEditColor('#607d8b')" title="Gris"></button>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="folderEditCancelBtn" onclick="closeDialog('folderEditDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="folderEditSaveBtn" onclick="saveFolderEditDialog()">Guardar</button>
+    </div>
+  </div>
+</div>
+
 <div class="dialog-overlay hidden" id="welcomeDialog">
   <div class="dialog dialog-welcome">
     <h3 id="welcomeTitle">Bienvenido a MiBabel</h3>
@@ -565,6 +656,7 @@
 <script src="lib/jszip.min.js"></script>
 <script src="lib/katex/katex.min.js"></script>
 <script src="image-manager.js"></script>
+<script src="video-manager.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

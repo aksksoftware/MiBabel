@@ -23,7 +23,7 @@ var langData = {
     exportPdf:'Export PDF', connect:'Connect',
      addItem:'Add item', addText:'Add text', insertImage:'Insert image', 
     addCover:'Add cover', removeCover:'Remove cover', coverTooLarge:'Image too large. Max 5MB.',
-    bold:'Bold (Ctrl+B)', italic:'Italic (Ctrl+I)', underline:'Underline (Ctrl+U)', highlight:'Highlight', bulletList:'Bullet list', numberedList:'Numbered list',
+    bold:'Bold (Ctrl+B)', italic:'Italic (Ctrl+I)', underline:'Underline (Ctrl+U)', highlight:'Highlight', textColor:'Text color', bulletList:'Bullet list', numberedList:'Numbered list',
     bg:'Bg', postit:'Post-it', cork:'Cork', white:'White', black:'Black', green:'Green (board)', exportToPdf:'Export to PDF', export:'Export', studyCards:'Study Cards', resetZoom:'Reset zoom',
     noteTitlePlaceholder:'Note title', boardNamePlaceholder:'Board name', leaveEmpty:'Leave empty if no password',
     passwordProtected:'Password protected', noContent:'No content',
@@ -47,7 +47,7 @@ var langData = {
     restore:'Restore', deletePermanent:'Delete', confirmDeletePermanent:'Delete permanently?',
     trashDaysLeft:'Deleted in ', trashDaysUnit:' day(s)', trashDeletedSoon:'Will be deleted soon',
     trashTypeNote:'Note', trashTypeBoard:'Board', trashTypeStudySet:'Study Cards',
-    linkHelpTitle:'Links between notes & URLs', linkToNote:'Links to another note', linkToUrl:'Links to an external URL',
+    linkHelpTitle:'Links between notes & URLs', linkToNote:'Links to another note', linkToUrl:'Links to an external URL', cmdRegistroTitle:'Records', cmdRegAssignText:'Assigns a text value', cmdRegAssignValue:'Assigns a numeric or boolean value (int, float or true/false)', cmdRegInvokeFull:'Shows the full history of the record', cmdRegInvokeVar:'Shows the full history of a variable', cmdRegInvokeDate:'Shows the value on a specific date', cmdRegInvokeRange:'Shows values in a date range',
     diaryPwdLabel:'Diary password', diaryPwdSet:'\uD83D\uDD12 Password set', diaryPwdChange:'Change', diaryPwdRemove:'Remove', diaryPwdNone:'No password', diaryPwdSetBtn:'Set',
     diaryPwdSetTitle:'Set diary password', diaryPwdChangeTitle:'Change diary password', diaryPwdRemoveTitle:'Remove diary password',
     diaryPwdOldLabel:'Current password', diaryPwdNewLabel:'New password',
@@ -61,6 +61,8 @@ var langData = {
     months:['January','February','March','April','May','June','July','August','September','October','November','December'],
     dayAbbr:['Su','Mo','Tu','We','Th','Fr','Sa'],
     searchDate:'Search date (dd/mm/yyyy)',
+    searchInNote:'Search in note...',
+    searchNoResults:'No matches found',
     checkDownloads:'Check your Downloads folder',
     welcomeTitle:'Welcome to MiBabel',
     welcomeMsg:'Welcome to MiBabel, an independent project created by me, a student passionate about knowledge.<br><br>MiBabel was born mainly thinking of students. Thanks to its simplicity and its various tools, it seeks to become a study and organization companion. However, it is open to anyone who wishes to organize their ideas, projects and learning.<br><br>Its name is inspired by &quot;The Library of Babel&quot;, the famous story by Argentine writer and poet Jorge Luis Borges, which imagines an infinite library capable of containing all possible books.<br><br><i>&quot;The Library is a sphere whose exact center is any hexagon, whose circumference is inaccessible.&quot;</i><br><br>Excerpt from &quot;The Library of Babel&quot;, by Jorge Luis Borges.<br><br>MiBabel is a free, private application designed to be useful. If you find it valuable, you can contribute to its development and help this library continue to grow.',
@@ -92,6 +94,10 @@ var langData = {
       habits:'Habits', habitsPending:'Habits', habitsCompleted:'Completed habits', habitTask:'Task habit', habitCounter:'Counter habit',
       habitName:'Name', habitDesc:'Description', habitIcon:'Icon', habitColor:'Color', habitTotal:'Goal', habitStep:'Step',
       habitStreak:'Streak', resetToday:'Reset today', editHabit:'Edit', deleteHabit:'Delete',
+      habitHistory:'History', habitCurrentStreak:'Current streak', habitLongestStreak:'Longest streak', habitTotalStreaks:'Total streaks',
+      habitStreaks:'Streaks', habitPrevious:'Previous', habitDaysDone:'Days completed', habitDaysReg:'Days tracked',
+      habitCompletion:'Completion', habitNow:'present', habitDone:'Done', habitMissed:'Missed', habitFuture:'Future',
+      habitToday:'Today', habitEmptyStreaks:'No streaks yet', habitAnnual:'Year activity', habitDays:'days',
       confirmDeleteHabit:'Delete this habit?', habitNameRequired:'Name is required.', habitTotalInvalid:'Goal must be a number greater than 0.', habitStepInvalid:'Step must be a number greater than 0 and not greater than goal.', habitStepIncoherent:'Step must allow reaching the goal exactly (goal must be divisible by step).', createHabit:'Create', habitEmpty:'No habits yet. Tap + to create one.', habitNeedsTotal:'Goal and Step are required for counter habits.', habitCreateTitle:'New habit', habitEditTitle:'Edit habit',
       registros:'Records', registrosEmpty:'No records yet. Tap + to create one.', newRegistro:'New Record', editRegistro:'Edit Record', deleteRegistro:'Delete Record', registroName:'Name', addVariable:'Add variable', noRegistros:'No records yet.', confirmDeleteRegistro:'Delete this record?', confirmDeleteVariable:'Delete this variable?', registroNameRequired:'Name is required.', registroExists:'A record with this name already exists.', variableExists:'A variable with this name already exists.', invalidRegistroName:'Invalid name. Use letters, numbers and underscore, starting with letter or underscore.', variableNameRequired:'Variable name is required.', invalidType:'Invalid type.', variableType:'Type', registroCreateTitle:'New record', registroEditTitle:'Edit record', registroDeleteMsg:'All variables and history will be deleted. This cannot be undone.', exportRegistro:'Export record', importRegistro:'Import record', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total records', fromDate:'From', toDate:'To', clearFilter:'Clear', invalidDate:'Invalid date.', invalidRange:'Invalid range.', valueMismatch:'Value does not match type.', registroNotFound:'Record not found.', variableNotFound:'Variable not found.', trashTypeRegistro:'Record', folder:'Folder', folders:'Folders', newFolder:'New Folder', newFolderLabel:'New folder', folderName:'Folder name', folderNamePlaceholder:'Folder name', protectedFolder:'Protected folder: ', deleteFolder:'Delete folder: ', deleteFolderMsg:'The {n} notes inside will be moved to the main view.', deleteFolderEmpty:'The folder is empty.', emptyFolderHint:'This folder is empty. Tap + to create a note inside.', subfoldersNotAllowed:'Subfolders are not allowed.', moveToFolder:'Move to folder', moveToNotes:'Move to Notes', changePassword:'Change password', invalidFolder:'Invalid folder.', enterFolderId:'Enter folder ID:', countNote:'note', countNotes:'notes', renameFolder:'Rename folder', folderExists:'Folder already exists'
     },
@@ -114,7 +120,7 @@ var langData = {
     exportPdf:'Exportar PDF', connect:'Conectar',
      addItem:'Anadir item', addText:'Anadir texto', insertImage:'Insertar imagen',
     addCover:'Anadir caratula', removeCover:'Quitar caratula', coverTooLarge:'Imagen demasiado grande. Max 5MB.',
-    bold:'Negrita (Ctrl+B)', italic:'Cursiva (Ctrl+I)', underline:'Subrayado (Ctrl+U)', highlight:'Resaltar', bulletList:'Lista con viñetas', numberedList:'Lista numerada',
+    bold:'Negrita (Ctrl+B)', italic:'Cursiva (Ctrl+I)', underline:'Subrayado (Ctrl+U)', highlight:'Resaltar', textColor:'Color del texto', bulletList:'Lista con viñetas', numberedList:'Lista numerada',
     bg:'Fondo', postit:'Post-it', cork:'Corcho', white:'Blanco', black:'Negro', green:'Verde (pizarron)', exportToPdf:'Exportar a PDF', export:'Exportar', studyCards:'Tarjetas de estudio', resetZoom:'Restablecer zoom',
     noteTitlePlaceholder:'Titulo de la nota', boardNamePlaceholder:'Nombre del tablero', leaveEmpty:'Dejar vacio si no quiere',
     passwordProtected:'Protegido con contrasena', noContent:'Sin contenido',
@@ -135,7 +141,7 @@ var langData = {
     restore:'Restaurar', deletePermanent:'Eliminar', confirmDeletePermanent:'\u00bfEliminar permanentemente?',
     trashDaysLeft:'Se elimina en ', trashDaysUnit:' d\u00eda(s)', trashDeletedSoon:'Se eliminar\u00e1 pronto',
     trashTypeNote:'Nota', trashTypeBoard:'Tablero', trashTypeStudySet:'Tarjetas de estudio',
-    linkHelpTitle:'Enlaces entre notas y URLs', linkToNote:'Vincula a otra nota', linkToUrl:'Vincula a una URL externa',
+    linkHelpTitle:'Enlaces entre notas y URLs', linkToNote:'Vincula a otra nota', linkToUrl:'Vincula a una URL externa', cmdRegistroTitle:'Registros', cmdRegAssignText:'Asigna un valor de texto', cmdRegAssignValue:'Asigna un valor numérico o booleano (int, float o true/false)', cmdRegInvokeFull:'Muestra el historial completo del registro', cmdRegInvokeVar:'Muestra todo el historial de una variable', cmdRegInvokeDate:'Muestra el valor en una fecha específica', cmdRegInvokeRange:'Muestra los valores en un intervalo de tiempo',
     diaryPwdLabel:'Contrase\u00f1a del diario', diaryPwdSet:'\uD83D\uDD12 Contrase\u00f1a establecida', diaryPwdChange:'Cambiar', diaryPwdRemove:'Eliminar', diaryPwdNone:'Sin contrase\u00f1a', diaryPwdSetBtn:'Establecer',
     diaryPwdSetTitle:'Establecer contrase\u00f1a del diario', diaryPwdChangeTitle:'Cambiar contrase\u00f1a del diario', diaryPwdRemoveTitle:'Eliminar contrase\u00f1a del diario',
     diaryPwdOldLabel:'Contrase\u00f1a actual', diaryPwdNewLabel:'Nueva contrase\u00f1a',
@@ -149,6 +155,8 @@ var langData = {
     months:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
     dayAbbr:['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
     searchDate:'Buscar fecha (dd/mm/aaaa)',
+    searchInNote:'Buscar en la nota...',
+    searchNoResults:'Sin coincidencias',
     checkDownloads:'Revisa la carpeta de Descargas',
     welcomeTitle:'Bienvenido a MiBabel',
     welcomeMsg:'Te doy la bienvenida a MiBabel, un proyecto independiente creado por m\u00ed, un estudiante apasionado por el conocimiento.<br><br>MiBabel naci\u00f3 principalmente pensando para estudiantes. Gracias a su simplicidad y a sus diversas herramientas, busca convertirse en una compa\u00f1era de estudio y organizaci\u00f3n. Sin embargo, est\u00e1 abierta a cualquier persona que desee ordenar sus ideas, proyectos y aprendizajes.<br><br>Su nombre est\u00e1 inspirado en \u00abLa biblioteca de Babel\u00bb, el c\u00e9lebre cuento del escritor y poeta argentino Jorge Luis Borges, que imagina una biblioteca infinita capaz de contener todos los libros posibles.<br><br><i>\u00abLa Biblioteca es una esfera cuyo centro cabal es cualquier hex\u00e1gono, cuya circunferencia es inaccesible.\u00bb</i><br><br>Fragmento de \u00abLa biblioteca de Babel\u00bb, de Jorge Luis Borges.<br><br>MiBabel es una aplicaci\u00f3n gratuita, privada y dise\u00f1ada para ser \u00fatil. Si te resulta valiosa, pod\u00e9s contribuir a su desarrollo y ayudar a que esta biblioteca siga creciendo.',
@@ -180,6 +188,10 @@ var langData = {
       habits:'Hábitos', habitsPending:'Hábitos', habitsCompleted:'Hábitos completos', habitTask:'Hábito tarea', habitCounter:'Hábito contador',
       habitName:'Nombre', habitDesc:'Descripción', habitIcon:'Ícono', habitColor:'Color', habitTotal:'Total', habitStep:'Saltos',
       habitStreak:'Racha', resetToday:'Resetear hoy', editHabit:'Editar', deleteHabit:'Eliminar',
+      habitHistory:'Historial', habitCurrentStreak:'Racha actual', habitLongestStreak:'Racha máxima', habitTotalStreaks:'Rachas totales',
+      habitStreaks:'Rachas', habitPrevious:'Anteriores', habitDaysDone:'Días cumplidos', habitDaysReg:'Días registrados',
+      habitCompletion:'Cumplimiento', habitNow:'actualidad', habitDone:'Cumplido', habitMissed:'No cumplido', habitFuture:'Futuro',
+      habitToday:'Hoy', habitEmptyStreaks:'Aún sin rachas', habitAnnual:'Actividad del año', habitDays:'días',
       confirmDeleteHabit:'¿Eliminar este hábito?', habitNameRequired:'El nombre es obligatorio.', habitTotalInvalid:'El total debe ser un número mayor que 0.', habitStepInvalid:'Los saltos deben ser un número mayor que 0 y no mayor que el total.', habitStepIncoherent:'Los saltos deben permitir alcanzar el total de forma coherente (el total debe ser divisible por los saltos).', createHabit:'Crear', habitEmpty:'Aún no hay hábitos. Pulsa + para crear uno.', habitNeedsTotal:'Total y Saltos son obligatorios para hábitos contador.', habitCreateTitle:'Nuevo hábito', habitEditTitle:'Editar hábito',
       registros:'Registros', registrosEmpty:'Aún no hay registros. Pulsa + para crear uno.', newRegistro:'Nuevo Registro', editRegistro:'Editar Registro', deleteRegistro:'Eliminar Registro', registroName:'Nombre', addVariable:'Agregar variable', noRegistros:'Aún no hay registros.', confirmDeleteRegistro:'¿Eliminar este registro?', confirmDeleteVariable:'¿Eliminar esta variable?', registroNameRequired:'El nombre es obligatorio.', registroExists:'Ya existe un registro con ese nombre.', variableExists:'Ya existe una variable con ese nombre.', invalidRegistroName:'Nombre inválido. Usa letras, números y guión bajo, empezando por letra o guión bajo.', variableNameRequired:'El nombre de la variable es obligatorio.', invalidType:'Tipo inválido.', variableType:'Tipo', registroCreateTitle:'Nuevo registro', registroEditTitle:'Editar registro', registroDeleteMsg:'Se eliminarán todas sus variables y su historial. Esta acción no se puede deshacer.', exportRegistro:'Exportar registro', importRegistro:'Importar registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registros', fromDate:'Desde', toDate:'Hasta', clearFilter:'Limpiar', invalidDate:'Fecha inválida.', invalidRange:'Rango inválido.', valueMismatch:'El valor no coincide con el tipo.', registroNotFound:'Registro no encontrado.', variableNotFound:'Variable no encontrada.', trashTypeRegistro:'Registro', folder:'Carpeta', folders:'Carpetas', newFolder:'Nueva Carpeta', newFolderLabel:'Nueva carpeta', folderName:'Nombre de la carpeta', folderNamePlaceholder:'Nombre de la carpeta', protectedFolder:'Carpeta protegida: ', deleteFolder:'Eliminar carpeta: ', deleteFolderMsg:'Las {n} Notas contenidas serán movidas a la vista principal.', deleteFolderEmpty:'La carpeta está vacía.', emptyFolderHint:'Esta carpeta está vacía. Pulsa + para crear una nota dentro.', subfoldersNotAllowed:'No se permiten subcarpetas.', moveToFolder:'Mover a carpeta', moveToNotes:'Mover a Notas', changePassword:'Cambiar contraseña', invalidFolder:'Carpeta inválida.', enterFolderId:'Ingrese ID de la carpeta:', countNote:'nota', countNotes:'notas', renameFolder:'Renombrar carpeta', folderExists:'Ya existe una carpeta con ese nombre'
     },
@@ -202,7 +214,7 @@ var langData = {
     exportPdf:'Exporter en PDF', connect:'Connecter',
      addItem:'Ajouter element', addText:'Ajouter texte', insertImage:'Insérer image', voiceNote:'Note vocale',
     addCover:'Ajouter couverture', removeCover:'Supprimer couverture', coverTooLarge:'Image trop grande. Max 5Mo.',
-    bold:'Gras (Ctrl+B)', italic:'Italique (Ctrl+I)', underline:'Souligne (Ctrl+U)', highlight:'Surligner', bulletList:'Liste à puces', numberedList:'Liste numérotée',
+    bold:'Gras (Ctrl+B)', italic:'Italique (Ctrl+I)', underline:'Souligne (Ctrl+U)', highlight:'Surligner', textColor:'Couleur du texte', bulletList:'Liste à puces', numberedList:'Liste numérotée',
     bg:'Fond', postit:'Post-it', cork:'Liege', white:'Blanc', black:'Noir', green:'Vert (tableau)', exportToPdf:'Exporter en PDF', export:'Exporter', studyCards:'Cartes de r\u00E9vision', resetZoom:'R\u00E9initialiser le zoom',
     noteTitlePlaceholder:'Titre de la note', boardNamePlaceholder:'Nom du tableau', leaveEmpty:'Laisser vide si pas de mot de passe',
     passwordProtected:'Protege par mot de passe', noContent:'Pas de contenu',
@@ -224,7 +236,7 @@ var langData = {
     restore:'Restaurer', deletePermanent:'Supprimer', confirmDeletePermanent:'Supprimer d\u00e9finitivement\u00a0?',
     trashDaysLeft:'Supprim\u00e9 dans ', trashDaysUnit:' jour(s)', trashDeletedSoon:'Sera bient\u00f4t supprim\u00e9',
     trashTypeNote:'Note', trashTypeBoard:'Tableau', trashTypeStudySet:'Cartes m\u00e9moire',
-    linkHelpTitle:'Liens entre notes & URL', linkToNote:'Lien vers une autre note', linkToUrl:'Lien vers une URL externe',
+    linkHelpTitle:'Liens entre notes & URL', linkToNote:'Lien vers une autre note', linkToUrl:'Lien vers une URL externe', cmdRegistroTitle:'Registres', cmdRegAssignText:'Attribue une valeur texte', cmdRegAssignValue:'Attribue une valeur numérique ou booléenne (int, float ou true/false)', cmdRegInvokeFull:'Affiche l\'historique complet du registre', cmdRegInvokeVar:'Affiche tout l\'historique d\'une variable', cmdRegInvokeDate:'Affiche la valeur à une date précise', cmdRegInvokeRange:'Affiche les valeurs sur une plage de dates',
     diaryPwdLabel:'Mot de passe du journal', diaryPwdSet:'\uD83D\uDD12 Mot de passe d\u00e9fini', diaryPwdChange:'Modifier', diaryPwdRemove:'Supprimer', diaryPwdNone:'Pas de mot de passe', diaryPwdSetBtn:'D\u00e9finir',
     diaryPwdSetTitle:'D\u00e9finir le mot de passe du journal', diaryPwdChangeTitle:'Modifier le mot de passe du journal', diaryPwdRemoveTitle:'Supprimer le mot de passe du journal',
     diaryPwdOldLabel:'Mot de passe actuel', diaryPwdNewLabel:'Nouveau mot de passe',
@@ -238,6 +250,8 @@ var langData = {
     months:['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'],
     dayAbbr:['Di','Lu','Ma','Me','Je','Ve','Sa'],
     searchDate:'Rechercher une date (jj/mm/aaaa)',
+    searchInNote:'Rechercher dans la note...',
+    searchNoResults:'Aucun résultat',
     checkDownloads:'Consultez votre dossier Téléchargements',
     welcomeTitle:'Bienvenue sur MiBabel',
     welcomeMsg:'Je vous souhaite la bienvenue dans MiBabel, un projet ind\u00e9pendant cr\u00e9\u00e9 par moi, un \u00e9tudiant passionn\u00e9 par le savoir.<br><br>MiBabel est n\u00e9 principalement pour les \u00e9tudiants. Gr\u00e2ce \u00e0 sa simplicit\u00e9 et \u00e0 ses divers outils, il cherche \u00e0 devenir un compagnon d\u2019\u00e9tude et d\u2019organisation. Cependant, il est ouvert \u00e0 toute personne souhaitant organiser ses id\u00e9es, projets et apprentissages.<br><br>Son nom est inspir\u00e9 de \u00ab\u00a0La Biblioth\u00e8que de Babel\u00a0\u00bb, la c\u00e9l\u00e8bre nouvelle de l\u2019\u00e9crivain et po\u00e8te argentin Jorge Luis Borges, qui imagine une biblioth\u00e8que infinie capable de contenir tous les livres possibles.<br><br><i>\u00ab\u00a0La Biblioth\u00e8que est une sph\u00e8re dont le centre exact est un hexagone quelconque, et dont la circonf\u00e9rence est inaccessible.\u00a0\u00bb</i><br><br>Extrait de \u00ab\u00a0La Biblioth\u00e8que de Babel\u00a0\u00bb, de Jorge Luis Borges.<br><br>MiBabel est une application gratuite, priv\u00e9e et con\u00e7ue pour \u00eatre utile. Si elle vous est pr\u00e9cieuse, vous pouvez contribuer \u00e0 son d\u00e9veloppement et aider cette biblioth\u00e8que \u00e0 continuer de grandir.',
@@ -264,6 +278,10 @@ var langData = {
       habits:'Habitudes', habitsPending:'Habitudes', habitsCompleted:'Habitudes terminées', habitTask:'Habitude tâche', habitCounter:'Habitude compteur',
       habitName:'Nom', habitDesc:'Description', habitIcon:'Icône', habitColor:'Couleur', habitTotal:'Objectif', habitStep:'Pas',
       habitStreak:'Série', resetToday:'Réinitialiser aujourd\'hui', editHabit:'Modifier', deleteHabit:'Supprimer',
+      habitHistory:'Historique', habitCurrentStreak:'Série actuelle', habitLongestStreak:'Plus longue série', habitTotalStreaks:'Séries totales',
+      habitStreaks:'Séries', habitPrevious:'Précédentes', habitDaysDone:'Jours réussis', habitDaysReg:'Jours suivis',
+      habitCompletion:'Réussite', habitNow:'en cours', habitDone:'Réussi', habitMissed:'Manqué', habitFuture:'Futur',
+      habitToday:"Aujourd'hui", habitEmptyStreaks:'Aucune série', habitAnnual:"Activité de l'année", habitDays:'jours',
       confirmDeleteHabit:'Supprimer cette habitude ?', habitNameRequired:'Le nom est obligatoire.', habitTotalInvalid:'L\'objectif doit être supérieur à 0.', habitStepInvalid:'Le pas doit être supérieur à 0 et pas supérieur à l\'objectif.', habitStepIncoherent:'Le pas doit permettre d\'atteindre l\'objectif exactement (objectif divisible par pas).', createHabit:'Créer', habitEmpty:'Aucune habitude. Appuyez sur + pour en créer.', habitNeedsTotal:'Objectif et Pas requis pour compteur.', habitCreateTitle:'Nouvelle habitude', habitEditTitle:'Modifier habitude',
       registros:'Registres', registrosEmpty:'Pas encore de registres. Appuyez sur + pour en créer.', newRegistro:'Nouveau registre', editRegistro:'Modifier registre', deleteRegistro:'Supprimer registre', registroName:'Nom', addVariable:'Ajouter variable', noRegistros:'Pas de registres.', confirmDeleteRegistro:'Supprimer ce registre ?', confirmDeleteVariable:'Supprimer cette variable ?', registroNameRequired:'Le nom est obligatoire.', registroExists:'Un registre avec ce nom existe déjà.', variableExists:'Une variable avec ce nom existe déjà.', invalidRegistroName:'Nom invalide.', variableNameRequired:'Le nom de la variable est obligatoire.', invalidType:'Type invalide.', variableType:'Type', registroCreateTitle:'Nouveau registre', registroEditTitle:'Modifier registre', registroDeleteMsg:'Toutes les variables et l\'historique seront supprimés.', exportRegistro:'Exporter registre', importRegistro:'Importer registre', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registres', fromDate:'Du', toDate:'Au', clearFilter:'Effacer', invalidDate:'Date invalide.', invalidRange:'Plage invalide.', valueMismatch:'Valeur incompatible.', registroNotFound:'Registre introuvable.', variableNotFound:'Variable introuvable.', trashTypeRegistro:'Registre', folder:'Dossier', folders:'Dossiers', newFolder:'Nouveau dossier', newFolderLabel:'Nouveau dossier', folderName:'Nom du dossier', folderNamePlaceholder:'Nom du dossier', protectedFolder:'Dossier protégé : ', deleteFolder:'Supprimer le dossier : ', deleteFolderMsg:'Les {n} notes contenues seront déplacées vers la vue principale.', deleteFolderEmpty:'Le dossier est vide.', emptyFolderHint:'Ce dossier est vide. Appuyez sur + pour créer une note.', subfoldersNotAllowed:'Les sous-dossiers ne sont pas autorisés.', moveToFolder:'Déplacer vers dossier', moveToNotes:'Déplacer vers Notes', changePassword:'Changer le mot de passe', invalidFolder:'Dossier invalide.', enterFolderId:'Entrez l\'ID du dossier :', countNote:'note', countNotes:'notes', renameFolder:'Renommer dossier', folderExists:'Le dossier existe déjà'
     },
@@ -286,7 +304,7 @@ var langData = {
     exportPdf:'Exportar PDF', connect:'Conectar',
      addItem:'Adicionar item', addText:'Adicionar texto', insertImage:'Inserir imagem',
     addCover:'Adicionar capa', removeCover:'Remover capa', coverTooLarge:'Imagem muito grande. Max 5MB.',
-    bold:'Negrito (Ctrl+B)', italic:'Italico (Ctrl+I)', underline:'Sublinhado (Ctrl+U)', highlight:'Destacar', bulletList:'Lista com marcadores', numberedList:'Lista numerada',
+    bold:'Negrito (Ctrl+B)', italic:'Italico (Ctrl+I)', underline:'Sublinhado (Ctrl+U)', highlight:'Destacar', textColor:'Cor do texto', bulletList:'Lista com marcadores', numberedList:'Lista numerada',
     bg:'Fundo', postit:'Post-it', cork:'Cortica', white:'Branco', black:'Preto', green:'Verde (quadro)', exportToPdf:'Exportar PDF', export:'Exportar', studyCards:'Cart\u00F5es de estudo', resetZoom:'Redefinir zoom',
     noteTitlePlaceholder:'Titulo da nota', boardNamePlaceholder:'Nome do quadro', leaveEmpty:'Deixe vazio se nao tiver senha',
     passwordProtected:'Protegido por senha', noContent:'Sem conteudo',
@@ -308,7 +326,7 @@ var langData = {
     restore:'Restaurar', deletePermanent:'Excluir', confirmDeletePermanent:'Excluir permanentemente?',
     trashDaysLeft:'Exclu\u00eddo em ', trashDaysUnit:' dia(s)', trashDeletedSoon:'Ser\u00e1 exclu\u00eddo em breve',
     trashTypeNote:'Nota', trashTypeBoard:'Quadro', trashTypeStudySet:'Cart\u00f5es de estudo',
-    linkHelpTitle:'Links entre notas e URLs', linkToNote:'Vincula a outra nota', linkToUrl:'Vincula a uma URL externa',
+    linkHelpTitle:'Links entre notas e URLs', linkToNote:'Vincula a outra nota', linkToUrl:'Vincula a uma URL externa', cmdRegistroTitle:'Registros', cmdRegAssignText:'Atribui um valor de texto', cmdRegAssignValue:'Atribui um valor numérico ou booleano (int, float ou true/false)', cmdRegInvokeFull:'Mostra o histórico completo do registro', cmdRegInvokeVar:'Mostra todo o histórico de uma variável', cmdRegInvokeDate:'Mostra o valor em uma data específica', cmdRegInvokeRange:'Mostra os valores em um intervalo de tempo',
     diaryPwdLabel:'Senha do di\u00e1rio', diaryPwdSet:'\uD83D\uDD12 Senha definida', diaryPwdChange:'Alterar', diaryPwdRemove:'Remover', diaryPwdNone:'Sem senha', diaryPwdSetBtn:'Definir',
     diaryPwdSetTitle:'Definir senha do di\u00e1rio', diaryPwdChangeTitle:'Alterar senha do di\u00e1rio', diaryPwdRemoveTitle:'Remover senha do di\u00e1rio',
     diaryPwdOldLabel:'Senha atual', diaryPwdNewLabel:'Nova senha',
@@ -322,6 +340,8 @@ var langData = {
     months:['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
     dayAbbr:['Do','Se','Te','Qu','Qu','Se','Sa'],
     searchDate:'Buscar data (dd/mm/aaaa)',
+    searchInNote:'Buscar na nota...',
+    searchNoResults:'Nenhum resultado',
     checkDownloads:'Verifique a pasta de Downloads',
     welcomeTitle:'Bem-vindo ao MiBabel',
     welcomeMsg:'Dou-lhe as boas-vindas ao MiBabel, um projeto independente criado por mim, um estudante apaixonado pelo conhecimento.<br><br>O MiBabel nasceu principalmente pensando nos estudantes. Gra\u00e7as \u00e0 sua simplicidade e suas diversas ferramentas, busca tornar-se um companheiro de estudo e organiza\u00e7\u00e3o. No entanto, est\u00e1 aberto a qualquer pessoa que deseje organizar suas ideias, projetos e aprendizados.<br><br>Seu nome \u00e9 inspirado em \u00abA Biblioteca de Babel\u00bb, o famoso conto do escritor e poeta argentino Jorge Luis Borges, que imagina uma biblioteca infinita capaz de conter todos os livros poss\u00edveis.<br><br><i>\u00abA Biblioteca \u00e9 uma esfera cujo centro exato \u00e9 qualquer hex\u00e1gono, cuja circunfer\u00eancia \u00e9 inacess\u00edvel.\u00bb</i><br><br>Fragmento de \u00abA Biblioteca de Babel\u00bb, de Jorge Luis Borges.<br><br>O MiBabel \u00e9 um aplicativo gratuito, privado e projetado para ser \u00fatil. Se voc\u00ea o achar valioso, pode contribuir para seu desenvolvimento e ajudar esta biblioteca a continuar crescendo.',
@@ -346,6 +366,10 @@ var langData = {
       habits:'Hábitos', habitsPending:'Hábitos', habitsCompleted:'Hábitos concluídos', habitTask:'Hábito tarefa', habitCounter:'Hábito contador',
       habitName:'Nome', habitDesc:'Descrição', habitIcon:'Ícone', habitColor:'Cor', habitTotal:'Meta', habitStep:'Passo',
       habitStreak:'Sequência', resetToday:'Reiniciar hoje', editHabit:'Editar', deleteHabit:'Excluir',
+      habitHistory:'Histórico', habitCurrentStreak:'Sequência atual', habitLongestStreak:'Maior sequência', habitTotalStreaks:'Sequências totais',
+      habitStreaks:'Sequências', habitPrevious:'Anteriores', habitDaysDone:'Dias cumpridos', habitDaysReg:'Dias registrados',
+      habitCompletion:'Aproveitamento', habitNow:'atual', habitDone:'Cumprido', habitMissed:'Não cumprido', habitFuture:'Futuro',
+      habitToday:'Hoje', habitEmptyStreaks:'Sem sequências', habitAnnual:'Atividade do ano', habitDays:'dias',
       confirmDeleteHabit:'Excluir este hábito?', habitNameRequired:'O nome é obrigatório.', habitTotalInvalid:'A meta deve ser maior que 0.', habitStepInvalid:'O passo deve ser maior que 0 e não maior que a meta.', habitStepIncoherent:'O passo deve permitir atingir a meta exatamente (meta divisível por passo).', createHabit:'Criar', habitEmpty:'Nenhum hábito ainda. Toque em + para criar.', habitNeedsTotal:'Meta e Passo obrigatórios para contador.', habitCreateTitle:'Novo hábito', habitEditTitle:'Editar hábito',
 
       registros:'Registros', registrosEmpty:'Ainda não há registros. Toque em + para criar.', newRegistro:'Novo registro', editRegistro:'Editar registro', deleteRegistro:'Excluir registro', registroName:'Nome', addVariable:'Adicionar variável', noRegistros:'Nenhum registro.', confirmDeleteRegistro:'Excluir este registro?', confirmDeleteVariable:'Excluir esta variável?', registroNameRequired:'O nome é obrigatório.', registroExists:'Já existe um registro com esse nome.', variableExists:'Já existe uma variável com esse nome.', invalidRegistroName:'Nome inválido.', variableNameRequired:'O nome da variável é obrigatório.', invalidType:'Tipo inválido.', variableType:'Tipo', registroCreateTitle:'Novo registro', registroEditTitle:'Editar registro', registroDeleteMsg:'Todas as variáveis e histórico serão excluídos.', exportRegistro:'Exportar registro', importRegistro:'Importar registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registros', fromDate:'De', toDate:'Até', clearFilter:'Limpar', invalidDate:'Data inválida.', invalidRange:'Intervalo inválido.', valueMismatch:'Valor incompatível.', registroNotFound:'Registro não encontrado.', variableNotFound:'Variável não encontrada.', trashTypeRegistro:'Registro', folder:'Pasta', folders:'Pastas', newFolder:'Nova pasta', newFolderLabel:'Nova pasta', folderName:'Nome da pasta', folderNamePlaceholder:'Nome da pasta', protectedFolder:'Pasta protegida: ', deleteFolder:'Excluir pasta: ', deleteFolderMsg:'As {n} notas dentro serão movidas para a visão principal.', deleteFolderEmpty:'A pasta está vazia.', emptyFolderHint:'Esta pasta está vazia. Toque em + para criar uma nota.', subfoldersNotAllowed:'Subpastas não são permitidas.', moveToFolder:'Mover para pasta', moveToNotes:'Mover para Notas', changePassword:'Alterar senha', invalidFolder:'Pasta inválida.', enterFolderId:'Digite o ID da pasta:', countNote:'nota', countNotes:'notas', renameFolder:'Renomear pasta', folderExists:'A pasta já existe'    },
@@ -368,7 +392,7 @@ var langData = {
     exportPdf:'Экспорт PDF', connect:'Соединить',
      addItem:'Добавить пункт', addText:'Добавить текст', insertImage:'Вставить изображение', voiceNote:'Голосовая заметка',
     addCover:'Добавить обложку', removeCover:'Удалить обложку', coverTooLarge:'Изображение слишком большое. Макс 5МБ.',
-    bold:'Жирный (Ctrl+B)', italic:'Курсив (Ctrl+I)', underline:'Подчеркнутый (Ctrl+U)', highlight:'Выделить', bulletList:'Маркированный список', numberedList:'Нумерованный список',
+    bold:'Жирный (Ctrl+B)', italic:'Курсив (Ctrl+I)', underline:'Подчеркнутый (Ctrl+U)', highlight:'Выделить', textColor:'Цвет текста', bulletList:'Маркированный список', numberedList:'Нумерованный список',
     bg:'Фон', postit:'Стикер', cork:'Пробка', white:'Белый', black:'Черный', green:'Зеленый (доска)', exportToPdf:'Экспорт PDF', export:'Экспорт', studyCards:'Карточки для изучения',
     noteTitlePlaceholder:'Заголовок заметки', boardNamePlaceholder:'Имя доски', leaveEmpty:'Оставьте пустым если нет пароля',
     passwordProtected:'Защищено паролем', noContent:'Нет содержимого',
@@ -390,7 +414,7 @@ var langData = {
     restore:'Восстановить', deletePermanent:'Удалить', confirmDeletePermanent:'Удалить навсегда?',
     trashDaysLeft:'Удалится через ', trashDaysUnit:' дн.', trashDeletedSoon:'Скоро удалится',
     trashTypeNote:'Заметка', trashTypeBoard:'Доска', trashTypeStudySet:'Карточки',
-    linkHelpTitle:'Ссылки между заметками и URL', linkToNote:'Ссылка на другую заметку', linkToUrl:'Ссылка на внешний URL',
+    linkHelpTitle:'Ссылки между заметками и URL', linkToNote:'Ссылка на другую заметку', linkToUrl:'Ссылка на внешний URL', cmdRegistroTitle:'Записи', cmdRegAssignText:'Присваивает текстовое значение', cmdRegAssignValue:'Присваивает числовое или логическое значение (int, float или true/false)', cmdRegInvokeFull:'Показывает полную историю записи', cmdRegInvokeVar:'Показывает всю историю переменной', cmdRegInvokeDate:'Показывает значение на конкретную дату', cmdRegInvokeRange:'Показывает значения за интервал времени',
     diaryPwdLabel:'Пароль дневника', diaryPwdSet:'\uD83D\uDD12 Пароль установлен', diaryPwdChange:'Изменить', diaryPwdRemove:'Удалить', diaryPwdNone:'Нет пароля', diaryPwdSetBtn:'Установить',
     diaryPwdSetTitle:'Установить пароль дневника', diaryPwdChangeTitle:'Изменить пароль дневника', diaryPwdRemoveTitle:'Удалить пароль дневника',
     diaryPwdOldLabel:'Текущий пароль', diaryPwdNewLabel:'Новый пароль',
@@ -404,6 +428,8 @@ var langData = {
     months:['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
     dayAbbr:['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
     searchDate:'Поиск даты (дд/мм/гггг)',
+    searchInNote:'Поиск по заметке...',
+    searchNoResults:'Совпадений не найдено',
     checkDownloads:'Проверьте папку Загрузки',
     welcomeTitle:'Добро пожаловать в MiBabel',
     welcomeMsg:'Я приветствую вас в MiBabel, независимом проекте, созданном мной, студентом, увлеченным знаниями.<br><br>MiBabel был создан в первую очередь для студентов. Благодаря своей простоте и разнообразным инструментам, он стремится стать спутником в учебе и организации. Однако он открыт для любого, кто хочет упорядочить свои идеи, проекты и знания.<br><br>Его название вдохновлено \u00ab\u0412\u0430\u0432\u0438\u043b\u043e\u043d\u0441\u043a\u043e\u0439 \u0431\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u043e\u0439\u00bb, знаменитым рассказом аргентинского писателя и поэта Хорхе Луиса Борхеса, который представляет бесконечную библиотеку, способную вместить все возможные книги.<br><br><i>\u00ab\u0411\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0430 \u2014 \u044d\u0442\u043e \u0441\u0444\u0435\u0440\u0430, \u0442\u043e\u0447\u043d\u044b\u0439 \u0446\u0435\u043d\u0442\u0440 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u2014 \u043b\u044e\u0431\u043e\u0439 \u0448\u0435\u0441\u0442\u0438\u0443\u0433\u043e\u043b\u044c\u043d\u0438\u043a, \u0430 \u043e\u043a\u0440\u0443\u0436\u043d\u043e\u0441\u0442\u044c \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430.\u00bb</i><br><br>\u041e\u0442\u0440\u044b\u0432\u043e\u043a \u0438\u0437 \u00ab\u0412\u0430\u0432\u0438\u043b\u043e\u043d\u0441\u043a\u043e\u0439 \u0431\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0438\u00bb, \u0425\u043e\u0440\u0445\u0435 \u041b\u0443\u0438\u0441 \u0411\u043e\u0440\u0445\u0435\u0441.<br><br>MiBabel \u2014 \u044d\u0442\u043e \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e\u0435, \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435, \u0441\u043e\u0437\u0434\u0430\u043d\u043d\u043e\u0435 \u0447\u0442\u043e\u0431\u044b \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u043d\u044b\u043c. \u0415\u0441\u043b\u0438 \u0432\u044b \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0435 \u0435\u0433\u043e \u0446\u0435\u043d\u043d\u044b\u043c, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u043c\u043e\u0447\u044c \u0435\u0433\u043e \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u044e \u0438 \u043f\u043e\u043c\u043e\u0447\u044c \u044d\u0442\u043e\u0439 \u0431\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0435 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0442\u044c \u0440\u0430\u0441\u0442\u0438.',
@@ -430,6 +456,10 @@ var langData = {
       habits:'Привычки', habitsPending:'Привычки', habitsCompleted:'Выполненные привычки', habitTask:'Привычка-задача', habitCounter:'Привычка-счётчик',
       habitName:'Название', habitDesc:'Описание', habitIcon:'Иконка', habitColor:'Цвет', habitTotal:'Цель', habitStep:'Шаг',
       habitStreak:'Серия', resetToday:'Сбросить сегодня', editHabit:'Редактировать', deleteHabit:'Удалить',
+      habitHistory:'История', habitCurrentStreak:'Текущая серия', habitLongestStreak:'Лучшая серия', habitTotalStreaks:'Всего серий',
+      habitStreaks:'Серии', habitPrevious:'Предыдущие', habitDaysDone:'Дней выполнено', habitDaysReg:'Дней учтено',
+      habitCompletion:'Выполнение', habitNow:'сейчас', habitDone:'Выполнено', habitMissed:'Пропущено', habitFuture:'Будущее',
+      habitToday:'Сегодня', habitEmptyStreaks:'Пока нет серий', habitAnnual:'Активность за год', habitDays:'дн.',
       confirmDeleteHabit:'Удалить эту привычку?', habitNameRequired:'Название обязательно.', habitTotalInvalid:'Цель должна быть больше 0.', habitStepInvalid:'Шаг должен быть больше 0 и не больше цели.', habitStepIncoherent:'Шаг должен позволять точно достичь цели (цель делится на шаг).', createHabit:'Создать', habitEmpty:'Пока нет привычек. Нажмите +.', habitNeedsTotal:'Цель и Шаг обязательны для счётчика.', habitCreateTitle:'Новая привычка', habitEditTitle:'Редактировать привычку',
 
       registros:'Записи', registrosEmpty:'Пока нет записей.', newRegistro:'Новая запись', editRegistro:'Редактировать запись', deleteRegistro:'Удалить запись', registroName:'Имя', addVariable:'Добавить переменную', noRegistros:'Нет записей.', confirmDeleteRegistro:'Удалить эту запись?', confirmDeleteVariable:'Удалить эту переменную?', registroNameRequired:'Имя обязательно.', registroExists:'Запись с таким именем уже существует.', variableExists:'Переменная с таким именем уже существует.', invalidRegistroName:'Неверное имя.', variableNameRequired:'Имя переменной обязательно.', invalidType:'Неверный тип.', variableType:'Тип', registroCreateTitle:'Новая запись', registroEditTitle:'Редактировать запись', registroDeleteMsg:'Все переменные и история будут удалены.', exportRegistro:'Экспорт записи', importRegistro:'Импорт записи', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Всего записей', fromDate:'С', toDate:'По', clearFilter:'Очистить', invalidDate:'Неверная дата.', invalidRange:'Неверный диапазон.', valueMismatch:'Значение не соответствует типу.', registroNotFound:'Запись не найдена.', variableNotFound:'Переменная не найдена.', trashTypeRegistro:'Запись', folder:'Папка', folders:'Папки', newFolder:'Новая папка', newFolderLabel:'Новая папка', folderName:'Имя папки', folderNamePlaceholder:'Имя папки', protectedFolder:'Защищенная папка: ', deleteFolder:'Удалить папку: ', deleteFolderMsg:'{n} заметок будут перемещены в основной вид.', deleteFolderEmpty:'Папка пуста.', emptyFolderHint:'Эта папка пуста. Нажмите +, чтобы создать заметку.', subfoldersNotAllowed:'Подпапки не разрешены.', moveToFolder:'Переместить в папку', moveToNotes:'Переместить в Заметки', changePassword:'Сменить пароль', invalidFolder:'Неверная папка.', enterFolderId:'Введите ID папки:', countNote:'заметка', countNotes:'заметок', renameFolder:'Переименовать папку', folderExists:'Папка уже существует'    },
@@ -452,7 +482,7 @@ var langData = {
     exportPdf:'Als PDF exportieren', connect:'Verbinden',
      addItem:'Element hinzuf\u00fcgen', addText:'Text hinzuf\u00fcgen', insertImage:'Bild einf\u00fcgen', voiceNote:'Sprachnotiz',
     addCover:'Cover hinzuf\u00fcgen', removeCover:'Cover entfernen', coverTooLarge:'Bild zu gro\u00df. Max. 5 MB.',
-    bold:'Fett (Ctrl+B)', italic:'Kursiv (Ctrl+I)', underline:'Unterstrichen (Ctrl+U)', highlight:'Hervorheben', bulletList:'Aufz\u00e4hlungsliste', numberedList:'Nummerierte Liste',
+    bold:'Fett (Ctrl+B)', italic:'Kursiv (Ctrl+I)', underline:'Unterstrichen (Ctrl+U)', highlight:'Hervorheben', textColor:'Textfarbe', bulletList:'Aufz\u00e4hlungsliste', numberedList:'Nummerierte Liste',
     bg:'Hintergrund', postit:'Haftnotiz', cork:'Kork', white:'Wei\u00df', black:'Schwarz', green:'Gr\u00fcn (Pinnwand)', exportToPdf:'Als PDF exportieren', export:'Exportieren', studyCards:'Lernkarten',
     noteTitlePlaceholder:'Titel der Notiz', boardNamePlaceholder:'Name der Pinnwand', leaveEmpty:'Bei keinem Passwort leer lassen',
     passwordProtected:'Passwortgesch\u00fctzt', noContent:'Kein Inhalt',
@@ -473,7 +503,7 @@ var langData = {
     restore:'Wiederherstellen', deletePermanent:'Endg\u00fcltig l\u00f6schen', confirmDeletePermanent:'Endg\u00fcltig l\u00f6schen?',
     trashDaysLeft:'Gel\u00f6scht in ', trashDaysUnit:' Tag(en)', trashDeletedSoon:'Wird bald gel\u00f6scht',
     trashTypeNote:'Notiz', trashTypeBoard:'Pinnwand', trashTypeStudySet:'Lernkarten',
-    linkHelpTitle:'Links zwischen Notizen & URLs', linkToNote:'Verlinkt zu einer anderen Notiz', linkToUrl:'Verlinkt zu einer externen URL',
+    linkHelpTitle:'Links zwischen Notizen & URLs', linkToNote:'Verlinkt zu einer anderen Notiz', linkToUrl:'Verlinkt zu einer externen URL', cmdRegistroTitle:'Aufzeichnungen', cmdRegAssignText:'Weist einen Textwert zu', cmdRegAssignValue:'Weist einen numerischen oder booleschen Wert zu (int, float oder true/false)', cmdRegInvokeFull:'Zeigt den gesamten Verlauf der Aufzeichnung', cmdRegInvokeVar:'Zeigt den gesamten Verlauf einer Variable', cmdRegInvokeDate:'Zeigt den Wert an einem bestimmten Datum', cmdRegInvokeRange:'Zeigt Werte in einem Zeitraum',
     diaryPwdLabel:'Tagebuch-Passwort', diaryPwdSet:'\uD83D\uDD12 Passwort festgelegt', diaryPwdChange:'\u00c4ndern', diaryPwdRemove:'Entfernen', diaryPwdNone:'Kein Passwort', diaryPwdSetBtn:'Festlegen',
     diaryPwdSetTitle:'Tagebuch-Passwort festlegen', diaryPwdChangeTitle:'Tagebuch-Passwort \u00e4ndern', diaryPwdRemoveTitle:'Tagebuch-Passwort entfernen',
     diaryPwdOldLabel:'Aktuelles Passwort', diaryPwdNewLabel:'Neues Passwort',
@@ -487,6 +517,8 @@ var langData = {
     months:['Januar','Februar','M\u00e4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
     dayAbbr:['So','Mo','Di','Mi','Do','Fr','Sa'],
     searchDate:'Datum suchen (tt/mm/jjjj)',
+    searchInNote:'In Notiz suchen...',
+    searchNoResults:'Keine Treffer',
     checkDownloads:'Prüfen Sie den Download-Ordner',
     welcomeTitle:'Willkommen bei MiBabel',
     welcomeMsg:'Willkommen bei MiBabel, einem unabh\u00e4ngigen Projekt, das von mir, einem leidenschaftlichen Studenten, erstellt wurde.<br><br>MiBabel wurde haupts\u00e4chlich f\u00fcr Studenten entwickelt. Dank seiner Einfachheit und seiner vielf\u00e4ltigen Werkzeuge m\u00f6chte es zu einem Begleiter f\u00fcr Studium und Organisation werden. Es steht jedoch jedem offen, der seine Ideen, Projekte und Lerninhalte ordnen m\u00f6chte.<br><br>Sein Name ist inspiriert von \u00abDie Bibliothek von Babel\u00bb, der ber\u00fchmten Erz\u00e4hlung des argentinischen Schriftstellers und Dichters Jorge Luis Borges, die eine unendliche Bibliothek vorstellt, die alle m\u00f6glichen B\u00fccher enthalten kann.<br><br><i>\u00abDie Bibliothek ist eine Kugel, deren genaues Zentrum ein beliebiges Sechseck ist, deren Umfang unzug\u00e4nglich ist.\u00bb</i><br><br>Auszug aus \u00abDie Bibliothek von Babel\u00bb von Jorge Luis Borges.<br><br>MiBabel ist eine kostenlose, private Anwendung, die n\u00fctzlich sein soll. Wenn du sie wertvoll findest, kannst du zu ihrer Entwicklung beitragen und helfen, dass diese Bibliothek weiter w\u00e4chst.',
@@ -513,6 +545,10 @@ var langData = {
       habits:'Gewohnheiten', habitsPending:'Gewohnheiten', habitsCompleted:'Erledigte Gewohnheiten', habitTask:'Aufgaben-Gewohnheit', habitCounter:'Zähler-Gewohnheit',
       habitName:'Name', habitDesc:'Beschreibung', habitIcon:'Symbol', habitColor:'Farbe', habitTotal:'Ziel', habitStep:'Schritt',
       habitStreak:'Serie', resetToday:'Heute zurücksetzen', editHabit:'Bearbeiten', deleteHabit:'Löschen',
+      habitHistory:'Verlauf', habitCurrentStreak:'Aktuelle Serie', habitLongestStreak:'Längste Serie', habitTotalStreaks:'Serien gesamt',
+      habitStreaks:'Serien', habitPrevious:'Frühere', habitDaysDone:'Erledigte Tage', habitDaysReg:'Erfasste Tage',
+      habitCompletion:'Erfüllung', habitNow:'laufend', habitDone:'Erledigt', habitMissed:'Verpasst', habitFuture:'Zukunft',
+      habitToday:'Heute', habitEmptyStreaks:'Noch keine Serien', habitAnnual:'Jahresaktivität', habitDays:'Tage',
       confirmDeleteHabit:'Diese Gewohnheit löschen?', habitNameRequired:'Name ist erforderlich.', habitTotalInvalid:'Ziel muss größer als 0 sein.', habitStepInvalid:'Schritt muss größer als 0 und nicht größer als Ziel sein.', habitStepIncoherent:'Schritt muss Ziel exakt erreichen (Ziel teilbar durch Schritt).', createHabit:'Erstellen', habitEmpty:'Noch keine Gewohnheiten. Tippe auf +.', habitNeedsTotal:'Ziel und Schritt für Zähler erforderlich.', habitCreateTitle:'Neue Gewohnheit', habitEditTitle:'Gewohnheit bearbeiten',
 
       registros:'Aufzeichnungen', registrosEmpty:'Noch keine Aufzeichnungen.', newRegistro:'Neue Aufzeichnung', editRegistro:'Aufzeichnung bearbeiten', deleteRegistro:'Aufzeichnung löschen', registroName:'Name', addVariable:'Variable hinzufügen', noRegistros:'Keine Aufzeichnungen.', confirmDeleteRegistro:'Diese Aufzeichnung löschen?', confirmDeleteVariable:'Diese Variable löschen?', registroNameRequired:'Name ist erforderlich.', registroExists:'Eine Aufzeichnung mit diesem Namen existiert bereits.', variableExists:'Eine Variable mit diesem Namen existiert bereits.', invalidRegistroName:'Ungültiger Name.', variableNameRequired:'Variablenname ist erforderlich.', invalidType:'Ungültiger Typ.', variableType:'Typ', registroCreateTitle:'Neue Aufzeichnung', registroEditTitle:'Aufzeichnung bearbeiten', registroDeleteMsg:'Alle Variablen und Verläufe werden gelöscht.', exportRegistro:'Aufzeichnung exportieren', importRegistro:'Aufzeichnung importieren', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Aufzeichnungen gesamt', fromDate:'Von', toDate:'Bis', clearFilter:'Löschen', invalidDate:'Ungültiges Datum.', invalidRange:'Ungültiger Bereich.', valueMismatch:'Wert passt nicht zum Typ.', registroNotFound:'Aufzeichnung nicht gefunden.', variableNotFound:'Variable nicht gefunden.', trashTypeRegistro:'Aufzeichnung', folder:'Ordner', folders:'Ordner', newFolder:'Neuer Ordner', newFolderLabel:'Neuer Ordner', folderName:'Ordnername', folderNamePlaceholder:'Ordnername', protectedFolder:'Geschützter Ordner: ', deleteFolder:'Ordner löschen: ', deleteFolderMsg:'Die {n} Notizen werden in die Hauptansicht verschoben.', deleteFolderEmpty:'Der Ordner ist leer.', emptyFolderHint:'Dieser Ordner ist leer. Tippe auf +, um eine Notiz zu erstellen.', subfoldersNotAllowed:'Unterordner sind nicht erlaubt.', moveToFolder:'In Ordner verschieben', moveToNotes:'Zu Notizen verschieben', changePassword:'Passwort ändern', invalidFolder:'Ungültiger Ordner.', enterFolderId:'Ordner-ID eingeben:', countNote:'Notiz', countNotes:'Notizen', renameFolder:'Ordner umbenennen', folderExists:'Ordner existiert bereits'    },
@@ -535,7 +571,7 @@ var langData = {
     exportPdf:'Esporta PDF', connect:'Collega',
      addItem:'Aggiungi elemento', addText:'Aggiungi testo', insertImage:'Inserisci immagine', voiceNote:'Nota vocale',
     addCover:'Aggiungi copertina', removeCover:'Rimuovi copertina', coverTooLarge:'Immagine troppo grande. Max 5MB.',
-    bold:'Grassetto (Ctrl+B)', italic:'Corsivo (Ctrl+I)', underline:'Sottolineato (Ctrl+U)', highlight:'Evidenziare', bulletList:'Elenco puntato', numberedList:'Elenco numerato',
+    bold:'Grassetto (Ctrl+B)', italic:'Corsivo (Ctrl+I)', underline:'Sottolineato (Ctrl+U)', highlight:'Evidenziare', textColor:'Colore testo', bulletList:'Elenco puntato', numberedList:'Elenco numerato',
     bg:'Sfondo', postit:'Post-it', cork:'Sughero', white:'Bianco', black:'Nero', green:'Verde (lavagna)', exportToPdf:'Esporta PDF', export:'Esporta', studyCards:'Carte di studio',
     noteTitlePlaceholder:'Titolo nota', boardNamePlaceholder:'Nome lavagna', leaveEmpty:'Lascia vuoto se senza password',
     passwordProtected:'Protetta da password', noContent:'Nessun contenuto',
@@ -557,7 +593,7 @@ var langData = {
     restore:'Ripristina', deletePermanent:'Elimina', confirmDeletePermanent:'Eliminare definitivamente?',
     trashDaysLeft:'Eliminato tra ', trashDaysUnit:' giorno(i)', trashDeletedSoon:'Sar\u00e0 eliminato a breve',
     trashTypeNote:'Nota', trashTypeBoard:'Lavagna', trashTypeStudySet:'Carte di studio',
-    linkHelpTitle:'Collegamenti tra note e URL', linkToNote:'Collega a un\'altra nota', linkToUrl:'Collega a un URL esterno',
+    linkHelpTitle:'Collegamenti tra note e URL', linkToNote:'Collega a un\'altra nota', linkToUrl:'Collega a un URL esterno', cmdRegistroTitle:'Registri', cmdRegAssignText:'Assegna un valore di testo', cmdRegAssignValue:'Assegna un valore numerico o booleano (int, float o true/false)', cmdRegInvokeFull:'Mostra la cronologia completa del registro', cmdRegInvokeVar:'Mostra tutta la cronologia di una variabile', cmdRegInvokeDate:'Mostra il valore in una data specifica', cmdRegInvokeRange:'Mostra i valori in un intervallo di tempo',
     diaryPwdLabel:'Password del diario', diaryPwdSet:'\uD83D\uDD12 Password impostata', diaryPwdChange:'Cambia', diaryPwdRemove:'Rimuovi', diaryPwdNone:'Nessuna password', diaryPwdSetBtn:'Imposta',
     diaryPwdSetTitle:'Imposta password del diario', diaryPwdChangeTitle:'Cambia password del diario', diaryPwdRemoveTitle:'Rimuovi password del diario',
     diaryPwdOldLabel:'Password attuale', diaryPwdNewLabel:'Nuova password',
@@ -571,6 +607,8 @@ var langData = {
     months:['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
     dayAbbr:['Do','Lu','Ma','Me','Gi','Ve','Sa'],
     searchDate:'Cerca data (gg/mm/aaaa)',
+    searchInNote:'Cerca nella nota...',
+    searchNoResults:'Nessun risultato',
     checkDownloads:'Controlla la cartella Download',
     welcomeTitle:'Benvenuto su MiBabel',
     welcomeMsg:'Ti do il benvenuto a MiBabel, un progetto indipendente creato da me, uno studente appassionato di conoscenza.<br><br>MiBabel \u00e8 nato principalmente pensando agli studenti. Grazie alla sua semplicit\u00e0 e ai suoi vari strumenti, cerca di diventare un compagno di studio e organizzazione. Tuttavia, \u00e8 aperto a chiunque desideri ordinare le proprie idee, progetti e apprendimenti.<br><br>Il suo nome \u00e8 ispirato a \u00abLa biblioteca di Babele\u00bb, il celebre racconto dello scrittore e poeta argentino Jorge Luis Borges, che immagina una biblioteca infinita capace di contenere tutti i libri possibili.<br><br><i>\u00abLa Biblioteca \u00e8 una sfera il cui centro esatto \u00e8 un qualsiasi esagono, la cui circonferenza \u00e8 inaccessibile.\u00bb</i><br><br>Frammento da \u00abLa biblioteca di Babele\u00bb, di Jorge Luis Borges.<br><br>MiBabel \u00e8 un\u2019applicazione gratuita, privata e progettata per essere utile. Se la trovi preziosa, puoi contribuire al suo sviluppo e aiutare questa biblioteca a continuare a crescere.',
@@ -597,11 +635,53 @@ var langData = {
       habits:'Abitudini', habitsPending:'Abitudini', habitsCompleted:'Abitudini completate', habitTask:'Abitudine compito', habitCounter:'Abitudine contatore',
       habitName:'Nome', habitDesc:'Descrizione', habitIcon:'Icona', habitColor:'Colore', habitTotal:'Obiettivo', habitStep:'Passo',
       habitStreak:'Serie', resetToday:'Reimposta oggi', editHabit:'Modifica', deleteHabit:'Elimina',
+      habitHistory:'Cronologia', habitCurrentStreak:'Serie attuale', habitLongestStreak:'Serie più lunga', habitTotalStreaks:'Serie totali',
+      habitStreaks:'Serie', habitPrevious:'Precedenti', habitDaysDone:'Giorni completati', habitDaysReg:'Giorni registrati',
+      habitCompletion:'Completamento', habitNow:'in corso', habitDone:'Completato', habitMissed:'Mancato', habitFuture:'Futuro',
+      habitToday:'Oggi', habitEmptyStreaks:'Ancora nessuna serie', habitAnnual:"Attività dell'anno", habitDays:'giorni',
       confirmDeleteHabit:'Eliminare questa abitudine?', habitNameRequired:'Il nome è obbligatorio.', habitTotalInvalid:'L\'obiettivo deve essere maggiore di 0.', habitStepInvalid:'Il passo deve essere maggiore di 0 e non maggiore dell\'obiettivo.', habitStepIncoherent:'Il passo deve permettere di raggiungere l\'obiettivo esattamente (obiettivo divisibile per passo).', createHabit:'Crea', habitEmpty:'Nessuna abitudine. Tocca + per crearne una.', habitNeedsTotal:'Obiettivo e Passo richiesti per contatore.', habitCreateTitle:'Nuova abitudine', habitEditTitle:'Modifica abitudine',
 
       registros:'Registri', registrosEmpty:'Nessun registro ancora.', newRegistro:'Nuovo registro', editRegistro:'Modifica registro', deleteRegistro:'Elimina registro', registroName:'Nome', addVariable:'Aggiungi variabile', noRegistros:'Nessun registro.', confirmDeleteRegistro:'Eliminare questo registro?', confirmDeleteVariable:'Eliminare questa variabile?', registroNameRequired:'Il nome è obbligatorio.', registroExists:'Esiste già un registro con questo nome.', variableExists:'Esiste già una variabile con questo nome.', invalidRegistroName:'Nome non valido.', variableNameRequired:'Il nome della variabile è obbligatorio.', invalidType:'Tipo non valido.', variableType:'Tipo', registroCreateTitle:'Nuovo registro', registroEditTitle:'Modifica registro', registroDeleteMsg:'Tutte le variabili e la cronologia verranno eliminate.', exportRegistro:'Esporta registro', importRegistro:'Importa registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Registri totali', fromDate:'Da', toDate:'A', clearFilter:'Cancella', invalidDate:'Data non valida.', invalidRange:'Intervallo non valido.', valueMismatch:'Valore non compatibile.', registroNotFound:'Registro non trovato.', variableNotFound:'Variabile non trovata.', trashTypeRegistro:'Registro', folder:'Cartella', folders:'Cartelle', newFolder:'Nuova cartella', newFolderLabel:'Nuova cartella', folderName:'Nome cartella', folderNamePlaceholder:'Nome cartella', protectedFolder:'Cartella protetta: ', deleteFolder:'Elimina cartella: ', deleteFolderMsg:'Le {n} note verranno spostate nella vista principale.', deleteFolderEmpty:'La cartella è vuota.', emptyFolderHint:'Questa cartella è vuota. Tocca + per creare una nota.', subfoldersNotAllowed:'Le sottocartelle non sono consentite.', moveToFolder:'Sposta in cartella', moveToNotes:'Sposta in Note', changePassword:'Cambia password', invalidFolder:'Cartella non valida.', enterFolderId:'Inserisci ID cartella:', countNote:'nota', countNotes:'note', renameFolder:'Rinomina cartella', folderExists:'La cartella esiste già'    }
 };
 function t(key) { var l = langData[state.lang] || langData.en; return l[key] || key; }
+
+/* ==================================================
+   SISTEMA DE FONDOS PAPEL (background.color + background.design)
+   3 colores x 4 diseños = 12 combinaciones.
+   Notas antiguas sin background -> default/none (no destructivo).
+   ================================================== */
+var PAPER_BG_COLORS = ['default', 'white', 'yellow'];
+var PAPER_BG_DESIGNS = ['none', 'lined', 'grid', 'dotted'];
+var PAPER_UNIT = 32;
+function normalizeBackground(bg) {
+  var c = bg && bg.color, d = bg && bg.design;
+  if (PAPER_BG_COLORS.indexOf(c) === -1) c = 'default';
+  if (PAPER_BG_DESIGNS.indexOf(d) === -1) d = 'none';
+  return { color: c, design: d };
+}
+function getNoteBackground(note) {
+  if (!note || !note.background) return { color: 'default', design: 'none' };
+  return normalizeBackground(note.background);
+}
+function isPaperSyncDesign(design) {
+  return design === 'lined' || design === 'grid' || design === 'dotted';
+}
+/* Traducciones para el diálogo Editar nota (sin tocar las líneas largas de langData) */
+(function() {
+  var extra = {
+    en: { editNoteTitle: 'Edit note', editNoteName: 'Name', editNoteBg: 'Background', editNoteColor: 'Color', editNoteDesign: 'Design', bgDefault: 'Default', bgWhite: 'White paper', bgYellow: 'Yellow paper', designNone: 'No background', designLined: 'Lined', designGrid: 'Grid', designDotted: 'Dotted', lockWidth: 'Lock width', editFolder: 'Edit folder', folderColor: 'Folder color' },
+    es: { editNoteTitle: 'Editar nota', editNoteName: 'Nombre', editNoteBg: 'Fondo', editNoteColor: 'Color', editNoteDesign: 'Diseño', bgDefault: 'Default', bgWhite: 'Papel blanco', bgYellow: 'Papel amarillo', designNone: 'Sin fondo', designLined: 'Renglones', designGrid: 'Cuadriculado', designDotted: 'Puntos', lockWidth: 'Bloquear ancho', editFolder: 'Editar carpeta', folderColor: 'Color de la carpeta' },
+    fr: { editNoteTitle: 'Modifier la note', editNoteName: 'Nom', editNoteBg: 'Fond', editNoteColor: 'Couleur', editNoteDesign: 'Motif', bgDefault: 'Défaut', bgWhite: 'Papier blanc', bgYellow: 'Papier jaune', designNone: 'Sans fond', designLined: 'Lignes', designGrid: 'Quadrillé', designDotted: 'Points', lockWidth: 'Verrouiller la largeur', editFolder: 'Modifier le dossier', folderColor: 'Couleur du dossier' },
+    pt: { editNoteTitle: 'Editar nota', editNoteName: 'Nome', editNoteBg: 'Fundo', editNoteColor: 'Cor', editNoteDesign: 'Desenho', bgDefault: 'Padrão', bgWhite: 'Papel branco', bgYellow: 'Papel amarelo', designNone: 'Sem fundo', designLined: 'Linhas', designGrid: 'Quadriculado', designDotted: 'Pontos', lockWidth: 'Bloquear largura', editFolder: 'Editar pasta', folderColor: 'Cor da pasta' },
+    ru: { editNoteTitle: 'Редактировать заметку', editNoteName: 'Название', editNoteBg: 'Фон', editNoteColor: 'Цвет', editNoteDesign: 'Узор', bgDefault: 'По умолчанию', bgWhite: 'Белая бумага', bgYellow: 'Жёлтая бумага', designNone: 'Без фона', designLined: 'Линии', designGrid: 'Клетка', designDotted: 'Точки', lockWidth: 'Зафиксировать ширину', editFolder: 'Редактировать папку', folderColor: 'Цвет папки' },
+    de: { editNoteTitle: 'Notiz bearbeiten', editNoteName: 'Name', editNoteBg: 'Hintergrund', editNoteColor: 'Farbe', editNoteDesign: 'Muster', bgDefault: 'Standard', bgWhite: 'Weißes Papier', bgYellow: 'Gelbes Papier', designNone: 'Kein Hintergrund', designLined: 'Liniert', designGrid: 'Kariert', designDotted: 'Gepunktet', lockWidth: 'Breite sperren', editFolder: 'Ordner bearbeiten', folderColor: 'Ordnerfarbe' },
+    it: { editNoteTitle: 'Modifica nota', editNoteName: 'Nome', editNoteBg: 'Sfondo', editNoteColor: 'Colore', editNoteDesign: 'Motivo', bgDefault: 'Predefinito', bgWhite: 'Carta bianca', bgYellow: 'Carta gialla', designNone: 'Senza sfondo', designLined: 'Righe', designGrid: 'Quadretti', designDotted: 'Puntini', lockWidth: 'Blocca larghezza', editFolder: 'Modifica cartella', folderColor: 'Colore cartella' }
+  };
+  for (var lang in extra) {
+    if (!langData[lang]) continue;
+    for (var k in extra[lang]) { if (!langData[lang][k]) langData[lang][k] = extra[lang][k]; }
+  }
+})();
 function setLang(code) { state.lang = code; save(); applyLang(); applyTheme(); renderAll(); document.documentElement.lang = code; }
 function fmtDate(ts) { if (!ts) return ''; var d = new Date(ts); return d.toLocaleDateString(); }
 var Directory = {
@@ -659,7 +739,9 @@ function _collectMediaRefsFromItem(item, type) {
   if (type === 'note' && item.items) {
     item.items.forEach(function(it) {
       var itRef = it.src || it.ref;
-      if (itRef && (it.type === 'image' || it.type === 'audio' || it.type === 'video')) refs[itRef] = true;
+      /* Los videos pesados en modo archivo son locales: no se embeben
+       * (evita cargar gigantes en memoria/JSON). Van en _localOnlyMedia. */
+      if (itRef && (it.type === 'image' || it.type === 'audio' || it.type === 'video') && !VideoManager.isHeavyItem(it)) refs[itRef] = true;
     });
   }
   if (type === 'board') {
@@ -669,7 +751,9 @@ function _collectMediaRefsFromItem(item, type) {
         if (m) m.forEach(function(t) { var s = t.match(/src="([^"]+)"/); if (s && s[1]) refs[s[1]] = true; });
       }
     });
-    if (item.elements) item.elements.forEach(function(el) { if (el.ref) refs[el.ref] = true; });
+    if (item.elements) item.elements.forEach(function(el) {
+      if (el.ref && !VideoManager.isHeavyElement(el)) refs[el.ref] = true;
+    });
   }
   if (type === 'studySet' && item.cards) {
     item.cards.forEach(function(c) {
@@ -684,6 +768,20 @@ function _collectMediaRefsFromItem(item, type) {
   return Object.keys(refs);
 }
 
+/* Metadatos de videos pesados locales (referencia, NO portable a otro
+ * dispositivo). Se exportan como marca explícita, sin datos binarios. */
+function _collectHeavyMediaFromItem(item, type) {
+  var out = {};
+  function put(meta) { out[meta.ref] = { mediaId: meta.mediaId, name: meta.name, size: meta.size, mimeType: meta.mimeType, localOnly: true }; }
+  if (type === 'note' && item.items) {
+    VideoManager.collectHeavyFromNote(item).forEach(put);
+  }
+  if (type === 'board' && item) {
+    VideoManager.collectHeavyFromBoard(item).forEach(put);
+  }
+  return out;
+}
+
 function exportItem(item, type) {
   var name = sanitizeFilename(item.title || item.name || type);
   var pkg = {
@@ -693,9 +791,15 @@ function exportItem(item, type) {
     exportedAt: new Date().toISOString(),
     hasEmbeddedMedia: true,
     _media: {},
+    /* Videos pesados: solo referencia local (no portable). */
+    _localOnlyMedia: _collectHeavyMediaFromItem(item, type),
     data: JSON.parse(JSON.stringify(item))
   };
   var refs = _collectMediaRefsFromItem(item, type);
+  var heavyCount = Object.keys(pkg._localOnlyMedia).length;
+  if (heavyCount > 0) {
+    setStatus('Aviso: ' + heavyCount + ' video(s) pesado(s) son locales y no se incluyen en la exportación.');
+  }
   if (refs.length === 0) {
     var jsonStr = JSON.stringify(pkg, null, 2);
     saveFile(name + '.json', jsonStr, 'application/json');
@@ -732,9 +836,21 @@ function exportSingleStudySet(id) {
 function exportSingleFolder(id){
   var folder=getFolderById(id); if(!folder) return;
   var notes=state.notes.filter(function(n){return n.folderId===id;});
-  var pkg={ formatVersion:2, type:'folder', app:'AppNotas', exportedAt:new Date().toISOString(), data: JSON.parse(JSON.stringify(folder)), notes: JSON.parse(JSON.stringify(notes)), hasEmbeddedMedia:true, _media:{} };
+  var pkg={ formatVersion:2, type:'folder', app:'AppNotas', exportedAt:new Date().toISOString(), data: JSON.parse(JSON.stringify(folder)), notes: JSON.parse(JSON.stringify(notes)), hasEmbeddedMedia:true, _media:{}, _localOnlyMedia:{} };
   var refs=[];
-  notes.forEach(function(n){ (n.items||[]).forEach(function(it){ var r=it.src||it.ref; if((it.type==='image'||it.type==='audio'||it.type==='video')&&r) refs.push(r); }); });
+  notes.forEach(function(n){ (n.items||[]).forEach(function(it){
+    var r=it.src||it.ref;
+    if((it.type==='image'||it.type==='audio'||it.type==='video')&&r){
+      if (VideoManager.isHeavyItem(it)) {
+        pkg._localOnlyMedia[r]={ name: it.name||'video', size: it.size||0, mimeType: it.mimeType||'video/mp4', localOnly:true };
+      } else {
+        refs.push(r);
+      }
+    }
+  }); });
+  if (Object.keys(pkg._localOnlyMedia).length > 0) {
+    setStatus('Aviso: videos pesados locales no incluidos en la exportación.');
+  }
   if(refs.length===0){ saveFile(sanitizeFilename(folder.name||'folder')+'.json', JSON.stringify(pkg,null,2), 'application/json'); return; }
   Promise.all(refs.map(function(ref){ return ImageManager.read(ref).then(function(b64){ if(b64) pkg._media[ref]=b64; }); })).then(function(){
     saveFile(sanitizeFilename(folder.name||'folder')+'.json', JSON.stringify(pkg,null,2), 'application/json');
@@ -791,7 +907,39 @@ function exportData() {
   var fileName = 'Backup_' + ys + '-' + ms + '-' + ds + '.anbk';
   setStatus('Generando copia de seguridad...');
   var usedRefs = ImageManager.collectUsedRefs();
-  var imgLoadPromises = usedRefs.map(function(ref) {
+  /* Videos pesados en modo archivo: NO se empaquetan (embebidos gigarían
+   * la memoria y el ZIP). Se registran en el manifiesto como limitación
+   * explícita; al importar mostrarán "Video no disponible". */
+  var heavySkipped = [];
+  function isHeavyRef(ref) {
+    var found = null;
+    state.boards.forEach(function(b) {
+      (b.elements || []).forEach(function(el) {
+        if (el.ref === ref && VideoManager.isHeavyElement(el)) {
+          found = { ref: ref, mediaId: el.mediaId || null, name: el.name || 'video', size: el.size || 0, mimeType: el.mimeType || 'video/mp4' };
+        }
+      });
+    });
+    state.notes.forEach(function(n) {
+      (n.items || []).forEach(function(it) {
+        if ((it.src || it.ref) === ref && VideoManager.isHeavyItem(it)) {
+          found = { ref: ref, mediaId: it.mediaId || null, name: it.name || 'video', size: it.size || 0, mimeType: it.mimeType || 'video/mp4' };
+        }
+      });
+    });
+    return found;
+  }
+  var embedRefs = [];
+  usedRefs.forEach(function(ref) {
+    var heavy = isHeavyRef(ref);
+    if (heavy) heavySkipped.push(heavy);
+    else embedRefs.push(ref);
+  });
+  if (heavySkipped.length > 0) {
+    manifest.heavyMediaSkipped = heavySkipped;
+    setStatus('Aviso: ' + heavySkipped.length + ' video(s) pesado(s) no se incluyen en la copia (solo referencia local).');
+  }
+  var imgLoadPromises = embedRefs.map(function(ref) {
     return ImageManager.read(ref).then(function(base64) {
       if (base64) {
         zip.file(ref, base64, { base64: true, createFolders: true });
@@ -857,12 +1005,12 @@ function importData(input) {
           notasFile.async('string'),
           configFile.async('string')
         ]).then(function(results) {
-          return { notas: JSON.parse(results[0]), config: JSON.parse(results[1]), zip: zip };
+          return { notas: JSON.parse(results[0]), config: JSON.parse(results[1]), zip: zip, manifest: manifest };
         });
       });
     }).then(function(data) {
       if (!data) return;
-      var notas = data.notas, config = data.config, zip = data.zip;
+      var notas = data.notas, config = data.config, zip = data.zip, manifest = data.manifest || {};
       if (!notas || !config) {
         alert('El archivo está corrupto: no se pudieron interpretar los datos.');
         return;
@@ -896,29 +1044,7 @@ function importData(input) {
         (function(){
           var todayStrImp = getDateStr(new Date());
           (state.habits||[]).forEach(function(h){
-            if(!h.uuid) h.uuid = generateUUID();
-            if(h.current==null) h.current=0;
-            if(!h.status) h.status='pending';
-            if(h.streak==null) h.streak=0;
-            if(!h.history) h.history=[];
-            if(h.total!=null) h.total=Number(h.total);
-            if(h.step!=null) h.step=Number(h.step);
-            if(h.type==='counter' && (h.total==null||h.step==null)) h.type='task';
-            // Defensa: si streak 0 pero history indica racha reciente, restaurar
-            if(h.streak===0 && h.history.length>0){
-              var rec=recalcStreakFromHistory(h);
-              if(rec>0){
-                var lastDone=h.lastCompletedDate||h.history[h.history.length-1];
-                if(lastDone){
-                  var pp=lastDone.split('-').map(Number);
-                  var tp=todayStrImp.split('-').map(Number);
-                  var d1=new Date(pp[0],pp[1]-1,pp[2]);
-                  var d2=new Date(tp[0],tp[1]-1,tp[2]);
-                  var diff=Math.round((d2-d1)/86400000);
-                  if(diff<=1) h.streak=rec;
-                }
-              }
-            }
+            normalizeHabitRecord(h, todayStrImp);
             h.lastProcessedDate = todayStrImp;
           });
         })();
@@ -957,7 +1083,7 @@ function importData(input) {
         state.activeFolderId = config.activeFolderId || null;
         // Normalizar notas con folderId y carpetas
         state.notes.forEach(function(n){ if(n.folderId===undefined) n.folderId=null; });
-        state.folders.forEach(function(f){ if(!f.name) f.name='Carpeta'; if(f.pwdHash===undefined) f.pwdHash=''; if(!f.createdAt) f.createdAt=Date.now(); });
+        state.folders.forEach(function(f){ if(!f.name) f.name='Carpeta'; if(!f.color) f.color='#5b7db5'; if(f.pwdHash===undefined) f.pwdHash=''; if(!f.createdAt) f.createdAt=Date.now(); });
         // validar huérfanos
         (function(){
           var validFolderIds={}; state.folders.forEach(function(f){ validFolderIds[f.id]=true; });
@@ -971,6 +1097,8 @@ function importData(input) {
         renderAll();
         if (missingImages.length > 0) {
           alert('Datos restaurados. Faltaron ' + missingImages.length + ' archivo(s) multimedia que no pudieron restaurarse. Revisa la consola para más detalles.');
+        } else if (manifest.heavyMediaSkipped && manifest.heavyMediaSkipped.length > 0) {
+          alert('Datos restaurados. Aviso: ' + manifest.heavyMediaSkipped.length + ' video(s) pesado(s) no estaban incluidos en la copia (referencia local) y mostrarán "Video no disponible".');
         } else {
           alert('Datos restaurados correctamente.');
         }
@@ -1054,6 +1182,9 @@ function importSingleItem(input) {
       save();
       renderAll();
       showToast(t('importSuccess'));
+      if (pkg._localOnlyMedia && Object.keys(pkg._localOnlyMedia).length > 0) {
+        setStatus('Aviso: ' + Object.keys(pkg._localOnlyMedia).length + ' video(s) pesado(s) eran locales y no se importaron (mostrarán "Video no disponible").');
+      }
     });
   };
   reader.readAsText(file);
@@ -1186,7 +1317,7 @@ function applyLang() {
   if (cm) cm.querySelector('.label').textContent = 'Expandir la Biblioteca';
   document.getElementById('menuTheme').querySelector('.theme-label').textContent = state.theme === 'light' ? t('lightTheme') : t('darkTheme');
   l('newNoteTitleLabel','title'); l('newNotePwdLabel','passwordOptional');
-  l('newFolderNameLabel','folderName'); l('newFolderPwdLabel','passwordOptional');
+  l('newFolderNameLabel','folderName'); l('newFolderPwdLabel','passwordOptional'); l('newFolderColorLabel','folderColor');
   var ctN=document.getElementById('createTabNoteLabel'); if(ctN){ var v=t('countNote'); ctN.textContent=v.charAt(0).toUpperCase()+v.slice(1); }
   var ctF=document.getElementById('createTabFolderLabel'); if(ctF){ var v2=t('folder'); ctF.textContent=v2.charAt(0).toUpperCase()+v2.slice(1); }
   var nfn=document.getElementById('newFolderName'); if(nfn) nfn.placeholder=t('folderNamePlaceholder');
@@ -1218,6 +1349,11 @@ function applyLang() {
   // Back button
   var bb = document.getElementById('headerBackBtn');
   if (bb) bb.innerHTML = '&#x21A9;';
+  // Note search bar
+  var nsi = document.getElementById('noteSearchInput');
+  if (nsi) nsi.placeholder = t('searchInNote');
+  var nsb = document.getElementById('noteSearchBtn');
+  if (nsb) nsb.title = t('searchInNote');
   // Buttons
   l('newNoteCancelBtn','cancel'); l('newNoteCreateBtn','create');
   l('newBoardCancelBtn','cancel'); l('newBoardCreateBtn','create');
@@ -1226,6 +1362,13 @@ function applyLang() {
   l('linkHelpTitle','linkHelpTitle');
   l('linkToNoteDesc','linkToNote');
   l('linkToUrlDesc','linkToUrl');
+  l('cmdRegistroTitle','cmdRegistroTitle');
+  l('cmdRegAssignTextDesc','cmdRegAssignText');
+  l('cmdRegAssignValueDesc','cmdRegAssignValue');
+  l('cmdRegInvokeFullDesc','cmdRegInvokeFull');
+  l('cmdRegInvokeVarDesc','cmdRegInvokeVar');
+  l('cmdRegInvokeDateDesc','cmdRegInvokeDate');
+  l('cmdRegInvokeRangeDesc','cmdRegInvokeRange');
   l('diaryPwdLabel','diaryPwdLabel');
   l('diaryOldPwdLabel','diaryPwdOldLabel');
   l('diaryNewPwdLabel','diaryPwdNewLabel');
@@ -1365,6 +1508,7 @@ function applyLang() {
   renderDiaryPwdSection();
   /* Settings toggle states */
   updateSettingsToggleStates();
+  if (typeof applyEditNoteLang === 'function') applyEditNoteLang();
 }
 
 var state = { notes: [], boards: [], studySets: [], trash: [], habits: [], registros: [], activeRegistroId: null, activeNoteId: null, activeBoardId: null, activeStudySetId: null, view: 'notes', theme: 'dark', lang: 'en', nextId: Date.now(), _exportCount: 0, _triggeredMilestones: [], diaryPwdHash: '', diaryRecoveryCode: '', firstVisit: true, weekStartsMonday: true, defaultBoardBg: 'cork', boardShowShadows: true, boardShowAnimations: true, lastBackupAt: null, diaryVariables: {}, registrosFilter: { from: null, to: null }, folders: [], activeFolderId: null, rootOrder: [] };
@@ -1601,6 +1745,12 @@ function renderDiarySelector() {
     del.textContent = '×';
     del.setAttribute('onclick', 'event.stopPropagation(); confirmDeleteNote(' + n.id + ')');
     card.appendChild(del);
+    var edit = document.createElement('button');
+    edit.className = 'diary-note-card-edit';
+    edit.innerHTML = '&#x270F;';
+    edit.setAttribute('title', t('edit'));
+    edit.setAttribute('onclick', 'event.stopPropagation(); openEditNoteDialog(' + n.id + ')');
+    card.appendChild(edit);
     grid.appendChild(card);
   });
   if (notes.length < MAX_DIARY_NOTES_PER_DAY) {
@@ -2143,6 +2293,7 @@ function load() {
     // Normalizar notas: folderId
     state.notes.forEach(function(n){
       if(n.folderId===undefined) n.folderId=null;
+      if(n.lockWidth===undefined) n.lockWidth=true;
       if(typeof n.folderId==='string') n.folderId = Number(n.folderId)||null;
       if(n.folderId!=null && typeof n.folderId!=='number') n.folderId=null;
     });
@@ -2150,6 +2301,7 @@ function load() {
     state.folders.forEach(function(f){
       if(typeof f.id==='string') f.id=Number(f.id);
       if(!f.name) f.name='Carpeta';
+      if(!f.color) f.color='#5b7db5';
       f.name=String(f.name).trim()||'Carpeta';
       if(f.pwdHash===undefined) f.pwdHash='';
       if(!f.createdAt) f.createdAt=Date.now();
@@ -2185,28 +2337,7 @@ function load() {
     });
     migrateDiaryNotes();
     if (state.habits) state.habits.forEach(function(h){
-      if (h.current == null) h.current = 0;
-      if (!h.status) h.status = 'pending';
-      if (h.streak == null) h.streak = 0;
-      if (!h.lastProcessedDate) h.lastProcessedDate = getDateStr(new Date());
-      if (!h.history) h.history = [];
-      if (h.total != null) h.total = Number(h.total);
-      if (h.step != null) h.step = Number(h.step);
-      // Defensa migración: si streak es 0 pero history indica racha reciente (último completado ayer/hoy), recalcular
-      if(h.streak===0 && h.history.length>0){
-        var rec = recalcStreakFromHistory(h);
-        if(rec>0){
-          var todayStr = getDateStr(new Date());
-          function parseDS(s){ var p=s.split('-').map(Number); return new Date(p[0],p[1]-1,p[2]); }
-          var lastDone = h.lastCompletedDate || h.history[h.history.length-1];
-          if(lastDone){
-            var dLast = parseDS(lastDone);
-            var dToday = parseDS(todayStr);
-            var diff = Math.round((dToday - dLast)/86400000);
-            if(diff<=1){ h.streak = rec; }
-          }
-        }
-      }
+      normalizeHabitRecord(h);
     });
     // Migración: si diaryVariables está vacío pero hay asignaciones en notas del Diario ya existentes, reconstruir historial
     if (state.diaryVariables && Object.keys(state.diaryVariables).length===0 && state.notes) {
@@ -2330,6 +2461,8 @@ function showDialog(id) { hideContextMenu(); document.getElementById(id).classLi
 function closeDialog(id) {
   document.getElementById(id).classList.add('hidden');
   if (id === 'unlockDialog') { pendingDelete = null; pendingUnlock = null; resetUnlockDialog(); }
+  if (id === 'editNoteDialog') { _editNoteId = null; }
+  if (id === 'folderEditDialog') { _editFolderId = null; }
   if (id === 'newNoteDialog') {
     var wasDiaryPending = !!_pendingDiaryDate;
     _pendingDiaryDate = null;
@@ -2357,6 +2490,175 @@ function showToast(msg) {
   document.body.appendChild(el);
   setTimeout(function() { el.remove(); }, 4000);
 }
+
+/* === Búsqueda de texto dentro de la nota actualmente abierta ===
+   El resaltado es una capa visual temporal (spans .mibabel-search-hit en el DOM)
+   que nunca se guarda en el modelo: las rutas de guardado la eliminan antes de persistir. */
+var _noteSearch = { term: '', noteId: null, hits: [], refreshTimer: null };
+
+function noteSearchStripHtml(html) {
+  if (!html) return '';
+  return String(html).replace(/<span[^>]*class="[^"]*mibabel-search-hit[^"]*"[^>]*>([\s\S]*?)<\/span>/gi, '$1');
+}
+
+function noteSearchIsOpen() {
+  return !!state.activeNoteId && (state.view === 'notes' || state.view === 'diary') && !!document.querySelector('.items-area');
+}
+
+function noteSearchRoots() {
+  var area = document.querySelector('.items-area');
+  if (!area) return [];
+  return area.querySelectorAll('.item-text[contenteditable="true"], .image-caption[contenteditable="true"], .note-table td[contenteditable="true"]');
+}
+
+function noteSearchClearHighlights() {
+  var area = document.querySelector('.items-area');
+  if (!area) return;
+  var hits = area.querySelectorAll('span.mibabel-search-hit');
+  for (var i = 0; i < hits.length; i++) {
+    var span = hits[i];
+    var parent = span.parentNode;
+    if (!parent) continue;
+    while (span.firstChild) parent.insertBefore(span.firstChild, span);
+    parent.removeChild(span);
+    if (parent.normalize) parent.normalize();
+  }
+  if (area.normalize) area.normalize();
+}
+
+function noteSearchHighlightInRoot(root, termLower) {
+  var SHOW_TEXT = (typeof NodeFilter !== 'undefined' && NodeFilter.SHOW_TEXT) || 4;
+  var walker;
+  try { walker = document.createTreeWalker(root, SHOW_TEXT, null, false); }
+  catch (e) { return; }
+  var nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  for (var i = 0; i < nodes.length; i++) {
+    var node = nodes[i];
+    if (!node.nodeValue) continue;
+    var p = node.parentNode, skip = false;
+    while (p && p !== root) {
+      if (p.nodeType === 1) {
+        if (p.classList && p.classList.contains && p.classList.contains('mibabel-search-hit')) { skip = true; break; }
+        if (p.classList && p.classList.contains && (p.classList.contains('katex-block') || p.classList.contains('katex-inline'))) { skip = true; break; }
+        if (p.getAttribute && p.getAttribute('contenteditable') === 'false') { skip = true; break; }
+      }
+      p = p.parentNode;
+    }
+    if (skip) continue;
+    var lower = node.nodeValue.toLowerCase();
+    if (lower.indexOf(termLower) === -1) continue;
+    var starts = [];
+    var pos = lower.indexOf(termLower);
+    while (pos !== -1) { starts.push(pos); pos = lower.indexOf(termLower, pos + termLower.length); }
+    for (var m = starts.length - 1; m >= 0; m--) {
+      var mid = node.splitText(starts[m]);
+      var after = mid.splitText(termLower.length);
+      var span = document.createElement('span');
+      span.className = 'mibabel-search-hit';
+      span.setAttribute('data-mibabel-search', '1');
+      span.appendChild(mid);
+      node.parentNode.insertBefore(span, after);
+    }
+  }
+}
+
+function noteSearchApply(term) {
+  noteSearchClearHighlights();
+  var hits = [];
+  if (!term) return hits;
+  var termLower = term.toLowerCase();
+  var roots = noteSearchRoots();
+  for (var i = 0; i < roots.length; i++) noteSearchHighlightInRoot(roots[i], termLower);
+  var area = document.querySelector('.items-area');
+  if (area) {
+    var found = area.querySelectorAll('span.mibabel-search-hit');
+    for (var j = 0; j < found.length; j++) hits.push(found[j]);
+  }
+  return hits;
+}
+
+function scrollNoteSearchHitToCenter(hit) {
+  var area = document.querySelector('.items-area');
+  if (!area || !hit) return;
+  var r = hit.getBoundingClientRect();
+  var ar = area.getBoundingClientRect();
+  var delta = (r.top + r.height / 2) - (ar.top + ar.height / 2);
+  if (delta !== 0) area.scrollTop = Math.max(0, area.scrollTop + delta);
+}
+
+function updateNoteSearchClearBtn() {
+  var c = document.getElementById('noteSearchClearBtn');
+  var inp = document.getElementById('noteSearchInput');
+  if (c) c.classList.toggle('hidden', !inp || !inp.value);
+}
+
+function runNoteSearch() {
+  var input = document.getElementById('noteSearchInput');
+  var raw = input ? input.value : '';
+  var term = (raw || '').replace(/^\s+|\s+$/g, '');
+  if (!term) { clearNoteSearch(false); return; }
+  if (!noteSearchIsOpen()) return;
+  _noteSearch.term = term;
+  _noteSearch.noteId = state.activeNoteId;
+  _noteSearch.hits = noteSearchApply(term);
+  updateNoteSearchClearBtn();
+  if (_noteSearch.hits.length === 0) {
+    showToast(t('searchNoResults'));
+    return;
+  }
+  scrollNoteSearchHitToCenter(_noteSearch.hits[0]);
+}
+
+function clearNoteSearch(resetInput) {
+  if (_noteSearch.refreshTimer) { clearTimeout(_noteSearch.refreshTimer); _noteSearch.refreshTimer = null; }
+  noteSearchClearHighlights();
+  _noteSearch.term = '';
+  _noteSearch.noteId = null;
+  _noteSearch.hits = [];
+  if (resetInput !== false) {
+    var input = document.getElementById('noteSearchInput');
+    if (input) input.value = '';
+  }
+  updateNoteSearchClearBtn();
+}
+
+function refreshNoteSearchSilently() {
+  if (!_noteSearch.term) return;
+  if (!noteSearchIsOpen()) return;
+  if (state.activeNoteId !== _noteSearch.noteId) return;
+  _noteSearch.hits = noteSearchApply(_noteSearch.term);
+}
+
+function updateNoteSearchVisibility() {
+  var bar = document.getElementById('noteSearchBar');
+  if (!bar) return;
+  var open = noteSearchIsOpen();
+  bar.classList.toggle('hidden', !open);
+  if (!open) {
+    if (_noteSearch.refreshTimer) { clearTimeout(_noteSearch.refreshTimer); _noteSearch.refreshTimer = null; }
+    _noteSearch.term = ''; _noteSearch.noteId = null; _noteSearch.hits = [];
+    var input = document.getElementById('noteSearchInput');
+    if (input && document.activeElement !== input) input.value = '';
+    updateNoteSearchClearBtn();
+  } else if (_noteSearch.noteId !== null && _noteSearch.noteId !== state.activeNoteId) {
+    clearNoteSearch(true);
+  }
+}
+
+document.addEventListener('input', function(e) {
+  if (!_noteSearch.term) return;
+  var tg = e.target;
+  if (!tg || !tg.closest || tg.id === 'noteSearchInput') return;
+  var area = tg.closest('.items-area');
+  if (!area) return;
+  if (state.activeNoteId !== _noteSearch.noteId) return;
+  if (_noteSearch.refreshTimer) clearTimeout(_noteSearch.refreshTimer);
+  _noteSearch.refreshTimer = setTimeout(function() {
+    _noteSearch.refreshTimer = null;
+    refreshNoteSearchSilently();
+  }, 350);
+});
 
 function toggleTheme() {
   state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -2400,7 +2702,7 @@ function unparseNoteLinks(html) {
 /* === Diario - Variables históricas (@var = valor / @var) === */
 var _diaryVarNameRegex = '[a-zA-Z_][a-zA-Z0-9_]*';
 var _diaryVarAssignmentRegex = new RegExp('@(' + _diaryVarNameRegex + ')\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s@]+))', 'g');
-var _diaryVarQueryRegex = new RegExp('@(' + _diaryVarNameRegex + ')\\b(?!\\s*=)(?!/)', 'g');
+var _diaryVarQueryRegex = new RegExp('@(' + _diaryVarNameRegex + ')\\b(?!\\s*=)(?!/)(?!\\s*\\{)', 'g');
 
 function isValidVarName(name) {
   return /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(name);
@@ -2535,8 +2837,8 @@ function hasDiaryVariableAssignment(textHtml) {
 
 /* === Registros (struct) === */
 var _registroNameRegex = '[a-zA-Z_][a-zA-Z0-9_]*';
-var _registroAssignmentRegex = new RegExp('@(' + _registroNameRegex + ')\\/(' + _registroNameRegex + ')\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s@\\[]+))', 'g');
-var _registroQueryRegex = new RegExp('@(' + _registroNameRegex + ')(?:\\/(' + _registroNameRegex + '))?(?:\\[([^\\]]*)\\])?(?!\\s*=)', 'g');
+var _registroBlockStartRegex = new RegExp('@(' + _registroNameRegex + ')\\s*\\{', 'g');
+var _registroQueryRegex = new RegExp('@(' + _registroNameRegex + ')(?:\\/(' + _registroNameRegex + '))?(?:\\[([^\\]]*)\\])?(?!\\s*=)(?!\\s*\\{)', 'g');
 var _registroValidTypes = ['int','float','bool','texto'];
 
 function ensureRegistros() {
@@ -2592,8 +2894,9 @@ function validateValueForType(raw, type, isQuoted) {
     return n;
   }
   if (type==='float') {
-    if (!/^-?\d+(\.\d+)?$/.test(trimmed)) return null;
-    var f=parseFloat(trimmed);
+    var norm=trimmed.replace(',', '.');
+    if (!/^-?\d+(\.\d+)?$/.test(norm)) return null;
+    var f=parseFloat(norm);
     if (isNaN(f)) return null;
     return f;
   }
@@ -2637,6 +2940,41 @@ function isDateInFilter(dateISO, filter) {
   if (filter.invalid) return false;
   return dateISO >= filter.from && dateISO <= filter.to;
 }
+function registroBlockEnd(text, openIdx) {
+  var inD=false, inS=false;
+  for (var i=openIdx+1;i<text.length;i++) {
+    var c=text[i];
+    if (inD) { if (c==='"') inD=false; }
+    else if (inS) { if (c==="'") inS=false; }
+    else if (c==='"') inD=true;
+    else if (c==="'") inS=true;
+    else if (c==='}') return i;
+  }
+  return -1;
+}
+function splitRegistroPairs(body) {
+  var segs=[]; var cur=''; var start=0; var inD=false, inS=false;
+  for (var i=0;i<body.length;i++) {
+    var c=body[i];
+    if (inD) { cur+=c; if (c==='"') inD=false; }
+    else if (inS) { cur+=c; if (c==="'") inS=false; }
+    else if (c==='"') { cur+=c; inD=true; }
+    else if (c==="'") { cur+=c; inS=true; }
+    else if (c===';') { segs.push({text:cur,start:start,end:i}); cur=''; start=i+1; }
+    else cur+=c;
+  }
+  segs.push({text:cur,start:start,end:body.length});
+  return segs;
+}
+function parseRegistroPair(segText) {
+  var m=/^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([\s\S]*)$/.exec(segText.trim());
+  if (!m) return { malformed:true };
+  var v=m[2].trim();
+  if (v.length>=2 && v[0]==='"' && v[v.length-1]==='"') return { field:m[1], raw:v.substring(1,v.length-1), isQuoted:true };
+  if (v.length>=2 && v[0]==="'" && v[v.length-1]==="'") return { field:m[1], raw:v.substring(1,v.length-1), isQuoted:true };
+  if (v!=='' && /^[^\s;]+$/.test(v)) return { field:m[1], raw:v, isQuoted:false };
+  return { malformed:true };
+}
 function processRegistroAssignments(note, textHtml) {
   if (!note || !note.diary) return false;
   ensureRegistros();
@@ -2648,29 +2986,76 @@ function processRegistroAssignments(note, textHtml) {
   var dateISO=registroDateISO(note);
   var changed=false;
   var match;
-  _registroAssignmentRegex.lastIndex=0;
-  while ((match=_registroAssignmentRegex.exec(plain))!==null) {
-    var regName=match[1], fieldName=match[2];
-    var hasDouble=match[3]!==undefined, hasSingle=match[4]!==undefined;
-    var rawVal = hasDouble ? match[3] : (hasSingle ? match[4] : match[5]);
-    var isQuoted = hasDouble || hasSingle;
+  _registroBlockStartRegex.lastIndex=0;
+  while ((match=_registroBlockStartRegex.exec(plain))!==null) {
+    var regName=match[1];
+    var braceIdx=match.index+match[0].length-1;
+    var closeIdx=registroBlockEnd(plain, braceIdx);
+    if (closeIdx===-1) continue;
+    _registroBlockStartRegex.lastIndex=closeIdx+1;
     var registro=getRegistroByName(regName);
     if (!registro) continue;
-    var field=registro.fields.find(function(f){ return f.name===fieldName; });
-    if (!field) continue;
-    // Validar tipo: si texto con espacios sin comillas, rawVal solo tiene primera palabra -> pero según spec debe usar comillas, así que si type texto y plain contenía espacios sin comillas, igualmente rawVal sería solo primera palabra; lo almacenamos como tal (no intentamos recuperar resto)
-    var typed=validateValueForType(rawVal, field.type, isQuoted);
-    if (typed===null && !(field.type==='texto' && isQuoted && rawVal==='')) continue; // texto vacío con comillas permitido
-    if (typed===null) continue;
-    if (!registro.entries) registro.entries={};
-    if (!registro.entries[dateISO]) registro.entries[dateISO]={};
-    // Solo un valor por día por campo, pero entries es por fecha con todos los fields
-    if (registro.entries[dateISO][fieldName]!==typed) {
-      registro.entries[dateISO][fieldName]=typed;
-      changed=true;
+    var body=plain.substring(braceIdx+1, closeIdx);
+    var segs=splitRegistroPairs(body);
+    for (var i=0;i<segs.length;i++) {
+      if (segs[i].text.trim()==='') continue;
+      var p=parseRegistroPair(segs[i].text);
+      if (p.malformed || !p.field) continue;
+      var fname=p.field;
+      var field=registro.fields.find(function(f){ return f.name===fname; });
+      if (!field) continue;
+      var typed=validateValueForType(p.raw, field.type, p.isQuoted);
+      if (typed===null) continue;
+      if (!registro.entries) registro.entries={};
+      if (!registro.entries[dateISO]) registro.entries[dateISO]={};
+      // Solo un valor por día por campo, pero entries es por fecha con todos los fields
+      if (registro.entries[dateISO][fname]!==typed) {
+        registro.entries[dateISO][fname]=typed;
+        changed=true;
+      }
     }
   }
   return changed;
+}
+function renderRegistroAssignmentErrors(text) {
+  if (!text || text.indexOf('@')===-1 || text.indexOf('{')===-1) return text;
+  ensureRegistros();
+  var out=''; var last=0; var match;
+  _registroBlockStartRegex.lastIndex=0;
+  while ((match=_registroBlockStartRegex.exec(text))!==null) {
+    var regName=match[1];
+    var braceIdx=match.index+match[0].length-1;
+    var closeIdx=registroBlockEnd(text, braceIdx);
+    if (closeIdx===-1) continue;
+    _registroBlockStartRegex.lastIndex=closeIdx+1;
+    var body=text.substring(braceIdx+1, closeIdx);
+    var registro=getRegistroByName(regName);
+    var segs=splitRegistroPairs(body);
+    var rebuilt='';
+    for (var j=0;j<segs.length;j++) {
+      var seg=segs[j];
+      if (seg.text.trim()==='') { rebuilt+=seg.text; }
+      else {
+        var p=parseRegistroPair(seg.text);
+        var errTitle=null, errLabel=null;
+        if (!registro) { errTitle=t('registroNotFound'); errLabel='(inexistente)'; }
+        else if (p.malformed || !p.field) { errTitle='Formato inválido'; errLabel='(formato inválido)'; }
+        else {
+          var fn=p.field;
+          var f=registro.fields.find(function(ff){ return ff.name===fn; });
+          if (!f) { errTitle=t('variableNotFound'); errLabel='(variable inexistente)'; }
+          else if (validateValueForType(p.raw, f.type, p.isQuoted)===null) { errTitle=t('valueMismatch'); errLabel='(valor inválido)'; }
+        }
+        if (!errTitle) rebuilt+=seg.text;
+        else rebuilt+='<span class="diary-var diary-var-unknown" title="'+escapeHtml(errTitle)+'">'+escapeHtml(seg.text)+' <span class="var-unknown-label">'+escapeHtml(errLabel)+'</span></span>';
+      }
+      if (j<segs.length-1) rebuilt+=';';
+    }
+    out+=text.substring(last, braceIdx+1)+rebuilt+'}';
+    last=closeIdx+1;
+  }
+  out+=text.substring(last);
+  return out;
 }
 function formatRegistroValue(v, type) {
   if (v===undefined || v===null) return '';
@@ -2731,6 +3116,8 @@ function parseRegistrosForRender(text) {
   if (!text || text.indexOf('@')===-1) return text;
   ensureRegistros();
   // No procesar si no hay registros
+  // Marcar errores visibles en bloques de asignación @Registro{...} sin alterar pares válidos
+  text=renderRegistroAssignmentErrors(text);
   // Reemplazar @Registro[/var][filter]
   return text.replace(_registroQueryRegex, function(match, regName, fieldName, filterStr) {
     var registro=getRegistroByName(regName);
@@ -2785,6 +3172,35 @@ function renameRegistroReferences(oldName, newName) {
   });
   if (changed) save();
 }
+function renameRegistroFieldInBraces(text, regName, oldField, newField) {
+  var escReg=regName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  var out=''; var last=0; var changed=false;
+  var re=new RegExp('@' + escReg + '\\s*\\{', 'g');
+  var m;
+  while ((m=re.exec(text))!==null) {
+    var braceIdx=m.index+m[0].length-1;
+    var closeIdx=registroBlockEnd(text, braceIdx);
+    if (closeIdx===-1) continue;
+    re.lastIndex=closeIdx+1;
+    var body=text.substring(braceIdx+1, closeIdx);
+    var segs=splitRegistroPairs(body);
+    var rebuilt='';
+    for (var j=0;j<segs.length;j++) {
+      var seg=segs[j];
+      if (seg.text.trim()==='') { rebuilt+=seg.text; }
+      else {
+        var p=parseRegistroPair(seg.text);
+        if (!p.malformed && p.field===oldField) { rebuilt+=seg.text.replace(oldField, newField); changed=true; }
+        else rebuilt+=seg.text;
+      }
+      if (j<segs.length-1) rebuilt+=';';
+    }
+    out+=text.substring(last, braceIdx+1)+rebuilt+'}';
+    last=closeIdx+1;
+  }
+  out+=text.substring(last);
+  return { text: out, changed: changed };
+}
 function renameFieldReferences(registroName, oldField, newField) {
   if (!oldField || !newField || oldField===newField) return;
   var escOld = oldField.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -2794,16 +3210,20 @@ function renameFieldReferences(registroName, oldField, newField) {
   state.notes.forEach(function(n){
     if (!n.items) return;
     n.items.forEach(function(it){
-      if (!it.text || it.text.indexOf('@'+registroName+'/'+oldField)===-1) return;
+      if (!it.text || (it.text.indexOf('@'+registroName+'/'+oldField)===-1 && it.text.indexOf('@'+registroName+'{')===-1 && it.text.indexOf('@'+registroName+' {')===-1)) return;
       var t=it.text.replace(re, '@' + registroName + '/' + newField);
+      var rb=renameRegistroFieldInBraces(t, registroName, oldField, newField);
+      if (rb.changed) t=rb.text;
       if (t!==it.text) { it.text=t; changed=true; }
     });
   });
   state.boards.forEach(function(b){
     if (!b.postits) return;
     b.postits.forEach(function(p){
-      if (!p.text || p.text.indexOf('@'+registroName+'/'+oldField)===-1) return;
+      if (!p.text || (p.text.indexOf('@'+registroName+'/'+oldField)===-1 && p.text.indexOf('@'+registroName+'{')===-1 && p.text.indexOf('@'+registroName+' {')===-1)) return;
       var t=p.text.replace(re, '@' + registroName + '/' + newField);
+      var rb=renameRegistroFieldInBraces(t, registroName, oldField, newField);
+      if (rb.changed) t=rb.text;
       if (t!==p.text) { p.text=t; changed=true; }
     });
   });
@@ -3197,7 +3617,9 @@ function updateBackBtn() {
       }
     }
   } else if (state.view === 'habits') {
-    btn.classList.add('hidden');
+    var histOpen = isHabitHistoryOpen();
+    btn.classList.toggle('hidden', !histOpen);
+    if (histOpen) btn.onclick = closeHabitHistory;
     if (studyBtn) studyBtn.classList.add('hidden');
     if (titleEl) { titleEl.textContent = t('habits'); titleEl.classList.remove('hidden'); }
   } else if (state.view === 'registros') {
@@ -3229,6 +3651,7 @@ function updateBackBtn() {
                 (state.view === 'registros' && state.activeRegistroId);
   var trigger = document.querySelector('.menu-trigger');
   if (trigger) trigger.classList.toggle('compact', compact);
+  updateNoteSearchVisibility();
 }
 
 function clearCurrentUnlock() {
@@ -3273,7 +3696,7 @@ function getOrCreateDiaryNote() {
   var ds = todayDateStr();
   var list = state.notes.filter(function(n) { return n.diary && getDiaryDateKey(n) === ds; });
   if (list.length > 0) return list[0];
-  var note = { id: genId(), title: ds, diaryDate: ds, items: [], pwdHash: '', diary: true, events: [], tasks: [], cover: '', createdAt: Date.now() };
+  var note = { id: genId(), title: ds, diaryDate: ds, items: [], pwdHash: '', diary: true, events: [], tasks: [], cover: '', createdAt: Date.now(), lockWidth: true, background: { color: 'default', design: 'none' } };
   state.notes.push(note);
   save();
   return note;
@@ -3351,7 +3774,9 @@ function createFolder(){
   if(!name) name = t('newFolderLabel');
   if(name.length>60) name=name.substring(0,60);
   var pwd = pwdEl ? pwdEl.value : '';
-  var folder = { id: genId(), name: name, pwdHash: hashPwd(pwd), createdAt: Date.now() };
+  var colorEl = document.getElementById('newFolderColor');
+  var color = (colorEl && colorEl.value) ? colorEl.value : '#5b7db5';
+  var folder = { id: genId(), name: name, pwdHash: hashPwd(pwd), createdAt: Date.now(), color: color };
   state.folders.push(folder);
   ensureRootOrder();
   // rootOrder already handled by ensure, but if folder new ensure append
@@ -3362,6 +3787,7 @@ function createFolder(){
   closeDialog('newNoteDialog');
   if(nameEl) nameEl.value='';
   if(pwdEl) pwdEl.value='';
+  if(colorEl) colorEl.value='#5b7db5';
   var titleEl=document.getElementById('newNoteTitle'); if(titleEl) titleEl.value='';
   var nPwd=document.getElementById('newNotePwd'); if(nPwd) nPwd.value='';
   save();
@@ -3460,7 +3886,7 @@ function createNote() {
       refreshDiarySelectorIfOpen();
       return;
     }
-    var dnote = { id: genId(), title: title, diaryDate: ds, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), diary: true, events: [], tasks: [] };
+    var dnote = { id: genId(), title: title, diaryDate: ds, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), diary: true, events: [], tasks: [], lockWidth: true, background: { color: 'default', design: 'none' } };
     state.notes.push(dnote);
     if (pwd) unlockedIds['n' + dnote.id] = true;
     _pendingDiaryDate = null;
@@ -3473,7 +3899,7 @@ function createNote() {
   }
   var folderId = state.activeFolderId != null ? state.activeFolderId : null;
   // if creating from inside folder, ensure folder exists and unlocked (should be already)
-  var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), folderId: folderId };
+  var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), folderId: folderId, lockWidth: true, background: { color: 'default', design: 'none' } };
   state.notes.push(note);
   if(folderId==null){
     ensureRootOrder();
@@ -3648,7 +4074,7 @@ function unlockItem() {
       if(pendingFolderDrop && pendingFolderDrop.action){
         var act=pendingFolderDrop.action;
         pendingFolderDrop=null;
-        if(act==='rename') renameFolder(fid);
+        if(act==='rename') openFolderEditDialog(fid);
         else if(act==='editPwd') editFolderPassword(fid);
       }
     }
@@ -3741,7 +4167,16 @@ function deleteNote(id) {
   renderAll();
   if (wasDiary) refreshDiarySelectorIfOpen();
 }
-function renameFolder(id){
+function selectNewFolderColor(color){
+  var el = document.getElementById('newFolderColor');
+  if(el) el.value = color;
+}
+function selectFolderEditColor(color){
+  var el = document.getElementById('folderEditColor');
+  if(el) el.value = color;
+}
+var _editFolderId = null;
+function openFolderEditDialog(id){
   var folder=getFolderById(id); if(!folder) return;
   if(folder.pwdHash && !unlockedIds['f'+id]){
     pendingUnlock={type:'folder', id:id, action:'rename'};
@@ -3752,13 +4187,38 @@ function renameFolder(id){
     setTimeout(function(){document.getElementById('unlockPwdInput').focus();},100);
     return;
   }
-  var newName = prompt(t('rename')+' - '+folder.name, folder.name);
-  if(newName===null) return;
-  newName=newName.trim();
-  if(!newName) return;
-  if(newName.length>60) newName=newName.substring(0,60);
-  folder.name=newName;
-  save(); renderAll();
+  _editFolderId = id;
+  var nameEl = document.getElementById('folderEditName');
+  if (nameEl) nameEl.value = folder.name || '';
+  var colorEl = document.getElementById('folderEditColor');
+  if (colorEl) colorEl.value = folder.color || '#5b7db5';
+  var s = function(elId, key) { var el = document.getElementById(elId); if (el) el.textContent = t(key); };
+  s('folderEditTitle', 'editFolder');
+  s('folderEditNameLabel', 'folderName');
+  s('folderEditColorLabel', 'folderColor');
+  s('folderEditCancelBtn', 'cancel');
+  s('folderEditSaveBtn', 'save');
+  var nfn = document.getElementById('folderEditName');
+  if (nfn) nfn.placeholder = t('folderNamePlaceholder');
+  showDialog('folderEditDialog');
+  setTimeout(function() { if (nameEl) nameEl.focus(); }, 100);
+}
+function saveFolderEditDialog(){
+  if (_editFolderId == null) { closeDialog('folderEditDialog'); return; }
+  var folder = getFolderById(_editFolderId);
+  if (!folder) { _editFolderId = null; closeDialog('folderEditDialog'); return; }
+  var nameEl = document.getElementById('folderEditName');
+  var newName = nameEl ? nameEl.value.trim() : '';
+  if (newName) {
+    if (newName.length > 60) newName = newName.substring(0, 60);
+    folder.name = newName;
+  }
+  var colorEl = document.getElementById('folderEditColor');
+  if (colorEl && colorEl.value) folder.color = colorEl.value;
+  _editFolderId = null;
+  closeDialog('folderEditDialog');
+  save();
+  renderAll();
 }
 function editFolderPassword(id){
   var folder=getFolderById(id); if(!folder) return;
@@ -3895,17 +4355,10 @@ function deleteFromTrashPermanently(index) {
     });
   }
   if (refsToDelete.length === 0) return;
-  var activeRefs = ImageManager.collectUsedRefs ? ImageManager.collectUsedRefs() : [];
   refsToDelete.forEach(function(ref) {
-    if (_mediaBlobUrls[ref]) {
-      URL.revokeObjectURL(_mediaBlobUrls[ref]);
-      delete _mediaBlobUrls[ref];
-    }
-    if (activeRefs.indexOf(ref) === -1) {
-      ImageManager.delete(ref).catch(function(err) {
-        console.warn('Error deleting orphan media:', ref, err);
-      });
-    }
+    /* Solo se borra el físico si no quedan otras referencias
+     * (incluye videos pesados en modo archivo). */
+    VideoManager.deletePhysicalIfOrphan(ref);
   });
 }
 function cleanupTrash() {
@@ -3957,7 +4410,7 @@ function updateImageCaption(noteId, itemId, html) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   var item = note.items.find(function(i) { return i.id === itemId; });
-  if (item) { item.caption = html || ''; save(); }
+  if (item) { item.caption = noteSearchStripHtml(html || ''); save(); }
 }
 
 /* Carga las imágenes desde el sistema de archivos después del render */
@@ -4015,6 +4468,13 @@ document.addEventListener('mousedown', function(e) {
   if (!e.target.closest('.fmt-bar')) return;
   if (e.target.closest('button') || e.target.closest('.hl-color')) e.preventDefault();
 }, true);
+
+// Keyboard access for color-picker dots (highlight + text color)
+document.addEventListener('keydown', function(e) {
+  var dot = e.target && e.target.closest ? e.target.closest('.hl-color[role="button"]') : null;
+  if (!dot) return;
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dot.click(); }
+});
 
 // Mobile: long-press to toggle table cell selection
 if (_isTouchDevice) {
@@ -4092,7 +4552,7 @@ function updateTableText(noteId, itemId, idx, html) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   var item = note.items.find(function(i) { return i.id === itemId; });
-  if (item && item.cells && item.cells[idx]) { item.cells[idx].text = html || ''; save(); }
+  if (item && item.cells && item.cells[idx]) { item.cells[idx].text = noteSearchStripHtml(html || ''); save(); }
 }
 function mergeSelectedCells(noteId, itemId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
@@ -4155,26 +4615,8 @@ function deleteItem(noteId, itemId) {
   renderNoteContent();
   if (removed && (removed.src || removed.ref)) {
     var ref = removed.src || removed.ref;
-    var stillUsed = false;
-    function checkItems(items) {
-      items.forEach(function(it) {
-        var r = it.src || it.ref;
-        if (r === ref) stillUsed = true;
-      });
-    }
-    state.notes.forEach(function(n) { checkItems(n.items); });
-    state.trash.forEach(function(t) {
-      if (t.type === 'note' && t.data) checkItems(t.data.items || []);
-    });
-    if (!stillUsed) {
-      if (_mediaBlobUrls[ref]) {
-        URL.revokeObjectURL(_mediaBlobUrls[ref]);
-        delete _mediaBlobUrls[ref];
-      }
-      ImageManager.delete(ref).catch(function(err) {
-        console.warn('Error deleting orphan media:', ref, err);
-      });
-    }
+    /* Limpieza segura con refcount global (tableros + notas + papelera). */
+    VideoManager.deletePhysicalIfOrphan(ref);
   }
 }
 
@@ -4214,11 +4656,12 @@ function updateItemText(noteId, itemId, html) {
   if (!note) return;
   var item = note.items.find(function(i) { return i.id === itemId; });
   if (item) {
-    var newText = unparseNoteLinks(unrenderLatexInHtml(html || ''));
+    var cleanHtml = noteSearchStripHtml(html || '');
+    var newText = unparseNoteLinks(unrenderLatexInHtml(cleanHtml));
     item.text = newText;
     if (note.diary) {
-      processDiaryVariableAssignments(note, html || '');
-      processRegistroAssignments(note, html || '');
+      processDiaryVariableAssignments(note, cleanHtml);
+      processRegistroAssignments(note, cleanHtml);
     }
     save();
   }
@@ -4368,6 +4811,49 @@ function toggleHighlightPalette() {
   }
 }
 
+var _txColor = '#ff0000';
+function selectTextColor(color) {
+  _txColor = color;
+  document.getElementById('txPalette').classList.add('hidden');
+  var bar = document.querySelector('.tx-toggle .tx-cur');
+  if (bar) bar.style.background = color === 'inherit' ? 'transparent' : color;
+}
+function selectRemoveTextColor() {
+  selectTextColor('inherit');
+}
+function applyTextColor() {
+  document.execCommand('foreColor', false, _txColor);
+  saveActiveItem();
+}
+function toggleTextPalette() {
+  var palette = document.getElementById('txPalette');
+  if (!palette) return;
+  if (palette.classList.contains('hidden')) {
+    var btn = document.querySelector('.tx-toggle');
+    if (btn) {
+      var r = btn.getBoundingClientRect();
+      palette.style.left = r.left + 'px';
+      palette.style.bottom = (window.innerHeight - r.top + 4) + 'px';
+      palette.style.top = 'auto';
+      palette.classList.remove('hidden');
+      var ph = palette.offsetHeight;
+      if (r.top < ph + 4) {
+        if (window.innerHeight - r.bottom > ph + 4) {
+          palette.style.bottom = 'auto';
+          palette.style.top = (r.bottom + 4) + 'px';
+        } else {
+          palette.style.top = '4px';
+          palette.style.bottom = 'auto';
+        }
+      }
+    } else {
+      palette.classList.remove('hidden');
+    }
+  } else {
+    palette.classList.add('hidden');
+  }
+}
+
 function updateFmtBar() {
   var b = document.getElementById('fmtBold');
   var i = document.getElementById('fmtItalic');
@@ -4406,11 +4892,303 @@ function updateNoteTitle(noteId, title) {
   if (note) { note.title = title; save(); }
 }
 function renameNote(noteId) {
+  /* Compat: ahora redirige al diálogo Editar (nombre + fondo). Se conserva
+     por compatibilidad con llamadas antiguas. */
+  openEditNoteDialog(noteId);
+}
+var _editNoteId = null;
+function openEditNoteDialog(noteId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
-  var name = prompt(t('rename'), note.title);
-  if (name && name.trim()) { note.title = name.trim(); save(); renderNoteContent(); }
+  _editNoteId = noteId;
+  var bg = getNoteBackground(note);
+  var nameEl = document.getElementById('editNoteName');
+  if (nameEl) nameEl.value = note.title || '';
+  var colors = document.getElementsByName('editNoteColor');
+  for (var i = 0; i < colors.length; i++) colors[i].checked = (colors[i].value === bg.color);
+  var designs = document.getElementsByName('editNoteDesign');
+  for (var j = 0; j < designs.length; j++) designs[j].checked = (designs[j].value === bg.design);
+  var lockEl = document.getElementById('editNoteLockWidth');
+  if (lockEl) lockEl.checked = isNoteWidthLocked(note);
+  applyEditNoteLang();
+  showDialog('editNoteDialog');
+  setTimeout(function() { if (nameEl) nameEl.focus(); }, 100);
 }
+function applyEditNoteLang() {
+  var s = function(id, key) { var el = document.getElementById(id); if (el) el.textContent = t(key); };
+  s('editNoteTitle', 'editNoteTitle');
+  s('editNoteNameLabel', 'editNoteName');
+  s('editNoteBgLabel', 'editNoteBg');
+  s('editNoteColorLabel', 'editNoteColor');
+  s('editNoteDesignLabel', 'editNoteDesign');
+  s('editNoteColorDefault', 'bgDefault');
+  s('editNoteColorWhite', 'bgWhite');
+  s('editNoteColorYellow', 'bgYellow');
+  s('editNoteDesignNone', 'designNone');
+  s('editNoteDesignLined', 'designLined');
+  s('editNoteDesignGrid', 'designGrid');
+  s('editNoteDesignDotted', 'designDotted');
+  s('editNoteLockWidthLabel', 'lockWidth');
+  s('editNoteCancelBtn', 'cancel');
+  s('editNoteSaveBtn', 'save');
+  var nameEl = document.getElementById('editNoteName');
+  if (nameEl) nameEl.placeholder = t('noteTitlePlaceholder');
+}
+function saveEditNoteDialog() {
+  if (_editNoteId == null) { closeDialog('editNoteDialog'); return; }
+  var note = state.notes.find(function(n) { return n.id === _editNoteId; });
+  if (!note) { _editNoteId = null; closeDialog('editNoteDialog'); return; }
+  var nameEl = document.getElementById('editNoteName');
+  var newName = nameEl ? nameEl.value.trim() : '';
+  var newColor = 'default', newDesign = 'none';
+  var colors = document.getElementsByName('editNoteColor');
+  for (var i = 0; i < colors.length; i++) { if (colors[i].checked) newColor = colors[i].value; }
+  var designs = document.getElementsByName('editNoteDesign');
+  for (var j = 0; j < designs.length; j++) { if (designs[j].checked) newDesign = designs[j].value; }
+  var norm = normalizeBackground({ color: newColor, design: newDesign });
+  /* Solo se aplica al presionar Guardar; Cancelar conserva el estado anterior. */
+  if (newName) note.title = newName;
+  note.background = norm;
+  var lockEl2 = document.getElementById('editNoteLockWidth');
+  if (lockEl2) note.lockWidth = !!lockEl2.checked;
+  _editNoteId = null;
+  closeDialog('editNoteDialog');
+  save();
+  renderAll();
+  refreshDiarySelectorIfOpen();
+}
+
+/* ==================================================
+   SINCRONIZACIÓN PAPEL 32px (solo visual, no altera el modelo)
+   - Texto/wrap: CSS line-height 32px -> altura n*32 automática.
+   - Bloques: CSS margins 32px, listas sin gap interno.
+   - Imágenes/LaTeX: 32px antes + snap al siguiente renglón + 32px.
+   - Tablas: filas en múltiplos de 32px en lined/grid/dotted, columnas en grid/dotted.
+   - Horizontal: items-area con overflow-x auto + tablas max-content.
+   ================================================== */
+var _paperSyncTimer = null;
+function requestPaperSync() {
+  if (_paperSyncTimer) clearTimeout(_paperSyncTimer);
+  _paperSyncTimer = setTimeout(function() {
+    _paperSyncTimer = null;
+    try { syncPaperLayout(); } catch (e) { console.error('paper sync', e); }
+  }, 80);
+}
+function _paperAbsBottom(el, area, areaRect, scrollTop) {
+  try {
+    var r = el.getBoundingClientRect();
+    return (r.bottom - areaRect.top) + scrollTop;
+  } catch (e) { return null; }
+}
+function _paperSnapExtra(yBottom) {
+  if (yBottom == null || !isFinite(yBottom)) return 0;
+  var m = yBottom % PAPER_UNIT;
+  if (m < 0) m += PAPER_UNIT;
+  return m === 0 ? 0 : (PAPER_UNIT - m);
+}
+function syncPaperLayout() {
+  var area = document.querySelector('.items-area');
+  if (!area) return;
+  var design = area.getAttribute('data-bg-design') || 'none';
+  if (!isPaperSyncDesign(design)) {
+    /* Limpieza visual al volver a none/default sin tocar el contenido guardado. */
+    var stale = area.querySelectorAll('.list-item.image-item');
+    for (var s = 0; s < stale.length; s++) stale[s].style.marginBottom = '';
+    var staleK = area.querySelectorAll('.katex-block');
+    for (var sk = 0; sk < staleK.length; sk++) staleK[sk].style.marginBottom = '';
+    var staleT = area.querySelectorAll('.note-table td, .note-table th');
+    for (var st = 0; st < staleT.length; st++) { staleT[st].style.height = ''; staleT[st].style.width = ''; }
+    return;
+  }
+  var areaRect;
+  try { areaRect = area.getBoundingClientRect(); } catch (e) { return; }
+  var scrollTop = area.scrollTop || 0;
+  /* 1) Imágenes/audio/video: doble separación.
+     CSS ya da 32px base y 0 entre consecutivas. Aquí se agrega el snap
+     (0-31px) al último de cada racha para caer en el siguiente renglón +32. */
+  var medias = area.querySelectorAll('.list-item.image-item');
+  for (var i = 0; i < medias.length; i++) {
+    var m = medias[i];
+    var next = m.nextElementSibling;
+    var isLastInRun = !next || !next.classList || !next.classList.contains('image-item');
+    if (!isLastInRun) {
+      m.style.marginBottom = '';
+      continue;
+    }
+    /* Si no hay siguiente bloque textual, mantener base 32px. */
+    if (!next) { m.style.marginBottom = ''; continue; }
+    var yB = _paperAbsBottom(m, area, areaRect, scrollTop);
+    var extra = _paperSnapExtra(yB);
+    m.style.marginBottom = extra ? (32 + extra) + 'px' : '';
+  }
+  /* 2) LaTeX bloque: misma lógica que imágenes. El estilo inline no se
+     persiste porque updateItemText lo reconvierte a $$...$$ al guardar. */
+  var latexBlocks = area.querySelectorAll('.katex-block');
+  for (var k = 0; k < latexBlocks.length; k++) {
+    var lb = latexBlocks[k];
+    var lbNext = lb.nextElementSibling;
+    var lbIsLast = !lbNext || !lbNext.classList || !lbNext.classList.contains('katex-block');
+    if (!lbIsLast) {
+      lb.style.marginTop = '';
+      lb.style.marginBottom = '';
+      continue;
+    }
+    var yLb = _paperAbsBottom(lb, area, areaRect, scrollTop);
+    var extraLb = _paperSnapExtra(yLb);
+    lb.style.marginBottom = extraLb ? (32 + extraLb) + 'px' : '';
+  }
+  /* 3) Tablas: filas en múltiplos de 32px en diseños con patrón
+     (lined/grid/dotted); columnas en múltiplos en grid/dotted. */
+  if (isPaperSyncDesign(design)) snapGridTables(area, design);
+  else {
+    var tds = area.querySelectorAll('.note-table td, .note-table th');
+    for (var t = 0; t < tds.length; t++) { tds[t].style.height = ''; tds[t].style.width = ''; }
+    var trs = area.querySelectorAll('.note-table tr');
+    for (var trc = 0; trc < trs.length; trc++) trs[trc].style.height = '';
+  }
+}
+function _roundUp32(v) {
+  v = Math.ceil(v || 0);
+  if (v <= 0) return PAPER_UNIT;
+  var r = v % PAPER_UNIT;
+  return r === 0 ? v : v + (PAPER_UNIT - r);
+}
+function snapGridTables(area, design) {
+  var tables = area.querySelectorAll('.note-table');
+  var snapCols = (design === 'grid' || design === 'dotted');
+  for (var ti = 0; ti < tables.length; ti++) {
+    var table = tables[ti];
+    var rows = table.querySelectorAll('tr');
+    /* Alturas por fila en múltiplos de 32px (solo expandir, nunca reducir
+       por debajo del contenido necesario). */
+    for (var ri = 0; ri < rows.length; ri++) {
+      var tr = rows[ri];
+      var cells = tr.querySelectorAll('td, th');
+      if (!cells.length) continue;
+      var need = PAPER_UNIT;
+      for (var ci = 0; ci < cells.length; ci++) {
+        var c = cells[ci];
+        /* Altura necesaria: contenido + padding. scrollHeight si hay overflow,
+           si no offsetHeight. */
+        var h = c.scrollHeight || c.offsetHeight || PAPER_UNIT;
+        /* scrollHeight en td puede ser 0 por table-layout; usar offsetHeight mínimo. */
+        if (h < PAPER_UNIT) h = PAPER_UNIT;
+        if (h > need) need = h;
+      }
+      var targetH = _roundUp32(need);
+      /* Solo fijar si supera la altura base (no tocar tamaño inicial si ya cabe). */
+      for (var cj = 0; cj < cells.length; cj++) {
+        var cc = cells[cj];
+        var curH = cc.offsetHeight || 0;
+        if (targetH > PAPER_UNIT || curH > PAPER_UNIT) cc.style.height = targetH + 'px';
+        else cc.style.height = '';
+      }
+      tr.style.height = targetH + 'px';
+    }
+    /* Anchuras por columna en múltiplos de 32px al expandirse (grid y
+       dotted, donde las líneas verticales/puntos caen sobre la cuadrícula). */
+    if (!snapCols) continue;
+    var firstRow = rows[0];
+    if (!firstRow) continue;
+    var firstCells = firstRow.querySelectorAll('td, th');
+    var nCols = firstCells.length;
+    for (var col = 0; col < nCols; col++) {
+      var maxW = PAPER_UNIT;
+      for (var r2 = 0; r2 < rows.length; r2++) {
+        var rcells = rows[r2].querySelectorAll('td, th');
+        if (col >= rcells.length) continue;
+        var cell = rcells[col];
+        var w = cell.scrollWidth || cell.offsetWidth || PAPER_UNIT;
+        if (w < PAPER_UNIT) w = PAPER_UNIT;
+        if (w > maxW) maxW = w;
+      }
+      var targetW = _roundUp32(maxW);
+      if (targetW > PAPER_UNIT) {
+        for (var r3 = 0; r3 < rows.length; r3++) {
+          var rc2 = rows[r3].querySelectorAll('td, th');
+          if (col < rc2.length) rc2[col].style.width = targetW + 'px';
+        }
+      }
+    }
+  }
+}
+/* Re-sincronizar ante cambios dinámicos (escritura, wrap, resize, imágenes).
+   Ligero y con debounce; sin MutationObserver costoso ni trabajo por frame. */
+(function initPaperSyncListeners() {
+  var deb = null;
+  function schedule() {
+    if (deb) clearTimeout(deb);
+    deb = setTimeout(function() { deb = null; requestPaperSync(); }, 150);
+  }
+  document.addEventListener('input', function(e) {
+    if (e.target && e.target.closest && e.target.closest('.items-area')) schedule();
+  }, true);
+  window.addEventListener('resize', schedule);
+  /* Imágenes cargadas después del render cambian alturas -> re-sincronizar. */
+  document.addEventListener('load', function(e) {
+    var t = e.target;
+    if (t && t.tagName === 'IMG' && t.closest && t.closest('.items-area')) schedule();
+  }, true);
+})();
+
+/* ==================================================
+   ANCHO ADAPTATIVO DE NOTA (solo Android, solo visual)
+   - Referencia: ancho disponible en landscape.
+   - Portrait + "Bloquear ancho" ON  -> se adapta al ancho vertical
+     (comportamiento histórico), salvo tablas que conservan su ancho.
+   - Portrait + "Bloquear ancho" OFF -> conserva el ancho landscape
+     con scroll horizontal (clase note-wide + --note-ref-w).
+   - No modifica el contenido guardado; solo clases en #noteContent.
+   ================================================== */
+var _isAndroidNoteWidth = /android/i.test(navigator.userAgent || '');
+var _landscapeRefW = 0;
+function isNoteWidthLocked(note) { return !note || note.lockWidth !== false; }
+function isNotePortrait() {
+  try {
+    if (window.matchMedia) return window.matchMedia('(orientation: portrait)').matches;
+  } catch (e) {}
+  return (window.innerHeight || 0) >= (window.innerWidth || 0);
+}
+function noteRefWidth() {
+  if (_landscapeRefW > 0) return _landscapeRefW;
+  return Math.max(window.innerWidth || 0, window.innerHeight || 0);
+}
+function updateNoteWidth() {
+  var nc = document.getElementById('noteContent');
+  if (!nc) return;
+  var note = null;
+  if (state && state.activeNoteId != null && state.notes) {
+    note = state.notes.find(function(n) { return n.id === state.activeNoteId; }) || null;
+  }
+  nc.classList.remove('note-locked');
+  nc.classList.remove('note-wide');
+  if (nc.style) nc.style.removeProperty('--note-ref-w');
+  if (!_isAndroidNoteWidth || !note || !isNotePortrait()) {
+    if (_isAndroidNoteWidth && (window.innerWidth || 0) > 0 && !isNotePortrait()) {
+      _landscapeRefW = window.innerWidth;
+    }
+    return;
+  }
+  if (isNoteWidthLocked(note)) {
+    nc.classList.add('note-locked');
+  } else {
+    nc.classList.add('note-wide');
+    if (nc.style) nc.style.setProperty('--note-ref-w', noteRefWidth() + 'px');
+  }
+}
+(function initNoteWidthListener() {
+  if (window._noteWidthListening) return;
+  window._noteWidthListening = true;
+  var deb = null;
+  window.addEventListener('resize', function() {
+    if (deb) clearTimeout(deb);
+    deb = setTimeout(function() { deb = null; updateNoteWidth(); }, 120);
+  });
+  window.addEventListener('orientationchange', function() {
+    setTimeout(updateNoteWidth, 60);
+    setTimeout(updateNoteWidth, 400);
+  });
+})();
 function renameBoard(boardId) {
   var board = state.boards.find(function(b) { return b.id === boardId; });
   if (!board) return;
@@ -4927,10 +5705,11 @@ function renderNoteContent() {
           var lockedF = f.pwdHash && !unlockedIds['f'+f.id];
           var lockF = lockedF ? '<span class="card-lock">&#x1f512;</span>' : '';
           var cnt=countNotesInFolder(f.id);
-          html += '<div class="card card-folder" data-folder-id="' + f.id + '" onclick="openFolder(' + f.id + ')">' +
+          var fcol = f.color || '#5b7db5';
+          html += '<div class="card card-folder" data-folder-id="' + f.id + '" onclick="openFolder(' + f.id + ')" style="border-left-color:' + fcol + ';">' +
             '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
             lockF +
-            '<div class="card-folder-icon">&#x1f4c1;</div>' +
+            '<div class="card-folder-icon" style="color:' + fcol + ';"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></div>' +
             '<div class="card-title">' + escapeHtml(f.name) + '</div>' +
             '<div class="card-preview">' + cnt + ' ' + (cnt===1? t('countNote'): t('countNotes')) + (f.pwdHash? ' &middot; &#x1f512;':'') + '</div></div>';
         }
@@ -4968,7 +5747,8 @@ function renderNoteContent() {
       html += '<div class="note-cover" style="background-image:url(' + note.cover + ');"></div>';
     }
   }
-  html += '<div class="items-area" data-note-id="' + note.id + '">';
+  var _bg = getNoteBackground(note);
+  html += '<div class="items-area" data-note-id="' + note.id + '" data-bg-color="' + _bg.color + '" data-bg-design="' + _bg.design + '">';
   if (note.items.length === 0) {
     html += '<div style="color:#555;font-size:13px;padding:20px;text-align:center;">' + t('addItemsPrompt') + '</div>';
   } else {
@@ -4989,13 +5769,29 @@ function renderNoteContent() {
         html += '<button class="btn btn-sm btn-icon" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
         html += '</span></div>';
       } else if (item.type === 'video') {
-        html += '<div class="list-item image-item item-video-block" data-id="' + item.id + '">';
-        html += '<video class="note-video" data-ref="' + escapeHtml(item.ref) + '" controls playsinline style="max-width:100%;border-radius:6px;"></video>';
-        html += '<span class="item-actions">';
-        html += '<button class="btn btn-sm btn-icon" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
-        html += '</span></div>';
+        if (VideoManager.isHeavyItem(item)) {
+          /* Video pesado en nota: placeholder + carga bajo demanda. */
+          html += '<div class="list-item image-item item-video-block heavy" data-id="' + item.id + '">';
+          html += '<div class="hv-placeholder hv-note" data-hv-note="' + note.id + ':' + item.id + '">';
+          html += '<video class="hv-video note-video" preload="none" playsinline controls style="display:none;max-width:100%;border-radius:6px;"></video>';
+          html += '<div class="hv-icon">&#x1F3AC;</div>';
+          html += '<div class="hv-name">' + escapeHtml(item.name || 'video') + '</div>';
+          html += '<div class="hv-size">' + escapeHtml(VideoManager.formatSize(item.size)) + '</div>';
+          html += '<button class="hv-play" onclick="event.stopPropagation();playHeavyNoteVideo(' + note.id + ',' + item.id + ')">&#x25B6; ' + _hvText('Reproducir', 'Play') + '</button>';
+          html += '<div class="hv-error hidden"></div>';
+          html += '</div>';
+          html += '<span class="item-actions">';
+          html += '<button class="btn btn-sm btn-icon" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
+          html += '</span></div>';
+        } else {
+          html += '<div class="list-item image-item item-video-block" data-id="' + item.id + '">';
+          html += '<video class="note-video" data-ref="' + escapeHtml(item.ref) + '" controls playsinline style="max-width:100%;border-radius:6px;"></video>';
+          html += '<span class="item-actions">';
+          html += '<button class="btn btn-sm btn-icon" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
+          html += '</span></div>';
+        }
       } else if (item.type === 'table') {
-        html += '<div class="list-item" data-id="' + item.id + '" style="position:relative;">';
+        html += '<div class="list-item table-item" data-id="' + item.id + '" style="position:relative;">';
         html += renderTableData(item, note.id);
         html += '<span class="item-actions" style="position:absolute;top:4px;right:4px;">';
         html += '<button class="btn btn-sm" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
@@ -5080,6 +5876,24 @@ function renderNoteContent() {
   html += '<button class="fmt-btn" id="fmtItalic" onmousedown="event.preventDefault()" onclick="formatItalic()" title="' + t('italic') + '"><i>I</i></button>';
   html += '<button class="fmt-btn" id="fmtUnderline" onmousedown="event.preventDefault()" onclick="formatUnderline()" title="' + t('underline') + '"><u>U</u></button>';
   html += '<div style="display:inline-block;">';
+  html += '<button class="fmt-btn tx-toggle" onclick="applyTextColor()" title="' + t('textColor') + '" aria-label="' + t('textColor') + '" aria-haspopup="true">&#x1F58C;<span class="tx-cur" style="display:block;height:3px;border-radius:2px;background:' + _txColor + ';margin-top:1px;"></span></button>';
+  html += '<div id="txPalette" role="group" aria-label="' + t('textColor') + '" class="hidden" style="position:fixed;z-index:10000;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px;display:flex;flex-wrap:wrap;gap:5px;max-width:224px;">';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Negro" style="background:#000000;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#000000\');event.stopPropagation();" title="Negro"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Blanco" style="background:#ffffff;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#ffffff\');event.stopPropagation();" title="Blanco"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Azul" style="background:#0000ff;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#0000ff\');event.stopPropagation();" title="Azul"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Celeste" style="background:#00bfff;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#00bfff\');event.stopPropagation();" title="Celeste"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Rosa" style="background:#ff69b4;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#ff69b4\');event.stopPropagation();" title="Rosa"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Lila" style="background:#c8a2c8;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#c8a2c8\');event.stopPropagation();" title="Lila"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Purpura" style="background:#800080;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#800080\');event.stopPropagation();" title="Purpura"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Verde claro" style="background:#32cd32;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#32cd32\');event.stopPropagation();" title="Verde claro"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Verde oscuro" style="background:#006400;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#006400\');event.stopPropagation();" title="Verde oscuro"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Marron" style="background:#8b4513;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#8b4513\');event.stopPropagation();" title="Marron"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Rojo" style="background:#ff0000;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#ff0000\');event.stopPropagation();" title="Rojo"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Naranja" style="background:#ff8c00;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#ff8c00\');event.stopPropagation();" title="Naranja"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Amarillo" style="background:#ffd700;" onmousedown="event.preventDefault()" onclick="selectTextColor(\'#ffd700\');event.stopPropagation();" title="Amarillo"></span>';
+  html += '<span class="hl-color" role="button" tabindex="0" aria-label="Quitar color" style="background:transparent;border:1px dashed var(--text-muted);display:inline-flex;align-items:center;justify-content:center;font-size:14px;" onmousedown="event.preventDefault()" onclick="selectRemoveTextColor();event.stopPropagation();" title="Quitar color">&#x2716;</span>';
+  html += '</div></div>';
+  html += '<div style="display:inline-block;">';
   html += '<button class="fmt-btn hl-toggle" onclick="applyHighlight()" title="' + t('highlight') + '"><span style="background:' + _hlColor + ';padding:0 2px;font-weight:bold;">A</span></button>';
   html += '<div id="hlPalette" class="hidden" style="position:fixed;z-index:10000;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px;display:flex;gap:3px;">';
   html += '<span class="hl-color" style="background:#ffff00;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#ffff00\');event.stopPropagation();" title="Yellow"></span>';
@@ -5114,6 +5928,8 @@ function renderNoteContent() {
   var savedScrollTop = 0, savedActiveId = activeItemId;
   var oldArea = document.querySelector('.items-area');
   if (oldArea) savedScrollTop = oldArea.scrollTop;
+  /* Liberar videos en reproducción antes de reemplazar el DOM. */
+  VideoManager.releaseAllIn(container);
   container.innerHTML = html;
   if (savedScrollTop > 0) { var newArea = document.querySelector('.items-area'); if (newArea) newArea.scrollTop = savedScrollTop; }
   if (savedActiveId !== null && savedActiveId !== undefined) {
@@ -5125,24 +5941,119 @@ function renderNoteContent() {
   loadNoteAudios();
   loadNoteVideos();
   loadNoteCover();
+  if (_noteSearch.term && _noteSearch.noteId === state.activeNoteId) refreshNoteSearchSilently();
+  requestPaperSync();
+  updateNoteWidth();
 }
 
-/* Carga los reproductores de video en las notas */
+/* Carga los reproductores de video en las notas.
+ * Pesados: lazy (solo verificación de existencia). Legacy sin modo:
+ * migración barata vía stat(). Inline: comportamiento existente. */
 function loadNoteVideos() {
-  var vids = document.querySelectorAll('.note-video[data-ref]');
-  [].forEach.call(vids, function(v) {
-    var ref = v.getAttribute('data-ref');
-    v.removeAttribute('data-ref');
-    if (_mediaBlobUrls[ref]) { v.src = _mediaBlobUrls[ref]; return; }
-    ImageManager.read(ref).then(function(base64) {
-      if (!base64) return;
-      var mime = ImageConverter.getMimeFromRef(ref);
-      var blob = _base64ToBlob(base64, mime);
-      var url = URL.createObjectURL(blob);
-      _mediaBlobUrls[ref] = url;
-      v.src = url;
+  var holders = document.querySelectorAll('.hv-placeholder[data-hv-note]');
+  [].forEach.call(holders, function(holder) {
+    var parts = (holder.getAttribute('data-hv-note') || '').split(':');
+    var noteId = Number(parts[0]), itemId = Number(parts[1]);
+    var note = state.notes.find(function(n) { return n.id === noteId; });
+    var item = note ? note.items.find(function(i) { return i.id === itemId; }) : null;
+    var ref = item ? (item.src || item.ref) : null;
+    if (!ref) return;
+    VideoManager.fileExists(ref).then(function(ok) {
+      if (!ok) showHeavyNoteMissing(holder, noteId, itemId);
     });
   });
+  var vids = document.querySelectorAll('.note-video[data-ref]');
+  if (!vids.length) return;
+  var note2 = state.notes.find(function(n) { return n.id === state.activeNoteId; });
+  var pending = [];
+  [].forEach.call(vids, function(v) {
+    var box = v.closest('.list-item');
+    var itemId2 = box ? Number(box.getAttribute('data-id')) : null;
+    var it = (note2 && itemId2) ? note2.items.find(function(i) { return i.id === itemId2; }) : null;
+    if (it && !it.mode && (it.src || it.ref) && String(it.src || it.ref).indexOf('data:') !== 0) {
+      pending.push(VideoManager.maybeMigrateElement(note2, it));
+    } else {
+      pending.push(Promise.resolve(false));
+    }
+  });
+  Promise.all(pending).then(function(results) {
+    if (results.indexOf(true) >= 0) {
+      save();
+      renderNoteContent();
+      return;
+    }
+    [].forEach.call(vids, function(v) {
+      var ref = v.getAttribute('data-ref');
+      v.removeAttribute('data-ref');
+      if (_mediaBlobUrls[ref]) { v.src = _mediaBlobUrls[ref]; return; }
+      ImageManager.read(ref).then(function(base64) {
+        if (!base64) return;
+        var mime = ImageConverter.getMimeFromRef(ref);
+        var blob = _base64ToBlob(base64, mime);
+        var url = URL.createObjectURL(blob);
+        _mediaBlobUrls[ref] = url;
+        v.src = url;
+      });
+    });
+  });
+}
+
+function playHeavyNoteVideo(noteId, itemId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  var item = note.items.find(function(i) { return i.id === itemId; });
+  if (!item) return;
+  var ref = item.src || item.ref;
+  if (!ref) return;
+  var box = document.querySelector('.list-item[data-id="' + itemId + '"]');
+  var holder = box ? box.querySelector('.hv-placeholder') : null;
+  var video = box ? box.querySelector('video.hv-video') : null;
+  if (!box || !holder || !video) return;
+  if (video.getAttribute('src')) {
+    if (video.paused) video.play().catch(function(err) { showHeavyNoteError(holder, noteId, itemId); });
+    else video.pause();
+    return;
+  }
+  VideoManager.log('Reproducción solicitada (nota): ' + ref);
+  setHeavyLoading(holder, true);
+  VideoManager.getPlayableSrc(ref, item.mimeType).then(function(src) {
+    setHeavyLoading(holder, false);
+    video.src = src;
+    video.style.display = 'block';
+    holder.classList.add('hv-playing');
+    video.onerror = function() { showHeavyNoteError(holder, noteId, itemId); };
+    return video.play();
+  }).catch(function(err) {
+    setHeavyLoading(holder, false);
+    if (err && err.code === 'NOT_FOUND') showHeavyNoteMissing(holder, noteId, itemId);
+    else showHeavyNoteError(holder, noteId, itemId);
+  });
+}
+
+function showHeavyNoteMissing(holder, noteId, itemId) {
+  if (!holder) return;
+  holder.classList.add('hv-missing');
+  var errBox = holder.querySelector('.hv-error');
+  if (errBox) {
+    errBox.classList.remove('hidden');
+    errBox.innerHTML =
+      '<div class="hv-warn">&#x26A0; ' + _hvText('Video no disponible', 'Video unavailable') + '</div>' +
+      '<div class="hv-warn-desc">' + _hvText('El archivo asociado ya no se encuentra en el almacenamiento del dispositivo.', 'The associated file is no longer found on device storage.') + '</div>' +
+      '<button class="hv-relink" onclick="event.stopPropagation();relinkNoteVideo(' + noteId + ',' + itemId + ')">' +
+      _hvText('Volver a vincular', 'Relink') + '</button>';
+  }
+  var playBtn = holder.querySelector('.hv-play');
+  if (playBtn) playBtn.style.display = 'none';
+}
+
+function showHeavyNoteError(holder, noteId, itemId) {
+  if (!holder) return;
+  var errBox = holder.querySelector('.hv-error');
+  if (errBox) {
+    errBox.classList.remove('hidden');
+    errBox.innerHTML =
+      '<div class="hv-warn">' + _hvText('No se pudo reproducir este video en MiBabel', 'Could not play this video in MiBabel') + '</div>';
+  }
 }
 
 /* Carga la portada de la nota (ref) de forma asíncrona */
@@ -5587,7 +6498,14 @@ function addBoardElement(type, ref, w, h, extra) {
     h: h || 180,
     origWidth: extra && extra.origWidth ? extra.origWidth : (w || 200),
     origHeight: extra && extra.origHeight ? extra.origHeight : (h || 180),
-    duration: extra && extra.duration ? extra.duration : 0
+    duration: extra && extra.duration ? extra.duration : 0,
+    /* Metadatos del sistema híbrido de video (modo archivo). */
+    mode: extra && extra.mode ? extra.mode : undefined,
+    mediaId: extra && extra.mediaId ? extra.mediaId : undefined,
+    name: extra && extra.name ? extra.name : undefined,
+    size: extra && typeof extra.size === 'number' ? extra.size : undefined,
+    mimeType: extra && extra.mimeType ? extra.mimeType : undefined,
+    createdAt: extra && extra.createdAt ? extra.createdAt : undefined
   };
   board.elements.push(el);
   save();
@@ -5760,8 +6678,13 @@ function deleteBoardElement(boardId, elId) {
   });
   save();
   renderBoardContent();
-  /* Limpiar blob URL cacheados */
-  if (removed && removed.ref && _mediaBlobUrls[removed.ref]) {
+  /* Limpieza segura: solo se borra el archivo físico si ningún otro
+   * Tablero/elemento/nota lo referencia (refcount). Los duplicados
+   * comparten el mismo archivo sin copiarlo. */
+  if (removed && removed.type === 'video' && removed.ref) {
+    VideoManager.log('Referencia eliminada del Tablero: ' + removed.ref);
+    VideoManager.deletePhysicalIfOrphan(removed.ref);
+  } else if (removed && removed.ref && _mediaBlobUrls[removed.ref]) {
     URL.revokeObjectURL(_mediaBlobUrls[removed.ref]);
     delete _mediaBlobUrls[removed.ref];
   }
@@ -5783,7 +6706,15 @@ function duplicateBoardElement(boardId, elId) {
     origWidth: src.origWidth,
     origHeight: src.origHeight,
     duration: src.duration,
-    latex: src.latex
+    latex: src.latex,
+    /* El duplicado comparte el mismo archivo físico (sin copia).
+     * El refcount en la eliminación protege el archivo compartido. */
+    mode: src.mode,
+    mediaId: src.mediaId,
+    name: src.name,
+    size: src.size,
+    mimeType: src.mimeType,
+    createdAt: src.createdAt
   };
   board.elements.push(copy);
   save();
@@ -5831,7 +6762,13 @@ function copyBoardElementToClipboard(boardId, elId) {
     origWidth: src.origWidth,
     origHeight: src.origHeight,
     duration: src.duration,
-    latex: src.latex
+    latex: src.latex,
+    mode: src.mode,
+    mediaId: src.mediaId,
+    name: src.name,
+    size: src.size,
+    mimeType: src.mimeType,
+    createdAt: src.createdAt
   };
 }
 
@@ -5851,7 +6788,13 @@ function pasteBoardElementFromClipboard(boardId) {
     origWidth: _boardElementClipboard.origWidth,
     origHeight: _boardElementClipboard.origHeight,
     duration: _boardElementClipboard.duration,
-    latex: _boardElementClipboard.latex
+    latex: _boardElementClipboard.latex,
+    mode: _boardElementClipboard.mode,
+    mediaId: _boardElementClipboard.mediaId,
+    name: _boardElementClipboard.name,
+    size: _boardElementClipboard.size,
+    mimeType: _boardElementClipboard.mimeType,
+    createdAt: _boardElementClipboard.createdAt
   };
   board.elements.push(el);
   save();
@@ -5909,23 +6852,140 @@ function triggerBoardVideoInput() {
   document.getElementById('boardVideoInput').click();
 }
 
+/* Insertar video en tablero — sistema híbrido (ver VideoManager).
+ * Paso 1: metadatos (nombre/MIME/tamaño) SIN leer el contenido.
+ * Paso 2: tamaño <= límite -> modo inline (mecanismo existente).
+ *          tamaño >  límite -> modo archivo (copia por chunks + referencia). */
 function insertBoardVideo(input) {
   if (!input.files || !input.files[0]) return;
   var file = input.files[0];
-  VideoConverter.toBase64(file).then(function(base64) {
-    var ext = file.name.split('.').pop().toLowerCase();
-    var ref = 'videos/' + generateImageId() + '.' + ext;
-    return ImageManager.save(ref, base64).then(function() {
-      return VideoConverter.getDimensions(file).then(function(dims) {
-        var h = 180;
-        var w = Math.round(h * (dims.width / dims.height));
-        addBoardElement('video', ref, w, h, { origWidth: dims.width, origHeight: dims.height });
-      }).catch(function() {
-        addBoardElement('video', ref, 240, 180);
-      });
+  /* Flujo de revinculación (archivo faltante -> reemplazar). */
+  if (_pendingVideoRelink && _pendingVideoRelink.boardId) {
+    var pending = _pendingVideoRelink;
+    _pendingVideoRelink = null;
+    input.value = '';
+    relinkBoardVideoSave(pending.boardId, pending.elId, file);
+    return;
+  }
+  persistVideoFile(file, function(done, total) {
+    var pct = total ? Math.floor(done * 100 / total) : 100;
+    setStatus('Copiando video pesado... ' + pct + '%');
+  }).then(function(saved) {
+    return VideoConverter.getDimensions(file).then(function(dims) {
+      saved.width = dims.width;
+      saved.height = dims.height;
+      return saved;
+    }).catch(function() {
+      saved.width = 0;
+      saved.height = 0;
+      return saved;
     });
+  }).then(function(saved) {
+    var h = 180;
+    var w = (saved.width && saved.height) ? Math.round(h * (saved.width / saved.height)) : 240;
+    addBoardElement('video', saved.ref, w, h, {
+      origWidth: saved.width || w,
+      origHeight: saved.height || h,
+      mode: saved.mode,
+      mediaId: saved.mediaId,
+      name: file.name || 'video',
+      size: saved.size,
+      mimeType: file.type || VideoManager.guessMime(file.name || saved.ref),
+      createdAt: Date.now()
+    });
+    setStatus(saved.mode === 'file' ? 'Video pesado guardado como referencia.' : '');
   }).catch(function(err) {
     console.error('Error inserting board video:', err);
+    setStatus('No se pudo guardar el video: ' + (err && err.message ? err.message : 'error'));
+  });
+  input.value = '';
+}
+
+/* Persiste un File de video según su tamaño y devuelve
+ * Promise<{ref, mediaId, mode, size}>.
+ * - inline: pipeline existente (base64, archivos pequeños).
+ * - file: copia por chunks (nunca el archivo completo en JS) + stat de
+ *   verificación. onProgress(done, total) no bloquea la UI. */
+function persistVideoFile(file, onProgress) {
+  var size = (file && file.size) || 0;
+  var mode = VideoManager.getMode(size);
+  var mediaId = generateImageId();
+  var ext = VideoManager.sanitizeExt(file.name, 'mp4');
+  var ref = 'videos/' + mediaId + '.' + ext;
+  VideoManager.log('Archivo detectado: ' + VideoManager.formatSize(size) + ' (' + (file.name || '?') + ')');
+  VideoManager.log('Modo seleccionado: ' + mode);
+  if (mode === 'inline') {
+    return VideoConverter.toBase64(file).then(function(base64) {
+      return ImageManager.save(ref, base64).then(function() {
+        return { ref: ref, mediaId: mediaId, mode: 'inline', size: size };
+      });
+    });
+  }
+  var lastPct = -1;
+  function progress(done, total) {
+    if (!onProgress) return;
+    var pct = total ? Math.floor(done * 100 / total) : 100;
+    if (pct !== lastPct && (pct % 5 === 0 || pct === 100)) {
+      lastPct = pct;
+      try { onProgress(done, total); } catch (e) {}
+    }
+  }
+  return VideoManager.saveLargeFile(ref, file, progress).then(function() {
+    return ImageManager.stat(ref).then(function(info) {
+      if (!info) throw new Error('No se pudo verificar la copia del video');
+      VideoManager.log('Referencia creada: mediaId=' + mediaId + ' ref=' + ref);
+      return { ref: ref, mediaId: mediaId, mode: 'file', size: (info.size || size) };
+    });
+  });
+}
+
+/* Objetivo pendiente de revinculación de video pesado faltante. */
+var _pendingVideoRelink = null;
+
+/* Inicia revinculación: el usuario elegirá un archivo de reemplazo. */
+function relinkBoardVideo(boardId, elId) {
+  _pendingVideoRelink = { boardId: boardId, elId: elId };
+  document.getElementById('boardVideoInput').value = '';
+  document.getElementById('boardVideoInput').click();
+}
+
+function relinkNoteVideo(noteId, itemId) {
+  _pendingVideoRelink = { noteId: noteId, itemId: itemId };
+  document.getElementById('videoInput').value = '';
+  document.getElementById('videoInput').click();
+}
+
+/* Completa la revinculación de un elemento de tablero con un archivo nuevo. */
+function relinkBoardVideoSave(boardId, elId, file) {
+  var board = state.boards.find(function(b) { return b.id === boardId; });
+  if (!board) return;
+  var el = board.elements.find(function(e) { return e.id === elId; });
+  if (!el) return;
+  var oldRef = el.ref;
+  persistVideoFile(file, function(done, total) {
+    setStatus('Vinculando video... ' + (total ? Math.floor(done * 100 / total) : 100) + '%');
+  }).then(function(saved) {
+    return VideoConverter.getDimensions(file).then(function(dims) {
+      saved.width = dims.width; saved.height = dims.height;
+      return saved;
+    }).catch(function() { return saved; });
+  }).then(function(saved) {
+    el.ref = saved.ref;
+    el.mode = saved.mode;
+    el.mediaId = saved.mediaId;
+    el.name = file.name || 'video';
+    el.size = saved.size;
+    el.mimeType = file.type || VideoManager.guessMime(file.name || saved.ref);
+    el.createdAt = Date.now();
+    save();
+    renderBoardContent();
+    setStatus('Video vinculado nuevamente.');
+    if (oldRef && oldRef !== saved.ref) {
+      VideoManager.deletePhysicalIfOrphan(oldRef);
+    }
+  }).catch(function(err) {
+    console.error('Error relinking board video:', err);
+    setStatus('No se pudo vincular el video.');
   });
 }
 
@@ -5982,21 +7042,36 @@ function addAudioItemAtCursor(ref) {
   renderNoteContent();
 }
 
-/* Insertar video en nota */
+/* Insertar video en nota — sistema híbrido (ver VideoManager). */
 function insertVideo(input) {
   if (!input.files || !input.files[0]) return;
   var file = input.files[0];
-  VideoConverter.toBase64(file).then(function(base64) {
-    var ext = file.name.split('.').pop().toLowerCase();
-    var ref = 'videos/' + generateImageId() + '.' + ext;
-    return ImageManager.save(ref, base64).then(function() {
-      return addVideoItemAtCursor(ref);
+  if (_pendingVideoRelink && _pendingVideoRelink.noteId) {
+    var pending = _pendingVideoRelink;
+    _pendingVideoRelink = null;
+    input.value = '';
+    relinkNoteVideoSave(pending.noteId, pending.itemId, file);
+    return;
+  }
+  persistVideoFile(file, function(done, total) {
+    setStatus('Copiando video pesado... ' + (total ? Math.floor(done * 100 / total) : 100) + '%');
+  }).then(function(saved) {
+    addVideoItemAtCursor(saved.ref, {
+      mode: saved.mode,
+      mediaId: saved.mediaId,
+      name: file.name || 'video',
+      size: saved.size,
+      mimeType: file.type || VideoManager.guessMime(file.name || saved.ref),
+      createdAt: Date.now()
     });
+    setStatus(saved.mode === 'file' ? 'Video pesado guardado como referencia.' : '');
   }).catch(function(err) {
     console.error('Error inserting video:', err);
+    setStatus('No se pudo guardar el video: ' + (err && err.message ? err.message : 'error'));
   });
+  input.value = '';
 }
-function addVideoItemAtCursor(ref) {
+function addVideoItemAtCursor(ref, extra) {
   var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
   if (!note) return;
   var idx = -1;
@@ -6004,10 +7079,49 @@ function addVideoItemAtCursor(ref) {
     note.items.forEach(function(it, i) { if (it.id === activeItemId) idx = i; });
   }
   var item = { id: genId(), type: 'video', ref: ref };
+  /* Metadatos del sistema híbrido de video (modo archivo). */
+  if (extra) {
+    item.mode = extra.mode;
+    item.mediaId = extra.mediaId;
+    item.name = extra.name;
+    item.size = extra.size;
+    item.mimeType = extra.mimeType;
+    item.createdAt = extra.createdAt;
+  }
   if (idx >= 0) note.items.splice(idx + 1, 0, item);
   else note.items.push(item);
   save();
   renderNoteContent();
+}
+
+/* Completa la revinculación de un item de video de nota. */
+function relinkNoteVideoSave(noteId, itemId, file) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  var item = note.items.find(function(i) { return i.id === itemId; });
+  if (!item) return;
+  var oldRef = item.src || item.ref;
+  persistVideoFile(file, function(done, total) {
+    setStatus('Vinculando video... ' + (total ? Math.floor(done * 100 / total) : 100) + '%');
+  }).then(function(saved) {
+    item.ref = saved.ref;
+    delete item.src;
+    item.mode = saved.mode;
+    item.mediaId = saved.mediaId;
+    item.name = file.name || 'video';
+    item.size = saved.size;
+    item.mimeType = file.type || VideoManager.guessMime(file.name || saved.ref);
+    item.createdAt = Date.now();
+    save();
+    renderNoteContent();
+    setStatus('Video vinculado nuevamente.');
+    if (oldRef && oldRef !== saved.ref) {
+      VideoManager.deletePhysicalIfOrphan(oldRef);
+    }
+  }).catch(function(err) {
+    console.error('Error relinking note video:', err);
+    setStatus('No se pudo vincular el video.');
+  });
 }
 
 /* Funciones para overlay de tamaño completo */
@@ -6032,7 +7146,22 @@ function openBoardElementFullsize(boardId, elId) {
   } else if (el.type === 'video') {
     /* Pausar video en miniatura si se está reproduciendo */
     var thumbEl = document.querySelector('.board-element[data-id="' + elId + '"] video');
-    if (thumbEl && !thumbEl.paused) { thumbEl.pause(); thumbEl._playRequested = false; }
+    if (thumbEl && !thumbEl.paused) { try { thumbEl.pause(); } catch (e) {} thumbEl._playRequested = false; }
+    if (VideoManager.isHeavyElement(el)) {
+      /* Video pesado: streaming sin leer el archivo en JS. */
+      VideoManager.getPlayableSrc(ref, el.mimeType).then(function(src) {
+        showFullsizeView('<video src="' + src + '" controls autoplay playsinline style="max-width:100%;max-height:90vh;"></video>');
+      }).catch(function(err) {
+        if (err && err.code === 'NOT_FOUND') {
+          showFullsizeView('<div style="padding:24px;text-align:center;">&#x26A0; ' +
+            _hvText('Video no disponible: el archivo ya no se encuentra en el dispositivo.', 'Video unavailable: the file is no longer on the device.') + '</div>');
+        } else {
+          showFullsizeView('<div style="padding:24px;text-align:center;">' +
+            _hvText('No se pudo reproducir este video.', 'Could not play this video.') + '</div>');
+        }
+      });
+      return;
+    }
     var url = _mediaBlobUrls[ref];
     if (url) {
       showFullsizeView('<video src="' + url + '" controls autoplay style="max-width:100%;max-height:90vh;"></video>');
@@ -6052,9 +7181,9 @@ function openBoardElementFullsize(boardId, elId) {
 function closeFullsizeView() {
   closeDialog('fullsizeOverlay');
   var content = document.getElementById('fullsizeContent');
-  /* Pausar cualquier video */
+  /* Pausar y liberar cualquier video */
   var video = content.querySelector('video');
-  if (video) video.pause();
+  if (video) VideoManager.releaseVideoElement(video);
   content.innerHTML = '';
 }
 
@@ -6143,6 +7272,11 @@ function _findClosestEdges(r1, r2) {
     }
   }
   return best;
+}
+
+/* Texto bilingüe mínimo para la UI de videos pesados (sin tocar langData). */
+function _hvText(es, en) {
+  return (typeof state !== 'undefined' && state.lang === 'en') ? en : es;
 }
 
 function renderBoardContent() {
@@ -6259,15 +7393,32 @@ function renderBoardContent() {
       html += '<div class="board-audio-player" data-ref="' + escapeHtml(el.ref) + '"></div>';
       html += '</div>';
     } else if (el.type === 'video') {
-      html += '<div class="board-element board-video" data-id="' + el.id + '" data-type="video" style="left:' + el.x + 'px;top:' + el.y + 'px;width:' + el.w + 'px;height:' + el.h + 'px;" onclick="if(event.target.closest(\'.edit-handle,.board-el-close,button\'))return;startConnection(' + el.id + ')" ondblclick="event.stopPropagation();openBoardElementFullsize(' + board.id + ',' + el.id + ')">';
-      html += '<video src="" data-ref="' + escapeHtml(el.ref) + '" preload="metadata" playsinline></video>';
-      html += '<div class="board-video-overlay">';
-      html += '<button class="bv-play" data-board-id="' + board.id + '" data-el-id="' + el.id + '">&#x25B6;</button>';
-      html += '<button class="bv-restart" data-board-id="' + board.id + '" data-el-id="' + el.id + '">&#x21BA;</button>';
-      html += '</div>';
-      html += '<button class="board-el-close" onclick="deleteBoardElement(' + board.id + ', ' + el.id + ')">&times;</button>';
-      
-      html += '</div>';
+      if (VideoManager.isHeavyElement(el) ||
+          (!el.ref && el.src && String(el.src).indexOf('data:') === 0)) {
+        /* Video pesado: placeholder visual tipo video, SIN src asignado,
+         * preload="none". El archivo solo se carga al pulsar Reproducir.
+         * (Incluye legacy con datos embebidos: Reproducir lo migra.) */
+        html += '<div class="board-element board-video heavy" data-id="' + el.id + '" data-type="video" style="left:' + el.x + 'px;top:' + el.y + 'px;width:' + el.w + 'px;height:' + el.h + 'px;" onclick="if(event.target.closest(\'.edit-handle,.board-el-close,button\'))return;startConnection(' + el.id + ')">';
+        html += '<video class="hv-video" preload="none" playsinline controls style="display:none;"></video>';
+        html += '<div class="hv-placeholder" data-hv="' + board.id + ':' + el.id + '">';
+        html += '<div class="hv-icon">&#x1F3AC;</div>';
+        html += '<div class="hv-name">' + escapeHtml(el.name || 'video') + '</div>';
+        html += '<div class="hv-size">' + escapeHtml(VideoManager.formatSize(el.size)) + '</div>';
+        html += '<button class="hv-play" onclick="event.stopPropagation();playHeavyBoardVideo(' + board.id + ',' + el.id + ')">&#x25B6; ' + _hvText('Reproducir', 'Play') + '</button>';
+        html += '<div class="hv-error hidden"></div>';
+        html += '</div>';
+        html += '<button class="board-el-close" onclick="deleteBoardElement(' + board.id + ', ' + el.id + ')">&times;</button>';
+        html += '</div>';
+      } else {
+        html += '<div class="board-element board-video" data-id="' + el.id + '" data-type="video" style="left:' + el.x + 'px;top:' + el.y + 'px;width:' + el.w + 'px;height:' + el.h + 'px;" onclick="if(event.target.closest(\'.edit-handle,.board-el-close,button\'))return;startConnection(' + el.id + ')" ondblclick="event.stopPropagation();openBoardElementFullsize(' + board.id + ',' + el.id + ')">';
+        html += '<video src="" data-ref="' + escapeHtml(el.ref) + '" preload="metadata" playsinline></video>';
+        html += '<div class="board-video-overlay">';
+        html += '<button class="bv-play" data-board-id="' + board.id + '" data-el-id="' + el.id + '">&#x25B6;</button>';
+        html += '<button class="bv-restart" data-board-id="' + board.id + '" data-el-id="' + el.id + '">&#x21BA;</button>';
+        html += '</div>';
+        html += '<button class="board-el-close" onclick="deleteBoardElement(' + board.id + ', ' + el.id + ')">&times;</button>';
+        html += '</div>';
+      }
     } else if (el.type === 'equation') {
       var eqHtml = el.latex ? _renderLatex(el.latex, true) : '';
       html += '<div class="board-element board-equation" data-id="' + el.id + '" data-type="equation" style="left:' + el.x + 'px;top:' + el.y + 'px;width:' + el.w + 'px;height:' + el.h + 'px;" onclick="if(event.target.closest(\'.board-el-close,button\'))return;startConnection(' + el.id + ')">';
@@ -6277,6 +7428,8 @@ function renderBoardContent() {
     }
   });
   html += '</div></div></div></div>';
+  /* Liberar videos en reproducción antes de reemplazar el DOM. */
+  VideoManager.releaseAllIn(container);
   container.innerHTML = html;
   applyBoardZoom();
   /* Auto-size equation elements to fit content */
@@ -6368,71 +7521,348 @@ function loadBoardAudios() {
   });
 }
 
-/* Cargar videos en elementos de tablero */
+/* Cargar videos en elementos de tablero.
+ * - Videos pesados (mode file): NO se cargan (lazy). Solo se verifica
+ *   existencia para mostrar estado "no disponible" si falta el archivo.
+ * - Videos legacy sin modo: migración barata vía stat() (sin leer
+ *   contenido). Si alguno migra, un solo save + re-render.
+ * - Videos inline/pequeños: comportamiento existente (carga eager). */
 function loadBoardVideos() {
-  var videos = document.querySelectorAll('.board-video video[data-ref]');
+  bindHeavyBoardPlaceholders();
+  var videos = document.querySelectorAll('.board-video:not(.heavy) video[data-ref]');
+  if (!videos.length) return;
+  var board = null;
+  if (typeof state !== 'undefined') {
+    board = state.boards.find(function(b) { return b.id === state.activeBoardId; });
+  }
+  var pending = [];
   [].forEach.call(videos, function(videoEl) {
-    var ref = videoEl.getAttribute('data-ref');
-    if (!ref) return;
-    videoEl.removeAttribute('data-ref');
-    ImageManager.read(ref).then(function(base64) {
-      if (!base64) return;
-      var mime = ImageConverter.getMimeFromRef(ref);
-      var blob = _base64ToBlob(base64, mime);
-      var url = URL.createObjectURL(blob);
-      _mediaBlobUrls[ref] = url;
-      videoEl.src = url;
-      videoEl._playRequested = false;
-
-      var boardEl = videoEl.closest('.board-element');
-      var playBtn = boardEl ? boardEl.querySelector('.bv-play') : null;
-      var restartBtn = boardEl ? boardEl.querySelector('.bv-restart') : null;
-
-      function syncIcon() {
-        if (!playBtn) return;
-        playBtn.innerHTML = videoEl.paused ? '&#x25B6;' : '&#x23F8;';
-      }
-      function doPlay() {
-        if (!videoEl.paused || videoEl._playRequested) return;
-        videoEl._playRequested = true;
-        videoEl.play().then(function() { videoEl._playRequested = false; syncIcon(); }).catch(function() { videoEl._playRequested = false; syncIcon(); });
-        syncIcon();
-      }
-      function doPause() {
-        videoEl._playRequested = false;
-        videoEl.pause();
-        syncIcon();
-      }
-
-      /* Botón overlay play/pausa */
-      if (playBtn) {
-        playBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          if (videoEl.paused) doPlay(); else doPause();
-        });
-      }
-
-      /* Botón overlay reiniciar */
-      if (restartBtn) {
-        restartBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          videoEl._playRequested = false;
-          videoEl.pause();
-          videoEl.currentTime = 0;
-          syncIcon();
-        });
-      }
-
-      /* Sincronizar icono con eventos nativos */
-      videoEl.addEventListener('play', syncIcon);
-      videoEl.addEventListener('pause', syncIcon);
-      videoEl.addEventListener('ended', function() {
-        videoEl.currentTime = 0;
-        videoEl._playRequested = false;
-        syncIcon();
-      });
+    var box = videoEl.closest('.board-element');
+    var elId = box ? Number(box.getAttribute('data-id')) : null;
+    var el = (board && elId) ? board.elements.find(function(e) { return e.id === elId; }) : null;
+    if (el && !el.mode) {
+      pending.push(VideoManager.maybeMigrateElement(board, el));
+    } else {
+      pending.push(Promise.resolve(false));
+    }
+  });
+  Promise.all(pending).then(function(results) {
+    if (results.indexOf(true) >= 0) {
+      save();
+      renderBoardContent();
+      return;
+    }
+    [].forEach.call(videos, function(videoEl) {
+      eagerLoadInlineBoardVideo(videoEl);
     });
   });
+}
+
+/* Carga eager de un video inline/pequeño (mecanismo existente). */
+function eagerLoadInlineBoardVideo(videoEl) {
+  var ref = videoEl.getAttribute('data-ref');
+  if (!ref) return;
+  videoEl.removeAttribute('data-ref');
+  ImageManager.read(ref).then(function(base64) {
+    if (!base64) return;
+    _eagerBoardVideoReady(videoEl, ref, base64);
+  });
+}
+
+function _eagerBoardVideoReady(videoEl, ref, base64) {
+  var mime = ImageConverter.getMimeFromRef(ref);
+  var blob = _base64ToBlob(base64, mime);
+  var url = URL.createObjectURL(blob);
+  _mediaBlobUrls[ref] = url;
+  videoEl.src = url;
+  videoEl._playRequested = false;
+
+  var boardEl = videoEl.closest('.board-element');
+  var playBtn = boardEl ? boardEl.querySelector('.bv-play') : null;
+  var restartBtn = boardEl ? boardEl.querySelector('.bv-restart') : null;
+
+  function syncIcon() {
+    if (!playBtn) return;
+    playBtn.innerHTML = videoEl.paused ? '&#x25B6;' : '&#x23F8;';
+  }
+  function doPlay() {
+    if (!videoEl.paused || videoEl._playRequested) return;
+    videoEl._playRequested = true;
+    videoEl.play().then(function() { videoEl._playRequested = false; syncIcon(); }).catch(function() { videoEl._playRequested = false; syncIcon(); });
+    syncIcon();
+  }
+  function doPause() {
+    videoEl._playRequested = false;
+    videoEl.pause();
+    syncIcon();
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (videoEl.paused) doPlay(); else doPause();
+    });
+  }
+
+  if (restartBtn) {
+    restartBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      videoEl._playRequested = false;
+      videoEl.pause();
+      videoEl.currentTime = 0;
+      syncIcon();
+    });
+  }
+
+  videoEl.addEventListener('play', syncIcon);
+  videoEl.addEventListener('pause', syncIcon);
+  videoEl.addEventListener('ended', function() {
+    videoEl.currentTime = 0;
+    videoEl._playRequested = false;
+    syncIcon();
+  });
+}
+
+/* Verifica existencia de los videos pesados visibles SIN leer contenido.
+ * Si falta el archivo, muestra estado "Video no disponible" + revincular. */
+function bindHeavyBoardPlaceholders() {
+  var holders = document.querySelectorAll('.hv-placeholder[data-hv]');
+  [].forEach.call(holders, function(holder) {
+    var parts = (holder.getAttribute('data-hv') || '').split(':');
+    var boardId = Number(parts[0]), elId = Number(parts[1]);
+    var board = state.boards.find(function(b) { return b.id === boardId; });
+    var el = board ? board.elements.find(function(e) { return e.id === elId; }) : null;
+    if (!el || !el.ref) return;
+    VideoManager.fileExists(el.ref).then(function(ok) {
+      if (!ok) showHeavyMissing(holder, boardId, elId, el.name);
+    });
+  });
+}
+
+/* Pausa todos los videos del tablero excepto el indicado (evita varios
+ * <video> pesados activos a la vez). No borra archivos físicos. */
+function pauseOtherBoardVideos(exceptElId) {
+  var wrap = document.querySelector('.board-canvas-wrap');
+  if (!wrap) return;
+  var vids = wrap.querySelectorAll('video');
+  [].forEach.call(vids, function(v) {
+    var box = v.closest('.board-element');
+    var id = box ? Number(box.getAttribute('data-id')) : null;
+    if (id !== exceptElId) {
+      try { v.pause(); } catch (e) {}
+    }
+  });
+}
+
+/* Reproduce un video pesado bajo demanda:
+ * 1. referencia -> 2. verifica existencia -> 3. URL reproducible WebView
+ *    (streaming nativo, sin leer en JS) -> 4. asigna src -> 5. play.
+ * Nunca lee el archivo completo con JavaScript. */
+function playHeavyBoardVideo(boardId, elId) {
+  var board = state.boards.find(function(b) { return b.id === boardId; });
+  if (!board) return;
+  var el = board.elements.find(function(e) { return e.id === elId; });
+  if (!el) return;
+  /* Migración individual legacy con datos embebidos: solo al reproducir,
+   * de a un video por vez (nunca varios gigantes en memoria). */
+  if ((!el.ref && el.src && String(el.src).indexOf('data:') === 0)) {
+    migrateLegacyInlineBoardVideo(boardId, elId);
+    return;
+  }
+  if (!el.ref) return;
+  var box = document.querySelector('.board-element[data-id="' + elId + '"]');
+  var video = box ? box.querySelector('video.hv-video') : null;
+  var holder = box ? box.querySelector('.hv-placeholder') : null;
+  if (!box || !video || !holder) return;
+  /* Toggle si ya está cargado. */
+  if (video.getAttribute('src')) {
+    if (video.paused) {
+      pauseOtherBoardVideos(elId);
+      video.play().catch(function(err) {
+        showHeavyError(holder, boardId, elId, err);
+      });
+    } else {
+      video.pause();
+    }
+    return;
+  }
+  VideoManager.log('Reproducción solicitada: ' + el.ref);
+  pauseOtherBoardVideos(elId);
+  setHeavyLoading(holder, true);
+  VideoManager.getPlayableSrc(el.ref, el.mimeType).then(function(src) {
+    setHeavyLoading(holder, false);
+    VideoManager.log('Archivo encontrado, reproducción iniciada');
+    video.src = src;
+    video.style.display = 'block';
+    holder.classList.add('hv-playing');
+    video.onerror = function() {
+      VideoManager.logErr('Error de reproducción (codec/WebView?) en ' + el.ref);
+      showHeavyError(holder, boardId, elId, null);
+    };
+    return video.play();
+  }).then(function() {
+    /* ok */
+  }).catch(function(err) {
+    setHeavyLoading(holder, false);
+    if (err && err.code === 'NOT_FOUND') {
+      VideoManager.logErr('Archivo inexistente: ' + el.ref);
+      showHeavyMissing(holder, boardId, elId, el.name);
+    } else {
+      VideoManager.logErr('Error reproduciendo ' + el.ref + ':', err);
+      showHeavyError(holder, boardId, elId, err);
+    }
+  });
+}
+
+function setHeavyLoading(holder, on) {
+  if (!holder) return;
+  var btn = holder.querySelector('.hv-play');
+  if (btn) {
+    btn.disabled = !!on;
+    if (on) btn.setAttribute('data-label', btn.innerHTML);
+    btn.innerHTML = on ? '…' : (btn.getAttribute('data-label') || btn.innerHTML);
+  }
+}
+
+/* Estado: archivo inexistente (sin excepciones, sin cierres). */
+function showHeavyMissing(holder, boardId, elId, name) {
+  if (!holder) return;
+  holder.classList.add('hv-missing');
+  var errBox = holder.querySelector('.hv-error');
+  if (errBox) {
+    errBox.classList.remove('hidden');
+    errBox.innerHTML =
+      '<div class="hv-warn">&#x26A0; ' + _hvText('Video no disponible', 'Video unavailable') + '</div>' +
+      '<div class="hv-warn-desc">' + _hvText('El archivo asociado ya no se encuentra en el almacenamiento del dispositivo.', 'The associated file is no longer found on device storage.') + '</div>' +
+      '<button class="hv-relink" onclick="event.stopPropagation();relinkBoardVideo(' + boardId + ',' + elId + ')">' +
+      _hvText('Volver a vincular', 'Relink') + '</button>';
+  }
+  var playBtn = holder.querySelector('.hv-play');
+  if (playBtn) playBtn.style.display = 'none';
+}
+
+/* Estado: error de reproducción (codec/resolución/recursos). No se cierra
+ * la app; se mantiene la referencia y se ofrece reproductor externo. */
+function showHeavyError(holder, boardId, elId, err) {
+  if (!holder) return;
+  var errBox = holder.querySelector('.hv-error');
+  if (errBox) {
+    errBox.classList.remove('hidden');
+    errBox.innerHTML =
+      '<div class="hv-warn">' + _hvText('No se pudo reproducir este video en MiBabel', 'Could not play this video in MiBabel') + '</div>' +
+      '<div class="hv-btn-row">' +
+      '<button class="hv-retry" onclick="event.stopPropagation();retryHeavyBoardVideo(' + boardId + ',' + elId + ')">' +
+      _hvText('Reintentar', 'Retry') + '</button>' +
+      '<button class="hv-external" onclick="event.stopPropagation();openHeavyVideoExternally(' + boardId + ',' + elId + ')">' +
+      _hvText('Reproductor del dispositivo', 'Device player') + '</button>' +
+      '</div>';
+  }
+}
+
+function retryHeavyBoardVideo(boardId, elId) {
+  var box = document.querySelector('.board-element[data-id="' + elId + '"]');
+  if (!box) return;
+  var holder = box.querySelector('.hv-placeholder');
+  var video = box.querySelector('video.hv-video');
+  if (holder) {
+    var errBox = holder.querySelector('.hv-error');
+    if (errBox) { errBox.classList.add('hidden'); errBox.innerHTML = ''; }
+  }
+  if (video) {
+    try { video.removeAttribute('src'); video.load(); } catch (e) {}
+    video.style.display = 'none';
+  }
+  if (holder) holder.classList.remove('hv-playing');
+  playHeavyBoardVideo(boardId, elId);
+}
+
+/* Respaldo best-effort: abrir la URL reproducible fuera del WebView de
+ * MiBabel para codecs que el WebView no soporta. Nunca cierra la app. */
+function openHeavyVideoExternally(boardId, elId) {
+  var board = state.boards.find(function(b) { return b.id === boardId; });
+  var el = board ? board.elements.find(function(e) { return e.id === elId; }) : null;
+  if (!el || !el.ref) return;
+  VideoManager.getPlayableSrc(el.ref, el.mimeType).then(function(src) {
+    try {
+      var w = window.open(src, '_system');
+      if (!w) window.open(src, '_blank');
+    } catch (e) {
+      try { window.open(src, '_blank'); } catch (e2) {
+        setStatus('No se pudo abrir el reproductor externo.');
+      }
+    }
+  }).catch(function() {
+    setStatus('No se pudo abrir el reproductor externo: archivo no disponible.');
+  });
+}
+
+/* Migración individual y segura de un video legacy con datos embebidos:
+ * se ejecuta solo al pulsar reproducir, de a un video por vez. */
+function migrateLegacyInlineBoardVideo(boardId, elId) {
+  var board = state.boards.find(function(b) { return b.id === boardId; });
+  var el = board ? board.elements.find(function(e) { return e.id === elId; }) : null;
+  if (!board || !el || !el.src) return;
+  setStatus('Migrando video al almacenamiento de archivos...');
+  VideoManager.log('Migrando video legacy embebido: tablero ' + boardId);
+  try {
+    var dataUrl = el.src;
+    var comma = dataUrl.indexOf(',');
+    var b64 = comma >= 0 ? dataUrl.substring(comma + 1) : dataUrl;
+    /* Estimación sin duplicar de más: (len*3/4). Si no supera el límite,
+     * se mantiene inline como ref normal. */
+    var approxSize = Math.floor(b64.length * 3 / 4);
+    var mediaId = el.mediaId || generateImageId();
+    var ext = VideoManager.sanitizeExt(el.ref || el.name || '', 'mp4');
+    var ref = el.ref || ('videos/' + mediaId + '.' + ext);
+    if (approxSize <= VideoManager.MAX_INLINE_VIDEO_SIZE_BYTES) {
+      ImageManager.save(ref, b64).then(function() {
+        el.ref = ref;
+        delete el.src;
+        el.mode = 'inline';
+        el.mediaId = mediaId;
+        el.size = approxSize;
+        save();
+        renderBoardContent();
+      });
+      return;
+    }
+    /* Pesado: escribir por chunks para no duplicar el gigante en memoria
+     * más de lo necesario, luego liberar el dato antiguo. El corte del
+     * string Base64 es en múltiplos de 4 para no romper grupos Base64
+     * (la concatenación resultante sigue siendo válida). */
+    var CH = Math.floor((VideoManager.CHUNK_SIZE_BYTES * 4 / 3) / 4) * 4;
+    var offset = 0;
+    var first = true;
+    function nextChunk() {
+      if (offset >= b64.length) {
+        el.ref = ref;
+        delete el.src;
+        el.mode = 'file';
+        el.mediaId = mediaId;
+        el.size = approxSize;
+        el.mimeType = el.mimeType || VideoManager.guessMime(ref);
+        el.createdAt = el.createdAt || Date.now();
+        save();
+        renderBoardContent();
+        setStatus('Video migrado al almacenamiento de archivos.');
+        return;
+      }
+      var part = b64.substring(offset, offset + CH);
+      offset += part.length;
+      ImageManager.writeChunk(ref, part, first).then(function() {
+        first = false;
+        setStatus('Migrando video... ' + Math.floor(offset * 100 / b64.length) + '%');
+        setTimeout(nextChunk, 0);
+      }).catch(function(err) {
+        console.error('Error migrando video legacy:', err);
+        setStatus('No se pudo migrar el video.');
+      });
+    }
+    nextChunk();
+  } catch (err) {
+    console.error('Error migrando video legacy:', err);
+    setStatus('No se pudo migrar el video.');
+  }
 }
 
 function updateConnectionLines() {
@@ -6990,6 +8420,8 @@ var folderLongPressTimer = null;
 
 // Long-press on highlight button
 var hlLongPressTimer = null;
+// Long-press on text-color button
+var txLongPressTimer = null;
 // Long-press on board cards
 var boardLongPressTimer = null;
 // Long-press on study set cards
@@ -7001,6 +8433,11 @@ document.addEventListener('touchstart', function(e) {
   var hl = e.target.closest('.hl-toggle');
   if (hl) {
     hlLongPressTimer = setTimeout(function() { hlLongPressTimer = null; toggleHighlightPalette(); }, 500);
+    return;
+  }
+  var txb = e.target.closest('.tx-toggle');
+  if (txb) {
+    txLongPressTimer = setTimeout(function() { txLongPressTimer = null; toggleTextPalette(); }, 500);
     return;
   }
     var card = e.target.closest('.card[data-note-id]');
@@ -7016,7 +8453,7 @@ document.addEventListener('touchstart', function(e) {
         var favLabel = note.favorite ? t('removeFav') : t('addFav');
         var coverLabel = note.cover ? t('removeCover') : t('addCover');
         var items = [
-          { label: t('rename'), action: function() { renameNote(noteId); } },
+          { label: t('edit'), action: function() { openEditNoteDialog(noteId); } },
           { label: favLabel, action: function() { toggleFavorite(noteId); } },
           { label: coverLabel, action: function() { if (note.cover) { removeCover(noteId); } else { triggerImportCover(noteId); } } },
           { label: t('exportNote'), action: function() { exportSingleNote(noteId); } }
@@ -7046,7 +8483,7 @@ document.addEventListener('touchstart', function(e) {
       folderLongPressTimer=null;
       hideContextMenu();
       showContextMenu(x,y,[
-        { label: t('rename'), action: function(){ renameFolder(fid); } },
+        { label: t('edit'), action: function(){ openFolderEditDialog(fid); } },
         { label: t('changePassword'), action: function(){ editFolderPassword(fid); } },
         { label: t('del'), action: function(){ confirmDeleteFolder(fid); } }
       ]);
@@ -7123,6 +8560,7 @@ document.addEventListener('touchmove', function(e) {
   if (noteLongPressTimer) { clearTimeout(noteLongPressTimer); noteLongPressTimer = null; }
   if (folderLongPressTimer) { clearTimeout(folderLongPressTimer); folderLongPressTimer = null; }
   if (hlLongPressTimer) { clearTimeout(hlLongPressTimer); hlLongPressTimer = null; }
+  if (txLongPressTimer) { clearTimeout(txLongPressTimer); txLongPressTimer = null; }
   if (boardLongPressTimer) { clearTimeout(boardLongPressTimer); boardLongPressTimer = null; }
   if (studyLongPressTimer) { clearTimeout(studyLongPressTimer); studyLongPressTimer = null; }
   if (studyCardLongPressTimer) { clearTimeout(studyCardLongPressTimer); studyCardLongPressTimer = null; }
@@ -7134,6 +8572,7 @@ document.addEventListener('touchend', function(e) {
   if (noteLongPressTimer) { clearTimeout(noteLongPressTimer); noteLongPressTimer = null; }
   if (folderLongPressTimer) { clearTimeout(folderLongPressTimer); folderLongPressTimer = null; }
   if (hlLongPressTimer) { clearTimeout(hlLongPressTimer); hlLongPressTimer = null; }
+  if (txLongPressTimer) { clearTimeout(txLongPressTimer); txLongPressTimer = null; }
   if (boardLongPressTimer) { clearTimeout(boardLongPressTimer); boardLongPressTimer = null; }
   if (studyLongPressTimer) { clearTimeout(studyLongPressTimer); studyLongPressTimer = null; }
   if (studyCardLongPressTimer) { clearTimeout(studyCardLongPressTimer); studyCardLongPressTimer = null; }
@@ -7148,7 +8587,7 @@ document.addEventListener('contextmenu', function(e){
     e.preventDefault();
     var fid=Number(folderCard.dataset.folderId);
     showContextMenu(e.clientX, e.clientY, [
-      { label: t('rename'), action: function(){ renameFolder(fid); } },
+      { label: t('edit'), action: function(){ openFolderEditDialog(fid); } },
       { label: t('changePassword'), action: function(){ editFolderPassword(fid); } },
       { label: t('del'), action: function(){ confirmDeleteFolder(fid); } }
     ]);
@@ -7162,7 +8601,7 @@ document.addEventListener('contextmenu', function(e){
     var favLabel = note.favorite ? t('removeFav') : t('addFav');
     var coverLabel = note.cover ? t('removeCover') : t('addCover');
     var items=[
-      { label: t('rename'), action: function(){ renameNote(noteId); } },
+      { label: t('edit'), action: function(){ openEditNoteDialog(noteId); } },
       { label: favLabel, action: function(){ toggleFavorite(noteId); } },
       { label: coverLabel, action: function(){ if(note.cover) removeCover(noteId); else triggerImportCover(noteId); } },
       { label: t('exportNote'), action: function(){ exportSingleNote(noteId); } }
@@ -7743,14 +9182,6 @@ function cleanupCardDrag() {
   cardDragState = null;
 }
 
-// Deteccion de Android para ajustar por barra de estado
-if (/android/i.test(navigator.userAgent)) {
-  document.documentElement.classList.add('android');
-  var sb = window.AndroidBridge && window.AndroidBridge.getStatusBarHeight ? Number(window.AndroidBridge.getStatusBarHeight()) : 0;
-  if (!sb) sb = 24;
-  document.documentElement.style.setProperty('--status-bar-h', sb + 'px');
-}
-
 // Init
 load();
 migrateDiaryNotes();
@@ -7781,7 +9212,7 @@ if (typeof state.activeNoteId === 'string') state.activeNoteId = Number(state.ac
 if (typeof state.activeBoardId === 'string') state.activeBoardId = Number(state.activeBoardId);
 if (typeof state.activeStudySetId === 'string') state.activeStudySetId = Number(state.activeStudySetId);
 // Migrar hábitos: asegurar campos y filtrar datos inválidos
-state.habits.forEach(function(h){ if(!h.uuid) h.uuid = generateUUID(); if(h.current==null) h.current=0; if(!h.status) h.status='pending'; if(h.streak==null) h.streak=0; if(!h.lastProcessedDate) h.lastProcessedDate=getDateStr(new Date()); if(!h.history) h.history=[]; if(h.total!=null) h.total=Number(h.total); if(h.step!=null) h.step=Number(h.step); if(h.type==='counter' && (h.total==null||h.step==null)){ h.type='task'; } if(h.streak===0 && h.history.length>0){ var rec=recalcStreakFromHistory(h); if(rec>0){ var todayStr2=getDateStr(new Date()); var lastDone=h.lastCompletedDate||h.history[h.history.length-1]; if(lastDone){ var p1=lastDone.split('-').map(Number); var p2=todayStr2.split('-').map(Number); var d1=new Date(p1[0],p1[1]-1,p1[2]); var d2=new Date(p2[0],p2[1]-1,p2[2]); var diff=Math.round((d2-d1)/86400000); if(diff<=1) h.streak=rec; } } } });
+state.habits.forEach(function(h){ normalizeHabitRecord(h); });
 // Migrar carpetas en Init (por si load no se ejecutó completo)
 if(!state.folders) state.folders=[];
 if(state.activeFolderId===undefined) state.activeFolderId=null;
@@ -7923,7 +9354,7 @@ function updateFab() {
   if (state.view==='notes' && state.activeFolderId!=null && !state.activeNoteId) insideItem=false;
   if (inStudying) { fab.classList.add('hidden'); return; }
   var diaryCalendar = state.view === 'diary' && !state.activeNoteId;
-  if (state.view === 'habits') { fab.classList.remove('hidden'); fab.className = 'fab fab-add'; return; }
+  if (state.view === 'habits') { if(isHabitHistoryOpen()){ fab.classList.add('hidden'); return; } fab.classList.remove('hidden'); fab.className = 'fab fab-add'; return; }
   if (state.view === 'registros') {
     var inRegistroDetail = !!state.activeRegistroId;
     fab.classList.remove('hidden');
@@ -7947,7 +9378,9 @@ function updateTableFab() {
   var show = _activeTableId && _tableSelection.itemId && _tableSelection.cells.length > 0;
   if (show) {
     if (_tableSelection.cells.length >= 2) {
-      fab.textContent = t('mergeCells');
+      fab.textContent = '';
+      fab.classList.remove('fab-split');
+      fab.classList.add('fab-merge');
       fab.onclick = function() {
         var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
         if (!note) return;
@@ -7960,11 +9393,19 @@ function updateTableFab() {
       if (item && item.cells) {
         var cell = item.cells[_tableSelection.cells[0]];
         if (cell && (cell.rowspan > 1 || cell.colspan > 1)) {
-          fab.textContent = t('splitCell');
+          fab.textContent = '';
+          fab.classList.remove('fab-merge');
+          fab.classList.add('fab-split');
           fab.onclick = function() { splitTableCells(state.activeNoteId, item.id); };
         } else { show = false; }
       } else { show = false; }
     }
+  }
+  if (!show) {
+    fab.textContent = '';
+    fab.classList.remove('fab-merge');
+    fab.classList.remove('fab-split');
+    fab.onclick = null;
   }
   fab.classList.toggle('hidden', !show);
 }
@@ -7989,6 +9430,9 @@ function switchView(view) {
   hideContextMenu();
   clearCurrentUnlock();
   closeDiarySelector();
+  /* Liberar videos en reproducción al cambiar de vista (decodificadores). */
+  VideoManager.releaseAllIn(document);
+  if(view!=='habits' && isHabitHistoryOpen()) _habitHistory.uuid=null;
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (state.view === 'diary' && view !== 'diary') diaryUnlocked = false;
   if (view === 'notes') { state.activeNoteId = null; state.activeFolderId=null; }
@@ -8090,9 +9534,12 @@ document.addEventListener('keydown', function(e) {
     closeDialog('habitDeleteDialog');
     closeDialog('registroDialog');
     closeDialog('registroDeleteDialog');
+    closeDialog('editNoteDialog');
+    _editNoteId = null;
     pendingUnlock = null; pendingDelete = null;
     clearHabitHold();
     clearHabitLongPress();
+    if(state.view==='habits' && isHabitHistoryOpen()) closeHabitHistory();
     clearRegistroLongPress();
     cancelConnect();
     _exitEditMode();
@@ -8130,8 +9577,8 @@ document.addEventListener('keydown', function(e) {
           beforeDiv.appendChild(preRange.cloneContents());
           var afterDiv = document.createElement('div');
           afterDiv.appendChild(postRange.cloneContents());
-          curItem.text = unparseNoteLinks(beforeDiv.innerHTML);
-          var newItem = { id: genId(), text: unparseNoteLinks(afterDiv.innerHTML), checked: false, level: curItem.level, type: 'list' };
+          curItem.text = unparseNoteLinks(noteSearchStripHtml(beforeDiv.innerHTML));
+          var newItem = { id: genId(), text: unparseNoteLinks(noteSearchStripHtml(afterDiv.innerHTML)), checked: false, level: curItem.level, type: 'list' };
           note.items.splice(idx + 1, 0, newItem);
         } else {
           var newItem = { id: genId(), text: '', checked: false, level: curItem.level, type: 'list' };
@@ -8318,7 +9765,9 @@ function parseReminderTime(el) {
   var parts = (el.time || '09:00').split(':');
   var h = parseInt(parts[0], 10);
   var m = parseInt(parts[1], 10);
-  return { h: Math.min(Math.max(h || 9, 0), 23), m: Math.min(Math.max(m || 0, 0), 59) };
+  if (isNaN(h)) h = 9;
+  if (isNaN(m)) m = 0;
+  return { h: Math.min(Math.max(h, 0), 23), m: Math.min(Math.max(m, 0), 59) };
 }
 function matchesReminderDay(el, d) {
   var created = new Date(el.createdAt);
@@ -8328,7 +9777,6 @@ function matchesReminderDay(el, d) {
     case 'yearly': return d.getMonth() === created.getMonth() && d.getDate() === created.getDate();
     case 'none':
     default:
-      if (el.type === 'task') return true;
       return isSameDay(created, d);
   }
 }
@@ -8336,14 +9784,16 @@ function matchesReminderDay(el, d) {
 function nextReminderDate(el, now) {
   var t = parseReminderTime(el);
   var created = new Date(el.createdAt);
-  if (el.type === 'event' && el.repetition === 'none') {
+  if (el.repetition === 'none' || !el.repetition) {
     var only = new Date(created.getFullYear(), created.getMonth(), created.getDate());
     only.setHours(t.h, t.m, 0, 0);
     return only.getTime() > now.getTime() ? only : null;
   }
   var startDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var createdDay = new Date(created.getFullYear(), created.getMonth(), created.getDate());
   for (var i = 0; i < 370; i++) {
     var cand = new Date(startDay.getTime() + i * 86400000);
+    if (cand.getTime() < createdDay.getTime()) continue;
     if (matchesReminderDay(el, cand)) {
       var d = new Date(cand);
       d.setHours(t.h, t.m, 0, 0);
@@ -8530,6 +9980,7 @@ function processHabitsDayChange(opts){
     if(!h.lastProcessedDate){
       h.lastProcessedDate = todayStr;
       changed=true;
+      if(syncHabitDerived(h, todayStr)) changed=true;
       return;
     }
     if(h.lastProcessedDate === todayStr) return;
@@ -8558,6 +10009,7 @@ function processHabitsDayChange(opts){
       changed=true;
     }
     h.lastProcessedDate = todayStr;
+    if(syncHabitDerived(h, todayStr)) changed=true;
   });
   if(changed){ save(); if(state.view==='habits') renderHabitsView(); checkHabitNotifications(); }
 }
@@ -8702,7 +10154,7 @@ function saveHabit(){
       lastCompletedDate: null,
       lastProcessedDate: todayStr,
       createdAt: Date.now(),
-      history: []
+      dailyLog: {}
     };
     if(data.type==='counter'){ nh.total=data.total; nh.step=data.step; }
     if(!state.habits) state.habits=[];
@@ -8716,36 +10168,170 @@ function saveHabit(){
   checkHabitNotifications();
 }
 
-function recalcStreakFromHistory(h, todayStr){
-  if(!h.history || h.history.length===0) return 0;
-  // ordenar y dedup
-  var uniq = {};
-  h.history.forEach(function(d){ if(/^\d{4}-\d{2}-\d{2}$/.test(d)) uniq[d]=true; });
-  var sorted = Object.keys(uniq).sort();
-  if(sorted.length===0) return 0;
-  // contar consecutivos desde el final
-  var streak = 1;
-  for(var i=sorted.length-1; i>0; i--){
-    var curr = sorted[i];
-    var prev = sorted[i-1];
-    var cp = curr.split('-').map(Number);
-    var pp = prev.split('-').map(Number);
-    var dCurr = new Date(cp[0], cp[1]-1, cp[2]);
-    var dPrev = new Date(pp[0], pp[1]-1, pp[2]);
-    var diff = Math.round((dCurr - dPrev)/86400000);
-    if(diff===1) streak++;
-    else break;
+/* === Historial diario de hábitos (fuente de verdad) ===
+   h.dailyLog: { 'YYYY-MM-DD': { done:true [, v, t] } }
+   - tarea: entrada solo al completar ({ done:true })
+   - contador: se registra el avance ({ v, t }) y al completar ({ done:true, v, t })
+   Las rachas y estadísticas siempre se derivan del log; h.streak y h.lastCompletedDate
+   se mantienen sincronizados por compatibilidad con la vista actual. */
+function habitPad2(n){ return (n<10?'0':'')+n; }
+function habitDateToKey(d){ return d.getFullYear()+'-'+habitPad2(d.getMonth()+1)+'-'+habitPad2(d.getDate()); }
+function habitParseKey(key){
+  if(typeof key!=='string') return null;
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(key);
+  if(!m) return null;
+  var y=+m[1], mo=+m[2], d=+m[3];
+  if(mo<1||mo>12||d<1||d>31) return null;
+  var dt=new Date(y,mo-1,d);
+  if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d) return null;
+  return { y:y, m:mo, d:d };
+}
+function habitKeyToDate(key){ var p=habitParseKey(key); return p?new Date(p.y,p.m-1,p.d):null; }
+function habitAddDays(key,n){ var dt=habitKeyToDate(key); if(!dt) return null; return habitDateToKey(new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()+n)); }
+function habitDiffDays(aKey,bKey){
+  var a=habitKeyToDate(aKey), b=habitKeyToDate(bKey);
+  if(!a||!b) return 0;
+  return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.getDate())-Date.UTC(a.getFullYear(),a.getMonth(),a.getDate()))/86400000);
+}
+function habitTodayKey(){ return getDateStr(new Date()); }
+function ensureHabitLog(h){ if(!h.dailyLog||typeof h.dailyLog!=='object'||Array.isArray(h.dailyLog)) h.dailyLog={}; return h.dailyLog; }
+function habitDayEntry(h,key){ var log=ensureHabitLog(h); var e=log[key]; return (e&&typeof e==='object')?e:null; }
+function habitIsDone(h,key){ var e=habitDayEntry(h,key); return !!(e&&e.done===true); }
+function habitDayTotal(h,key){
+  var e=habitDayEntry(h,key);
+  if(e&&e.t>0) return e.t;
+  return (h.total>0)?h.total:0;
+}
+function habitDayValue(h,key){
+  var e=habitDayEntry(h,key);
+  if(!e) return 0;
+  if(e.v!=null&&!isNaN(Number(e.v))) return Math.max(0,Number(e.v));
+  if(e.done===true) return habitDayTotal(h,key);
+  return 0;
+}
+function habitDayRatio(h,key){
+  if(h.type!=='counter') return habitIsDone(h,key)?1:0;
+  var total=habitDayTotal(h,key);
+  if(!(total>0)) return habitIsDone(h,key)?1:0;
+  var r=habitDayValue(h,key)/total;
+  if(!(r>0)) return 0;
+  return r>1?1:r;
+}
+function habitDoneKeys(h,todayKey){
+  var log=ensureHabitLog(h); var out=[];
+  var keys=Object.keys(log);
+  for(var i=0;i<keys.length;i++){
+    var k=keys[i];
+    if(!habitParseKey(k)) continue;
+    if(todayKey&&k>todayKey) continue;
+    var e=log[k];
+    if(e&&e.done===true) out.push(k);
   }
-  return streak;
+  out.sort();
+  return out;
+}
+function habitStartKey(h,todayKey){
+  todayKey=todayKey||habitTodayKey();
+  var start=null;
+  if(h.createdAt){ var d=new Date(h.createdAt); if(!isNaN(d.getTime())) start=habitDateToKey(d); }
+  var log=ensureHabitLog(h);
+  var keys=Object.keys(log);
+  for(var i=0;i<keys.length;i++){ if(!habitParseKey(keys[i])) continue; if(start===null||keys[i]<start) start=keys[i]; }
+  if(start===null||start>todayKey) start=todayKey;
+  return start;
+}
+function computeHabitStats(h,todayKey){
+  todayKey=todayKey||habitTodayKey();
+  var done=habitDoneKeys(h,todayKey);
+  var streaks=[]; var run=null;
+  for(var i=0;i<done.length;i++){
+    if(run&&habitDiffDays(run.end,done[i])===1){ run.end=done[i]; run.len++; }
+    else { run={start:done[i],end:done[i],len:1}; streaks.push(run); }
+  }
+  var current=0, alive=false;
+  if(streaks.length){
+    var last=streaks[streaks.length-1];
+    if(habitDiffDays(last.end,todayKey)<=1){ current=last.len; alive=true; }
+  }
+  var longest=0;
+  for(var j=0;j<streaks.length;j++) if(streaks[j].len>longest) longest=streaks[j].len;
+  var start=habitStartKey(h,todayKey);
+  var totalReg=habitDiffDays(start,todayKey)+1; if(!(totalReg>=1)) totalReg=1;
+  return { doneKeys:done, streaks:streaks, current:current, alive:alive, longest:longest, count:streaks.length,
+    totalDone:done.length, totalReg:totalReg, pct:totalReg>0?Math.round(done.length/totalReg*100):0,
+    startKey:start, todayKey:todayKey };
+}
+function syncHabitDerived(h,todayKey){
+  todayKey=todayKey||habitTodayKey();
+  var s=computeHabitStats(h,todayKey);
+  var changed=false;
+  if(h.streak!==s.current){ h.streak=s.current; changed=true; }
+  var last=s.streaks.length?s.streaks[s.streaks.length-1].end:null;
+  if((h.lastCompletedDate||null)!==last){ h.lastCompletedDate=last; changed=true; }
+  return changed;
+}
+function migrateHabitHistory(h){
+  var log=ensureHabitLog(h);
+  if(h.history&&Array.isArray(h.history)){
+    for(var i=0;i<h.history.length;i++){
+      var d=h.history[i];
+      if(!habitParseKey(d)) continue;
+      var e=log[d];
+      if(!e||typeof e!=='object'){ e={}; log[d]=e; }
+      e.done=true;
+      if(h.type==='counter'&&h.total>0){ if(e.v==null) e.v=h.total; if(e.t==null) e.t=h.total; }
+    }
+    delete h.history;
+  }
+  var keys=Object.keys(log);
+  for(var j=0;j<keys.length;j++){
+    var k=keys[j];
+    if(!habitParseKey(k)){ delete log[k]; continue; }
+    var en=log[k];
+    if(!en||typeof en!=='object'){ delete log[k]; continue; }
+    if(en.v!=null){ en.v=Number(en.v); if(isNaN(en.v)||en.v<0) delete en.v; }
+    if(en.t!=null){ en.t=Number(en.t); if(!(en.t>0)) delete en.t; }
+    if(en.done!==true) delete en.done;
+    if(en.done!==true&&en.v==null) delete log[k];
+  }
+  return log;
+}
+function normalizeHabitRecord(h,todayKey){
+  if(!h.uuid) h.uuid=generateUUID();
+  if(h.current==null) h.current=0;
+  if(!h.status) h.status='pending';
+  if(h.streak==null) h.streak=0;
+  if(!h.lastProcessedDate) h.lastProcessedDate=todayKey||habitTodayKey();
+  if(h.total!=null) h.total=Number(h.total);
+  if(h.step!=null) h.step=Number(h.step);
+  if(h.type==='counter'&&(h.total==null||h.step==null)) h.type='task';
+  migrateHabitHistory(h);
+  syncHabitDerived(h,todayKey);
+  return h;
 }
 
 function handleHabitCompleted(h){
-  var todayStr = getDateStr(new Date());
-  if(h.lastCompletedDate === todayStr) return; // ya contado hoy
-  h.streak = (h.streak||0)+1;
+  var todayStr = habitTodayKey();
+  var log = ensureHabitLog(h);
+  var e = log[todayStr];
+  if(!e||typeof e!=='object'){ e={}; log[todayStr]=e; }
+  e.done = true;
+  if(h.type==='counter'){ e.v=h.current; e.t=h.total; }
+  if(h.lastCompletedDate === todayStr){ syncHabitDerived(h, todayStr); return; } // ya contado hoy
   h.lastCompletedDate = todayStr;
-  if(!h.history) h.history=[];
-  h.history.push(todayStr);
+  syncHabitDerived(h, todayStr);
+}
+
+/* Registra el avance del contador del día sin marcarlo como cumplido (write-through).
+   Si el día ya quedó completado, se conserva ese registro. */
+function habitLogCounterProgress(h){
+  if(!h||h.type!=='counter') return;
+  var todayStr = habitTodayKey();
+  var log = ensureHabitLog(h);
+  var e = log[todayStr];
+  if(e&&e.done===true) return;
+  if(h.current>0){ log[todayStr]={ v:h.current, t:h.total }; }
+  else if(log[todayStr]){ delete log[todayStr]; }
 }
 
 function completeHabitTask(uuid){
@@ -8772,6 +10358,7 @@ function incrementHabit(uuid, isAuto){
   } else {
     h.current = next;
   }
+  habitLogCounterProgress(h);
   save();
   renderHabitsView();
 }
@@ -8782,6 +10369,7 @@ function decrementHabit(uuid){
   var next = h.current - h.step;
   if(next < 0) next = 0;
   h.current = next;
+  habitLogCounterProgress(h);
   save();
   renderHabitsView();
 }
@@ -8837,6 +10425,11 @@ function renderHabitsView(){
   var container = document.getElementById('habitsContent');
   if(!container) return;
   processHabitsDayChange();
+  if(isHabitHistoryOpen()){
+    var hh = getHabitByUuid(_habitHistory.uuid);
+    if(!hh){ _habitHistory.uuid=null; }
+    else { renderHabitHistoryInto(container, hh); return; }
+  }
   var pending = (state.habits||[]).filter(function(h){ return h.status==='pending'; });
   var completed = (state.habits||[]).filter(function(h){ return h.status==='completed'; });
   var html='';
@@ -8871,13 +10464,16 @@ function renderHabitCard(h, isCompleted){
   var streak = isCompleted && h.streak>0 ? '<span class="habit-streak">🔥 '+h.streak+'</span>' : '';
   var progress = '';
   var controls = '';
+  var histBtn = '<button class="habit-btn habit-hist" onclick="openHabitHistory(\''+h.uuid+'\')" title="'+escapeHtml(t('habitHistory'))+'">📅</button>';
   if(h.type==='counter' && !isCompleted){
     progress = '<div class="habit-progress">'+h.current+' / '+h.total+'</div>';
     var disInc = (h.current + h.step > h.total) ? ' disabled' : '';
     var disDec = (h.current===0) ? ' disabled' : '';
-    controls = '<div class="habit-controls"><button class="habit-btn habit-dec"'+disDec+' onclick="decrementHabit(\''+h.uuid+'\')" onmousedown="startHabitHold(\''+h.uuid+'\',\'dec\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'dec\')" title="-">↓</button><button class="habit-btn habit-inc"'+disInc+' onclick="incrementHabit(\''+h.uuid+'\', false)" onmousedown="startHabitHold(\''+h.uuid+'\',\'inc\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'inc\')" title="+">↑</button></div>';
+    controls = '<div class="habit-controls"><button class="habit-btn habit-dec"'+disDec+' onclick="decrementHabit(\''+h.uuid+'\')" onmousedown="startHabitHold(\''+h.uuid+'\',\'dec\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'dec\')" title="-">↓</button><button class="habit-btn habit-inc"'+disInc+' onclick="incrementHabit(\''+h.uuid+'\', false)" onmousedown="startHabitHold(\''+h.uuid+'\',\'inc\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'inc\')" title="+">↑</button>'+histBtn+'</div>';
   } else if(h.type==='task' && !isCompleted){
-    controls = '<div class="habit-controls"><button class="habit-btn habit-complete" onclick="completeHabitTask(\''+h.uuid+'\')" title="'+escapeHtml(t('completed'))+'">✓</button></div>';
+    controls = '<div class="habit-controls"><button class="habit-btn habit-complete" onclick="completeHabitTask(\''+h.uuid+'\')" title="'+escapeHtml(t('completed'))+'">✓</button>'+histBtn+'</div>';
+  } else if(isCompleted){
+    controls = '<div class="habit-controls">'+histBtn+'</div>';
   }
   var cls = isCompleted ? 'habit-card completed' : 'habit-card pending';
   var longPress = isCompleted ? ' onmousedown="startHabitLongPress(event,\''+h.uuid+'\')" ontouchstart="startHabitLongPress(event,\''+h.uuid+'\')" onmouseup="clearHabitLongPress()" ontouchend="clearHabitLongPress()" ontouchcancel="clearHabitLongPress()"' : '';
@@ -8902,6 +10498,7 @@ function showHabitContextMenu(uuid, e){
   if(!h || h.status!=='completed') return;
   hideContextMenu();
   var items = [
+    { label: t('habitHistory'), action: function(){ openHabitHistory(uuid); } },
     { label: t('resetToday'), action: function(){ resetHabitToday(uuid); } },
     { label: t('editHabit'), action: function(){ editHabit(uuid); } },
     { label: t('deleteHabit'), action: function(){ deleteHabit(uuid); } }
@@ -8916,6 +10513,254 @@ function showHabitContextMenu(uuid, e){
   }
   showContextMenu(x, y, items);
   if(e) e.preventDefault();
+}
+
+/* === Vista Historial del hábito === */
+var _habitHistory = { uuid:null, month:null, year:null, yearView:null, day:null };
+function isHabitHistoryOpen(){ return (typeof _habitHistory!=='undefined') && !!_habitHistory.uuid; }
+function habitBaseColor(h){ return h.color||'#5b7db5'; }
+function habitHexToRgba(hex,a){
+  var h=String(hex||'').replace('#','');
+  if(h.length===3) h=h.charAt(0)+h.charAt(0)+h.charAt(1)+h.charAt(1)+h.charAt(2)+h.charAt(2);
+  var r=parseInt(h.substr(0,2),16), g=parseInt(h.substr(2,2),16), b=parseInt(h.substr(4,2),16);
+  if(isNaN(r)||isNaN(g)||isNaN(b)){ r=91; g=125; b=181; }
+  return 'rgba('+r+','+g+','+b+','+a+')';
+}
+function habitFmtShort(key){ var p=habitParseKey(key); if(!p) return key; return habitPad2(p.d)+'/'+habitPad2(p.m)+'/'+p.y; }
+function habitWeekdayAbbr(key){ var dt=habitKeyToDate(key); if(!dt) return ''; var ab=t('dayAbbr'); return ab[dt.getDay()]||''; }
+/* done | missed | future (futuro o anterior al inicio: sin registrar) */
+function habitDayState(h,key,todayKey,startKey){
+  if(key>todayKey||key<startKey) return 'future';
+  return habitIsDone(h,key)?'done':'missed';
+}
+function habitHeatLevel(h,key){
+  var r=habitDayRatio(h,key);
+  if(!(r>0)) return 0;
+  if(r<=0.25) return 1;
+  if(r<=0.5) return 2;
+  if(r<=0.75) return 3;
+  if(r<1) return 4;
+  return 5;
+}
+function habitHeatColor(color,lvl){
+  var a=[0.22,0.42,0.62,0.82,1][lvl-1];
+  if(a==null||a>=1) return color;
+  return habitHexToRgba(color,a);
+}
+function habitYearWeeks(year){
+  var mondayFirst=!!state.weekStartsMonday;
+  var jan1=new Date(year,0,1);
+  var off=mondayFirst?(jan1.getDay()+6)%7:jan1.getDay();
+  var cur=new Date(year,0,1-off);
+  var weeks=[];
+  for(var w=0;w<54;w++){
+    var week=[];
+    for(var i=0;i<7;i++){ week.push(cur.getFullYear()===year?habitDateToKey(cur):null); cur=new Date(cur.getFullYear(),cur.getMonth(),cur.getDate()+1); }
+    weeks.push(week);
+    if(cur.getFullYear()>year) break;
+  }
+  return weeks;
+}
+function openHabitHistory(uuid){
+  var h=getHabitByUuid(uuid);
+  if(!h) return;
+  hideContextMenu();
+  var now=new Date();
+  _habitHistory.uuid=uuid;
+  _habitHistory.month=now.getMonth(); _habitHistory.year=now.getFullYear();
+  _habitHistory.yearView=now.getFullYear(); _habitHistory.day=habitTodayKey();
+  renderHabitsView();
+  updateFab();
+  var c=document.getElementById('habitsContent');
+  if(c) c.scrollTop=0;
+}
+function closeHabitHistory(){
+  _habitHistory.uuid=null; _habitHistory.day=null;
+  renderHabitsView();
+  updateFab();
+}
+function habitHistGo(offset){
+  var now=new Date(); var curM=now.getMonth(), curY=now.getFullYear();
+  var m=(_habitHistory.month==null?curM:_habitHistory.month)+offset;
+  var y=(_habitHistory.year==null?curY:_habitHistory.year);
+  while(m<0){ m+=12; y--; } while(m>11){ m-=12; y++; }
+  if(y>curY||(y===curY&&m>curM)){ m=curM; y=curY; }
+  var h=getHabitByUuid(_habitHistory.uuid);
+  if(h){ var sp=habitParseKey(habitStartKey(h,habitTodayKey())); if(sp&&(y<sp.y||(y===sp.y&&m<sp.m-1))){ m=sp.m-1; y=sp.y; } }
+  _habitHistory.month=m; _habitHistory.year=y;
+  renderHabitsView();
+}
+function habitHistToday(){
+  var now=new Date();
+  _habitHistory.month=now.getMonth(); _habitHistory.year=now.getFullYear();
+  renderHabitsView();
+}
+function habitHistYear(offset){
+  var curY=new Date().getFullYear();
+  var y=(_habitHistory.yearView==null?curY:_habitHistory.yearView)+offset;
+  if(y>curY) y=curY;
+  if(y<1970) y=1970;
+  _habitHistory.yearView=y;
+  renderHabitsView();
+}
+function selectHabitDay(key){
+  if(!habitParseKey(key)) return;
+  _habitHistory.day=key;
+  var h=getHabitByUuid(_habitHistory.uuid);
+  if(!h) return;
+  var box=document.getElementById('habitDayDetail');
+  if(box) box.innerHTML=habitDayDetailInner(h,key);
+  var els=document.querySelectorAll('[data-hday]');
+  for(var i=0;i<els.length;i++){
+    var el=els[i];
+    if(el.classList&&el.classList.toggle) el.classList.toggle('sel', el.getAttribute('data-hday')===key);
+  }
+}
+function streakRangeHtml(r,alive){
+  var b=alive?escapeHtml(t('habitNow')):habitFmtShort(r.end);
+  return habitFmtShort(r.start)+' → '+b;
+}
+function renderHabitHistoryInto(container,h){
+  var now=new Date();
+  if(_habitHistory.month==null){ _habitHistory.month=now.getMonth(); _habitHistory.year=now.getFullYear(); }
+  if(_habitHistory.yearView==null) _habitHistory.yearView=now.getFullYear();
+  if(!_habitHistory.day) _habitHistory.day=habitTodayKey();
+  var s=computeHabitStats(h);
+  var icon=h.icon?escapeHtml(h.icon):(h.type==='counter'?'🔢':'✅');
+  var html='<div class="habit-history-top">'+
+    '<div class="habit-history-title"><div class="habit-history-name"><span>'+icon+'</span><span class="habit-history-nametext">'+escapeHtml(h.name)+'</span></div>'+
+    '<div class="habit-history-sub">'+escapeHtml(t('habitCurrentStreak'))+': <b>'+s.current+' '+escapeHtml(t('habitDays'))+'</b></div></div></div>';
+  html+=renderHabitMonthSection(h,s);
+  html+=renderHabitStreaksSection(h,s);
+  html+=renderHabitStatsSection(h,s);
+  html+=renderHabitYearSection(h,s);
+  container.innerHTML=html;
+  updateBackBtn();
+}
+function renderHabitMonthSection(h,s){
+  var m=_habitHistory.month, y=_habitHistory.year;
+  var now=new Date(); var curM=now.getMonth(), curY=now.getFullYear();
+  var months=t('months'); var dayAbbrs=t('dayAbbr');
+  if(state.weekStartsMonday) dayAbbrs=dayAbbrs.slice(1).concat(dayAbbrs[0]);
+  var fd=new Date(y,m,1).getDay();
+  if(state.weekStartsMonday) fd=(fd+6)%7;
+  var dim=new Date(y,m+1,0).getDate();
+  var dprev=new Date(y,m,0).getDate();
+  var today=s.todayKey, start=s.startKey;
+  var color=habitBaseColor(h);
+  var sp=habitParseKey(habitStartKey(h,today));
+  var atStart=sp&&(y===sp.y&&m===sp.m-1);
+  var atCurrent=(y===curY&&m===curM);
+  var html='<div class="habits-section"><div class="habits-section-title">'+escapeHtml(months[m])+' '+y+'</div>';
+  html+='<div class="habit-history-nav"><button class="habit-nav-btn" onclick="habitHistGo(-1)"'+(atStart?' disabled':'')+'>&#x2039;</button>'+
+    '<button class="habit-nav-btn" onclick="habitHistGo(1)"'+(atCurrent?' disabled':'')+'>&#x203A;</button>'+
+    '<span style="flex:1"></span><button class="btn btn-sm" onclick="habitHistToday()">'+escapeHtml(t('habitToday'))+'</button></div>';
+  html+='<div class="habit-cal-weekdays">';
+  for(var w=0;w<7;w++) html+='<div class="habit-cal-weekday">'+escapeHtml(dayAbbrs[w])+'</div>';
+  html+='</div><div class="habit-cal-grid">';
+  for(var i=0;i<42;i++){
+    var dd, mm=m, yy=y, other=false;
+    if(i<fd){ dd=dprev-fd+i+1; mm=m-1; if(mm<0){ mm=11; yy--; } other=true; }
+    else if(i>=fd+dim){ dd=i-fd-dim+1; mm=m+1; if(mm>11){ mm=0; yy++; } other=true; }
+    else { dd=i-fd+1; }
+    var key=yy+'-'+habitPad2(mm+1)+'-'+habitPad2(dd);
+    var st=habitDayState(h,key,today,start);
+    var cls='habit-cal-day '+st+(other?' other':'')+(key===today?' today':'')+(key===_habitHistory.day?' sel':'');
+    var mk=st==='done'?'✓':(st==='missed'?'·':'—');
+    var style='';
+    if(st==='done') style=' style="background:'+habitHexToRgba(color,0.22)+';border-color:'+escapeHtml(color)+';"';
+    html+='<div class="'+cls+'" data-hday="'+key+'"'+style+' onclick="selectHabitDay(\''+key+'\')"><span class="n">'+dd+'</span><span class="mk">'+mk+'</span></div>';
+  }
+  html+='</div>';
+  html+='<div class="habit-legend"><span>✓ '+escapeHtml(t('habitDone'))+'</span><span>· '+escapeHtml(t('habitMissed'))+'</span><span>— '+escapeHtml(t('habitFuture'))+'</span></div>';
+  html+='</div>';
+  return html;
+}
+function renderHabitStreaksSection(h,s){
+  var html='<div class="habits-section"><div class="habits-section-title">'+escapeHtml(t('habitStreaks'))+'</div>';
+  if(!s.streaks.length){
+    html+='<div class="habits-empty">'+escapeHtml(t('habitEmptyStreaks'))+'</div>';
+  } else if(!s.alive){
+    html+='<div class="habit-streak-row"><span class="habit-streak-range"><b>'+escapeHtml(t('habitCurrentStreak'))+'</b><br>—</span><span class="habit-streak-len">0 '+escapeHtml(t('habitDays'))+'</span></div>';
+    html+='<div class="habits-section-title" style="margin-top:10px;">'+escapeHtml(t('habitPrevious'))+'</div>';
+    var all=s.streaks.slice().reverse();
+    for(var i=0;i<all.length;i++){
+      html+='<div class="habit-streak-row"><span class="habit-streak-range">'+streakRangeHtml(all[i],false)+'</span><span class="habit-streak-len">'+all[i].len+' '+escapeHtml(t('habitDays'))+'</span></div>';
+    }
+  } else {
+    var cur=s.streaks[s.streaks.length-1];
+    html+='<div class="habit-streak-row"><span class="habit-streak-range"><b>'+escapeHtml(t('habitCurrentStreak'))+'</b><br>'+streakRangeHtml(cur,true)+'</span><span class="habit-streak-len">🔥 '+s.current+' '+escapeHtml(t('habitDays'))+'</span></div>';
+    var prev=s.streaks.slice(0,s.streaks.length-1).reverse();
+    if(prev.length){
+      html+='<div class="habits-section-title" style="margin-top:10px;">'+escapeHtml(t('habitPrevious'))+'</div>';
+      for(var j=0;j<prev.length;j++){
+        html+='<div class="habit-streak-row"><span class="habit-streak-range">'+streakRangeHtml(prev[j],false)+'</span><span class="habit-streak-len">'+prev[j].len+' '+escapeHtml(t('habitDays'))+'</span></div>';
+      }
+    }
+  }
+  html+='</div>';
+  return html;
+}
+function renderHabitStatsSection(h,s){
+  function row(l,v){ return '<div class="stats-row"><span class="stats-label">'+escapeHtml(l)+'</span><span class="stats-value">'+v+'</span></div>'; }
+  var html='<div class="habits-section"><div class="habits-section-title">'+escapeHtml(t('stats'))+'</div>';
+  html+=row(t('habitDaysDone'), s.totalDone);
+  html+=row(t('habitDaysReg'), s.totalReg);
+  html+=row(t('habitCompletion'), s.pct+' %');
+  html+=row(t('habitCurrentStreak'), s.current+' '+escapeHtml(t('habitDays')));
+  html+=row(t('habitLongestStreak'), s.longest+' '+escapeHtml(t('habitDays')));
+  html+=row(t('habitTotalStreaks'), s.count);
+  html+='</div>';
+  return html;
+}
+function renderHabitYearSection(h,s){
+  var year=_habitHistory.yearView;
+  var curY=new Date().getFullYear();
+  var months=t('months');
+  var weeks=habitYearWeeks(year);
+  var today=s.todayKey, start=s.startKey;
+  var color=habitBaseColor(h);
+  var labels='', cells='';
+  for(var w=0;w<weeks.length;w++){
+    var lab='';
+    for(var a=0;a<7;a++){ var kk=weeks[w][a]; if(kk&&kk.substr(8,2)==='01'){ lab=months[(+kk.substr(5,2))-1].substring(0,3); break; } }
+    labels+='<span>'+escapeHtml(lab)+'</span>';
+    for(var j=0;j<7;j++){
+      var key=weeks[w][j];
+      if(!key){ cells+='<div class="habit-heat pad"></div>'; continue; }
+      var st=habitDayState(h,key,today,start);
+      var cls='habit-heat '+st+(key===_habitHistory.day?' sel':'');
+      var style='';
+      if(st==='done') style=' style="background:'+habitHeatColor(color,habitHeatLevel(h,key))+';"';
+      var title=habitFmtShort(key)+' · '+(st==='done'?t('habitDone'):(st==='missed'?t('habitMissed'):t('habitFuture')));
+      cells+='<div class="'+cls+'" data-hday="'+key+'"'+style+' title="'+escapeHtml(title)+'" onclick="selectHabitDay(\''+key+'\')"></div>';
+    }
+  }
+  var html='<div class="habits-section"><div class="habits-section-title">'+escapeHtml(t('habitAnnual'))+'</div>';
+  html+='<div class="habit-history-nav"><button class="habit-nav-btn" onclick="habitHistYear(-1)">&#x2039;</button>'+
+    '<span class="cal-nav-title">'+year+'</span>'+
+    '<button class="habit-nav-btn" onclick="habitHistYear(1)"'+(year>=curY?' disabled':'')+'>&#x203A;</button></div>';
+  html+='<div class="habit-year-scroll"><div class="habit-heat-labels">'+labels+'</div><div class="habit-heat-grid">'+cells+'</div></div>';
+  html+='<div class="habit-day-detail" id="habitDayDetail">'+habitDayDetailInner(h,_habitHistory.day)+'</div>';
+  html+='</div>';
+  return html;
+}
+function habitDayDetailInner(h,key){
+  var p=habitParseKey(key);
+  if(!p) return '';
+  var head='<div class="dd-date">'+escapeHtml(habitWeekdayAbbr(key)+' '+habitFmtShort(key))+'</div>';
+  var today=habitTodayKey();
+  if(key>today) return head+'<div class="dd-missed">'+escapeHtml(t('habitFuture'))+'</div>';
+  var start=habitStartKey(h,today);
+  if(key<start) return head+'<div class="dd-missed">'+escapeHtml(t('habitFuture'))+'</div>';
+  if(habitIsDone(h,key)){
+    var s='✓ '+t('habitDone');
+    if(h.type==='counter') s+=' · '+habitDayValue(h,key)+' / '+habitDayTotal(h,key);
+    return head+'<div class="dd-done">'+escapeHtml(s)+'</div>';
+  }
+  var m='✗ '+t('habitMissed');
+  if(h.type==='counter'&&habitDayValue(h,key)>0) m+=' · '+habitDayValue(h,key)+' / '+habitDayTotal(h,key);
+  return head+'<div class="dd-missed">'+escapeHtml(m)+'</div>';
 }
 
 /* === Registros (struct) UI === */
