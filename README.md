@@ -114,6 +114,9 @@ Los hábitos están pensados para actividades de distinta naturaleza: estudiar, 
 
 Además, el sistema está relacionado con la filosofía de **registros de MiBabel**: en lugar de limitarse a indicar si una actividad fue realizada o no, permite conservar información cuantificable sobre su progreso y evolución a lo largo del tiempo.
 
+### Dibujos
+Es posible añadir dibujos a las notas de texto, los cuales son realizables a traves de un editor de dibujo. Hay varios lienzos estándares, sin embargo, también es posible dibujar sobre una imagen de tu dispositivo y plasmarla en la nota.
+
 ### 📤 Exportación
 
 Las notas pueden exportarse a diferentes formatos para facilitar su almacenamiento y utilización fuera de MiBabel.
@@ -250,9 +253,8 @@ MiBabel continúa en desarrollo. Algunas de las funciones contempladas para futu
 
 * Gráficos para las variables de los registros.
 * Sistema de anotación de partidas de ajedrez.
-* Agregar una intro personalizada para cuando se inicie la aplicación.
 * Agregar un resumen a fin de año que cuente acerca de cómo y cuanto usaste MiBabel, y que se pueda compartir.
-
+* Motor de dibujo dentro de los tableros
 
 ---
 
