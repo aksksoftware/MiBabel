@@ -262,18 +262,34 @@ var VideoManager = (function() {
     delete _playableUrlKind[ref];
   }
 
-  /* Cuenta cuántas referencias (tableros, notas, papelera) apuntan a ref.
-   * Incluye elementos/nodes tanto inline como file (ambos usan el.ref). */
+  /* Cuenta cuántas referencias (tableros, notas, tarjetas, papelera) apuntan a ref.
+   * Incluye elementos/nodes tanto inline como file (ambos usan el.ref).
+   * Tarjetas: front/back HTML con data-ref / data-hv-card-ref. */
   function countRefs(ref) {
     if (!ref || typeof state === 'undefined' || !state) return 0;
     var n = 0;
     function checkElRef(r) { if (r === ref) n++; }
+    function checkHtml(html) {
+      if (!html || html.indexOf(ref) === -1) return;
+      var re = /data-(?:ref|hv-card-ref)="([^"]+)"/g;
+      var m;
+      while ((m = re.exec(html)) !== null) { if (m[1] === ref) n++; }
+    }
     (state.boards || []).forEach(function(b) {
       (b.elements || []).forEach(function(el) { checkElRef(el.ref); });
     });
     (state.notes || []).forEach(function(note) {
       (note.items || []).forEach(function(it) {
         checkElRef(it.src || it.ref);
+        if (it.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+          DrawingNote.refs(it).forEach(checkElRef);
+        }
+      });
+    });
+    (state.studySets || []).forEach(function(s) {
+      (s.cards || []).forEach(function(c) {
+        checkHtml(c.front);
+        checkHtml(c.back);
       });
     });
     (state.trash || []).forEach(function(t) {
@@ -282,7 +298,15 @@ var VideoManager = (function() {
         t.data.elements.forEach(function(el) { checkElRef(el.ref); });
       }
       if (t.type === 'note' && t.data.items) {
-        t.data.items.forEach(function(it) { checkElRef(it.src || it.ref); });
+        t.data.items.forEach(function(it) {
+          checkElRef(it.src || it.ref);
+          if (it.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+            DrawingNote.refs(it).forEach(checkElRef);
+          }
+        });
+      }
+      if (t.type === 'studySet' && t.data.cards) {
+        t.data.cards.forEach(function(c) { checkHtml(c.front); checkHtml(c.back); });
       }
     });
     return n;

@@ -98,7 +98,7 @@ var langData = {
       habitStreaks:'Streaks', habitPrevious:'Previous', habitDaysDone:'Days completed', habitDaysReg:'Days tracked',
       habitCompletion:'Completion', habitNow:'present', habitDone:'Done', habitMissed:'Missed', habitFuture:'Future',
       habitToday:'Today', habitEmptyStreaks:'No streaks yet', habitAnnual:'Year activity', habitDays:'days',
-      confirmDeleteHabit:'Delete this habit?', habitNameRequired:'Name is required.', habitTotalInvalid:'Goal must be a number greater than 0.', habitStepInvalid:'Step must be a number greater than 0 and not greater than goal.', habitStepIncoherent:'Step must allow reaching the goal exactly (goal must be divisible by step).', createHabit:'Create', habitEmpty:'No habits yet. Tap + to create one.', habitNeedsTotal:'Goal and Step are required for counter habits.', habitCreateTitle:'New habit', habitEditTitle:'Edit habit',
+      confirmDeleteHabit:'Delete this habit?', habitNameRequired:'Name is required.', habitTotalInvalid:'Goal must be a number greater than 0.', habitStepInvalid:'Step must be a number greater than 0 and not greater than goal.', habitStepIncoherent:'Step must allow reaching the goal exactly (goal must be divisible by step).', createHabit:'Create', habitEmpty:'No habits yet. Tap + to create one.', habitNeedsTotal:'Goal and Step are required for counter habits.', habitCreateTitle:'New habit', habitEditTitle:'Edit habit', habitFreq:'Frequency', habitDaily:'Daily', habitWeekly:'Weekly', habitMonthly:'Monthly', habitGoal:'Times per period', habitGoalInvalid:'Goal must be between 1 and 7 per week / 1 and 31 per month.',
       registros:'Records', registrosEmpty:'No records yet. Tap + to create one.', newRegistro:'New Record', editRegistro:'Edit Record', deleteRegistro:'Delete Record', registroName:'Name', addVariable:'Add variable', noRegistros:'No records yet.', confirmDeleteRegistro:'Delete this record?', confirmDeleteVariable:'Delete this variable?', registroNameRequired:'Name is required.', registroExists:'A record with this name already exists.', variableExists:'A variable with this name already exists.', invalidRegistroName:'Invalid name. Use letters, numbers and underscore, starting with letter or underscore.', variableNameRequired:'Variable name is required.', invalidType:'Invalid type.', variableType:'Type', registroCreateTitle:'New record', registroEditTitle:'Edit record', registroDeleteMsg:'All variables and history will be deleted. This cannot be undone.', exportRegistro:'Export record', importRegistro:'Import record', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total records', fromDate:'From', toDate:'To', clearFilter:'Clear', invalidDate:'Invalid date.', invalidRange:'Invalid range.', valueMismatch:'Value does not match type.', registroNotFound:'Record not found.', variableNotFound:'Variable not found.', trashTypeRegistro:'Record', folder:'Folder', folders:'Folders', newFolder:'New Folder', newFolderLabel:'New folder', folderName:'Folder name', folderNamePlaceholder:'Folder name', protectedFolder:'Protected folder: ', deleteFolder:'Delete folder: ', deleteFolderMsg:'The {n} notes inside will be moved to the main view.', deleteFolderEmpty:'The folder is empty.', emptyFolderHint:'This folder is empty. Tap + to create a note inside.', subfoldersNotAllowed:'Subfolders are not allowed.', moveToFolder:'Move to folder', moveToNotes:'Move to Notes', changePassword:'Change password', invalidFolder:'Invalid folder.', enterFolderId:'Enter folder ID:', countNote:'note', countNotes:'notes', renameFolder:'Rename folder', folderExists:'Folder already exists'
     },
    es: {
@@ -192,7 +192,7 @@ var langData = {
       habitStreaks:'Rachas', habitPrevious:'Anteriores', habitDaysDone:'Días cumplidos', habitDaysReg:'Días registrados',
       habitCompletion:'Cumplimiento', habitNow:'actualidad', habitDone:'Cumplido', habitMissed:'No cumplido', habitFuture:'Futuro',
       habitToday:'Hoy', habitEmptyStreaks:'Aún sin rachas', habitAnnual:'Actividad del año', habitDays:'días',
-      confirmDeleteHabit:'¿Eliminar este hábito?', habitNameRequired:'El nombre es obligatorio.', habitTotalInvalid:'El total debe ser un número mayor que 0.', habitStepInvalid:'Los saltos deben ser un número mayor que 0 y no mayor que el total.', habitStepIncoherent:'Los saltos deben permitir alcanzar el total de forma coherente (el total debe ser divisible por los saltos).', createHabit:'Crear', habitEmpty:'Aún no hay hábitos. Pulsa + para crear uno.', habitNeedsTotal:'Total y Saltos son obligatorios para hábitos contador.', habitCreateTitle:'Nuevo hábito', habitEditTitle:'Editar hábito',
+      confirmDeleteHabit:'¿Eliminar este hábito?', habitNameRequired:'El nombre es obligatorio.', habitTotalInvalid:'El total debe ser un número mayor que 0.', habitStepInvalid:'Los saltos deben ser un número mayor que 0 y no mayor que el total.', habitStepIncoherent:'Los saltos deben permitir alcanzar el total de forma coherente (el total debe ser divisible por los saltos).', createHabit:'Crear', habitEmpty:'Aún no hay hábitos. Pulsa + para crear uno.', habitNeedsTotal:'Total y Saltos son obligatorios para hábitos contador.', habitCreateTitle:'Nuevo hábito', habitEditTitle:'Editar hábito', habitFreq:'Frecuencia', habitDaily:'Diario', habitWeekly:'Semanal', habitMonthly:'Mensual', habitGoal:'Veces por período', habitGoalInvalid:'La meta debe ser 1-7 por semana / 1-31 por mes.',
       registros:'Registros', registrosEmpty:'Aún no hay registros. Pulsa + para crear uno.', newRegistro:'Nuevo Registro', editRegistro:'Editar Registro', deleteRegistro:'Eliminar Registro', registroName:'Nombre', addVariable:'Agregar variable', noRegistros:'Aún no hay registros.', confirmDeleteRegistro:'¿Eliminar este registro?', confirmDeleteVariable:'¿Eliminar esta variable?', registroNameRequired:'El nombre es obligatorio.', registroExists:'Ya existe un registro con ese nombre.', variableExists:'Ya existe una variable con ese nombre.', invalidRegistroName:'Nombre inválido. Usa letras, números y guión bajo, empezando por letra o guión bajo.', variableNameRequired:'El nombre de la variable es obligatorio.', invalidType:'Tipo inválido.', variableType:'Tipo', registroCreateTitle:'Nuevo registro', registroEditTitle:'Editar registro', registroDeleteMsg:'Se eliminarán todas sus variables y su historial. Esta acción no se puede deshacer.', exportRegistro:'Exportar registro', importRegistro:'Importar registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registros', fromDate:'Desde', toDate:'Hasta', clearFilter:'Limpiar', invalidDate:'Fecha inválida.', invalidRange:'Rango inválido.', valueMismatch:'El valor no coincide con el tipo.', registroNotFound:'Registro no encontrado.', variableNotFound:'Variable no encontrada.', trashTypeRegistro:'Registro', folder:'Carpeta', folders:'Carpetas', newFolder:'Nueva Carpeta', newFolderLabel:'Nueva carpeta', folderName:'Nombre de la carpeta', folderNamePlaceholder:'Nombre de la carpeta', protectedFolder:'Carpeta protegida: ', deleteFolder:'Eliminar carpeta: ', deleteFolderMsg:'Las {n} Notas contenidas serán movidas a la vista principal.', deleteFolderEmpty:'La carpeta está vacía.', emptyFolderHint:'Esta carpeta está vacía. Pulsa + para crear una nota dentro.', subfoldersNotAllowed:'No se permiten subcarpetas.', moveToFolder:'Mover a carpeta', moveToNotes:'Mover a Notas', changePassword:'Cambiar contraseña', invalidFolder:'Carpeta inválida.', enterFolderId:'Ingrese ID de la carpeta:', countNote:'nota', countNotes:'notas', renameFolder:'Renombrar carpeta', folderExists:'Ya existe una carpeta con ese nombre'
     },
    fr: {
@@ -282,7 +282,7 @@ var langData = {
       habitStreaks:'Séries', habitPrevious:'Précédentes', habitDaysDone:'Jours réussis', habitDaysReg:'Jours suivis',
       habitCompletion:'Réussite', habitNow:'en cours', habitDone:'Réussi', habitMissed:'Manqué', habitFuture:'Futur',
       habitToday:"Aujourd'hui", habitEmptyStreaks:'Aucune série', habitAnnual:"Activité de l'année", habitDays:'jours',
-      confirmDeleteHabit:'Supprimer cette habitude ?', habitNameRequired:'Le nom est obligatoire.', habitTotalInvalid:'L\'objectif doit être supérieur à 0.', habitStepInvalid:'Le pas doit être supérieur à 0 et pas supérieur à l\'objectif.', habitStepIncoherent:'Le pas doit permettre d\'atteindre l\'objectif exactement (objectif divisible par pas).', createHabit:'Créer', habitEmpty:'Aucune habitude. Appuyez sur + pour en créer.', habitNeedsTotal:'Objectif et Pas requis pour compteur.', habitCreateTitle:'Nouvelle habitude', habitEditTitle:'Modifier habitude',
+      confirmDeleteHabit:'Supprimer cette habitude ?', habitNameRequired:'Le nom est obligatoire.', habitTotalInvalid:'L\'objectif doit être supérieur à 0.', habitStepInvalid:'Le pas doit être supérieur à 0 et pas supérieur à l\'objectif.', habitStepIncoherent:'Le pas doit permettre d\'atteindre l\'objectif exactement (objectif divisible par pas).', createHabit:'Créer', habitEmpty:'Aucune habitude. Appuyez sur + pour en créer.', habitNeedsTotal:'Objectif et Pas requis pour compteur.', habitCreateTitle:'Nouvelle habitude', habitEditTitle:'Modifier habitude', habitFreq:'Fréquence', habitDaily:'Quotidien', habitWeekly:'Hebdomadaire', habitMonthly:'Mensuel', habitGoal:'Fois par période', habitGoalInvalid:'Objectif 1-7 par semaine / 1-31 par mois.',
       registros:'Registres', registrosEmpty:'Pas encore de registres. Appuyez sur + pour en créer.', newRegistro:'Nouveau registre', editRegistro:'Modifier registre', deleteRegistro:'Supprimer registre', registroName:'Nom', addVariable:'Ajouter variable', noRegistros:'Pas de registres.', confirmDeleteRegistro:'Supprimer ce registre ?', confirmDeleteVariable:'Supprimer cette variable ?', registroNameRequired:'Le nom est obligatoire.', registroExists:'Un registre avec ce nom existe déjà.', variableExists:'Une variable avec ce nom existe déjà.', invalidRegistroName:'Nom invalide.', variableNameRequired:'Le nom de la variable est obligatoire.', invalidType:'Type invalide.', variableType:'Type', registroCreateTitle:'Nouveau registre', registroEditTitle:'Modifier registre', registroDeleteMsg:'Toutes les variables et l\'historique seront supprimés.', exportRegistro:'Exporter registre', importRegistro:'Importer registre', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registres', fromDate:'Du', toDate:'Au', clearFilter:'Effacer', invalidDate:'Date invalide.', invalidRange:'Plage invalide.', valueMismatch:'Valeur incompatible.', registroNotFound:'Registre introuvable.', variableNotFound:'Variable introuvable.', trashTypeRegistro:'Registre', folder:'Dossier', folders:'Dossiers', newFolder:'Nouveau dossier', newFolderLabel:'Nouveau dossier', folderName:'Nom du dossier', folderNamePlaceholder:'Nom du dossier', protectedFolder:'Dossier protégé : ', deleteFolder:'Supprimer le dossier : ', deleteFolderMsg:'Les {n} notes contenues seront déplacées vers la vue principale.', deleteFolderEmpty:'Le dossier est vide.', emptyFolderHint:'Ce dossier est vide. Appuyez sur + pour créer une note.', subfoldersNotAllowed:'Les sous-dossiers ne sont pas autorisés.', moveToFolder:'Déplacer vers dossier', moveToNotes:'Déplacer vers Notes', changePassword:'Changer le mot de passe', invalidFolder:'Dossier invalide.', enterFolderId:'Entrez l\'ID du dossier :', countNote:'note', countNotes:'notes', renameFolder:'Renommer dossier', folderExists:'Le dossier existe déjà'
     },
   pt: {
@@ -370,7 +370,7 @@ var langData = {
       habitStreaks:'Sequências', habitPrevious:'Anteriores', habitDaysDone:'Dias cumpridos', habitDaysReg:'Dias registrados',
       habitCompletion:'Aproveitamento', habitNow:'atual', habitDone:'Cumprido', habitMissed:'Não cumprido', habitFuture:'Futuro',
       habitToday:'Hoje', habitEmptyStreaks:'Sem sequências', habitAnnual:'Atividade do ano', habitDays:'dias',
-      confirmDeleteHabit:'Excluir este hábito?', habitNameRequired:'O nome é obrigatório.', habitTotalInvalid:'A meta deve ser maior que 0.', habitStepInvalid:'O passo deve ser maior que 0 e não maior que a meta.', habitStepIncoherent:'O passo deve permitir atingir a meta exatamente (meta divisível por passo).', createHabit:'Criar', habitEmpty:'Nenhum hábito ainda. Toque em + para criar.', habitNeedsTotal:'Meta e Passo obrigatórios para contador.', habitCreateTitle:'Novo hábito', habitEditTitle:'Editar hábito',
+      confirmDeleteHabit:'Excluir este hábito?', habitNameRequired:'O nome é obrigatório.', habitTotalInvalid:'A meta deve ser maior que 0.', habitStepInvalid:'O passo deve ser maior que 0 e não maior que a meta.', habitStepIncoherent:'O passo deve permitir atingir a meta exatamente (meta divisível por passo).', createHabit:'Criar', habitEmpty:'Nenhum hábito ainda. Toque em + para criar.', habitNeedsTotal:'Meta e Passo obrigatórios para contador.', habitCreateTitle:'Novo hábito', habitEditTitle:'Editar hábito', habitFreq:'Frequência', habitDaily:'Diário', habitWeekly:'Semanal', habitMonthly:'Mensal', habitGoal:'Vezes por período', habitGoalInvalid:'Meta 1-7 por semana / 1-31 por mês.',
 
       registros:'Registros', registrosEmpty:'Ainda não há registros. Toque em + para criar.', newRegistro:'Novo registro', editRegistro:'Editar registro', deleteRegistro:'Excluir registro', registroName:'Nome', addVariable:'Adicionar variável', noRegistros:'Nenhum registro.', confirmDeleteRegistro:'Excluir este registro?', confirmDeleteVariable:'Excluir esta variável?', registroNameRequired:'O nome é obrigatório.', registroExists:'Já existe um registro com esse nome.', variableExists:'Já existe uma variável com esse nome.', invalidRegistroName:'Nome inválido.', variableNameRequired:'O nome da variável é obrigatório.', invalidType:'Tipo inválido.', variableType:'Tipo', registroCreateTitle:'Novo registro', registroEditTitle:'Editar registro', registroDeleteMsg:'Todas as variáveis e histórico serão excluídos.', exportRegistro:'Exportar registro', importRegistro:'Importar registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Total registros', fromDate:'De', toDate:'Até', clearFilter:'Limpar', invalidDate:'Data inválida.', invalidRange:'Intervalo inválido.', valueMismatch:'Valor incompatível.', registroNotFound:'Registro não encontrado.', variableNotFound:'Variável não encontrada.', trashTypeRegistro:'Registro', folder:'Pasta', folders:'Pastas', newFolder:'Nova pasta', newFolderLabel:'Nova pasta', folderName:'Nome da pasta', folderNamePlaceholder:'Nome da pasta', protectedFolder:'Pasta protegida: ', deleteFolder:'Excluir pasta: ', deleteFolderMsg:'As {n} notas dentro serão movidas para a visão principal.', deleteFolderEmpty:'A pasta está vazia.', emptyFolderHint:'Esta pasta está vazia. Toque em + para criar uma nota.', subfoldersNotAllowed:'Subpastas não são permitidas.', moveToFolder:'Mover para pasta', moveToNotes:'Mover para Notas', changePassword:'Alterar senha', invalidFolder:'Pasta inválida.', enterFolderId:'Digite o ID da pasta:', countNote:'nota', countNotes:'notas', renameFolder:'Renomear pasta', folderExists:'A pasta já existe'    },
   ru: {
@@ -460,7 +460,7 @@ var langData = {
       habitStreaks:'Серии', habitPrevious:'Предыдущие', habitDaysDone:'Дней выполнено', habitDaysReg:'Дней учтено',
       habitCompletion:'Выполнение', habitNow:'сейчас', habitDone:'Выполнено', habitMissed:'Пропущено', habitFuture:'Будущее',
       habitToday:'Сегодня', habitEmptyStreaks:'Пока нет серий', habitAnnual:'Активность за год', habitDays:'дн.',
-      confirmDeleteHabit:'Удалить эту привычку?', habitNameRequired:'Название обязательно.', habitTotalInvalid:'Цель должна быть больше 0.', habitStepInvalid:'Шаг должен быть больше 0 и не больше цели.', habitStepIncoherent:'Шаг должен позволять точно достичь цели (цель делится на шаг).', createHabit:'Создать', habitEmpty:'Пока нет привычек. Нажмите +.', habitNeedsTotal:'Цель и Шаг обязательны для счётчика.', habitCreateTitle:'Новая привычка', habitEditTitle:'Редактировать привычку',
+      confirmDeleteHabit:'Удалить эту привычку?', habitNameRequired:'Название обязательно.', habitTotalInvalid:'Цель должна быть больше 0.', habitStepInvalid:'Шаг должен быть больше 0 и не больше цели.', habitStepIncoherent:'Шаг должен позволять точно достичь цели (цель делится на шаг).', createHabit:'Создать', habitEmpty:'Пока нет привычек. Нажмите +.', habitNeedsTotal:'Цель и Шаг обязательны для счётчика.', habitCreateTitle:'Новая привычка', habitEditTitle:'Редактировать привычку', habitFreq:'Частота', habitDaily:'Ежедневно', habitWeekly:'Еженедельно', habitMonthly:'Ежемесячно', habitGoal:'Раз за период', habitGoalInvalid:'Цель 1-7 в неделю / 1-31 в месяц.',
 
       registros:'Записи', registrosEmpty:'Пока нет записей.', newRegistro:'Новая запись', editRegistro:'Редактировать запись', deleteRegistro:'Удалить запись', registroName:'Имя', addVariable:'Добавить переменную', noRegistros:'Нет записей.', confirmDeleteRegistro:'Удалить эту запись?', confirmDeleteVariable:'Удалить эту переменную?', registroNameRequired:'Имя обязательно.', registroExists:'Запись с таким именем уже существует.', variableExists:'Переменная с таким именем уже существует.', invalidRegistroName:'Неверное имя.', variableNameRequired:'Имя переменной обязательно.', invalidType:'Неверный тип.', variableType:'Тип', registroCreateTitle:'Новая запись', registroEditTitle:'Редактировать запись', registroDeleteMsg:'Все переменные и история будут удалены.', exportRegistro:'Экспорт записи', importRegistro:'Импорт записи', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Всего записей', fromDate:'С', toDate:'По', clearFilter:'Очистить', invalidDate:'Неверная дата.', invalidRange:'Неверный диапазон.', valueMismatch:'Значение не соответствует типу.', registroNotFound:'Запись не найдена.', variableNotFound:'Переменная не найдена.', trashTypeRegistro:'Запись', folder:'Папка', folders:'Папки', newFolder:'Новая папка', newFolderLabel:'Новая папка', folderName:'Имя папки', folderNamePlaceholder:'Имя папки', protectedFolder:'Защищенная папка: ', deleteFolder:'Удалить папку: ', deleteFolderMsg:'{n} заметок будут перемещены в основной вид.', deleteFolderEmpty:'Папка пуста.', emptyFolderHint:'Эта папка пуста. Нажмите +, чтобы создать заметку.', subfoldersNotAllowed:'Подпапки не разрешены.', moveToFolder:'Переместить в папку', moveToNotes:'Переместить в Заметки', changePassword:'Сменить пароль', invalidFolder:'Неверная папка.', enterFolderId:'Введите ID папки:', countNote:'заметка', countNotes:'заметок', renameFolder:'Переименовать папку', folderExists:'Папка уже существует'    },
   de: {
@@ -549,7 +549,7 @@ var langData = {
       habitStreaks:'Serien', habitPrevious:'Frühere', habitDaysDone:'Erledigte Tage', habitDaysReg:'Erfasste Tage',
       habitCompletion:'Erfüllung', habitNow:'laufend', habitDone:'Erledigt', habitMissed:'Verpasst', habitFuture:'Zukunft',
       habitToday:'Heute', habitEmptyStreaks:'Noch keine Serien', habitAnnual:'Jahresaktivität', habitDays:'Tage',
-      confirmDeleteHabit:'Diese Gewohnheit löschen?', habitNameRequired:'Name ist erforderlich.', habitTotalInvalid:'Ziel muss größer als 0 sein.', habitStepInvalid:'Schritt muss größer als 0 und nicht größer als Ziel sein.', habitStepIncoherent:'Schritt muss Ziel exakt erreichen (Ziel teilbar durch Schritt).', createHabit:'Erstellen', habitEmpty:'Noch keine Gewohnheiten. Tippe auf +.', habitNeedsTotal:'Ziel und Schritt für Zähler erforderlich.', habitCreateTitle:'Neue Gewohnheit', habitEditTitle:'Gewohnheit bearbeiten',
+      confirmDeleteHabit:'Diese Gewohnheit löschen?', habitNameRequired:'Name ist erforderlich.', habitTotalInvalid:'Ziel muss größer als 0 sein.', habitStepInvalid:'Schritt muss größer als 0 und nicht größer als Ziel sein.', habitStepIncoherent:'Schritt muss Ziel exakt erreichen (Ziel teilbar durch Schritt).', createHabit:'Erstellen', habitEmpty:'Noch keine Gewohnheiten. Tippe auf +.', habitNeedsTotal:'Ziel und Schritt für Zähler erforderlich.', habitCreateTitle:'Neue Gewohnheit', habitEditTitle:'Gewohnheit bearbeiten', habitFreq:'Häufigkeit', habitDaily:'Täglich', habitWeekly:'Wöchentlich', habitMonthly:'Monatlich', habitGoal:'Male pro Zeitraum', habitGoalInvalid:'Ziel 1-7 pro Woche / 1-31 pro Monat.',
 
       registros:'Aufzeichnungen', registrosEmpty:'Noch keine Aufzeichnungen.', newRegistro:'Neue Aufzeichnung', editRegistro:'Aufzeichnung bearbeiten', deleteRegistro:'Aufzeichnung löschen', registroName:'Name', addVariable:'Variable hinzufügen', noRegistros:'Keine Aufzeichnungen.', confirmDeleteRegistro:'Diese Aufzeichnung löschen?', confirmDeleteVariable:'Diese Variable löschen?', registroNameRequired:'Name ist erforderlich.', registroExists:'Eine Aufzeichnung mit diesem Namen existiert bereits.', variableExists:'Eine Variable mit diesem Namen existiert bereits.', invalidRegistroName:'Ungültiger Name.', variableNameRequired:'Variablenname ist erforderlich.', invalidType:'Ungültiger Typ.', variableType:'Typ', registroCreateTitle:'Neue Aufzeichnung', registroEditTitle:'Aufzeichnung bearbeiten', registroDeleteMsg:'Alle Variablen und Verläufe werden gelöscht.', exportRegistro:'Aufzeichnung exportieren', importRegistro:'Aufzeichnung importieren', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Aufzeichnungen gesamt', fromDate:'Von', toDate:'Bis', clearFilter:'Löschen', invalidDate:'Ungültiges Datum.', invalidRange:'Ungültiger Bereich.', valueMismatch:'Wert passt nicht zum Typ.', registroNotFound:'Aufzeichnung nicht gefunden.', variableNotFound:'Variable nicht gefunden.', trashTypeRegistro:'Aufzeichnung', folder:'Ordner', folders:'Ordner', newFolder:'Neuer Ordner', newFolderLabel:'Neuer Ordner', folderName:'Ordnername', folderNamePlaceholder:'Ordnername', protectedFolder:'Geschützter Ordner: ', deleteFolder:'Ordner löschen: ', deleteFolderMsg:'Die {n} Notizen werden in die Hauptansicht verschoben.', deleteFolderEmpty:'Der Ordner ist leer.', emptyFolderHint:'Dieser Ordner ist leer. Tippe auf +, um eine Notiz zu erstellen.', subfoldersNotAllowed:'Unterordner sind nicht erlaubt.', moveToFolder:'In Ordner verschieben', moveToNotes:'Zu Notizen verschieben', changePassword:'Passwort ändern', invalidFolder:'Ungültiger Ordner.', enterFolderId:'Ordner-ID eingeben:', countNote:'Notiz', countNotes:'Notizen', renameFolder:'Ordner umbenennen', folderExists:'Ordner existiert bereits'    },
   it: {
@@ -639,10 +639,132 @@ var langData = {
       habitStreaks:'Serie', habitPrevious:'Precedenti', habitDaysDone:'Giorni completati', habitDaysReg:'Giorni registrati',
       habitCompletion:'Completamento', habitNow:'in corso', habitDone:'Completato', habitMissed:'Mancato', habitFuture:'Futuro',
       habitToday:'Oggi', habitEmptyStreaks:'Ancora nessuna serie', habitAnnual:"Attività dell'anno", habitDays:'giorni',
-      confirmDeleteHabit:'Eliminare questa abitudine?', habitNameRequired:'Il nome è obbligatorio.', habitTotalInvalid:'L\'obiettivo deve essere maggiore di 0.', habitStepInvalid:'Il passo deve essere maggiore di 0 e non maggiore dell\'obiettivo.', habitStepIncoherent:'Il passo deve permettere di raggiungere l\'obiettivo esattamente (obiettivo divisibile per passo).', createHabit:'Crea', habitEmpty:'Nessuna abitudine. Tocca + per crearne una.', habitNeedsTotal:'Obiettivo e Passo richiesti per contatore.', habitCreateTitle:'Nuova abitudine', habitEditTitle:'Modifica abitudine',
+      confirmDeleteHabit:'Eliminare questa abitudine?', habitNameRequired:'Il nome è obbligatorio.', habitTotalInvalid:'L\'obiettivo deve essere maggiore di 0.', habitStepInvalid:'Il passo deve essere maggiore di 0 e non maggiore dell\'obiettivo.', habitStepIncoherent:'Il passo deve permettere di raggiungere l\'obiettivo esattamente (obiettivo divisibile per passo).', createHabit:'Crea', habitEmpty:'Nessuna abitudine. Tocca + per crearne una.', habitNeedsTotal:'Obiettivo e Passo richiesti per contatore.', habitCreateTitle:'Nuova abitudine', habitEditTitle:'Modifica abitudine', habitFreq:'Frequenza', habitDaily:'Giornaliero', habitWeekly:'Settimanale', habitMonthly:'Mensile', habitGoal:'Volte per periodo', habitGoalInvalid:'Obiettivo 1-7 a settimana / 1-31 al mese.',
 
       registros:'Registri', registrosEmpty:'Nessun registro ancora.', newRegistro:'Nuovo registro', editRegistro:'Modifica registro', deleteRegistro:'Elimina registro', registroName:'Nome', addVariable:'Aggiungi variabile', noRegistros:'Nessun registro.', confirmDeleteRegistro:'Eliminare questo registro?', confirmDeleteVariable:'Eliminare questa variabile?', registroNameRequired:'Il nome è obbligatorio.', registroExists:'Esiste già un registro con questo nome.', variableExists:'Esiste già una variabile con questo nome.', invalidRegistroName:'Nome non valido.', variableNameRequired:'Il nome della variabile è obbligatorio.', invalidType:'Tipo non valido.', variableType:'Tipo', registroCreateTitle:'Nuovo registro', registroEditTitle:'Modifica registro', registroDeleteMsg:'Tutte le variabili e la cronologia verranno eliminate.', exportRegistro:'Esporta registro', importRegistro:'Importa registro', typeInt:'int', typeFloat:'float', typeBool:'bool', typeTexto:'texto', totalRegistros:'Registri totali', fromDate:'Da', toDate:'A', clearFilter:'Cancella', invalidDate:'Data non valida.', invalidRange:'Intervallo non valido.', valueMismatch:'Valore non compatibile.', registroNotFound:'Registro non trovato.', variableNotFound:'Variabile non trovata.', trashTypeRegistro:'Registro', folder:'Cartella', folders:'Cartelle', newFolder:'Nuova cartella', newFolderLabel:'Nuova cartella', folderName:'Nome cartella', folderNamePlaceholder:'Nome cartella', protectedFolder:'Cartella protetta: ', deleteFolder:'Elimina cartella: ', deleteFolderMsg:'Le {n} note verranno spostate nella vista principale.', deleteFolderEmpty:'La cartella è vuota.', emptyFolderHint:'Questa cartella è vuota. Tocca + per creare una nota.', subfoldersNotAllowed:'Le sottocartelle non sono consentite.', moveToFolder:'Sposta in cartella', moveToNotes:'Sposta in Note', changePassword:'Cambia password', invalidFolder:'Cartella non valida.', enterFolderId:'Inserisci ID cartella:', countNote:'nota', countNotes:'note', renameFolder:'Rinomina cartella', folderExists:'La cartella esiste già'    }
 };
+/* --------------------------------------------------
+ * Textos del sistema de dibujo (drawing/*).
+ * Se inyectan en los 7 idiomas para que t() no tenga
+ * que depender de la sección exacta de langData.
+ * -------------------------------------------------- */
+var DRAWING_LANG = {
+  en: {
+    drawing:'Draw', drawingCreateTitle:'New drawing', drawingEditTitle:'Edit drawing',
+    drawingBackground:'Background', drawingBgSolid:'Plain', drawingBgLined:'Lined',
+    drawingBgGrid:'Grid', drawingBgDotted:'Dotted', drawingBgImage:'Image from device',
+    drawingSave:'Save', drawingClear:'Clear', drawingClearConfirm:'Clear the whole canvas?',
+    drawingDiscardConfirm:'You have unsaved changes. Discard the drawing?',
+    drawingUndo:'Undo', drawingRedo:'Redo',
+    drawingToolPencil:'Pencil', drawingToolPen:'Pen', drawingToolMarker:'Marker',
+    drawingToolSpray:'Airbrush', drawingToolEraser:'Eraser', drawingToolFill:'Fill',
+    drawingColor:'Color', drawingSize:'Size', drawingSaving:'Saving drawing...',
+    drawingLoading:'Loading image...', drawingPreview:'Drawing',
+    drawingPreviewMissing:'Preview not available', drawingImageTooLarge:'Image too large. Max 5MB.',
+    drawingImageError:'Could not load the image', drawingSaveError:'Could not save the drawing',
+    drawingColorPicker:'Custom color', drawingColorHex:'Hex color code'
+  },
+  es: {
+    drawing:'Dibujar', drawingCreateTitle:'Nuevo dibujo', drawingEditTitle:'Editar dibujo',
+    drawingBackground:'Fondo', drawingBgSolid:'Liso', drawingBgLined:'Renglones',
+    drawingBgGrid:'Cuadriculado', drawingBgDotted:'Puntos', drawingBgImage:'Imagen del dispositivo',
+    drawingSave:'Guardar', drawingClear:'Limpiar', drawingClearConfirm:'¿Borrar todo el contenido del lienzo?',
+    drawingDiscardConfirm:'Hay cambios sin guardar. ¿Descartar el dibujo?',
+    drawingUndo:'Deshacer', drawingRedo:'Rehacer',
+    drawingToolPencil:'Lápiz', drawingToolPen:'Pluma', drawingToolMarker:'Marcador',
+    drawingToolSpray:'Aerógrafo', drawingToolEraser:'Borrador', drawingToolFill:'Relleno',
+    drawingColor:'Color', drawingSize:'Grosor', drawingSaving:'Guardando dibujo...',
+    drawingLoading:'Cargando imagen...', drawingPreview:'Dibujo',
+    drawingPreviewMissing:'Vista previa no disponible', drawingImageTooLarge:'Imagen demasiado grande. Máximo 5MB.',
+    drawingImageError:'No se pudo cargar la imagen', drawingSaveError:'No se pudo guardar el dibujo',
+    drawingColorPicker:'Color personalizado', drawingColorHex:'Código de color hex'
+  },
+  fr: {
+    drawing:'Dessiner', drawingCreateTitle:'Nouveau dessin', drawingEditTitle:'Modifier le dessin',
+    drawingBackground:'Fond', drawingBgSolid:'Uni', drawingBgLined:'Ligné',
+    drawingBgGrid:'Quadrillé', drawingBgDotted:'Ponctué', drawingBgImage:'Image de l\'appareil',
+    drawingSave:'Enregistrer', drawingClear:'Effacer', drawingClearConfirm:'Effacer tout le contenu du canevas ?',
+    drawingDiscardConfirm:'Vous avez des modifications non enregistrées. Abandonner le dessin ?',
+    drawingUndo:'Annuler', drawingRedo:'Rétablir',
+    drawingToolPencil:'Crayon', drawingToolPen:'Stylo', drawingToolMarker:'Marqueur',
+    drawingToolSpray:'Aérographe', drawingToolEraser:'Gomme', drawingToolFill:'Remplissage',
+    drawingColor:'Couleur', drawingSize:'Taille', drawingSaving:'Enregistrement du dessin...',
+    drawingLoading:'Chargement de l\'image...', drawingPreview:'Dessin',
+    drawingPreviewMissing:'Aperçu indisponible', drawingImageTooLarge:'Image trop volumineuse. Max 5 Mo.',
+    drawingImageError:'Impossible de charger l\'image', drawingSaveError:'Impossible d\'enregistrer le dessin',
+    drawingColorPicker:'Couleur personnalisée', drawingColorHex:'Code couleur hexadécimal'
+  },
+  pt: {
+    drawing:'Desenhar', drawingCreateTitle:'Novo desenho', drawingEditTitle:'Editar desenho',
+    drawingBackground:'Fundo', drawingBgSolid:'Liso', drawingBgLined:'Pautado',
+    drawingBgGrid:'Quadriculado', drawingBgDotted:'Pontilhado', drawingBgImage:'Imagem do dispositivo',
+    drawingSave:'Salvar', drawingClear:'Limpar', drawingClearConfirm:'Limpar todo o conteúdo da tela?',
+    drawingDiscardConfirm:'Há alterações não salvas. Descartar o desenho?',
+    drawingUndo:'Desfazer', drawingRedo:'Refazer',
+    drawingToolPencil:'Lápis', drawingToolPen:'Caneta', drawingToolMarker:'Marcador',
+    drawingToolSpray:'Aerógrafo', drawingToolEraser:'Borracha', drawingToolFill:'Preenchimento',
+    drawingColor:'Cor', drawingSize:'Espessura', drawingSaving:'Salvando desenho...',
+    drawingLoading:'Carregando imagem...', drawingPreview:'Desenho',
+    drawingPreviewMissing:'Pré-visualização indisponível', drawingImageTooLarge:'Imagem muito grande. Máx. 5MB.',
+    drawingImageError:'Não foi possível carregar a imagem', drawingSaveError:'Não foi possível salvar o desenho',
+    drawingColorPicker:'Cor personalizada', drawingColorHex:'Código de cor hexadecimal'
+  },
+  ru: {
+    drawing:'Рисовать', drawingCreateTitle:'Новый рисунок', drawingEditTitle:'Редактировать рисунок',
+    drawingBackground:'Фон', drawingBgSolid:'Однотонный', drawingBgLined:'В линейку',
+    drawingBgGrid:'В клетку', drawingBgDotted:'В точку', drawingBgImage:'Изображение с устройства',
+    drawingSave:'Сохранить', drawingClear:'Очистить', drawingClearConfirm:'Очистить всё содержимое холста?',
+    drawingDiscardConfirm:'Есть несохранённые изменения. Отменить рисунок?',
+    drawingUndo:'Отменить', drawingRedo:'Вернуть',
+    drawingToolPencil:'Карандаш', drawingToolPen:'Ручка', drawingToolMarker:'Маркер',
+    drawingToolSpray:'Аэрограф', drawingToolEraser:'Ластик', drawingToolFill:'Заливка',
+    drawingColor:'Цвет', drawingSize:'Толщина', drawingSaving:'Сохранение рисунка...',
+    drawingLoading:'Загрузка изображения...', drawingPreview:'Рисунок',
+    drawingPreviewMissing:'Предпросмотр недоступен', drawingImageTooLarge:'Изображение слишком большое. Макс. 5 МБ.',
+    drawingImageError:'Не удалось загрузить изображение', drawingSaveError:'Не удалось сохранить рисунок',
+    drawingColorPicker:'Пользовательский цвет', drawingColorHex:'Шестнадцатеричный код цвета'
+  },
+  de: {
+    drawing:'Zeichnen', drawingCreateTitle:'Neue Zeichnung', drawingEditTitle:'Zeichnung bearbeiten',
+    drawingBackground:'Hintergrund', drawingBgSolid:'Einfarbig', drawingBgLined:'Liniert',
+    drawingBgGrid:'Kariert', drawingBgDotted:'Gepunktet', drawingBgImage:'Bild vom Gerät',
+    drawingSave:'Speichern', drawingClear:'Leeren', drawingClearConfirm:'Gesamten Zeichenbereich leeren?',
+    drawingDiscardConfirm:'Es gibt ungespeicherte Änderungen. Zeichnung verwerfen?',
+    drawingUndo:'Rückgängig', drawingRedo:'Wiederholen',
+    drawingToolPencil:'Bleistift', drawingToolPen:'Stift', drawingToolMarker:'Marker',
+    drawingToolSpray:'Airbrush', drawingToolEraser:'Radiergummi', drawingToolFill:'Füllung',
+    drawingColor:'Farbe', drawingSize:'Dicke', drawingSaving:'Zeichnung wird gespeichert...',
+    drawingLoading:'Bild wird geladen...', drawingPreview:'Zeichnung',
+    drawingPreviewMissing:'Vorschau nicht verfügbar', drawingImageTooLarge:'Bild zu groß. Max. 5MB.',
+    drawingImageError:'Bild konnte nicht geladen werden', drawingSaveError:'Zeichnung konnte nicht gespeichert werden',
+    drawingColorPicker:'Eigene Farbe', drawingColorHex:'Hex-Farbcode'
+  },
+  it: {
+    drawing:'Disegna', drawingCreateTitle:'Nuovo disegno', drawingEditTitle:'Modifica disegno',
+    drawingBackground:'Sfondo', drawingBgSolid:'Tinta unita', drawingBgLined:'Rigato',
+    drawingBgGrid:'Quadrettato', drawingBgDotted:'Puntinato', drawingBgImage:'Immagine dal dispositivo',
+    drawingSave:'Salva', drawingClear:'Cancella', drawingClearConfirm:'Cancellare tutto il contenuto del riquadro?',
+    drawingDiscardConfirm:'Ci sono modifiche non salvate. Scartare il disegno?',
+    drawingUndo:'Annulla', drawingRedo:'Ripristina',
+    drawingToolPencil:'Matita', drawingToolPen:'Penna', drawingToolMarker:'Pennarello',
+    drawingToolSpray:'Aerografo', drawingToolEraser:'Gomma', drawingToolFill:'Riempimento',
+    drawingColor:'Colore', drawingSize:'Spessore', drawingSaving:'Salvataggio del disegno...',
+    drawingLoading:'Caricamento dell\'immagine...', drawingPreview:'Disegno',
+    drawingPreviewMissing:'Anteprima non disponibile', drawingImageTooLarge:'Immagine troppo grande. Max 5MB.',
+    drawingImageError:'Impossibile caricare l\'immagine', drawingSaveError:'Impossibile salvare il disegno',
+    drawingColorPicker:'Colore personalizzato', drawingColorHex:'Codice colore esadecimale'
+  }
+};
+(function () {
+  for (var code in DRAWING_LANG) {
+    if (!Object.prototype.hasOwnProperty.call(DRAWING_LANG, code)) continue;
+    if (!langData[code]) langData[code] = {};
+    var src = DRAWING_LANG[code];
+    for (var k in src) {
+      if (Object.prototype.hasOwnProperty.call(src, k)) langData[code][k] = src[k];
+    }
+  }
+})();
 function t(key) { var l = langData[state.lang] || langData.en; return l[key] || key; }
 
 /* ==================================================
@@ -680,6 +802,110 @@ function isPaperSyncDesign(design) {
   for (var lang in extra) {
     if (!langData[lang]) continue;
     for (var k in extra[lang]) { if (!langData[lang][k]) langData[lang][k] = extra[lang][k]; }
+  }
+})();
+/* Traducciones para puntuación de tarjetas (sin tocar las líneas largas de langData).
+   Incluye fracción/porcentaje/resultado y los 8 mensajes por rango.
+   Ortografía corregida internamente: aprobar / próxima. */
+(function() {
+  var extraScore = {
+    en: {
+      studyScore: 'Score', studyCorrect: 'Correct', studyTotalAnswers: 'Total', studyPercent: 'Percentage', studyResult: 'Result',
+      studyEmptyScore: 'This session has no cards',
+      studyMsg0: 'Just getting started',
+      studyMsg1: 'Still a long way to improve',
+      studyMsg2: 'Not bad but not enough to pass',
+      studyMsg3: 'So close, keep trying to pass',
+      studyMsg4: 'Passing is not enough, you must be perfect',
+      studyMsg5: 'Not bad, you are very solid',
+      studyMsg6: 'I think next time you will reach perfection',
+      studyMsg7: 'Absolute perfection, congratulations!',
+      studyAgain: 'Study again'
+    },
+    es: {
+      studyScore: 'Puntuación', studyCorrect: 'Correctas', studyTotalAnswers: 'Totales', studyPercent: 'Porcentaje', studyResult: 'Resultado',
+      studyEmptyScore: 'Esta sesión no contiene tarjetas',
+      studyMsg0: 'Apenas estamos empezando',
+      studyMsg1: 'Todavía queda mucho por mejorar',
+      studyMsg2: 'Nada mal pero no es suficiente para aprobar',
+      studyMsg3: 'Faltó muy poquitito, sigue intentando para poder aprobar',
+      studyMsg4: 'La aprobación no es suficiente, hay que ser perfecto',
+      studyMsg5: 'Nada mal, estás muy sólido',
+      studyMsg6: 'Yo creo que en la próxima alcanzarás la perfección',
+      studyMsg7: 'La perfección absoluta ¡Felicidades!',
+      studyAgain: 'Estudiar de nuevo'
+    },
+    fr: {
+      studyScore: 'Score', studyCorrect: 'Correctes', studyTotalAnswers: 'Total', studyPercent: 'Pourcentage', studyResult: 'Résultat',
+      studyEmptyScore: 'Cette session ne contient aucune carte',
+      studyMsg0: 'On commence à peine',
+      studyMsg1: 'Il reste beaucoup à améliorer',
+      studyMsg2: 'Pas mal mais pas assez pour réussir',
+      studyMsg3: ' пропущено',
+      studyMsg4: 'Réussir ne suffit pas, il faut être parfait',
+      studyMsg5: 'Pas mal, tu es très solide',
+      studyMsg6: 'Je crois que la prochaine fois tu atteindras la perfection',
+      studyMsg7: 'La perfection absolue, félicitations !',
+      studyAgain: 'Étudier à nouveau'
+    },
+    pt: {
+      studyScore: 'Pontuação', studyCorrect: 'Corretas', studyTotalAnswers: 'Total', studyPercent: 'Porcentagem', studyResult: 'Resultado',
+      studyEmptyScore: 'Esta sessão não contém cartões',
+      studyMsg0: 'Estamos apenas começando',
+      studyMsg1: 'Ainda há muito a melhorar',
+      studyMsg2: 'Nada mal, mas não é suficiente para passar',
+      studyMsg3: 'Faltou muito pouquinho, continue tentando para passar',
+      studyMsg4: 'Passar não é suficiente, é preciso ser perfeito',
+      studyMsg5: 'Nada mal, você está muito sólido',
+      studyMsg6: 'Acho que na próxima você alcançará a perfeição',
+      studyMsg7: 'Perfeição absoluta, parabéns!',
+      studyAgain: 'Estudar novamente'
+    },
+    ru: {
+      studyScore: 'Результат', studyCorrect: 'Верно', studyTotalAnswers: 'Всего', studyPercent: 'Процент', studyResult: 'Итог',
+      studyEmptyScore: 'В этой сессии нет карточек',
+      studyMsg0: 'Мы только начинаем',
+      studyMsg1: 'Ещё многое нужно улучшить',
+      studyMsg2: 'Неплохо, но недостаточно, чтобы сдать',
+      studyMsg3: 'Чуть-чуть не хватило, продолжай, чтобы сдать',
+      studyMsg4: 'Просто сдать недостаточно, нужно идеально',
+      studyMsg5: 'Неплохо, ты очень уверенно держишься',
+      studyMsg6: 'Думаю, в следующий раз ты достигнешь совершенства',
+      studyMsg7: 'Абсолютное совершенство, поздравляю!',
+      studyAgain: 'Учить снова'
+    },
+    de: {
+      studyScore: 'Punktestand', studyCorrect: 'Richtig', studyTotalAnswers: 'Gesamt', studyPercent: 'Prozentsatz', studyResult: 'Ergebnis',
+      studyEmptyScore: 'Diese Sitzung enthält keine Karten',
+      studyMsg0: 'Wir fangen gerade erst an',
+      studyMsg1: 'Es gibt noch viel zu verbessern',
+      studyMsg2: 'Nicht schlecht, aber nicht genug zum Bestehen',
+      studyMsg3: 'Ganz knapp, versuch weiter, um zu bestehen',
+      studyMsg4: 'Bestehen reicht nicht, du musst perfekt sein',
+      studyMsg5: 'Nicht schlecht, du bist sehr solide',
+      studyMsg6: 'Ich glaube, beim nächsten Mal erreichst du Perfektion',
+      studyMsg7: 'Absolute Perfektion, Glückwunsch!',
+      studyAgain: 'Erneut lernen'
+    },
+    it: {
+      studyScore: 'Punteggio', studyCorrect: 'Corrette', studyTotalAnswers: 'Totali', studyPercent: 'Percentuale', studyResult: 'Risultato',
+      studyEmptyScore: 'Questa sessione non contiene carte',
+      studyMsg0: 'Stiamo appena iniziando',
+      studyMsg1: 'C’è ancora molto da migliorare',
+      studyMsg2: 'Non male ma non abbastanza per passare',
+      studyMsg3: 'È mancato pochissimo, continua a provare per passare',
+      studyMsg4: 'Passare non basta, bisogna essere perfetti',
+      studyMsg5: 'Non male, sei molto solido',
+      studyMsg6: 'Credo che la prossima volta raggiungerai la perfezione',
+      studyMsg7: 'Perfezione assoluta, congratulazioni!',
+      studyAgain: 'Studia di nuovo'
+    }
+  };
+  // Corrección: mensaje fr rango 41-60 (evitar texto residual)
+  extraScore.fr.studyMsg3 = 'Tout juste manqué, continue pour réussir';
+  for (var lang in extraScore) {
+    if (!langData[lang]) continue;
+    for (var k in extraScore[lang]) { if (!langData[lang][k]) langData[lang][k] = extraScore[lang][k]; }
   }
 })();
 function setLang(code) { state.lang = code; save(); applyLang(); applyTheme(); renderAll(); document.documentElement.lang = code; }
@@ -742,6 +968,9 @@ function _collectMediaRefsFromItem(item, type) {
       /* Los videos pesados en modo archivo son locales: no se embeben
        * (evita cargar gigantes en memoria/JSON). Van en _localOnlyMedia. */
       if (itRef && (it.type === 'image' || it.type === 'audio' || it.type === 'video') && !VideoManager.isHeavyItem(it)) refs[itRef] = true;
+      if (it.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+        DrawingNote.refs(it).forEach(function(r) { refs[r] = true; });
+      }
     });
   }
   if (type === 'board') {
@@ -838,14 +1067,18 @@ function exportSingleFolder(id){
   var notes=state.notes.filter(function(n){return n.folderId===id;});
   var pkg={ formatVersion:2, type:'folder', app:'AppNotas', exportedAt:new Date().toISOString(), data: JSON.parse(JSON.stringify(folder)), notes: JSON.parse(JSON.stringify(notes)), hasEmbeddedMedia:true, _media:{}, _localOnlyMedia:{} };
   var refs=[];
+  var pushRef=function(r){ if(r && refs.indexOf(r)===-1) refs.push(r); };
   notes.forEach(function(n){ (n.items||[]).forEach(function(it){
     var r=it.src||it.ref;
     if((it.type==='image'||it.type==='audio'||it.type==='video')&&r){
       if (VideoManager.isHeavyItem(it)) {
         pkg._localOnlyMedia[r]={ name: it.name||'video', size: it.size||0, mimeType: it.mimeType||'video/mp4', localOnly:true };
       } else {
-        refs.push(r);
+        pushRef(r);
       }
+    }
+    if(it.type==='drawing' && typeof DrawingNote!=='undefined' && DrawingNote){
+      DrawingNote.refs(it).forEach(pushRef);
     }
   }); });
   if (Object.keys(pkg._localOnlyMedia).length > 0) {
@@ -859,7 +1092,7 @@ function exportSingleFolder(id){
 
 function exportData() {
   var manifest = {
-    formatVersion: 6,
+    formatVersion: 7,
     app: 'AppNotas',
     createdAt: new Date().toISOString(),
     notesCount: state.notes.length,
@@ -927,6 +1160,30 @@ function exportData() {
         }
       });
     });
+    // Tarjetas: videos pesados (data-mode="file") no se empaquetan, igual que notas/tableros
+    if (!found && state.studySets) {
+      state.studySets.forEach(function(s) {
+        (s.cards || []).forEach(function(c) {
+          [['front'], ['back']].forEach(function(sideArr) {
+            var html = c[sideArr[0]] || '';
+            if (html.indexOf(ref) === -1) return;
+            var re = /<video[^>]*data-ref="([^"]+)"[^>]*>/gi;
+            var m;
+            while ((m = re.exec(html)) !== null) {
+              if (m[1] !== ref) continue;
+              var tag = m[0];
+              if (tag.indexOf('data-mode="file"') !== -1) {
+                var nm = (tag.match(/data-name="([^"]*)"/) || [])[1] || 'video';
+                var sz = Number((tag.match(/data-size="([^"]*)"/) || [])[1] || 0) || 0;
+                var mt = (tag.match(/data-mime="([^"]*)"/) || [])[1] || 'video/mp4';
+                var mid = (tag.match(/data-media-id="([^"]*)"/) || [])[1] || null;
+                found = { ref: ref, mediaId: mid, name: nm, size: sz, mimeType: mt };
+              }
+            }
+          });
+        });
+      });
+    }
     return found;
   }
   var embedRefs = [];
@@ -991,7 +1248,7 @@ function importData(input) {
       return manifestFile.async('string').then(function(manifestStr) {
         var manifest = JSON.parse(manifestStr);
         var version = manifest.formatVersion || 1;
-        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5 && version !== 6) {
+        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5 && version !== 6 && version !== 7) {
           alert('Este archivo fue creado con una versión incompatible de la aplicación.');
           return;
         }
@@ -1046,6 +1303,7 @@ function importData(input) {
           (state.habits||[]).forEach(function(h){
             normalizeHabitRecord(h, todayStrImp);
             h.lastProcessedDate = todayStrImp;
+            try{ h.lastPeriodKey=habitPeriodKey(habitFreqOf(h),todayStrImp); }catch(e){}
           });
         })();
         state.registros = config.registros && Array.isArray(config.registros) ? config.registros : [];
@@ -1414,6 +1672,12 @@ function applyLang() {
   if (ibf) ibf.title = t('insertImage');
   var ibb = document.getElementById('studyCardImgBtnBack');
   if (ibb) ibb.title = t('insertImage');
+  var scIds = ['studyCardLatexBtnFront', 'studyCardLatexBtnBack'];
+  scIds.forEach(function(id) { var el = document.getElementById(id); if (el) el.title = t('insertEquation'); });
+  var scVIds = ['studyCardVideoBtnFront', 'studyCardVideoBtnBack'];
+  scVIds.forEach(function(id) { var el = document.getElementById(id); if (el) el.title = t('insertVideo'); });
+  var scAIds = ['studyCardAudioBtnFront', 'studyCardAudioBtnBack'];
+  scAIds.forEach(function(id) { var el = document.getElementById(id); if (el) el.title = t('insertAudio'); });
   // Welcome dialog
   l('welcomeTitle','welcomeTitle');
   l('welcomeLangLabel','language');
@@ -1466,6 +1730,16 @@ function applyLang() {
   if (htot) htot.textContent = t('habitTotal') + ' *';
   var hsll = document.getElementById('habitStepLabel');
   if (hsll) hsll.textContent = t('habitStep') + ' *';
+  var hfl = document.getElementById('habitFreqLabel');
+  if (hfl) hfl.textContent = t('habitFreq');
+  var hfdo = document.getElementById('habitFreqDailyOpt');
+  if (hfdo) hfdo.textContent = t('habitDaily');
+  var hfwo = document.getElementById('habitFreqWeeklyOpt');
+  if (hfwo) hfwo.textContent = t('habitWeekly');
+  var hfmo = document.getElementById('habitFreqMonthlyOpt');
+  if (hfmo) hfmo.textContent = t('habitMonthly');
+  var hgl = document.getElementById('habitGoalLabel');
+  if (hgl) hgl.textContent = t('habitGoal') + ' *';
   var hcb = document.getElementById('habitCancelBtn');
   if (hcb) hcb.textContent = t('cancel');
   var hsb = document.getElementById('habitSaveBtn');
@@ -1509,6 +1783,7 @@ function applyLang() {
   /* Settings toggle states */
   updateSettingsToggleStates();
   if (typeof applyEditNoteLang === 'function') applyEditNoteLang();
+  if (typeof DrawingEditor !== 'undefined' && DrawingEditor) DrawingEditor.applyLang();
 }
 
 var state = { notes: [], boards: [], studySets: [], trash: [], habits: [], registros: [], activeRegistroId: null, activeNoteId: null, activeBoardId: null, activeStudySetId: null, view: 'notes', theme: 'dark', lang: 'en', nextId: Date.now(), _exportCount: 0, _triggeredMilestones: [], diaryPwdHash: '', diaryRecoveryCode: '', firstVisit: true, weekStartsMonday: true, defaultBoardBg: 'cork', boardShowShadows: true, boardShowAnimations: true, lastBackupAt: null, diaryVariables: {}, registrosFilter: { from: null, to: null }, folders: [], activeFolderId: null, rootOrder: [] };
@@ -1942,6 +2217,9 @@ function renderDiaryCalendar() {
   container.innerHTML = html;
   renderCalendarGrid();
   setupCalendarSwipe();
+  // Causa del bug Registros->Calendario: este render no actualizaba el header,
+  // dejando el título/botón de Registros persistente. Actualizar siempre.
+  updateBackBtn();
 }
 
 function setupCalendarSwipe() {
@@ -2334,6 +2612,15 @@ function load() {
       // Eliminar recordatorios diarios antiguos (repetition daily)
       if (n.events) n.events = n.events.filter(function(e){ return e.repetition !== 'daily'; });
       if (n.tasks) n.tasks = n.tasks.filter(function(t){ return t.repetition !== 'daily'; });
+      // Normalizar items de dibujo (estructura minima; se validan al abrir el editor)
+      if (n.items) n.items.forEach(function(it) {
+        if (!it || it.type !== 'drawing') return;
+        if (!it.drawing || typeof it.drawing !== 'object' || Array.isArray(it.drawing)) {
+          it.drawing = { version: 1, width: 900, height: 1200, background: { type: 'solid' }, strokes: [], createdAt: Date.now(), updatedAt: Date.now() };
+        }
+        if (!it.drawing.background || typeof it.drawing.background !== 'object') it.drawing.background = { type: 'solid' };
+        if (!Array.isArray(it.drawing.strokes)) it.drawing.strokes = [];
+      });
     });
     migrateDiaryNotes();
     if (state.habits) state.habits.forEach(function(h){
@@ -2698,6 +2985,51 @@ function unparseNoteLinks(html) {
   html = html.replace(/<a\s+class="ext-link"[^>]*href="([^"]*)"[^>]*>[\s\S]*?<\/a>/g, '[{$1}]');
   return html;
 }
+function unescapeRegistroHtml(s) {
+  return String(s).replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+}
+function unparseDiaryVarHistory(html) {
+  var out=''; var i=0;
+  while (i<html.length) {
+    var open=html.indexOf('<span', i);
+    if (open===-1) { out+=html.substring(i); break; }
+    if (open+5<html.length && html[open+5]!==' ' && html[open+5]!=='>') { out+=html.substring(i, open+5); i=open+5; continue; }
+    var tagEnd=html.indexOf('>', open);
+    if (tagEnd===-1) { out+=html.substring(i); break; }
+    var tag=html.substring(open, tagEnd+1);
+    var isHist=/class="diary-var(\s|")/.test(tag) && tag.indexOf('diary-var-unknown')===-1;
+    var dm=isHist ? /data-var="([^"]*)"/.exec(tag) : null;
+    if (!dm) { out+=html.substring(i, tagEnd+1); i=tagEnd+1; continue; }
+    var depth=1; var j=tagEnd+1;
+    while (j<html.length && depth>0) {
+      var nx=html.indexOf('<span', j);
+      var cl=html.indexOf('</span>', j);
+      if (cl===-1) break;
+      if (nx!==-1 && nx<cl) { depth++; j=nx+5; }
+      else { depth--; j=cl+7; }
+    }
+    if (depth!==0) { out+=html.substring(i, tagEnd+1); i=tagEnd+1; continue; }
+    var fm=/data-filter="([^"]*)"/.exec(tag);
+    out+=html.substring(i, open)+'@'+dm[1]+(fm?'['+fm[1]+']':'');
+    i=j;
+  }
+  return out;
+}
+function unparseRegistroSpans(html) {
+  if (!html || html.indexOf('diary-var')===-1) return html;
+  html=unparseDiaryVarHistory(html);
+  var guard=0, prev=null;
+  while (html!==prev && guard<10) {
+    prev=html; guard++;
+    html=html.replace(/<span class="diary-var diary-var-unknown"(\s+data-reg-err="1")?[^>]*>((?:(?!<span)[\s\S])*)<span class="var-unknown-label">[\s\S]*?<\/span><\/span>/g, function(m, isErr, inner){
+      inner=inner.replace(/\s+$/,'');
+      if (isErr) return unescapeRegistroHtml(inner);
+      var q=/^(@[A-Za-z_][A-Za-z0-9_]*(?:\/[A-Za-z_][A-Za-z0-9_]*)?(?:\[[^\]]*\])?)/.exec(unescapeRegistroHtml(inner));
+      return q ? q[1] : unescapeRegistroHtml(inner);
+    });
+  }
+  return html;
+}
 
 /* === Diario - Variables históricas (@var = valor / @var) === */
 var _diaryVarNameRegex = '[a-zA-Z_][a-zA-Z0-9_]*';
@@ -2838,7 +3170,10 @@ function hasDiaryVariableAssignment(textHtml) {
 /* === Registros (struct) === */
 var _registroNameRegex = '[a-zA-Z_][a-zA-Z0-9_]*';
 var _registroBlockStartRegex = new RegExp('@(' + _registroNameRegex + ')\\s*\\{', 'g');
-var _registroQueryRegex = new RegExp('@(' + _registroNameRegex + ')(?:\\/(' + _registroNameRegex + '))?(?:\\[([^\\]]*)\\])?(?!\\s*=)(?!\\s*\\{)', 'g');
+// Nota: \\b tras cada nombre evita coincidencias parciales dentro de asignaciones
+// (p.ej. @MiRe dentro de @MiReg{...}) que corrompían el HTML y rompían el scroll
+// de la Nota Diaria con múltiples variables en la misma caja.
+var _registroQueryRegex = new RegExp('@(' + _registroNameRegex + ')\\b(?:\\/(' + _registroNameRegex + ')\\b)?(?:\\[([^\\]]*)\\])?(?!\\s*=)(?!\\s*\\{)', 'g');
 var _registroValidTypes = ['int','float','bool','texto'];
 
 function ensureRegistros() {
@@ -3017,6 +3352,62 @@ function processRegistroAssignments(note, textHtml) {
   }
   return changed;
 }
+/* === Ciclo de vida de asignaciones (Casos A/B/C) ===
+   Modelo: entries[fechaISO][campo]=valor (un valor por día/campo).
+   Sin identificador de origen previo: la limpieza se logra por reconstrucción
+   idempotente por fecha: se vacía la fecha y se reprocesan TODAS las notas
+   del diario con esa fecha. Así:
+   - Caso A (eliminar asignación de la nota): desaparece porque ya no se re-aplica.
+   - Caso B (eliminar nota): se reconstruye la fecha sin esa nota.
+   - Caso C (eliminar registro): sus entries se van con el objeto; las notas
+     muestran '(inexistente)' sin romperse.
+   No borra otros registros/fechas, no duplica (overwrite), es idempotente. */
+function clearRegistroEntriesForDate(dateISO) {
+  if (!dateISO) return;
+  ensureRegistros();
+  state.registros.forEach(function(r) {
+    if (r.entries && r.entries[dateISO]) delete r.entries[dateISO];
+  });
+}
+function rebuildRegistroEntriesForDate(dateISO) {
+  if (!dateISO) return;
+  ensureRegistros();
+  clearRegistroEntriesForDate(dateISO);
+  if (state.registros.length === 0) return;
+  state.notes.forEach(function(note) {
+    if (!note.diary) return;
+    var d;
+    try { d = registroDateISO(note); } catch (e) { return; }
+    if (d !== dateISO) return;
+    (note.items || []).forEach(function(it) {
+      if (it && it.text) processRegistroAssignments(note, it.text);
+    });
+  });
+}
+function rebuildAllRegistroEntries() {
+  ensureRegistros();
+  var dates = {};
+  state.registros.forEach(function(r) {
+    Object.keys(r.entries || {}).forEach(function(d) { dates[d] = true; });
+  });
+  state.notes.forEach(function(n) {
+    if (n.diary) { try { dates[registroDateISO(n)] = true; } catch (e) {} }
+  });
+  Object.keys(dates).forEach(function(d) { clearRegistroEntriesForDate(d); });
+  if (state.registros.length === 0) return;
+  state.notes.forEach(function(note) {
+    if (!note.diary) return;
+    (note.items || []).forEach(function(it) {
+      if (it && it.text) processRegistroAssignments(note, it.text);
+    });
+  });
+}
+function registroSegPlain(segText) {
+  var s=segText.replace(/<br\s*\/?>/gi,'\n');
+  s=s.replace(/<[^>]*>/g,' ');
+  s=s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&nbsp;/g,' ');
+  return s;
+}
 function renderRegistroAssignmentErrors(text) {
   if (!text || text.indexOf('@')===-1 || text.indexOf('{')===-1) return text;
   ensureRegistros();
@@ -3034,9 +3425,12 @@ function renderRegistroAssignmentErrors(text) {
     var rebuilt='';
     for (var j=0;j<segs.length;j++) {
       var seg=segs[j];
-      if (seg.text.trim()==='') { rebuilt+=seg.text; }
+      var segNorm=registroSegPlain(seg.text);
+      if (segNorm.trim()==='') { rebuilt+=seg.text; }
       else {
-        var p=parseRegistroPair(seg.text);
+        // Validar sobre copia normalizada (igual que en guardado): el render
+        // puede traer tags del editor (<div>, <br>) y entidades (&quot;).
+        var p=parseRegistroPair(segNorm);
         var errTitle=null, errLabel=null;
         if (!registro) { errTitle=t('registroNotFound'); errLabel='(inexistente)'; }
         else if (p.malformed || !p.field) { errTitle='Formato inválido'; errLabel='(formato inválido)'; }
@@ -3047,7 +3441,7 @@ function renderRegistroAssignmentErrors(text) {
           else if (validateValueForType(p.raw, f.type, p.isQuoted)===null) { errTitle=t('valueMismatch'); errLabel='(valor inválido)'; }
         }
         if (!errTitle) rebuilt+=seg.text;
-        else rebuilt+='<span class="diary-var diary-var-unknown" title="'+escapeHtml(errTitle)+'">'+escapeHtml(seg.text)+' <span class="var-unknown-label">'+escapeHtml(errLabel)+'</span></span>';
+        else rebuilt+='<span class="diary-var diary-var-unknown" data-reg-err="1" title="'+escapeHtml(errTitle)+'">'+escapeHtml(seg.text)+' <span class="var-unknown-label">'+escapeHtml(errLabel)+'</span></span>';
       }
       if (j<segs.length-1) rebuilt+=';';
     }
@@ -3071,9 +3465,9 @@ function buildRegistroFieldHistoryHtml(registro, fieldName, filter) {
   var filtered=dates.filter(function(d){ return isDateInFilter(d, filter); });
   if (filtered.length===0) {
     // Si no hay datos en rango, mostrar vacío
-    return '<span class="diary-var" data-var="' + escapeHtml(registro.name+'/'+fieldName) + '"><span class="diary-var-name">@' + escapeHtml(registro.name+'/'+fieldName) + '</span><span class="diary-var-history"><span class="var-unknown-label">(sin datos en rango)</span></span></span>';
+    return '<span class="diary-var" data-var="' + escapeHtml(registro.name+'/'+fieldName) + '"' + (filter&&filter.raw?' data-filter="'+escapeHtml(filter.raw)+'"':'') + '><span class="diary-var-name">@' + escapeHtml(registro.name+'/'+fieldName) + '</span><span class="diary-var-history"><span class="var-unknown-label">(sin datos en rango)</span></span></span>';
   }
-  var html='<span class="diary-var" data-var="' + escapeHtml(registro.name+'/'+fieldName) + '"><span class="diary-var-name">@' + escapeHtml(registro.name+'/'+fieldName) + '</span><span class="diary-var-history">';
+  var html='<span class="diary-var" data-var="' + escapeHtml(registro.name+'/'+fieldName) + '"' + (filter&&filter.raw?' data-filter="'+escapeHtml(filter.raw)+'"':'') + '><span class="diary-var-name">@' + escapeHtml(registro.name+'/'+fieldName) + '</span><span class="diary-var-history">';
   for (var i=0;i<filtered.length;i++) {
     var d=filtered[i];
     var row=registro.entries[d];
@@ -3091,9 +3485,9 @@ function buildRegistroFullHistoryHtml(registro, filter) {
   var dates=Object.keys(registro.entries||{}).sort();
   var filtered=dates.filter(function(d){ return isDateInFilter(d, filter); });
   if (filtered.length===0) {
-    return '<span class="diary-var" data-var="' + escapeHtml(registro.name) + '"><span class="diary-var-name">@' + escapeHtml(registro.name) + '</span><span class="diary-var-history"><span class="var-unknown-label">(sin datos)</span></span></span>';
+    return '<span class="diary-var" data-var="' + escapeHtml(registro.name) + '"' + (filter&&filter.raw?' data-filter="'+escapeHtml(filter.raw)+'"':'') + '><span class="diary-var-name">@' + escapeHtml(registro.name) + '</span><span class="diary-var-history"><span class="var-unknown-label">(sin datos)</span></span></span>';
   }
-  var html='<span class="diary-var diary-var-full" data-var="' + escapeHtml(registro.name) + '">';
+  var html='<span class="diary-var diary-var-full" data-var="' + escapeHtml(registro.name) + '"' + (filter&&filter.raw?' data-filter="'+escapeHtml(filter.raw)+'"':'') + '>';
   html+='<span class="diary-var-name">@' + escapeHtml(registro.name) + '</span>';
   html+='<span class="diary-var-history diary-var-history-full">';
   for (var i=0;i<filtered.length;i++) {
@@ -4152,9 +4546,13 @@ function deleteNote(id) {
   var note = state.notes.find(function(n) { return n.id === id; });
   if (!note) return;
   var wasDiary = !!note.diary;
+  var diaryDateISO = null;
+  if (wasDiary) { try { diaryDateISO = registroDateISO(note); } catch (e) {} }
   cancelNoteNotifications(id);
   state.trash.push({ type: 'note', data: note, deletedAt: Date.now() });
   state.notes = state.notes.filter(function(n) { return n.id !== id; });
+  // Caso B: eliminar nota con asignaciones -> reconstruir la fecha sin esa nota
+  if (wasDiary && diaryDateISO) { try { rebuildRegistroEntriesForDate(diaryDateISO); } catch (e) {} }
   // remove from rootOrder if present
   if(state.rootOrder) state.rootOrder = state.rootOrder.filter(function(e){ return !(e.type==='note'&&e.id===id); });
   if (state.activeNoteId === id){
@@ -4321,6 +4719,8 @@ function restoreFromTrash(index) {
     if (item.data.diary) { item.data.folderId = undefined; }
     state.notes.push(item.data);
     migrateDiaryNotes();
+    // Restauración: re-aplicar asignaciones de la nota (inverso del Caso B)
+    if (item.data.diary) { try { rebuildRegistroEntriesForDate(registroDateISO(item.data)); } catch (e) {} }
     if(!item.data.diary && item.data.folderId==null){
       ensureRootOrder();
       if(!state.rootOrder.find(function(e){return e.type==='note'&&e.id===item.data.id;})){
@@ -4330,7 +4730,11 @@ function restoreFromTrash(index) {
   }
   else if (item.type === 'board') state.boards.push(item.data);
   else if (item.type === 'studySet') state.studySets.push(item.data);
-  else if (item.type === 'registro') state.registros.push(item.data);
+  else if (item.type === 'registro') {
+    state.registros.push(item.data);
+    // Restaurar registro: reconstruir todas sus fechas desde las notas existentes
+    try { rebuildAllRegistroEntries(); } catch (e) {}
+  }
   state.trash.splice(index, 1);
   save();
   renderAll();
@@ -4348,10 +4752,20 @@ function deleteFromTrashPermanently(index) {
       if ((item.type === 'image' || item.type === 'audio' || item.type === 'video') && itemRef) {
         refsToDelete.push(itemRef);
       }
+      if (item.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+        DrawingNote.refs(item).forEach(function(r) {
+          if (refsToDelete.indexOf(r) === -1) refsToDelete.push(r);
+        });
+      }
     });
   } else if (removed.type === 'board' && removed.data.elements) {
     removed.data.elements.forEach(function(el) {
       if (el.ref) refsToDelete.push(el.ref);
+    });
+  } else if (removed.type === 'studySet' && removed.data.cards) {
+    removed.data.cards.forEach(function(c) {
+      collectStudyCardMediaRefs(c.front).forEach(function(r) { if (refsToDelete.indexOf(r) === -1) refsToDelete.push(r); });
+      collectStudyCardMediaRefs(c.back).forEach(function(r) { if (refsToDelete.indexOf(r) === -1) refsToDelete.push(r); });
     });
   }
   if (refsToDelete.length === 0) return;
@@ -4607,13 +5021,23 @@ function deleteItem(noteId, itemId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   var removed = null;
+  var wasDiaryText = note.diary && note.items.some(function(i) { return i.id === itemId && i.text; });
+  var dateISO = null;
+  if (wasDiaryText) { try { dateISO = registroDateISO(note); } catch (e) {} }
   note.items = note.items.filter(function(i) {
-    if (i.id === itemId && (i.type === 'image' || i.type === 'audio' || i.type === 'video')) removed = i;
+    if (i.id === itemId && (i.type === 'image' || i.type === 'audio' || i.type === 'video' || i.type === 'drawing')) removed = i;
     return i.id !== itemId;
   });
+  // Si se eliminó una caja de texto del diario, reconstruir la fecha (Caso A parcial)
+  if (wasDiaryText && dateISO) { try { rebuildRegistroEntriesForDate(dateISO); } catch (e) {} }
   save();
   renderNoteContent();
-  if (removed && (removed.src || removed.ref)) {
+  if (removed && removed.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+    /* Vista previa + fondo de imagen del dibujo. */
+    DrawingNote.refs(removed).forEach(function(r) {
+      try { VideoManager.deletePhysicalIfOrphan(r); } catch (e) { console.warn(e); }
+    });
+  } else if (removed && (removed.src || removed.ref)) {
     var ref = removed.src || removed.ref;
     /* Limpieza segura con refcount global (tableros + notas + papelera). */
     VideoManager.deletePhysicalIfOrphan(ref);
@@ -4657,11 +5081,13 @@ function updateItemText(noteId, itemId, html) {
   var item = note.items.find(function(i) { return i.id === itemId; });
   if (item) {
     var cleanHtml = noteSearchStripHtml(html || '');
-    var newText = unparseNoteLinks(unrenderLatexInHtml(cleanHtml));
+    var newText = unparseNoteLinks(unrenderLatexInHtml(unparseRegistroSpans(cleanHtml)));
     item.text = newText;
     if (note.diary) {
       processDiaryVariableAssignments(note, cleanHtml);
-      processRegistroAssignments(note, cleanHtml);
+      // Reconstrucción por fecha (Caso A): editar/eliminar una asignación
+      // reprocesa toda la fecha para no dejar huérfanos ni duplicar.
+      try { rebuildRegistroEntriesForDate(registroDateISO(note)); } catch (e) { processRegistroAssignments(note, cleanHtml); }
     }
     save();
   }
@@ -4770,13 +5196,13 @@ function selectHighlightColor(color) {
   _hlColor = color;
   document.getElementById('hlPalette').classList.add('hidden');
   var span = document.querySelector('.hl-toggle span');
-  if (span) span.style.background = color;
+  if (span) { span.style.background = color; span.style.color = '#000'; }
 }
 function selectRemoveHighlight() {
   _hlColor = 'transparent';
   document.getElementById('hlPalette').classList.add('hidden');
   var span = document.querySelector('.hl-toggle span');
-  if (span) span.style.background = 'transparent';
+  if (span) { span.style.background = 'transparent'; span.style.color = ''; }
 }
 function applyHighlight() {
   document.execCommand('hiliteColor', false, _hlColor);
@@ -5231,6 +5657,10 @@ function getNotePreview(note) {
       texts.push(item.caption ? '\uD83D\uDDBC ' + item.caption : '\uD83D\uDDBC Imagen');
       continue;
     }
+    if (item.type === 'drawing') {
+      texts.push('\u270F ' + t('drawingPreview'));
+      continue;
+    }
     if (!item.text) continue;
     var txt = item.text.replace(/<[^>]*>/g, '').trim();
     if (txt) texts.push(txt.length > 60 ? txt.substring(0, 60) + '...' : txt);
@@ -5293,13 +5723,17 @@ function renderStudySetCards(container) {
     html += '</div>';
   }
   html += '</div>';
+  try { VideoManager.releaseAllIn(container); } catch (e) {}
   container.innerHTML = html;
   updateBackBtn();
-  loadStudyCardImages(container);
+  loadStudyCardMedia(container);
 }
 function startStudy(setId) {
+  var set = state.studySets.find(function(s) { return s.id === setId; });
+  if (!set) return;
   window._studyingSetId = setId;
-  window._studyCards = state.studySets.find(function(s) { return s.id === setId; }).cards.slice();
+  // Copia superficial por tarjeta para no mutar el modelo persistido con _knew
+  window._studyCards = (set.cards || []).map(function(c) { return { id: c.id, front: c.front, back: c.back, _knew: undefined }; });
   for (var i = window._studyCards.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var tmp = window._studyCards[i];
@@ -5316,14 +5750,60 @@ function stopStudy() {
   window._studyingSetId = null; window._studyCards = null; window._studyTotal = 0; window._studyIndex = 0; window._studyRevealed = false; window._studyComplete = false;
   renderAll();
 }
+/* === Puntuación de tarjetas ===
+   porcentaje = correctas / totales * 100 (número real para rango, redondeo solo visual).
+   Rangos continuos sin huecos: <=10, <=25, <=40, <=60, <=75, <=90, <100, ==100.
+   0/0: sin división; se muestra 0/0 con porcentaje '—' y mensaje de sesión vacía. */
+function getStudyScore() {
+  var cards = window._studyCards || [];
+  var total = window._studyTotal || cards.length || 0;
+  var correct = 0;
+  for (var i = 0; i < cards.length; i++) { if (cards[i]._knew === true) correct++; }
+  // Si total difiere de cards.length por seguridad, usar total real de la sesión
+  if (!total) return { correct: 0, total: 0, pct: 0, empty: true };
+  var pct = (correct * 100) / total;
+  if (!isFinite(pct)) pct = 0;
+  return { correct: correct, total: total, pct: pct, empty: false };
+}
+function formatStudyPercent(pctReal, total) {
+  if (!total) return '—';
+  var rounded = Math.round(pctReal * 10) / 10;
+  var sep = (state.lang === 'en') ? '.' : ',';
+  var s;
+  if (rounded % 1 === 0) s = String(Math.round(rounded));
+  else s = rounded.toFixed(1).replace('.', sep);
+  // Para otros idiomas con coma ya reemplazado; en usa punto directo
+  if (state.lang !== 'en') s = s.replace('.', sep);
+  return s + '%';
+}
+function getStudyMessageKey(pctReal, empty) {
+  if (empty) return 'studyEmptyScore';
+  var p = pctReal;
+  if (p < 0) p = 0;
+  if (p > 100) p = 100;
+  if (p <= 10) return 'studyMsg0';
+  if (p <= 25) return 'studyMsg1';
+  if (p <= 40) return 'studyMsg2';
+  if (p <= 60) return 'studyMsg3';
+  if (p <= 75) return 'studyMsg4';
+  if (p <= 90) return 'studyMsg5';
+  if (p < 100) return 'studyMsg6';
+  return 'studyMsg7';
+}
 function renderStudyMode(container, set) {
   var cards = window._studyCards;
   if (!cards || cards.length === 0) {
-    container.innerHTML = '<div class="study-mode-wrapper"><div style="text-align:center;opacity:0.5;">' + t('noCards') + '</div></div>';
+    var sc0 = getStudyScore();
+    var msgKey0 = getStudyMessageKey(sc0.pct, true);
+    container.innerHTML = '<div class="study-mode-wrapper"><div class="study-mode-header"><span class="study-mode-title">' + escapeHtml(set.name) + '</span><button class="btn fmt-action" onclick="stopStudy()">' + t('backToSets') + '</button></div><div class="study-mode-card-area" style="justify-content:center;"><div style="width:100%;max-width:600px;text-align:center;"><div style="font-size:48px;margin-bottom:16px;">&#x1f389;</div><div class="study-score-fraction">0/0</div><div class="study-score-percent">—</div><div class="study-score-msg">' + escapeHtml(t(msgKey0)) + '</div></div></div></div>';
     updateBackBtn(); return;
   }
   if (window._studyIndex >= cards.length) {
-    container.innerHTML = '<div class="study-mode-wrapper"><div class="study-mode-header"><span class="study-mode-title">' + escapeHtml(set.name) + '</span><button class="btn fmt-action" onclick="stopStudy()">' + t('backToSets') + '</button></div><div class="study-mode-card-area" style="justify-content:center;"><div style="width:100%;max-width:600px;text-align:center;"><div style="font-size:48px;margin-bottom:16px;">&#x1f389;</div><h2>' + t('study') + ' ' + t('backToSets') + '!</h2></div></div></div>';
+    var sc = getStudyScore();
+    var pctStr = formatStudyPercent(sc.pct, sc.total);
+    var msgKey = getStudyMessageKey(sc.pct, sc.empty);
+    var frac = sc.correct + '/' + sc.total;
+    container.innerHTML = '<div class="study-mode-wrapper"><div class="study-mode-header"><span class="study-mode-title">' + escapeHtml(set.name) + '</span><button class="btn fmt-action" onclick="stopStudy()">' + t('backToSets') + '</button></div><div class="study-mode-card-area" style="justify-content:center;"><div style="width:100%;max-width:600px;text-align:center;"><div style="font-size:48px;margin-bottom:16px;">&#x1f389;</div><div class="study-score-title">' + escapeHtml(t('studyResult')) + '</div><div class="study-score-fraction">' + escapeHtml(frac) + '</div><div class="study-score-percent">' + escapeHtml(pctStr) + '</div><div class="study-score-detail">' + escapeHtml(t('studyCorrect')) + ': ' + sc.correct + ' · ' + escapeHtml(t('studyTotalAnswers')) + ': ' + sc.total + ' · ' + escapeHtml(t('studyPercent')) + ': ' + escapeHtml(pctStr) + '</div><div class="study-score-msg">' + escapeHtml(t(msgKey)) + '</div><div style="margin-top:16px;display:flex;gap:8px;justify-content:center;"><button class="btn fmt-action" onclick="startStudy(' + set.id + ')">' + escapeHtml(t('studyAgain')) + '</button><button class="btn fmt-action" onclick="stopStudy()">' + escapeHtml(t('backToSets')) + '</button></div></div></div></div>';
     updateBackBtn(); return;
   }
   var card = cards[window._studyIndex];
@@ -5342,9 +5822,10 @@ function renderStudyMode(container, set) {
     html += '<div class="study-mode-actions"><button class="btn fmt-action" style="background:#e74c3c;color:#fff;" onclick="studyResult(false)">' + t('dontKnow') + '</button><button class="btn fmt-action" style="background:#2ecc71;color:#fff;" onclick="studyResult(true)">' + t('know') + '</button></div>';
   }
   html += '</div></div></div>';
+  try { VideoManager.releaseAllIn(container); } catch (e) {}
   container.innerHTML = html;
   updateBackBtn();
-  loadStudyCardImages(container);
+  loadStudyCardMedia(container);
 }
 function revealStudyCard() { if (!window._studyRevealed) { window._studyRevealed = true; renderAll(); } }
 function studyResult(knew) {
@@ -5380,17 +5861,25 @@ function editStudyCard(setId, cardId) {
   cancelStudyCardImage();
   _editStudySetId = setId;
   _editStudyCardId = cardId;
+  _studyCardMediaTarget = null;
   document.getElementById('studyCardFront').innerHTML = card.front;
   document.getElementById('studyCardBack').innerHTML = card.back;
   document.getElementById('studyCardTitle').textContent = t('edit');
   showDialog('studyCardDialog');
-  loadStudyCardImages(document.getElementById('studyCardDialog'));
+  loadStudyCardMedia(document.getElementById('studyCardDialog'));
   setTimeout(function(){ document.getElementById('studyCardFront').focus(); }, 100);
 }
 function saveStudyCard() {
-  var front = document.getElementById('studyCardFront').innerHTML.trim();
-  var back = document.getElementById('studyCardBack').innerHTML.trim();
-  if (!front || !back) return;
+  var frontRaw = document.getElementById('studyCardFront').innerHTML.trim();
+  var backRaw = document.getElementById('studyCardBack').innerHTML.trim();
+  if (!frontRaw || !backRaw) return;
+  // Conservar $$...$$ / $...$ como fuente (igual que notas): revertir KaTeX renderizado en el editor
+  var front = frontRaw, back = backRaw;
+  try { front = unrenderLatexInHtml(frontRaw); } catch (e) {}
+  try { back = unrenderLatexInHtml(backRaw); } catch (e) {}
+  // Quitar src blob del editor para no persistir URLs efímeras; conservar data-ref
+  front = front.replace(/\ssrc="blob:[^"]*"/gi, '');
+  back = back.replace(/\ssrc="blob:[^"]*"/gi, '');
   var set = state.studySets.find(function(s) { return s.id === _editStudySetId; });
   if (!set) return;
   if (_editStudyCardId) {
@@ -5449,12 +5938,41 @@ function cancelStudyCardImage() {
 }
 function renderCardContent(text) {
   if (!text) return '';
-  var parts = text.split(/(<img[^>]*>|<br\s*\/?>)/gi);
-  return parts.map(function(part) {
-    if (/^<img[^>]*>$/i.test(part)) return part.replace('<img ', '<img class="card-list-img" ');
+  // Preservar multimedia (img/video/audio) y <br>, renderizar LaTeX con el motor existente.
+  var parts = text.split(/(<img[^>]*>|<video[^>]*>(?:[\s\S]*?<\/video>)?|<audio[^>]*>(?:[\s\S]*?<\/audio>)?|<div[^>]*class="[^"]*sc-audio[^"]*"[^>]*>(?:[\s\S]*?<\/div>)?|<br\s*\/?>)/gi);
+  var html = parts.map(function(part) {
+    if (/^<img[^>]*>$/i.test(part)) {
+      // Video pesado en tarjeta: placeholder + carga bajo demanda (reutiliza sistema híbrido)
+      return part.replace('<img ', '<img class="card-list-img" ');
+    }
+    if (/^<video[\s\S]*$/i.test(part) && /^<video[^>]*>/i.test(part)) {
+      var modeM = part.match(/data-mode="([^"]*)"/);
+      var mode = modeM ? modeM[1] : '';
+      var refM = part.match(/data-ref="([^"]*)"/);
+      var ref = refM ? refM[1] : '';
+      if (mode === 'file' && ref) {
+        var nameM = part.match(/data-name="([^"]*)"/);
+        var sizeM = part.match(/data-size="([^"]*)"/);
+        var mimeM = part.match(/data-mime="([^"]*)"/);
+        var nm = nameM ? nameM[1] : 'video';
+        var sz = sizeM ? sizeM[1] : '';
+        var szTxt = '';
+        try { szTxt = VideoManager.formatSize(Number(sz)); } catch (e) { szTxt = ''; }
+        var mime = mimeM ? mimeM[1] : 'video/mp4';
+        return '<div class="hv-placeholder hv-card" data-ref="' + ref + '" data-hv-card-ref="' + ref + '" data-hv-mime="' + mime + '"><video class="hv-video sc-video" preload="none" playsinline controls style="display:none;max-width:100%;border-radius:6px;"></video><div class="hv-icon">&#x1F3AC;</div><div class="hv-name">' + nm + '</div><div class="hv-size">' + szTxt + '</div><button class="hv-play" onclick="event.stopPropagation();playHeavyCardVideo(this)">&#x25B6; ' + _hvText('Reproducir', 'Play') + '</button><div class="hv-error hidden"></div></div>';
+      }
+      return part.replace('<video', '<video class="sc-video" controls playsinline preload="metadata" style="max-width:100%;width:100%;height:auto;border-radius:6px;background:#000;" ');
+    }
+    if (/^<audio[\s\S]*$/i.test(part) && /^<audio[^>]*>/i.test(part)) {
+      return part.replace('<audio', '<audio class="sc-audio-el" controls preload="none" style="max-width:100%;width:100%;" ');
+    }
+    if (/^<div[^>]*sc-audio[^>]*>/i.test(part)) return part;
     if (/^<br\s*\/?>$/i.test(part)) return part;
     return part;
   }).join('');
+  // Reutilizar motor KaTeX existente (notas/tableros) también en tarjetas
+  try { html = renderLatexInHtml(html); } catch (e) {}
+  return html;
 }
 
 /* Carga una imagen de tarjeta almacenada por ref */
@@ -5470,19 +5988,241 @@ function loadStudyCardImage(img, ref) {
 
 /* Carga todas las imágenes data-ref de tarjetas en un contenedor */
 function loadStudyCardImages(rootEl) {
+  loadStudyCardMedia(rootEl);
+}
+/* Carga multimedia de tarjetas: imágenes + videos inline + audios (lazy).
+   Videos pesados (mode=file) quedan como placeholder on-demand, sin leer en JS. */
+function loadStudyCardMedia(rootEl) {
   if (!rootEl) return;
   var imgs = rootEl.querySelectorAll('img[data-ref]:not([src])');
   [].forEach.call(imgs, function(img) {
     var ref = img.getAttribute('data-ref');
     loadStudyCardImage(img, ref);
   });
+  // Videos inline: lectura como en notas (blob URL cacheada)
+  var vids = rootEl.querySelectorAll('video.sc-video[data-ref], video[data-ref]');
+  [].forEach.call(vids, function(v) {
+    if (v.getAttribute('src')) return;
+    if (v.getAttribute('data-mode') === 'file') return;
+    var ref = v.getAttribute('data-ref');
+    if (!ref || ref.indexOf('data:') === 0) return;
+    if (typeof _mediaBlobUrls !== 'undefined' && _mediaBlobUrls[ref]) { v.src = _mediaBlobUrls[ref]; return; }
+    ImageManager.read(ref).then(function(base64) {
+      if (!base64) return;
+      var mime = ImageConverter.getMimeFromRef(ref);
+      try {
+        var blob = _base64ToBlob(base64, mime);
+        var url = URL.createObjectURL(blob);
+        _mediaBlobUrls[ref] = url;
+        v.src = url;
+      } catch (e) {}
+    });
+  });
+  // Audios: reproductor consistente con notas (lazy, no bloquea, no autoplay)
+  var audios = rootEl.querySelectorAll('audio.sc-audio-el[data-ref], audio[data-ref]');
+  [].forEach.call(audios, function(a) {
+    if (a.getAttribute('src')) return;
+    var ref = a.getAttribute('data-ref');
+    if (!ref) return;
+    // Envolver con el reproductor de notas si aún no tiene src: carga diferida al reproducir
+    // Para tarjetas mantenemos <audio controls> nativo pero con carga bajo demanda:
+    // solo asignamos src cuando el usuario pulsa play (una vez).
+    (function(el, r) {
+      var loaded = false;
+      el.addEventListener('play', function() {
+        if (loaded) return;
+        loaded = true;
+        if (typeof _mediaBlobUrls !== 'undefined' && _mediaBlobUrls[r]) { el.src = _mediaBlobUrls[r]; return; }
+        ImageManager.read(r).then(function(base64) {
+          if (!base64) { loaded = false; return; }
+          try {
+            var mime = ImageConverter.getMimeFromRef(r);
+            var blob = _base64ToBlob(base64, mime);
+            var url = URL.createObjectURL(blob);
+            _mediaBlobUrls[r] = url;
+            var wasPaused = el.paused;
+            el.src = url;
+            if (!wasPaused) { try { el.play(); } catch (e) {} }
+          } catch (e) { loaded = false; }
+        }).catch(function() { loaded = false; });
+      });
+    })(a, ref);
+  });
+  // Placeholders pesados: solo verificar existencia (stat, sin leer)
+  var heavies = rootEl.querySelectorAll('.hv-card[data-hv-card-ref]');
+  [].forEach.call(heavies, function(h) {
+    var ref = h.getAttribute('data-hv-card-ref');
+    if (!ref) return;
+    VideoManager.fileExists(ref).then(function(ok) {
+      if (!ok) showHeavyCardMissing(h);
+    });
+  });
+}
+/* Reproduce un video pesado dentro de una tarjeta (streaming nativo o blob fallback). */
+function playHeavyCardVideo(btn) {
+  var holder = btn ? btn.closest('.hv-card') : null;
+  if (!holder) return;
+  var ref = holder.getAttribute('data-hv-card-ref');
+  var mime = holder.getAttribute('data-hv-mime') || 'video/mp4';
+  var video = holder.querySelector('video.hv-video');
+  if (!ref || !video) return;
+  if (video.getAttribute('src')) {
+    if (video.paused) { try { video.play(); } catch (e) {} }
+    else { try { video.pause(); } catch (e) {} }
+    return;
+  }
+  btn.disabled = true;
+  VideoManager.getPlayableSrc(ref, mime).then(function(src) {
+    btn.disabled = false;
+    video.src = src;
+    video.style.display = 'block';
+    holder.classList.add('hv-playing');
+    video.onerror = function() { showHeavyCardError(holder); };
+    return video.play();
+  }).catch(function(err) {
+    btn.disabled = false;
+    if (err && err.code === 'NOT_FOUND') showHeavyCardMissing(holder);
+    else showHeavyCardError(holder);
+  });
+}
+function showHeavyCardMissing(holder) {
+  if (!holder) return;
+  holder.classList.add('hv-missing');
+  var errBox = holder.querySelector('.hv-error');
+  if (errBox) {
+    errBox.classList.remove('hidden');
+    errBox.innerHTML = '<div class="hv-warn">&#x26A0; ' + _hvText('Video no disponible', 'Video unavailable') + '</div>';
+  }
+  var playBtn = holder.querySelector('.hv-play');
+  if (playBtn) playBtn.style.display = 'none';
+}
+function showHeavyCardError(holder) {
+  if (!holder) return;
+  var errBox = holder.querySelector('.hv-error');
+  if (errBox) {
+    errBox.classList.remove('hidden');
+    errBox.innerHTML = '<div class="hv-warn">' + _hvText('No se pudo reproducir este video', 'Could not play this video') + '</div>';
+  }
+}
+/* Inserta plantilla LaTeX en el lado indicado de la tarjeta (reutiliza KaTeX al renderizar). */
+var _studyCardMediaTarget = null;
+function triggerStudyCardLatex(target) {
+  var id = target === 'front' ? 'studyCardFront' : 'studyCardBack';
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.focus();
+  var sel = window.getSelection();
+  var code = '$$x^{2}$$';
+  try {
+    if (sel && sel.rangeCount > 0) {
+      var range = sel.getRangeAt(0);
+      // Solo insertar si el foco está dentro del campo
+      if (el.contains(range.commonAncestorContainer) || el === range.commonAncestorContainer) {
+        var node = document.createTextNode(code);
+        range.deleteContents();
+        range.insertNode(node);
+        range.setStartAfter(node);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        return;
+      }
+    }
+  } catch (e) {}
+  el.innerHTML = (el.innerHTML || '') + code;
+  el.focus();
+}
+function triggerStudyCardVideo(target) {
+  _studyCardMediaTarget = target;
+  var inp = document.getElementById('studyCardVideoInput');
+  if (inp) { inp.value = ''; inp.click(); }
+}
+function triggerStudyCardAudio(target) {
+  _studyCardMediaTarget = target;
+  var inp = document.getElementById('studyCardAudioInput');
+  if (inp) { inp.value = ''; inp.click(); }
+}
+function _studyCardTargetEl() {
+  var id = _studyCardMediaTarget === 'front' ? 'studyCardFront' : 'studyCardBack';
+  return document.getElementById(id);
+}
+function handleStudyCardVideoFile(input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var el = _studyCardTargetEl();
+  input.value = '';
+  if (!el) return;
+  setStatus('Guardando video...');
+  persistVideoFile(file, function(done, total) {
+    setStatus('Copiando video... ' + (total ? Math.floor(done * 100 / total) : 100) + '%');
+  }).then(function(saved) {
+    var v = document.createElement('video');
+    v.setAttribute('controls', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('preload', 'metadata');
+    v.setAttribute('data-ref', saved.ref);
+    v.setAttribute('data-mode', saved.mode);
+    v.setAttribute('data-name', file.name || 'video');
+    v.setAttribute('data-size', String(saved.size || file.size || 0));
+    v.setAttribute('data-mime', file.type || VideoManager.guessMime(file.name || saved.ref));
+    if (saved.mediaId) v.setAttribute('data-media-id', saved.mediaId);
+    v.style.cssText = 'max-width:100%;width:100%;height:auto;border-radius:6px;margin:4px 0;display:block;background:#000;';
+    el.appendChild(v);
+    el.focus();
+    setStatus(saved.mode === 'file' ? 'Video pesado guardado como referencia.' : '');
+    loadStudyCardMedia(el);
+  }).catch(function(err) {
+    console.error('Error saving study card video:', err);
+    setStatus('No se pudo guardar el video.');
+  });
+}
+function handleStudyCardAudioFile(input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var el = _studyCardTargetEl();
+  input.value = '';
+  if (!el) return;
+  AudioConverter.toBase64(file).then(function(base64) {
+    var ext = (file.name.split('.').pop() || 'mp3').toLowerCase();
+    var ref = 'audios/sc-' + (_editStudySetId || 'set') + '-' + generateImageId() + '.' + ext;
+    return ImageManager.save(ref, base64).then(function() { return ref; });
+  }).then(function(ref) {
+    var a = document.createElement('audio');
+    a.setAttribute('controls', '');
+    a.setAttribute('preload', 'none');
+    a.setAttribute('data-ref', ref);
+    a.style.cssText = 'max-width:100%;width:100%;margin:4px 0;display:block;';
+    el.appendChild(a);
+    el.focus();
+    loadStudyCardMedia(el);
+  }).catch(function(err) {
+    console.error('Error saving study card audio:', err);
+  });
+}
+function collectStudyCardMediaRefs(html) {
+  var refs = [];
+  if (!html) return refs;
+  var re = /data-(?:ref|hv-card-ref)="([^"]+)"/g;
+  var m;
+  while ((m = re.exec(html)) !== null) { if (refs.indexOf(m[1]) === -1) refs.push(m[1]); }
+  return refs;
 }
 function deleteStudyCard(setId, cardId) {
   if (!confirm(t('del') + '?')) return;
   var set = state.studySets.find(function(s) { return s.id === setId; });
   if (!set) return;
+  var doomed = set.cards.find(function(c) { return c.id === cardId; });
+  var orphanRefs = [];
+  if (doomed) {
+    var frontRefs = collectStudyCardMediaRefs(doomed.front);
+    var backRefs = collectStudyCardMediaRefs(doomed.back);
+    frontRefs.forEach(function(r) { if (orphanRefs.indexOf(r) === -1) orphanRefs.push(r); });
+    backRefs.forEach(function(r) { if (orphanRefs.indexOf(r) === -1) orphanRefs.push(r); });
+  }
   set.cards = set.cards.filter(function(c) { return c.id !== cardId; });
   save(); renderStudyContent();
+  // Limpieza física segura con refcount (incluye tarjetas en el conteo)
+  orphanRefs.forEach(function(ref) { try { VideoManager.deletePhysicalIfOrphan(ref); } catch (e) {} });
 }
 
 function showMilestoneReminder() {
@@ -5762,6 +6502,8 @@ function renderNoteContent() {
         html += '<span class="item-actions">';
         html += '<button class="btn btn-sm btn-icon" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
         html += '</span></div>';
+      } else if (item.type === 'drawing') {
+        html += DrawingNote.itemHtml(note.id, item);
       } else if (item.type === 'audio') {
         html += '<div class="list-item image-item item-audio-block" data-id="' + item.id + '">';
         html += '<div class="audio-player-wrap" data-ref="' + escapeHtml(item.ref) + '"></div>';
@@ -5894,7 +6636,8 @@ function renderNoteContent() {
   html += '<span class="hl-color" role="button" tabindex="0" aria-label="Quitar color" style="background:transparent;border:1px dashed var(--text-muted);display:inline-flex;align-items:center;justify-content:center;font-size:14px;" onmousedown="event.preventDefault()" onclick="selectRemoveTextColor();event.stopPropagation();" title="Quitar color">&#x2716;</span>';
   html += '</div></div>';
   html += '<div style="display:inline-block;">';
-  html += '<button class="fmt-btn hl-toggle" onclick="applyHighlight()" title="' + t('highlight') + '"><span style="background:' + _hlColor + ';padding:0 2px;font-weight:bold;">A</span></button>';
+  var _hlInk = (_hlColor === 'transparent') ? '' : 'color:#000;';
+  html += '<button class="fmt-btn hl-toggle" onclick="applyHighlight()" title="' + t('highlight') + '"><span style="background:' + _hlColor + ';' + _hlInk + 'padding:0 2px;font-weight:bold;">A</span></button>';
   html += '<div id="hlPalette" class="hidden" style="position:fixed;z-index:10000;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px;display:flex;gap:3px;">';
   html += '<span class="hl-color" style="background:#ffff00;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#ffff00\');event.stopPropagation();" title="Yellow"></span>';
   html += '<span class="hl-color" style="background:#87ceeb;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#87ceeb\');event.stopPropagation();" title="Celeste"></span>';
@@ -5911,6 +6654,7 @@ function renderNoteContent() {
   html += '<button class="btn fmt-action" onclick="addItem()" title="' + t('addItem') + '">[&#x2713;]</button>';
   html += '<button class="btn fmt-action" onclick="addTextItem()" title="' + t('addText') + '"><b>T</b></button>';
   html += '<button class="btn fmt-action" onclick="triggerInsertImage()" title="' + t('insertImage') + '">&#x1f304;</button>';
+  html += '<button class="btn fmt-action" onclick="DrawingNote.start()" title="' + t('drawing') + '">&#x270F; ' + t('drawing') + '</button>';
   html += '<button class="btn fmt-action" onclick="document.getElementById(\'audioInput\').click()" title="' + t('insertAudio') + '">&#x1F3A4; ' + t('insertAudio') + '</button>';
   html += '<button class="btn fmt-action" onclick="document.getElementById(\'videoInput\').click()" title="' + t('insertVideo') + '">&#x1F3AC; ' + t('insertVideo') + '</button>';
   html += '<button class="btn fmt-action" onclick="showTableDialog()" title="' + t('insertTable') + '">&#x229E;</button>';
@@ -6134,7 +6878,7 @@ function updatePostitText(boardId, postitId, text) {
   var board = state.boards.find(function(b) { return b.id === boardId; });
   if (!board) return;
   var p = board.postits.find(function(p) { return p.id === postitId; });
-  if (p) { p.text = unparseNoteLinks(unrenderLatexInHtml(text || '')); save(); }
+  if (p) { p.text = unparseNoteLinks(unrenderLatexInHtml(unparseRegistroSpans(text || ''))); save(); }
 }
 
 function cancelConnect() {
@@ -6233,7 +6977,94 @@ function toggleFavorite(noteId) {
   renderNoteContent();
 }
 
+/* === Exportacion v2: conserva el formato via www/export/*.js ===
+ * Nota -> NoteDoc.parse() -> PdfExporter / DocxExporter / TxtExporter.
+ * El motor anterior se conserva como exportNoteTo*Legacy y se usa como
+ * reserva automatica ante cualquier fallo (spec 19 y 21). */
+var EXPORT_ENGINE = 'v2';
+
+function mibabelExportDeps() {
+  return {
+    fetchFont: function(kind) {
+      var files = {
+        regular: 'NotoSans-Regular.ttf',
+        bold: 'NotoSans-Bold.ttf',
+        italic: 'NotoSans-Italic.ttf',
+        boldItalic: 'NotoSans-BoldItalic.ttf'
+      };
+      return fetch('lib/' + (files[kind] || files.regular)).then(function(r) {
+        if (!r.ok) throw new Error('Font not found: ' + kind);
+        return r.arrayBuffer();
+      });
+    },
+    loadImageBytes: function(ref) {
+      return ImageManager.read(ref).then(function(b64) {
+        if (!b64) return null;
+        /* Tamano natural (0/0 = intrinseco): la escala la decide el
+         * exportador para no deformar nunca la imagen. */
+        return ImageConverter.webpToPng(b64, 0, 0).then(function(png) {
+          if (!png) return null;
+          return { bytes: ImageConverter.base64ToBytes(png), width: null, height: null };
+        });
+      });
+    },
+    probeDataUrl: function(url) {
+      return new Promise(function(resolve) {
+        try {
+          var img = new Image();
+          var done = false;
+          var timer = setTimeout(function() { if (!done) { done = true; resolve(null); } }, 8000);
+          img.onload = function() {
+            if (done) return; done = true; clearTimeout(timer);
+            resolve({ width: img.naturalWidth || img.width || 0, height: img.naturalHeight || img.height || 0 });
+          };
+          img.onerror = function() { if (!done) { done = true; clearTimeout(timer); resolve(null); } };
+          img.src = url;
+        } catch (e) { resolve(null); }
+      });
+    },
+    renderEquation: function(latex, display, maxWidth) {
+      var src = display ? '$$\n' + latex + '\n$$' : '$' + latex + '$';
+      var html = renderLatexInHtml(parseNoteLinks(src));
+      return renderTextToCanvas(html, maxWidth || 560).then(function(r) {
+        if (!r || !r.base64) return null;
+        return { bytes: ImageConverter.base64ToBytes(r.base64), width: r.width, height: r.height };
+      });
+    }
+  };
+}
+
 function exportNoteToPdf(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  if (EXPORT_ENGINE !== 'v2' || !window.NoteDoc || !window.PdfExporter || !window.PDFLib) {
+    return exportNoteToPdfLegacy(noteId);
+  }
+  showToast(t('processingExport'));
+  var doc;
+  try {
+    doc = NoteDoc.parse(note, { emptyLabel: t('addItemsPrompt') });
+  } catch (e) {
+    console.error('Export v2 parse error, usando motor anterior:', e);
+    return exportNoteToPdfLegacy(noteId);
+  }
+  try {
+    PdfExporter.build(doc, mibabelExportDeps()).then(function(res) {
+      (res.warnings || []).forEach(function(w) { setStatus('Export PDF: ' + w); });
+      if (res.warnings && res.warnings.length) showToast(res.warnings[0]);
+      saveFile(sanitizeFilename(note.title) + '.pdf', res.bytes, 'application/pdf');
+      trackExport();
+    }).catch(function(e) {
+      console.error('Export v2 PDF error, usando motor anterior:', e);
+      exportNoteToPdfLegacy(noteId);
+    });
+  } catch (e) {
+    console.error('Export v2 PDF error, usando motor anterior:', e);
+    exportNoteToPdfLegacy(noteId);
+  }
+}
+
+function exportNoteToPdfLegacy(noteId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   trackExport();
@@ -6271,16 +7102,21 @@ function exportNoteToPdf(noteId) {
         var y = 800;
         var processPromise = note.items.reduce(function(promise, item) {
           return promise.then(function() {
-            if (item.type === 'image') {
-              return ImageManager.read(item.src).then(function(base64) {
+            var _isDrawing = item.type === 'drawing';
+            if (item.type === 'image' || _isDrawing) {
+              var _imgRef = _isDrawing ? item.previewRef : item.src;
+              var _imgW = _isDrawing ? (item.drawing && item.drawing.width) || 0 : item.width;
+              var _imgH = _isDrawing ? (item.drawing && item.drawing.height) || 0 : item.height;
+              if (!_imgRef) return;
+              return ImageManager.read(_imgRef).then(function(base64) {
                 if (!base64) { y -= 18; return; }
-                return ImageConverter.webpToPng(base64, item.width, item.height).then(function(pngBase64) {
+                return ImageConverter.webpToPng(base64, _imgW, _imgH).then(function(pngBase64) {
                   var pngBytes = ImageConverter.base64ToBytes(pngBase64);
                   return pdfDoc.embedPng(pngBytes).then(function(pngImage) {
                     if (y < 50) { page = pdfDoc.addPage([595.28, 841.89]); y = 800; }
                     var maxWidth = 495.28;
-                    var drawW = item.width || 200;
-                    var drawH = item.height || 150;
+                    var drawW = _imgW || 200;
+                    var drawH = _imgH || 150;
                     var scale = Math.min(1, maxWidth / drawW);
                     drawW = Math.round(drawW * scale);
                     drawH = Math.round(drawH * scale);
@@ -6347,6 +7183,10 @@ function getExportText(noteId) {
       text += '[Imagen' + (item.caption ? ': ' + item.caption : '') + ']\n\n';
       return;
     }
+    if (item.type === 'drawing') {
+      text += '[Dibujo]\n\n';
+      return;
+    }
     var t = (item.text || '').replace(/<[^>]*>/g, '').trim();
     if (!t) return;
     if (item.type === 'text') text += t + '\n\n';
@@ -6357,11 +7197,57 @@ function getExportText(noteId) {
 function exportNoteToTxt(noteId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
+  if (EXPORT_ENGINE !== 'v2' || !window.NoteDoc || !window.TxtExporter) {
+    return exportNoteToTxtLegacy(noteId);
+  }
+  var doc;
+  try {
+    doc = NoteDoc.parse(note, { emptyLabel: t('addItemsPrompt') });
+  } catch (e) {
+    console.error('Export v2 parse error, usando motor anterior:', e);
+    return exportNoteToTxtLegacy(noteId);
+  }
+  var text = TxtExporter.toText(doc, { emptyLabel: t('addItemsPrompt') });
+  saveFile(sanitizeFilename(note.title) + '.txt', text, 'text/plain');
+  trackExport();
+}
+function exportNoteToTxtLegacy(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
   var text = getExportText(noteId);
   saveFile(sanitizeFilename(note.title) + '.txt', text, 'text/plain');
   trackExport();
 }
 function exportNoteToDoc(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  if (EXPORT_ENGINE !== 'v2' || !window.NoteDoc || !window.DocxExporter || !window.docx) {
+    return exportNoteToDocLegacy(noteId);
+  }
+  showToast(t('processingExport'));
+  var doc;
+  try {
+    doc = NoteDoc.parse(note, { emptyLabel: t('addItemsPrompt') });
+  } catch (e) {
+    console.error('Export v2 parse error, usando motor anterior:', e);
+    return exportNoteToDocLegacy(noteId);
+  }
+  try {
+    DocxExporter.build(doc, mibabelExportDeps()).then(function(res) {
+      (res.warnings || []).forEach(function(w) { setStatus('Export DOCX: ' + w); });
+      if (res.warnings && res.warnings.length) showToast(res.warnings[0]);
+      saveFile(sanitizeFilename(note.title) + '.docx', res.blob, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+      trackExport();
+    }).catch(function(e) {
+      console.error('Export v2 DOCX error, usando motor anterior:', e);
+      exportNoteToDocLegacy(noteId);
+    });
+  } catch (e) {
+    console.error('Export v2 DOCX error, usando motor anterior:', e);
+    exportNoteToDocLegacy(noteId);
+  }
+}
+function exportNoteToDocLegacy(noteId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
   if (!note) return;
   trackExport();
@@ -6370,16 +7256,21 @@ function exportNoteToDoc(noteId) {
     var children = [];
     var processPromise = note.items.reduce(function(promise, item) {
       return promise.then(function() {
-        if (item.type === 'image') {
-          return ImageManager.read(item.src).then(function(base64) {
+        var _isDrawing = item.type === 'drawing';
+        if (item.type === 'image' || _isDrawing) {
+          var _imgRef = _isDrawing ? item.previewRef : item.src;
+          var _imgW = _isDrawing ? (item.drawing && item.drawing.width) || 0 : item.width;
+          var _imgH = _isDrawing ? (item.drawing && item.drawing.height) || 0 : item.height;
+          if (!_imgRef) return;
+          return ImageManager.read(_imgRef).then(function(base64) {
             if (!base64) return;
-            return ImageConverter.webpToPng(base64, item.width, item.height).then(function(pngBase64) {
+            return ImageConverter.webpToPng(base64, _imgW, _imgH).then(function(pngBase64) {
               var pngBytes = ImageConverter.base64ToBytes(pngBase64);
               try {
                 children.push(new docx.Paragraph({
                   children: [new docx.ImageRun({
                     data: pngBytes,
-                    transformation: { width: Math.min(item.width || 400, 500), height: Math.min(item.height || 300, 500) }
+                    transformation: { width: Math.min(_imgW || 400, 500), height: Math.min(_imgH || 300, 500) }
                   })],
                   spacing: { before: 200, after: item.caption ? 40 : 200 }
                 }));
@@ -9206,7 +10097,7 @@ state.boards.forEach(function(b) {
 state.studySets.forEach(function(s) {
   if (typeof s.id === 'string') s.id = Number(s.id);
   if (!s.cards) s.cards = [];
-  if (s.cards) s.cards.forEach(function(c) { if (typeof c.id === 'string') c.id = Number(c.id); });
+  if (s.cards) s.cards.forEach(function(c) { if (typeof c.id === 'string') c.id = Number(c.id); if (c && c._knew !== undefined) delete c._knew; });
 });
 if (typeof state.activeNoteId === 'string') state.activeNoteId = Number(state.activeNoteId);
 if (typeof state.activeBoardId === 'string') state.activeBoardId = Number(state.activeBoardId);
@@ -9222,6 +10113,10 @@ state.folders.forEach(function(f){ if(typeof f.id==='string') f.id=Number(f.id);
 if(typeof state.activeFolderId==='string') state.activeFolderId=Number(state.activeFolderId)||null;
 if(state.activeFolderId!=null && !state.folders.find(function(f){return f.id===state.activeFolderId;})) state.activeFolderId=null;
 ensureRootOrder();
+// Migración de ciclo de vida de Registros: limpiar huérfanos legacy
+// (asignaciones de notas ya eliminadas) por reconstrucción idempotente.
+// Compatible: solo elimina fechas sin nota origen; preserva datos válidos.
+try { rebuildAllRegistroEntries(); } catch (e) { console.warn('registro rebuild', e); }
 // Al reabrir tras cierre completo, siempre arrancar en Notas (no dentro de nota/tablero protegido)
 state.view = 'notes';
 state.activeNoteId = null;
@@ -9235,6 +10130,8 @@ renderAll();
 applyTheme();
 applyLang();
 document.documentElement.lang = state.lang || 'en';
+/* La interfaz principal ya está lista: la intro de inicio puede cerrarse */
+try { if (window.BabelIntro) BabelIntro.markReady(); } catch (e) { console.warn('Intro markReady', e); }
 
 ImageManager.init().then(function() {
   ImageManager.cleanupOrphans();
@@ -9312,7 +10209,7 @@ function fabClick() {
   if (_fabLongPressed) { _fabLongPressed = false; return; }
   if (state.view === 'board') showNewBoardDialog();
   else if (state.view === 'diary') openTodayDiary();
-  else if (state.view === 'habits') openHabitDialog('task');
+  else if (state.view === 'habits') openHabitDialog('task','daily');
   else if (state.view === 'registros') {
     if (state.activeRegistroId) { editRegistro(state.activeRegistroId); return; }
     openRegistroDialog();
@@ -9341,7 +10238,7 @@ function getFabMenuItems() {
     return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
   }
   if (state.view === 'diary') return [];
-  if (state.view === 'habits') return [{ label: t('habitTask'), action: function(){ openHabitDialog('task'); } }, { label: t('habitCounter'), action: function(){ openHabitDialog('counter'); } }];
+  if (state.view === 'habits') return [{ label: t('habitTask')+' ('+t('habitDaily')+')', action: function(){ openHabitDialog('task','daily'); } }, { label: t('habitCounter')+' ('+t('habitDaily')+')', action: function(){ openHabitDialog('counter','daily'); } }, { label: t('habitTask')+' ('+t('habitWeekly')+')', action: function(){ openHabitDialog('task','weekly'); } }, { label: t('habitCounter')+' ('+t('habitWeekly')+')', action: function(){ openHabitDialog('counter','weekly'); } }, { label: t('habitTask')+' ('+t('habitMonthly')+')', action: function(){ openHabitDialog('task','monthly'); } }, { label: t('habitCounter')+' ('+t('habitMonthly')+')', action: function(){ openHabitDialog('counter','monthly'); } }];
   if (state.view === 'registros') return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
   return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
 }
@@ -9483,6 +10380,9 @@ function switchView(view) {
   else if (view === 'habits') { processHabitsDayChange(); renderHabitsView(); }
   else if (view === 'registros') { renderRegistrosView(); }
   else { renderNoteContent(); }
+  // Garantía de sincronía header/vista (idempotente; cada render ya lo llama,
+  // pero el calendario no lo hacía y dejaba el header de Registros persistente).
+  try { updateBackBtn(); } catch (e) {}
 }
 
 function renderAll() {
@@ -9977,6 +10877,22 @@ function processHabitsDayChange(opts){
   var changed=false;
   function parseDateStr(s){ var p=s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
   state.habits.forEach(function(h){
+    if(habitFreqOf(h)!=='daily'){
+      if(!h.lastProcessedDate){ h.lastProcessedDate=todayStr; changed=true; }
+      var curPk=habitPeriodKey(habitFreqOf(h),todayStr);
+      if(!h.lastPeriodKey){ h.lastPeriodKey=curPk; changed=true; }
+      if(isImport){ h.lastProcessedDate=todayStr; h.lastPeriodKey=curPk; changed=true; if(syncHabitDerived(h,todayStr)) changed=true; return; }
+      if(h.lastPeriodKey===curPk){
+        if(h.lastProcessedDate!==todayStr){ h.lastProcessedDate=todayStr; changed=true; }
+        if(syncHabitDerived(h,todayStr)) changed=true;
+        return;
+      }
+      // cambio de período: resetear progreso del período, la racha se deriva del log
+      h.status='pending'; h.current=0; changed=true;
+      h.lastPeriodKey=curPk; h.lastProcessedDate=todayStr;
+      if(syncHabitDerived(h,todayStr)) changed=true;
+      return;
+    }
     if(!h.lastProcessedDate){
       h.lastProcessedDate = todayStr;
       changed=true;
@@ -10015,9 +10931,14 @@ function processHabitsDayChange(opts){
 }
 
 function onHabitTypeChange(){
-  var type = document.getElementById('habitType').value;
+  var typeEl=document.getElementById('habitType');
+  var freqEl=document.getElementById('habitFreq');
+  var type = typeEl?typeEl.value:'task';
+  var freq = freqEl?freqEl.value:'daily';
   var cf = document.getElementById('habitCounterFields');
   if(cf) cf.style.display = type==='counter' ? 'block' : 'none';
+  var gw = document.getElementById('habitGoalWrap');
+  if(gw) gw.style.display = (type==='task'&&freq!=='daily') ? 'block' : 'none';
 }
 
 function selectHabitIcon(icon){
@@ -10030,13 +10951,15 @@ function selectHabitColor(color){
   if(el) el.value = color;
 }
 
-function openHabitDialog(type){
+function openHabitDialog(type,freq){
   _editingHabitId = null;
   var dlgTitle = document.getElementById('habitDialogTitle');
   if(dlgTitle) dlgTitle.textContent = t('habitCreateTitle');
   var saveBtn = document.getElementById('habitSaveBtn');
   if(saveBtn) saveBtn.textContent = t('createHabit');
   document.getElementById('habitType').value = type||'task';
+  var fq=document.getElementById('habitFreq'); if(fq) fq.value=freq||'daily';
+  var gw=document.getElementById('habitGoal'); if(gw) gw.value='3';
   document.getElementById('habitName').value = '';
   document.getElementById('habitDesc').value = '';
   document.getElementById('habitIcon').value = '';
@@ -10047,6 +10970,8 @@ function openHabitDialog(type){
   if(ne){ ne.style.display='none'; ne.textContent=''; }
   var ce = document.getElementById('habitCounterError');
   if(ce){ ce.style.display='none'; ce.textContent=''; }
+  var ge = document.getElementById('habitGoalError');
+  if(ge){ ge.style.display='none'; ge.textContent=''; }
   onHabitTypeChange();
   applyLang();
   showDialog('habitDialog');
@@ -10062,6 +10987,8 @@ function editHabit(uuid){
   var saveBtn = document.getElementById('habitSaveBtn');
   if(saveBtn) saveBtn.textContent = t('save');
   document.getElementById('habitType').value = h.type;
+  var fq=document.getElementById('habitFreq'); if(fq) fq.value=habitFreqOf(h);
+  var gw=document.getElementById('habitGoal'); if(gw) gw.value=String(habitGoalOf(h));
   document.getElementById('habitName').value = h.name||'';
   document.getElementById('habitDesc').value = h.description||'';
   document.getElementById('habitIcon').value = h.icon||'';
@@ -10074,6 +11001,8 @@ function editHabit(uuid){
   if(ne){ ne.style.display='none'; ne.textContent=''; }
   var ce = document.getElementById('habitCounterError');
   if(ce){ ce.style.display='none'; ce.textContent=''; }
+  var ge = document.getElementById('habitGoalError');
+  if(ge){ ge.style.display='none'; ge.textContent=''; }
   onHabitTypeChange();
   applyLang();
   hideContextMenu();
@@ -10083,16 +11012,30 @@ function editHabit(uuid){
 function validateHabitForm(){
   var name = document.getElementById('habitName').value.trim();
   var type = document.getElementById('habitType').value;
+  var freqEl=document.getElementById('habitFreq');
+  var freq=freqEl?freqEl.value:'daily';
+  if(freq!=='daily'&&freq!=='weekly'&&freq!=='monthly') freq='daily';
   var ne = document.getElementById('habitNameError');
   var ce = document.getElementById('habitCounterError');
+  var ge = document.getElementById('habitGoalError');
   if(ne){ ne.style.display='none'; ne.textContent=''; }
   if(ce){ ce.style.display='none'; ce.textContent=''; }
+  if(ge){ ge.style.display='none'; ge.textContent=''; }
   if(!name){
     if(ne){ ne.textContent = t('habitNameRequired'); ne.style.display='block'; }
     document.getElementById('habitName').focus();
     return null;
   }
-  var obj = { name:name, description: document.getElementById('habitDesc').value.trim(), icon: document.getElementById('habitIcon').value.trim(), color: document.getElementById('habitColor').value||'#5b7db5', type:type };
+  var obj = { name:name, description: document.getElementById('habitDesc').value.trim(), icon: document.getElementById('habitIcon').value.trim(), color: document.getElementById('habitColor').value||'#5b7db5', type:type, freq:freq };
+  if(type==='task'&&freq!=='daily'){
+    var maxG=freq==='weekly'?7:31;
+    var goal=parseInt(document.getElementById('habitGoal').value,10);
+    if(isNaN(goal)||goal<1||goal>maxG){
+      if(ge){ ge.textContent=t('habitGoalInvalid'); ge.style.display='block'; }
+      return null;
+    }
+    obj.goal=goal;
+  } else if(type==='task'){ obj.goal=1; }
   if(type==='counter'){
     var total = parseInt(document.getElementById('habitTotal').value,10);
     var step = parseInt(document.getElementById('habitStep').value,10);
@@ -10120,25 +11063,49 @@ function saveHabit(){
   if(_editingHabitId){
     var h = getHabitByUuid(_editingHabitId);
     if(!h) return;
+    var oldFreq=habitFreqOf(h);
     h.name = data.name;
     h.description = data.description;
     h.icon = data.icon;
     h.color = data.color;
+    h.freq = data.freq||'daily';
+    if(h.type==='task'&&h.freq!=='daily'){ h.goal=data.goal||3; } else if(h.type==='task'){ h.goal=1; }
+    if(data.freq&&data.freq!==oldFreq){
+      // cambio de frecuencia: reiniciar progreso del período actual, conservar dailyLog y racha recalculada
+      h.status='pending'; h.current=0;
+      var tk0=habitTodayKey(); h.lastPeriodKey=habitPeriodKey(habitFreqOf(h),tk0); h.lastProcessedDate=tk0;
+    }
     // tipo no se cambia si ya tiene progreso? permitimos pero ajustamos
     if(h.type !== data.type){
       h.type = data.type;
-      if(data.type==='counter'){ h.total=data.total; h.step=data.step; h.current=Math.min(h.current||0, h.total); }
-      else { delete h.total; delete h.step; }
+      if(data.type==='counter'){ h.total=data.total; h.step=data.step; h.current=Math.min(h.current||0, h.total); delete h.goal; }
+      else { delete h.total; delete h.step; h.goal=(h.freq&&h.freq!=='daily')?(data.goal||3):1; h.current=habitPeriodDoneCount(h,habitCurrentPeriodKey(h,habitTodayKey())); }
       // si cambia a task y estaba completado con counter, mantener completado lógica
     } else if(h.type==='counter'){
       var oldTotal = h.total;
       h.total = data.total;
       h.step = data.step;
-      if(h.current > h.total) h.current = h.total;
-      if(h.current===h.total && h.status==='pending'){ /* si ahora alcanza total, completar */ }
-      if(h.status==='completed' && h.current < h.total) h.status='pending';
-      if(h.current===h.total) { h.status='completed'; handleHabitCompleted(h); }
+      if(h.freq==='daily'){
+        if(h.current > h.total) h.current = h.total;
+        if(h.current===h.total && h.status==='pending'){ /* si ahora alcanza total, completar */ }
+        if(h.status==='completed' && h.current < h.total) h.status='pending';
+        if(h.current===h.total) { h.status='completed'; handleHabitCompleted(h); }
+      } else {
+        var pkE=habitCurrentPeriodKey(h,habitTodayKey());
+        var sumE=habitPeriodSum(h,pkE);
+        h.current=Math.min(sumE,h.total);
+        if(habitIsPeriodComplete(h,pkE)){ h.status='completed'; }
+        else if(h.status==='completed'){ h.status='pending'; }
+      }
+    } else {
+      // task: reconciliar progreso del período
+      var pkT=habitCurrentPeriodKey(h,habitTodayKey());
+      var cT=habitPeriodDoneCount(h,pkT);
+      h.current=cT;
+      if(cT>=habitGoalOf(h)){ h.status='completed'; }
+      else if(h.status==='completed'){ h.status='pending'; }
     }
+    normalizeHabitRecord(h,habitTodayKey());
   } else {
     var todayStr = getDateStr(new Date());
     var nh = {
@@ -10148,14 +11115,17 @@ function saveHabit(){
       icon: data.icon,
       color: data.color,
       type: data.type,
+      freq: data.freq||'daily',
       current: 0,
       status: 'pending',
       streak: 0,
       lastCompletedDate: null,
       lastProcessedDate: todayStr,
+      lastPeriodKey: habitPeriodKey(data.freq||'daily',todayStr),
       createdAt: Date.now(),
       dailyLog: {}
     };
+    if(data.type==='task'){ nh.goal=(nh.freq!=='daily')?(data.goal||3):1; }
     if(data.type==='counter'){ nh.total=data.total; nh.step=data.step; }
     if(!state.habits) state.habits=[];
     state.habits.push(nh);
@@ -10194,6 +11164,78 @@ function habitDiffDays(aKey,bKey){
   return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.getDate())-Date.UTC(a.getFullYear(),a.getMonth(),a.getDate()))/86400000);
 }
 function habitTodayKey(){ return getDateStr(new Date()); }
+function habitFreqOf(h){ var f=h&&h.freq; if(f==='weekly'||f==='monthly'||f==='daily') return f; return 'daily'; }
+function habitGoalOf(h){
+  if(!h||h.type!=='task') return 1;
+  if(habitFreqOf(h)==='daily') return 1;
+  var g=parseInt(h.goal,10);
+  if(isNaN(g)||g<1) return 1;
+  if(habitFreqOf(h)==='weekly') return Math.min(g,7);
+  return Math.min(g,31);
+}
+function habitPeriodKey(freq,dateKey){
+  if(freq==='monthly') return dateKey.slice(0,7);
+  if(freq==='weekly'){
+    var dt=habitKeyToDate(dateKey); if(!dt) return dateKey;
+    var mondayFirst=(typeof state!=='undefined'&&state&&state.weekStartsMonday!==false);
+    var dow=dt.getDay();
+    var off=mondayFirst?(dow+6)%7:dow;
+    var start=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()-off);
+    return habitDateToKey(start);
+  }
+  return dateKey;
+}
+function habitCurrentPeriodKey(h,todayKey){ return habitPeriodKey(habitFreqOf(h), todayKey||habitTodayKey()); }
+function habitPeriodRange(freq,periodKey){
+  if(freq==='monthly'){
+    var m=/^(\d{4})-(\d{2})$/.exec(periodKey);
+    if(!m) return null;
+    var y=+m[1], mo=+m[2];
+    var last=new Date(y,mo,0).getDate();
+    var start=y+'-'+(mo<10?'0':'')+mo+'-01';
+    var end=y+'-'+(mo<10?'0':'')+mo+'-'+(last<10?'0':'')+last;
+    return {start:start,end:end};
+  }
+  if(freq==='weekly'){
+    var s=habitKeyToDate(periodKey); if(!s) return null;
+    var e=new Date(s.getFullYear(),s.getMonth(),s.getDate()+6);
+    return {start:periodKey,end:habitDateToKey(e)};
+  }
+  return {start:periodKey,end:periodKey};
+}
+function habitPeriodDoneCount(h,periodKey){
+  var freq=habitFreqOf(h);
+  if(freq==='daily') return habitIsDone(h,periodKey)?1:0;
+  var range=habitPeriodRange(freq,periodKey); if(!range) return 0;
+  var log=ensureHabitLog(h); var c=0;
+  for(var k in log){ if(!Object.prototype.hasOwnProperty.call(log,k)) continue; if(k<range.start||k>range.end) continue; var e=log[k]; if(e&&e.done===true) c++; }
+  return c;
+}
+function habitPeriodSum(h,periodKey){
+  var freq=habitFreqOf(h);
+  var range=habitPeriodRange(freq,periodKey); if(!range) return 0;
+  var log=ensureHabitLog(h); var s=0;
+  for(var k in log){ if(!Object.prototype.hasOwnProperty.call(log,k)) continue; if(k<range.start||k>range.end) continue; var e=log[k]; if(e&&e.v!=null&&!isNaN(Number(e.v))) s+=Math.max(0,Number(e.v)); else if(e&&e.done===true) s+=habitDayTotal(h,k); }
+  return s;
+}
+function habitIsPeriodComplete(h,periodKey){
+  var freq=habitFreqOf(h);
+  if(freq==='daily') return habitIsDone(h,periodKey);
+  if(h.type==='counter') return habitPeriodSum(h,periodKey)>=(h.total||0)&&(h.total>0);
+  return habitPeriodDoneCount(h,periodKey)>=habitGoalOf(h);
+}
+function habitPeriodProgress(h,todayKey){
+  todayKey=todayKey||habitTodayKey();
+  var freq=habitFreqOf(h);
+  var pk=habitPeriodKey(freq,todayKey);
+  if(h.type==='counter'){
+    var cur=(h.current!=null)?Number(h.current):0;
+    if(!(cur>=0)) cur=0;
+    return {done:habitPeriodDoneCount(h,pk),sum:habitPeriodSum(h,pk),current:cur,isComplete:!!(h.status==='completed')};
+  }
+  var c=habitPeriodDoneCount(h,pk);
+  return {done:c,goal:habitGoalOf(h),isComplete:!!(h.status==='completed')};
+}
 function ensureHabitLog(h){ if(!h.dailyLog||typeof h.dailyLog!=='object'||Array.isArray(h.dailyLog)) h.dailyLog={}; return h.dailyLog; }
 function habitDayEntry(h,key){ var log=ensureHabitLog(h); var e=log[key]; return (e&&typeof e==='object')?e:null; }
 function habitIsDone(h,key){ var e=habitDayEntry(h,key); return !!(e&&e.done===true); }
@@ -10240,8 +11282,84 @@ function habitStartKey(h,todayKey){
   if(start===null||start>todayKey) start=todayKey;
   return start;
 }
+function habitMonthKeyToIdx(mk){ var m=/^(\d{4})-(\d{2})$/.exec(mk); if(!m) return null; return (+m[1])*12+(+m[2])-1; }
+function habitIdxToMonthKey(idx){ var y=Math.floor(idx/12); var mo=idx%12+1; return y+'-'+(mo<10?'0':'')+mo; }
+function habitPeriodsBetween(freq,startPk,endPk){
+  var out=[];
+  if(freq==='monthly'){
+    var s=habitMonthKeyToIdx(startPk), e=habitMonthKeyToIdx(endPk);
+    if(s==null||e==null) return out;
+    for(var i=s;i<=e;i++) out.push(habitIdxToMonthKey(i));
+    return out;
+  }
+  if(freq==='weekly'){
+    var sd=habitKeyToDate(startPk), ed=habitKeyToDate(endPk);
+    if(!sd||!ed) return out;
+    var cur=new Date(sd.getFullYear(),sd.getMonth(),sd.getDate());
+    var guard=0;
+    while(cur<=ed&&guard<500){ out.push(habitDateToKey(cur)); cur=new Date(cur.getFullYear(),cur.getMonth(),cur.getDate()+7); guard++; }
+    return out;
+  }
+  return out;
+}
+function habitPeriodsAdjacent(freq,aPk,bPk){
+  if(freq==='monthly'){ var ai=habitMonthKeyToIdx(aPk), bi=habitMonthKeyToIdx(bPk); return bi!=null&&ai!=null&&(bi-ai===1); }
+  if(freq==='weekly'){ return habitDiffDays(aPk,bPk)===7; }
+  return habitDiffDays(aPk,bPk)===1;
+}
+function habitCompletePeriods(h,todayKey){
+  var freq=habitFreqOf(h);
+  if(freq==='daily') return [];
+  todayKey=todayKey||habitTodayKey();
+  var curPk=habitPeriodKey(freq,todayKey);
+  var startDateKey=habitStartKey(h,todayKey);
+  var startPk=habitPeriodKey(freq,startDateKey);
+  var all=habitPeriodsBetween(freq,startPk,curPk);
+  var out=[];
+  for(var i=0;i<all.length;i++){ if(habitIsPeriodComplete(h,all[i])) out.push(all[i]); }
+  return out;
+}
 function computeHabitStats(h,todayKey){
   todayKey=todayKey||habitTodayKey();
+  var freq=habitFreqOf(h);
+  if(freq!=='daily'){
+    var doneDays=habitDoneKeys(h,todayKey);
+    var comp=habitCompletePeriods(h,todayKey);
+    var streaks=[]; var run=null;
+    for(var i=0;i<comp.length;i++){
+      if(run&&habitPeriodsAdjacent(freq,run.end,comp[i])){ run.end=comp[i]; run.len++; }
+      else { run={start:comp[i],end:comp[i],len:1}; streaks.push(run); }
+    }
+    var curPk=habitPeriodKey(freq,todayKey);
+    var current=0, alive=false;
+    if(streaks.length){
+      var last=streaks[streaks.length-1];
+      if(last.end===curPk){ current=last.len; alive=true; }
+      else {
+        // si el período actual aún está en curso y el último completo es el inmediato anterior, mantener racha viva
+        var allPk=habitPeriodsBetween(freq,last.end,curPk);
+        if(allPk.length===2&&habitPeriodsAdjacent(freq,last.end,curPk)){ current=last.len; alive=true; }
+        else if(last.end===curPk){ current=last.len; alive=true; }
+      }
+    }
+    var longest=0;
+    for(var j=0;j<streaks.length;j++) if(streaks[j].len>longest) longest=streaks[j].len;
+    var startPk=habitPeriodKey(freq,habitStartKey(h,todayKey));
+    var allTotal=habitPeriodsBetween(freq,startPk,curPk);
+    var totalReg=allTotal.length||1;
+    // lastCompletedDate = último día done dentro del último período completo
+    var lastDone=null;
+    if(streaks.length){
+      var lastPk=streaks[streaks.length-1].end;
+      var range=habitPeriodRange(freq,lastPk);
+      var best=null;
+      for(var k=0;k<doneDays.length;k++){ if(range&&doneDays[k]>=range.start&&doneDays[k]<=range.end){ best=doneDays[k]; } }
+      lastDone=best;
+    }
+    return { doneKeys:doneDays, streaks:streaks, completePeriods:comp, current:current, alive:alive, longest:longest, count:streaks.length,
+      totalDone:comp.length, totalReg:totalReg, pct:totalReg>0?Math.round(comp.length/totalReg*100):0,
+      startKey:habitStartKey(h,todayKey), todayKey:todayKey, freq:freq, curPeriod:curPk };
+  }
   var done=habitDoneKeys(h,todayKey);
   var streaks=[]; var run=null;
   for(var i=0;i<done.length;i++){
@@ -10259,14 +11377,21 @@ function computeHabitStats(h,todayKey){
   var totalReg=habitDiffDays(start,todayKey)+1; if(!(totalReg>=1)) totalReg=1;
   return { doneKeys:done, streaks:streaks, current:current, alive:alive, longest:longest, count:streaks.length,
     totalDone:done.length, totalReg:totalReg, pct:totalReg>0?Math.round(done.length/totalReg*100):0,
-    startKey:start, todayKey:todayKey };
+    startKey:start, todayKey:todayKey, freq:freq };
 }
 function syncHabitDerived(h,todayKey){
   todayKey=todayKey||habitTodayKey();
   var s=computeHabitStats(h,todayKey);
   var changed=false;
   if(h.streak!==s.current){ h.streak=s.current; changed=true; }
-  var last=s.streaks.length?s.streaks[s.streaks.length-1].end:null;
+  var last=null;
+  if(habitFreqOf(h)!=='daily'&&s.streaks.length){
+    var lastPk=s.streaks[s.streaks.length-1].end;
+    var range=habitPeriodRange(habitFreqOf(h),lastPk);
+    var best=null;
+    for(var k=0;k<s.doneKeys.length;k++){ if(range&&s.doneKeys[k]>=range.start&&s.doneKeys[k]<=range.end) best=s.doneKeys[k]; }
+    last=best;
+  } else if(s.streaks.length){ last=s.streaks[s.streaks.length-1].end; }
   if((h.lastCompletedDate||null)!==last){ h.lastCompletedDate=last; changed=true; }
   return changed;
 }
@@ -10298,15 +11423,32 @@ function migrateHabitHistory(h){
 }
 function normalizeHabitRecord(h,todayKey){
   if(!h.uuid) h.uuid=generateUUID();
-  if(h.current==null) h.current=0;
+  if(h.type!=='task'&&h.type!=='counter') h.type='task';
+  var f=h.freq; if(f!=='daily'&&f!=='weekly'&&f!=='monthly') h.freq='daily';
+  if(h.type==='task'){
+    if(habitFreqOf(h)==='daily') h.goal=1;
+    else { var g=parseInt(h.goal,10); if(isNaN(g)||g<1) g=1; if(habitFreqOf(h)==='weekly') g=Math.min(g,7); else g=Math.min(g,31); h.goal=g; }
+  } else { delete h.goal; }
+  if(h.current==null) h.current=0; else { h.current=Number(h.current); if(isNaN(h.current)||h.current<0) h.current=0; }
   if(!h.status) h.status='pending';
   if(h.streak==null) h.streak=0;
   if(!h.lastProcessedDate) h.lastProcessedDate=todayKey||habitTodayKey();
+  if(!h.lastPeriodKey) h.lastPeriodKey=habitPeriodKey(habitFreqOf(h), h.lastProcessedDate);
   if(h.total!=null) h.total=Number(h.total);
   if(h.step!=null) h.step=Number(h.step);
-  if(h.type==='counter'&&(h.total==null||h.step==null)) h.type='task';
+  if(h.type==='counter'&&(h.total==null||h.step==null||!(h.total>0)||!(h.step>0))) h.type='task';
   migrateHabitHistory(h);
   syncHabitDerived(h,todayKey);
+  // reconciliar current/status con período actual
+  try{
+    var tk=todayKey||habitTodayKey();
+    var pk=habitPeriodKey(habitFreqOf(h),tk);
+    h.lastPeriodKey=pk;
+    if(habitFreqOf(h)!=='daily'){
+      if(h.type==='counter'){ var sum=habitPeriodSum(h,pk); h.current=Math.min(sum,h.total||sum); if(habitIsPeriodComplete(h,pk)){ h.status='completed'; } else if(h.status==='completed'){ h.status='pending'; } }
+      else { var c=habitPeriodDoneCount(h,pk); h.current=c; if(c>=habitGoalOf(h)){ h.status='completed'; } else if(h.status==='completed'&&c<habitGoalOf(h)){ h.status='pending'; } }
+    }
+  }catch(e){}
   return h;
 }
 
@@ -10336,9 +11478,22 @@ function habitLogCounterProgress(h){
 
 function completeHabitTask(uuid){
   var h = getHabitByUuid(uuid);
-  if(!h || h.type!=='task' || h.status==='completed') return;
-  h.status='completed';
-  handleHabitCompleted(h);
+  if(!h || h.type!=='task') return;
+  var todayStr=habitTodayKey();
+  if(habitFreqOf(h)==='daily'){
+    if(h.status==='completed') return;
+    h.status='completed';
+    handleHabitCompleted(h);
+  } else {
+    if(habitIsDone(h,todayStr)) return;
+    var log=ensureHabitLog(h);
+    log[todayStr]={done:true};
+    var pk=habitCurrentPeriodKey(h,todayStr);
+    var c=habitPeriodDoneCount(h,pk);
+    h.current=c;
+    if(c>=habitGoalOf(h)){ h.status='completed'; }
+    syncHabitDerived(h,todayStr);
+  }
   save();
   renderHabitsView();
   checkHabitNotifications();
@@ -10347,6 +11502,25 @@ function completeHabitTask(uuid){
 function incrementHabit(uuid, isAuto){
   var h = getHabitByUuid(uuid);
   if(!h || h.type!=='counter' || h.status==='completed') return;
+  if(habitFreqOf(h)!=='daily'){
+    var todayStr=habitTodayKey();
+    var pk=habitCurrentPeriodKey(h,todayStr);
+    var sum=habitPeriodSum(h,pk);
+    var next=sum+h.step;
+    if(next>h.total) return;
+    if(isAuto&&next===h.total) return;
+    var log=ensureHabitLog(h);
+    var e=log[todayStr];
+    var todayV=(e&&e.v!=null&&!isNaN(Number(e.v)))?Math.max(0,Number(e.v)):0;
+    todayV+=h.step;
+    var newSum=sum+h.step;
+    if(newSum>=h.total){ log[todayStr]={v:todayV,t:h.total,done:true}; }
+    else { log[todayStr]={v:todayV,t:h.total}; }
+    h.current=Math.min(newSum,h.total);
+    if(newSum>=h.total){ h.status='completed'; }
+    syncHabitDerived(h,todayStr);
+    save(); renderHabitsView(); return;
+  }
   var next = h.current + h.step;
   if(next > h.total) return;
   // regla: auto-repeat debe detenerse a un salto del total
@@ -10366,6 +11540,23 @@ function incrementHabit(uuid, isAuto){
 function decrementHabit(uuid){
   var h = getHabitByUuid(uuid);
   if(!h || h.type!=='counter' || h.status==='completed') return;
+  if(habitFreqOf(h)!=='daily'){
+    var todayStr=habitTodayKey();
+    var log=ensureHabitLog(h);
+    var e=log[todayStr];
+    var todayV=(e&&e.v!=null&&!isNaN(Number(e.v)))?Math.max(0,Number(e.v)):0;
+    if(todayV<=0) return;
+    var dec=Math.min(h.step,todayV);
+    todayV=Math.max(0,todayV-dec);
+    if(todayV>0){ log[todayStr]={v:todayV,t:h.total}; }
+    else { delete log[todayStr]; }
+    var pk=habitCurrentPeriodKey(h,todayStr);
+    var sum=habitPeriodSum(h,pk);
+    h.current=Math.max(0,Math.min(sum,h.total||sum));
+    if(h.status==='completed'&&!habitIsPeriodComplete(h,pk)) h.status='pending';
+    syncHabitDerived(h,todayStr);
+    save(); renderHabitsView(); return;
+  }
   var next = h.current - h.step;
   if(next < 0) next = 0;
   h.current = next;
@@ -10461,18 +11652,39 @@ function renderHabitCard(h, isCompleted){
   var color = h.color || 'var(--accent)';
   var name = escapeHtml(h.name);
   var desc = h.description ? '<div class="habit-desc">'+escapeHtml(h.description)+'</div>' : '';
+  var freq=habitFreqOf(h);
+  var freqBadge = freq==='weekly' ? ' <span class="habit-freq-badge">'+escapeHtml(t('habitWeekly'))+'</span>' : (freq==='monthly' ? ' <span class="habit-freq-badge">'+escapeHtml(t('habitMonthly'))+'</span>' : '');
   var streak = isCompleted && h.streak>0 ? '<span class="habit-streak">🔥 '+h.streak+'</span>' : '';
   var progress = '';
   var controls = '';
   var histBtn = '<button class="habit-btn habit-hist" onclick="openHabitHistory(\''+h.uuid+'\')" title="'+escapeHtml(t('habitHistory'))+'">📅</button>';
   if(h.type==='counter' && !isCompleted){
-    progress = '<div class="habit-progress">'+h.current+' / '+h.total+'</div>';
-    var disInc = (h.current + h.step > h.total) ? ' disabled' : '';
-    var disDec = (h.current===0) ? ' disabled' : '';
+    var curC=(h.current!=null)?h.current:0;
+    progress = '<div class="habit-progress">'+curC+' / '+h.total+freqBadge+'</div>';
+    var periodSumC=habitPeriodSum(h,habitCurrentPeriodKey(h,habitTodayKey()));
+    var disInc = (periodSumC + h.step > h.total) ? ' disabled' : '';
+    var todayE=habitDayEntry(h,habitTodayKey());
+    var todayV=(todayE&&todayE.v!=null)?Number(todayE.v):0;
+    var disDec = (todayV<=0) ? ' disabled' : '';
+    if(freq==='daily'){ disInc=(h.current + h.step > h.total)?' disabled':''; disDec=(h.current===0)?' disabled':''; }
     controls = '<div class="habit-controls"><button class="habit-btn habit-dec"'+disDec+' onclick="decrementHabit(\''+h.uuid+'\')" onmousedown="startHabitHold(\''+h.uuid+'\',\'dec\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'dec\')" title="-">↓</button><button class="habit-btn habit-inc"'+disInc+' onclick="incrementHabit(\''+h.uuid+'\', false)" onmousedown="startHabitHold(\''+h.uuid+'\',\'inc\')" ontouchstart="startHabitHold(\''+h.uuid+'\',\'inc\')" title="+">↑</button>'+histBtn+'</div>';
   } else if(h.type==='task' && !isCompleted){
-    controls = '<div class="habit-controls"><button class="habit-btn habit-complete" onclick="completeHabitTask(\''+h.uuid+'\')" title="'+escapeHtml(t('completed'))+'">✓</button>'+histBtn+'</div>';
+    if(freq!=='daily'){
+      var pkT=habitCurrentPeriodKey(h,habitTodayKey());
+      var cT=habitPeriodDoneCount(h,pkT);
+      var gT=habitGoalOf(h);
+      progress='<div class="habit-progress">'+cT+' / '+gT+freqBadge+'</div>';
+      var alreadyDone=habitIsDone(h,habitTodayKey());
+      if(alreadyDone) controls='<div class="habit-controls"><button class="habit-btn habit-complete" disabled title="'+escapeHtml(t('habitDone'))+'">✓</button>'+histBtn+'</div>';
+      else controls = '<div class="habit-controls"><button class="habit-btn habit-complete" onclick="completeHabitTask(\''+h.uuid+'\')" title="'+escapeHtml(t('completed'))+'">✓</button>'+histBtn+'</div>';
+    } else {
+      controls = '<div class="habit-controls"><button class="habit-btn habit-complete" onclick="completeHabitTask(\''+h.uuid+'\')" title="'+escapeHtml(t('completed'))+'">✓</button>'+histBtn+'</div>';
+    }
   } else if(isCompleted){
+    if(freq!=='daily'){
+      if(h.type==='counter'){ progress='<div class="habit-progress">'+h.total+' / '+h.total+freqBadge+'</div>'; }
+      else { var pkC=habitCurrentPeriodKey(h,habitTodayKey()); progress='<div class="habit-progress">'+habitPeriodDoneCount(h,pkC)+' / '+habitGoalOf(h)+freqBadge+'</div>'; }
+    }
     controls = '<div class="habit-controls">'+histBtn+'</div>';
   }
   var cls = isCompleted ? 'habit-card completed' : 'habit-card pending';

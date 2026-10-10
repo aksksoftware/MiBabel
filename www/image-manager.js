@@ -211,13 +211,16 @@ var ImageManager = (function() {
           if (itemRef && (item.type === 'image' || item.type === 'audio' || item.type === 'video')) {
             refs[itemRef] = true;
           }
+          if (item.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+            DrawingNote.refs(item).forEach(function(r) { refs[r] = true; });
+          }
         });
       });
-      /* Tarjetas de estudio: imágenes data-ref embebidas en front/back */
+      /* Tarjetas de estudio: multimedia data-ref / data-hv-card-ref en front/back */
       (state.studySets || []).forEach(function(set) {
         (set.cards || []).forEach(function(card) {
           var content = (card.front || '') + ' ' + (card.back || '');
-          var refMatch = content.match(/data-ref="([^"]+)"/g);
+          var refMatch = content.match(/data-(?:ref|hv-card-ref)="([^"]+)"/g);
           if (refMatch) {
             refMatch.forEach(function(m) {
               var ref = m.match(/"([^"]+)"/);
@@ -252,6 +255,9 @@ var ImageManager = (function() {
             var itemRef = item.src || item.ref;
             if (itemRef && (item.type === 'image' || item.type === 'audio' || item.type === 'video')) {
               refs[itemRef] = true;
+            }
+            if (item.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
+              DrawingNote.refs(item).forEach(function(r) { refs[r] = true; });
             }
           });
         }

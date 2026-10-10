@@ -28,6 +28,7 @@
   --dialog-bg: #2b2b2b;
   --dialog-border: #444;
   --fmt-btn: #aaa;
+  --tool-ico: #ffffff;
   --notes-sep: #444;
   --text-border: #444;
   --postit-text: #333;
@@ -56,6 +57,7 @@ body.light {
   --dialog-bg: #ffffff;
   --dialog-border: #ddd;
   --fmt-btn: #888;
+  --tool-ico: #000000;
   --notes-sep: #ccc;
   --text-border: #ccc;
   --scrollbar: #bbb;
@@ -534,11 +536,15 @@ body.light .items-area[data-bg-color="default"][data-bg-design="dotted"] {
 .fmt-bar { padding: 6px 12px; display: flex; gap: 4px; flex-shrink: 0; border-top: 1px solid var(--border); background: var(--surface); align-items: center; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; user-select: none; -webkit-user-select: none; }
 .fmt-bar::-webkit-scrollbar { height: 4px; }
 .fmt-bar::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 2px; }
-.fmt-bar .btn { padding: 6px 14px; font-size: 14px; }
-.fmt-btn { background: transparent; border: none; color: var(--fmt-btn); padding: 4px 10px; border-radius: 3px; cursor: pointer; font-size: 13px; font-weight: 600; min-width: 32px; text-align: center; }
+.fmt-bar .btn { padding: 6px 14px; font-size: 14px; color: var(--tool-ico); }
+.fmt-bar .btn:hover { background: var(--btn-hover); color: var(--tool-ico); }
+.fmt-btn { background: transparent; border: none; color: var(--tool-ico); padding: 4px 10px; border-radius: 3px; cursor: pointer; font-size: 13px; font-weight: 600; min-width: 32px; text-align: center; }
 .fmt-action { font-size: 15px; padding: 6px 14px; font-weight: 700; }
-.fmt-btn:hover { background: var(--surface-hover); color: #fff; }
-.fmt-btn.active { background: var(--accent); color: #fff; }
+.fmt-btn:hover { background: var(--surface-hover); color: var(--tool-ico); }
+.fmt-btn.active { background: var(--accent); color: var(--tool-ico); }
+/* La A de resaltado vive sobre un color de resaltado (siempre claro): tinta
+   negra. Si no hay resaltado activo se hereda el color del tema. */
+.fmt-btn.hl-toggle span { color: var(--tool-ico); }
 .item-text[contenteditable="true"] { flex: 1; background: transparent; border: none; padding: 4px 6px; font-size: 14px; color: var(--text); min-width: 0; outline: none; white-space: pre-wrap; word-break: break-word; }
 .item-text[contenteditable="true"]:focus { background: var(--item-hover); border-radius: 4px; }
 .item-text[contenteditable="true"]:empty:before,
@@ -663,10 +669,22 @@ svg.connections .connection-line { stroke: #e74c3c; stroke-width: 2; fill: none;
 #editNoteDialog input[type="checkbox"] { width: auto; margin: 0; flex-shrink: 0; }
 #editNoteDialog .field label { justify-content: flex-start; text-align: left; }
 .study-card-field-row { display:flex;gap:6px;align-items:flex-start; }
+.study-card-btn-col { display:flex;flex-direction:column;gap:4px;flex-shrink:0; }
 .study-card-editable { flex:1;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:14px;color:var(--text);outline:none;min-height:40px;word-break:break-word;white-space:pre-wrap; }
 .study-card-editable:focus { border-color:var(--accent); }
 .study-card-editable:empty:before { content:attr(data-placeholder);color:var(--placeholder); }
 .study-card-editable img { max-width:100%;max-height:200px;border-radius:4px;margin:4px 0;height:auto;object-fit:contain; }
+.study-card-editable video, .study-card-editable audio { max-width:100%;width:100%;border-radius:6px;margin:4px 0;display:block;background:#000; }
+.study-card-editable audio { background:var(--surface); }
+/* Multimedia y fórmulas dentro de tarjetas (lista + estudio): sin overflow, aspecto correcto */
+.study-card-item video.sc-video, .study-card video.sc-video, .study-card-front video, .study-card-back video { max-width:100%;width:100%;height:auto;border-radius:6px;background:#000;aspect-ratio:auto; }
+.study-card-item audio, .study-card audio.sc-audio-el, .study-card-front audio, .study-card-back audio { max-width:100%;width:100%;display:block;margin:6px 0; }
+.study-card-item .hv-card, .study-card .hv-card, .study-card-front .hv-card, .study-card-back .hv-card { position:relative;width:100%;min-height:140px;border-radius:6px;overflow:hidden; }
+.study-card-item .hv-card.hv-playing, .study-card .hv-card.hv-playing { display:block; }
+.study-card-item .hv-card .hv-video, .study-card .hv-card .hv-video { width:100%;max-height:320px;border-radius:6px;background:#000; }
+.study-card-front .katex-block, .study-card-back .katex-block, .study-card-item .katex-block { max-width:100%;overflow-x:auto;overflow-y:hidden;text-align:center; }
+.study-card-front .katex, .study-card-back .katex, .study-card-item .katex { white-space:normal;word-break:break-word; }
+.study-card-front, .study-card-back, .study-card-item { overflow-wrap:break-word;word-break:break-word;min-width:0; }
 .btn-img { background:none;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:18px;padding:6px 8px;color:var(--text);line-height:1;flex-shrink:0; }
 .btn-img:hover { background:var(--item-hover); }
 .study-card-preview { text-align:center;padding:8px;margin-bottom:8px;background:var(--item-hover);border-radius:8px; }
@@ -725,6 +743,11 @@ body.registro-edit-mode .fab { background-image: url('fabEditar.png'); }
 .study-mode-actions { display:flex; gap:16px; justify-content:center; margin-top:20px; }
 .study-mode-actions .btn { flex:1 1 0; max-width:220px;font-size:22px;padding:20px 24px;border-radius:10px;justify-content:center;font-weight:700; }
 .study-counter { text-align:center;opacity:0.5;margin-bottom:12px;font-size:13px; }
+.study-score-title { font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px; }
+.study-score-fraction { font-size:40px;font-weight:800;color:var(--text);line-height:1.2; }
+.study-score-percent { font-size:28px;font-weight:700;color:var(--accent);margin-top:4px; }
+.study-score-detail { font-size:12px;color:var(--text-muted);margin-top:8px; }
+.study-score-msg { font-size:16px;font-weight:600;color:var(--text-sec);margin-top:12px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto; }
 .study-content { flex:1;min-height:0;overflow-y:auto; }
 .cafecito-content { flex:1;display:flex; }
 .trash-content { flex:1;display:flex;flex-direction:column;overflow:hidden; }
@@ -968,6 +991,7 @@ body.light .board-equation { background: #fff; border-color: #e0e0e0; }
 .habit-desc { font-size:12px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .habit-progress { font-size:12px; font-weight:600; color:var(--accent); margin-top:2px; }
 .habit-streak { font-size:12px; font-weight:700; color:#ff6b35; background:rgba(255,107,53,0.12); padding:1px 6px; border-radius:10px; }
+.habit-freq-badge { font-size:10px; font-weight:600; color:var(--text-muted); background:var(--surface-hover); border:1px solid var(--border); padding:1px 6px; border-radius:10px; text-transform:uppercase; letter-spacing:0.4px; }
 .habit-controls { display:flex; gap:6px; flex-shrink:0; align-items:center; }
 .habit-btn { width:36px; height:36px; border-radius:50%; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:16px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; transition: background 0.15s, transform 0.1s; }
 .habit-btn:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
@@ -1028,7 +1052,11 @@ body.light .board-equation { background: #fff; border-color: #e0e0e0; }
 .about-license-text { font-size: 11px; color: var(--text-muted); white-space: pre-wrap; }
 
 /* Diario - Variables históricas */
-.diary-var { display: inline-flex; flex-direction: column; gap: 2px; padding: 6px 8px; margin: 2px 0; background: var(--surface-hover); border: 1px solid var(--border); border-radius: 6px; max-width: 100%; word-break: break-word; }
+.diary-var { display: inline-flex; flex-direction: column; gap: 2px; padding: 6px 8px; margin: 2px 0; background: var(--surface-hover); border: 1px solid var(--border); border-radius: 6px; max-width: 100%; word-break: break-word; vertical-align: top; overflow-wrap: break-word; }
+.item-text .diary-var { display: inline-flex; vertical-align: top; max-width: 100%; }
+/* Múltiples asignaciones/consultas en la misma caja: nunca romper scroll vertical.
+   Sin absolute/fixed, sin alturas infinitas, sin overflow que bloquee .items-area. */
+.item-text .diary-var, .item-text .diary-var-unknown { position: static; height: auto; max-height: none; overflow: visible; }
 .diary-var-name { font-size: 12px; font-weight: 700; color: var(--accent); }
 .diary-var-history { font-size: 12px; line-height: 1.6; color: var(--text-sec); }
 .diary-var-history .var-entry { display: inline; }
@@ -1109,3 +1137,149 @@ body.light .board-equation { background: #fff; border-color: #e0e0e0; }
 .hv-placeholder.hv-note.hv-playing .hv-name,
 .hv-placeholder.hv-note.hv-playing .hv-size,
 .hv-placeholder.hv-note.hv-playing .hv-play { display: none; }
+
+/* ==================================================
+   DIBUJO — editor modal, menú de creación y item en nota
+   ================================================== */
+.dw-overlay { position: fixed; inset: 0; z-index: 6000; display: flex; flex-direction: column; background: var(--bg); }
+.dw-header { display: flex; align-items: center; gap: 8px; padding: calc(8px + env(safe-area-inset-top, 0px)) 20px 8px; background: var(--header-bg); border-bottom: 1px solid var(--border); flex-shrink: 0; position: relative; }
+.dw-header .btn { min-width: 76px; flex-shrink: 0; }
+.dw-ghost { background: transparent; border: 1px solid var(--border); color: var(--text-sec); }
+.dw-ghost:hover { background: var(--surface-hover); color: #fff; }
+.dw-title { flex: 1; min-width: 0; text-align: center; font-size: 14px; font-weight: 600; color: var(--text-sec); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dw-viewport { position: relative; z-index: 0; flex: 1 1 auto; min-height: 0; overflow: hidden; touch-action: none; background: var(--bg); -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.dw-canvas { display: block; position: absolute; left: 0; top: 0; transform-origin: 0 0; touch-action: none; cursor: crosshair; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.dw-toolbar { display: flex; align-items: center; gap: 6px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; user-select: none; -webkit-user-select: none; }
+.dw-toolbar::-webkit-scrollbar { height: 4px; }
+.dw-toolbar::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 2px; }
+.dw-tools { display: flex; gap: 3px; flex-shrink: 0; }
+.dw-tool { background: transparent; border: 1px solid transparent; color: var(--tool-ico); min-width: 36px; height: 36px; padding: 0 6px; border-radius: 6px; cursor: pointer; font-size: 17px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: inherit; }
+.dw-tool:hover { background: var(--surface-hover); color: var(--tool-ico); }
+.dw-tool.active { background: var(--accent); color: var(--tool-ico); }
+.dw-tool:disabled { opacity: 0.32; cursor: default; background: transparent; color: var(--tool-ico); }
+/* Iconos SVG inline (Font Awesome Free 7.3.1, CC BY 4.0) teñidos con
+   currentColor: heredan el color normal/hover/active/disabled del botón. */
+.dw-ico { display: block; width: 20px; height: 20px; flex-shrink: 0; fill: currentColor; }
+.dw-sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+.dw-color-wrap { position: relative; display: inline-flex; flex-shrink: 0; }
+.dw-color { width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 2px solid var(--border); cursor: pointer; background: #1a1a1a; flex-shrink: 0; }
+.dw-color:hover { border-color: var(--accent); }
+.dw-palette { position: absolute; z-index: 5; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 6px; display: flex; flex-wrap: wrap; gap: 5px; max-width: 224px; box-shadow: 0 6px 18px rgba(0, 0, 0, .4); }
+.dw-swatch { width: 20px; height: 20px; padding: 0; border-radius: 4px; border: 1px solid var(--border-light); cursor: pointer; }
+.dw-swatch:hover { transform: scale(1.12); border-color: #fff; }
+.dw-swatch-custom { background: conic-gradient(#ff0000, #ffd700, #32cd32, #00bfff, #0000ff, #800080, #ff0000); }
+/* Selector de color propio: Android WebView no implementa <input type="color">. */
+.dw-picker { position: absolute; z-index: 6; width: 224px; padding: 10px; display: flex; flex-direction: column; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, .4); touch-action: none; }
+.dw-picker-sv { position: relative; height: 132px; border-radius: 6px; cursor: crosshair; touch-action: none; }
+.dw-picker-hue { position: relative; height: 16px; border-radius: 8px; cursor: pointer; touch-action: none; background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%); }
+.dw-picker-dot { position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .5); transform: translate(-50%, -50%); pointer-events: none; }
+.dw-picker-dot-hue { top: 50%; }
+.dw-picker-row { display: flex; align-items: center; gap: 8px; }
+.dw-picker-chip { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--border); background: #1a1a1a; flex-shrink: 0; }
+.dw-picker-hex { flex: 1; min-width: 0; padding: 5px 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); font: inherit; font-size: 13px; letter-spacing: .04em; touch-action: manipulation; }
+.dw-picker-hex:focus { outline: none; border-color: var(--accent); }
+.dw-size-wrap { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; padding-right: 4px; }
+.dw-size-wrap input[type="range"] { width: 96px; accent-color: var(--accent); }
+.dw-size-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--text); flex-shrink: 0; }
+@media (max-width: 480px) {
+  .dw-tool { min-width: 32px; height: 32px; font-size: 16px; }
+  .dw-size-wrap input[type="range"] { width: 72px; }
+  .dw-header .btn { min-width: 64px; padding: 6px 10px; }
+}
+/* Menú de creación */
+.dw-create-dialog { min-width: 300px; max-width: 440px; width: calc(100vw - 40px); }
+.dw-create-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; margin: 12px 0 8px; }
+.dw-bg-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 8px; }
+.dw-bg-opt { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 6px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text); font-size: 12px; font-family: inherit; }
+.dw-bg-opt:hover { border-color: var(--accent); background: var(--surface-hover); }
+.dw-bg-prev { width: 100%; height: 56px; border-radius: 4px; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 22px; background: #fff; overflow: hidden; }
+.dw-bg-solid { background: #fff; }
+.dw-bg-lined { background-color: #fff; background-image: repeating-linear-gradient(to bottom, transparent 0 15px, rgba(0, 0, 0, .15) 15px 16px); }
+.dw-bg-grid { background-color: #fff; background-image: repeating-linear-gradient(to bottom, transparent 0 15px, rgba(0, 0, 0, .15) 15px 16px), repeating-linear-gradient(to right, transparent 0 15px, rgba(0, 0, 0, .15) 15px 16px); }
+.dw-bg-dotted { background-color: #fff; background-image: radial-gradient(rgba(0, 0, 0, .3) 1.2px, transparent 1.3px); background-size: 16px 16px; }
+.dw-bg-image { background: #fff; color: #555; }
+/* Item de dibujo dentro de la nota */
+.list-item.drawing-item { cursor: pointer; touch-action: manipulation; }
+.list-item.drawing-item .image-container img { width: 100%; height: auto; }
+.list-item.drawing-item .item-actions { display: flex; gap: 2px; }
+.drawing-missing { width: 100%; padding: 24px 12px; text-align: center; color: var(--text-muted); font-size: 12px; }
+
+/* ==== INTRO DE INICIO MiBabel (Biblioteca de Babel) ====
+ * Estados agregados por www/intro.js (en orden):
+ *   s-hex → s-iso → s-word → s-isoout → s-head → s-done
+ * Blanco → hexágono central → isotipo → logotipo1 → vuelo al header.
+ * Solo transform/opacity del compositor; sin filtros animados y
+ * will-change solo en el logotipo que vuela. La intro se elimina del
+ * DOM al terminar; nunca debe quedar un overlay invisible. */
+.babel-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  overflow: hidden;
+  background-color: #fff;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color .55s ease;
+}
+/* Hexágono central (la sala del isotipo): polígono estático escalado
+   por CSS; el trazo usa el acento de la app. */
+.bint-hex {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(240px, 55vw, 400px);
+  height: clamp(240px, 55vw, 400px);
+  transform: translate(-50%, -50%) scale(.92);
+  opacity: 0;
+  overflow: visible;
+  transition: opacity .45s ease, transform .5s cubic-bezier(.2, .7, .25, 1);
+}
+.bint-core {
+  fill: var(--accent);
+  fill-opacity: .08;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+.s-hex .bint-hex { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+/* Isotipo y logotipo1 (assets oficiales, sin filtros: la intro es
+   blanca y ambos se ven en su color real). */
+.bint-iso {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: clamp(120px, 32vw, 230px);
+  transform: translate(-50%, -50%) scale(.94);
+  opacity: 0;
+  transition: opacity .45s ease, transform .5s cubic-bezier(.2, .7, .25, 1);
+}
+.s-iso .bint-iso,
+.s-word .bint-iso { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.s-isoout .bint-iso,
+.s-head .bint-iso { opacity: 0; transition: opacity .4s ease; }
+.bint-word {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: clamp(50px, 10vw, 90px);
+  height: clamp(32px, 9vw, 56px);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity .4s ease, transform .62s cubic-bezier(.7, 0, .3, 1);
+}
+.s-word .bint-word { opacity: 1; }
+/* Etapa final: isotipo y hexágono ya se fueron; el fondo se aclara y el
+   logotipo vuela al header mientras se revela la app. */
+.babel-intro.s-head { background-color: transparent; }
+.s-head .bint-hex { opacity: 0; transition: opacity .35s ease; }
+.babel-intro.bint-no-flight .bint-word,
+.babel-intro.bint-reduced-head .bint-word { opacity: 0; }
+.babel-intro.bint-reduced-head { transition-duration: .3s; }
+/* Sin movimiento: la secuencia se cuenta solo con opacidad */
+@media (prefers-reduced-motion: reduce) {
+  .bint-hex,
+  .bint-iso { transform: translate(-50%, -50%); transition: opacity .3s ease; }
+  .bint-word { transition: opacity .3s ease; }
+}

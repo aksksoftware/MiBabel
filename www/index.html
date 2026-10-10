@@ -10,6 +10,27 @@
 </head>
 <body>
 
+<!-- Aplicar el tema guardado antes del primer pintado (evita destellos con la intro) -->
+<script>
+(function () {
+  try {
+    var s = JSON.parse(localStorage.getItem('appnotas') || 'null');
+    if (s && s.theme === 'light') document.body.classList.add('light');
+  } catch (e) {}
+})();
+</script>
+
+<!-- Intro de inicio: Biblioteca de Babel. Blanco → hexágono central →
+     isotipo → logotipo → vuelo al header. La secuencia vive en intro.js
+     y el comportamiento visual en style.css (seccion INTRO). -->
+<div class="babel-intro" id="babelIntro" aria-hidden="true">
+  <svg class="bint-hex" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+    <polygon class="bint-core" points="50,3 93,26.5 93,73.5 50,97 7,73.5 7,26.5"></polygon>
+  </svg>
+  <img class="bint-iso" id="bintIso" src="Isotipo.png" alt="">
+  <img class="bint-word" id="bintWord" src="Logotipo1.png" alt="">
+</div>
+
 <header>
   <div class="header-left">
     <div class="menu-trigger" onclick="toggleMenu()">
@@ -206,9 +227,11 @@
 <div class="dialog-overlay hidden" id="studyCardDialog">
   <div class="dialog">
     <h3 id="studyCardTitle">Add Card</h3>
-    <div class="field"><label id="studyCardFrontLabel">Front</label><div class="study-card-field-row"><div id="studyCardFront" class="study-card-editable" contenteditable="true" data-placeholder="Front"></div><button id="studyCardImgBtnFront" class="btn-img" onclick="triggerStudyCardImage('front')" title="Insert image">&#x1f5bc;</button></div></div>
-    <div class="field"><label id="studyCardBackLabel">Back</label><div class="study-card-field-row"><div id="studyCardBack" class="study-card-editable" contenteditable="true" data-placeholder="Back"></div><button id="studyCardImgBtnBack" class="btn-img" onclick="triggerStudyCardImage('back')" title="Insert image">&#x1f5bc;</button></div></div>
+    <div class="field"><label id="studyCardFrontLabel">Front</label><div class="study-card-field-row"><div id="studyCardFront" class="study-card-editable" contenteditable="true" data-placeholder="Front"></div><div class="study-card-btn-col"><button id="studyCardImgBtnFront" class="btn-img" onclick="triggerStudyCardImage('front')" title="Insert image">&#x1f5bc;</button><button id="studyCardLatexBtnFront" class="btn-img" onclick="triggerStudyCardLatex('front')" title="Insert equation">&#x2211;</button><button id="studyCardVideoBtnFront" class="btn-img" onclick="triggerStudyCardVideo('front')" title="Insert video">&#x1f3ac;</button><button id="studyCardAudioBtnFront" class="btn-img" onclick="triggerStudyCardAudio('front')" title="Insert audio">&#x1f3a4;</button></div></div></div>
+    <div class="field"><label id="studyCardBackLabel">Back</label><div class="study-card-field-row"><div id="studyCardBack" class="study-card-editable" contenteditable="true" data-placeholder="Back"></div><div class="study-card-btn-col"><button id="studyCardImgBtnBack" class="btn-img" onclick="triggerStudyCardImage('back')" title="Insert image">&#x1f5bc;</button><button id="studyCardLatexBtnBack" class="btn-img" onclick="triggerStudyCardLatex('back')" title="Insert equation">&#x2211;</button><button id="studyCardVideoBtnBack" class="btn-img" onclick="triggerStudyCardVideo('back')" title="Insert video">&#x1f3ac;</button><button id="studyCardAudioBtnBack" class="btn-img" onclick="triggerStudyCardAudio('back')" title="Insert audio">&#x1f3a4;</button></div></div></div>
     <input type="file" id="studyCardImageInput" accept="image/*" style="display:none" onchange="previewStudyCardImage(this)">
+    <input type="file" id="studyCardVideoInput" accept="video/*,.mp4,.webm,.ogg,.mov,.m4v,.3gp" style="display:none" onchange="handleStudyCardVideoFile(this)">
+    <input type="file" id="studyCardAudioInput" accept="audio/*,.mp3,.m4a,.aac,.ogg,.wav" style="display:none" onchange="handleStudyCardAudioFile(this)">
     <div id="studyCardPreview" class="study-card-preview hidden">
       <div id="studyCardPreviewLabel" style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Preview:</div>
       <img id="studyCardPreviewImg"><br>
@@ -271,6 +294,19 @@
         <option value="task" id="habitTypeTaskOpt">Hábito tarea</option>
         <option value="counter" id="habitTypeCounterOpt">Hábito contador</option>
       </select>
+    </div>
+    <div class="field">
+      <label id="habitFreqLabel">Frecuencia</label>
+      <select id="habitFreq" onchange="onHabitTypeChange()" style="width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:4px;padding:6px 10px;font-size:13px;font-family:inherit;">
+        <option value="daily" id="habitFreqDailyOpt">Diario</option>
+        <option value="weekly" id="habitFreqWeeklyOpt">Semanal</option>
+        <option value="monthly" id="habitFreqMonthlyOpt">Mensual</option>
+      </select>
+    </div>
+    <div class="field" id="habitGoalWrap" style="display:none;">
+      <label id="habitGoalLabel">Veces por período *</label>
+      <input type="number" id="habitGoal" min="1" max="31" value="3" style="width:100%;box-sizing:border-box;" />
+      <div id="habitGoalError" style="font-size:11px;color:#e74c3c;margin-top:2px;display:none;"></div>
     </div>
     <div class="field">
       <label id="habitNameLabel">Nombre *</label>
@@ -473,6 +509,7 @@
 
 <input type="file" id="coverInput" accept="image/*" style="display:none" onchange="importCover(this)">
 <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="insertImage(this)">
+<input type="file" id="dwBgImageInput" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none">
 <input type="file" id="audioInput" accept=".mp3,.m4a,.aac" style="display:none" onchange="insertAudio(this)">
 <input type="file" id="videoInput" accept="video/*" style="display:none" onchange="insertVideo(this)">
 <input type="file" id="videoInput" accept=".mp4,.webm,.ogg" style="display:none" onchange="insertVideo(this)">
@@ -650,14 +687,33 @@
   </div>
 </div>
 
-<script src="lib/fontkit.umd.min.js"></script>
-<script src="lib/pdf-lib.min.js"></script>
-<script src="lib/docx.umd.js"></script>
-<script src="lib/jszip.min.js"></script>
-<script src="lib/katex/katex.min.js"></script>
-<script src="image-manager.js"></script>
-<script src="video-manager.js"></script>
-<script src="script.js"></script>
+<script src="intro.js"></script>
+<script>
+/* Red de seguridad: la intro de inicio nunca debe bloquear la aplicación */
+setTimeout(function () {
+  var el = document.getElementById('babelIntro');
+  if (el && el.parentNode && !(window.BabelIntro && window.BabelIntro.isRunning())) el.parentNode.removeChild(el);
+}, 3000);
+</script>
+<!-- Los scripts pesados se diferiran (defer): el primer pintado de la intro
+     no espera a pdf-lib/katex/script.js. Se ejecutan en orden, antes de
+     DOMContentLoaded, igual que antes. intro.js va síncrono justo arriba. -->
+<script src="lib/fontkit.umd.min.js" defer></script>
+<script src="lib/pdf-lib.min.js" defer></script>
+<script src="lib/docx.umd.js" defer></script>
+<script src="lib/jszip.min.js" defer></script>
+<script src="lib/katex/katex.min.js" defer></script>
+<script src="drawing/drawing-engine.js" defer></script>
+<script src="drawing/drawing-canvas.js" defer></script>
+<script src="drawing/drawing-editor.js" defer></script>
+<script src="drawing/drawing-note.js" defer></script>
+<script src="image-manager.js" defer></script>
+<script src="video-manager.js" defer></script>
+<script src="export/note-doc.js" defer></script>
+<script src="export/txt-exporter.js" defer></script>
+<script src="export/docx-exporter.js" defer></script>
+<script src="export/pdf-exporter.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
 
