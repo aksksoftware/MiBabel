@@ -115,7 +115,17 @@ Los hábitos están pensados para actividades de distinta naturaleza: estudiar, 
 Además, el sistema está relacionado con la filosofía de **registros de MiBabel**: en lugar de limitarse a indicar si una actividad fue realizada o no, permite conservar información cuantificable sobre su progreso y evolución a lo largo del tiempo.
 
 ### Dibujos
-Es posible añadir dibujos a las notas de texto, los cuales son realizables a traves de un editor de dibujo. Hay varios lienzos estándares, sin embargo, también es posible dibujar sobre una imagen de tu dispositivo y plasmarla en la nota.
+
+Es posible añadir dibujos a las notas de texto, los cuales son realizables a traves de un editor de dibujo. Hay varios lienzos estándares, sin embargo, también es posible dibujar sobre una imagen de tu dispositivo y plasmarla en la nota. También se puede dibujar en los tableros, así es más fácil hacer diagramas y se puede usar como un lienzo grande
+
+
+### Indice y Titulos
+
+Puedes crear un índice en la nota que te diga todo los encabezados que hay mediante el comando /(indice según tu idioma). Primero se elige el encabezado, luego se selecciona el texto a jerarquizar y se aprieta el botón de jerarquía.
+
+### Markdown
+
+Ahora, además de las notas normales se pueden crear notas markdown, lo que ofrece una gran versatibilidad a la hora de usar la app. No solo eso, también se pueden importar archivos .txt y .md para que la aplicación los transforme en las notas normales.
 
 ### 📤 Exportación
 
@@ -126,6 +136,13 @@ Actualmente se contemplan:
 * PDF
 * DOCX
 * TXT
+* MD
+
+### Importación
+
+* JSON
+* TXT
+* MD
 
 ### 📱 Funcionamiento local
 
@@ -252,9 +269,14 @@ La versión 1.6.0 incorpora varias mejoras y nuevas funciones:
 MiBabel continúa en desarrollo. Algunas de las funciones contempladas para futuras versiones incluyen:
 
 * Gráficos para las variables de los registros.
-* Sistema de anotación de partidas de ajedrez.
+* Sistema de anotación de partidas de ajedrez + exportación a .pgn.
 * Agregar un resumen a fin de año que cuente acerca de cómo y cuanto usaste MiBabel, y que se pueda compartir.
-* Motor de dibujo dentro de los tableros
+* Biblioteca para los libros leidos.
+* Crear una versión para PC que sea sincronizable con el celular. Por ahí será otra aplicación pero onlina, para mantener la privacidad que ofrece una aplicación de notas offline.
+* Agregar más comandos útiles dentro de las notas y tableros(ej. crear una nota solo con [[nuevaNota]]).
+* Modo lectura.
+* Visualización de conexiones entre notas.
+* Nota de bandeja para escribir cosas rápido.
 
 ---
 
