@@ -26,6 +26,14 @@
     this.drawing = drawing;
     this.options = options || {};
 
+    /* hostLayer: el lienzo no gestiona su propio encuadre (lo hace el
+       contenedor que lo aloja, p. ej. el zoom/pan de un tablero). Se usa un
+       <canvas> ya presente en el DOM, se fija la transformacion en 1:1 y se
+       delegan los gestos (pinza/rueda) al contenedor. */
+    this.hostLayer = !!this.options.hostLayer;
+    this.gestures = !this.hostLayer;
+    this.enabled = this.options.enabled !== false;
+
     this.state = new E.History(drawing);
     this.tool = 'pencil';
     this.color = '#1a1a1a';
@@ -71,10 +79,15 @@
 
   DrawingCanvas.prototype.mount = function () {
     if (this.canvas) return;
-    var cv = document.createElement('canvas');
-    cv.className = 'dw-canvas';
-    cv.setAttribute('aria-label', 'Lienzo de dibujo');
-    this.viewport.appendChild(cv);
+    var cv = this.options.canvas || null;
+    if (cv) {
+      if (cv.parentNode !== this.viewport) this.viewport.appendChild(cv);
+    } else {
+      cv = document.createElement('canvas');
+      cv.className = 'dw-canvas';
+      cv.setAttribute('aria-label', 'Lienzo de dibujo');
+      this.viewport.appendChild(cv);
+    }
     this.canvas = cv;
     this.ctx = cv.getContext('2d');
     this.base = document.createElement('canvas');
@@ -112,7 +125,7 @@
       this.canvas.removeEventListener('pointercancel', this._onUp);
       this.canvas.removeEventListener('lostpointercapture', this._onUp);
       this.canvas.removeEventListener('wheel', this._onWheel);
-      if (this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
+      if (!this.options.canvas && this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
     }
     this.viewport.removeEventListener('contextmenu', this._onCtx);
     this.canvas = null;
@@ -132,6 +145,11 @@
   DrawingCanvas.prototype.setTool = function (tool) {
     if (this.mode === 'stroke') this._abort();
     this.tool = E.TOOLS[tool] ? tool : 'pencil';
+  };
+  DrawingCanvas.prototype.setEnabled = function (on) {
+    if (!on && this.mode === 'stroke') this._abort();
+    this.enabled = !!on;
+    if (!on) { this.pointers = {}; this.mode = 'idle'; }
   };
   DrawingCanvas.prototype.setColor = function (color) { this.color = color; };
   DrawingCanvas.prototype.setSize = function (size) { this.size = E.clamp(Number(size) || 4, 1, 40); };
@@ -180,6 +198,17 @@
   /* ---------------- layout ---------------- */
 
   DrawingCanvas.prototype.fit = function () {
+    if (!this.canvas) { this._pendingFit = true; return; }
+    if (this.hostLayer) {
+      this._pendingFit = false;
+      this.cssScale = 1;
+      this.viewScale = 1;
+      this.tx = 0;
+      this.ty = 0;
+      this._layout();
+      this._invalidateBase();
+      return;
+    }
     var vw = this.viewport.clientWidth;
     var vh = this.viewport.clientHeight;
     if (!vw || !vh || !this.canvas) { this._pendingFit = true; return; }
@@ -210,6 +239,7 @@
     var W = this.drawing.width, H = this.drawing.height;
     var ratio = Math.min(2, global.devicePixelRatio || 1);
     var rs = Math.min(Math.max(this.cssScale * ratio, this.cssScale), E.maxScaleFor(W, H));
+    if (this.options.maxRasterScale) rs = Math.min(rs, this.options.maxRasterScale);
     this.renderScale = Math.max(0.05, rs);
     var bw = Math.max(1, Math.round(W * this.renderScale));
     var bh = Math.max(1, Math.round(H * this.renderScale));
@@ -237,6 +267,7 @@
 
   DrawingCanvas.prototype.handleResize = function () {
     if (this.destroyed || !this.canvas) return;
+    if (this.hostLayer) return;
     if (this.mode === 'gesture' || this.mode === 'gestureEnd') return;
     if (this._pendingFit) { this.fit(); return; }
     var total = this.cssScale * this.viewScale;
@@ -320,7 +351,7 @@
   };
 
   DrawingCanvas.prototype._onPointerDown = function (e) {
-    if (this.destroyed) return;
+    if (this.destroyed || !this.enabled) return;
     if (e.pointerType === 'mouse' && e.button !== 0 && e.button !== undefined && e.button !== -1) return;
     if (e.isPrimary === false && ptrCount(this.pointers) === 0) return;
     if (e.cancelable) e.preventDefault();
@@ -330,7 +361,7 @@
 
     var n = ptrCount(this.pointers);
     if (this.mode === 'gestureEnd') {
-      if (n >= 2) { this._beginGesture(); return; }
+      if (n >= 2) { if (this.gestures) this._beginGesture(); return; }
       this.mode = 'idle';
       this._g = null;
     }
@@ -338,7 +369,8 @@
       this._startAt(e);
     } else if (n >= 2) {
       this._abort();
-      this._beginGesture();
+      if (this.gestures) this._beginGesture();
+      else this.mode = 'gestureEnd';
     }
   };
 
@@ -532,7 +564,7 @@
   };
 
   DrawingCanvas.prototype._onWheel = function (e) {
-    if (this.destroyed) return;
+    if (this.destroyed || this.hostLayer) return;
     if (!e.ctrlKey && !e.metaKey) return;
     if (e.cancelable) e.preventDefault();
     if (this.mode === 'stroke' || this.mode === 'gesture') return;

@@ -175,13 +175,21 @@ async function main() {
   loadLib(win, 'pdf-lib.min.js', 'PDFLib');
   loadLib(win, 'docx.umd.js', 'docx');
   loadLib(win, 'jszip.min.js', 'JSZip');
+  global.marked = require('marked');
+  win.marked = global.marked;
+  global.DOMPurify = require('dompurify')(win);
+  win.DOMPurify = global.DOMPurify;
+  loadLib(win, 'katex/katex.min.js', 'katex');
+  win.eval(fs.readFileSync(path.join(WWW, 'markdown', 'markdown-engine.js'), 'utf8'));
 
-  loadModules(win, ['note-doc', 'pdf-exporter', 'docx-exporter', 'txt-exporter']);
+  loadModules(win, ['note-doc', 'pdf-exporter', 'docx-exporter', 'txt-exporter', 'md-exporter']);
 
   ctx.NoteDoc = win.NoteDoc;
   ctx.PdfExporter = win.PdfExporter;
   ctx.DocxExporter = win.DocxExporter;
   ctx.TxtExporter = win.TxtExporter;
+  ctx.MarkdownEngine = win.MarkdownEngine;
+  ctx.MdExporter = win.MdExporter;
   ctx.PDFLib = win.PDFLib;
   ctx.docx = win.docx;
   ctx.JSZip = win.JSZip;
@@ -191,7 +199,7 @@ async function main() {
     process.exit(2);
   }
 
-  var cases = require('./cases');
+  var cases = require('./cases').concat(require('./markdown'));
   for (var i = 0; i < cases.length; i++) {
     var c = cases[i];
     if (filter && c.name.toLowerCase().indexOf(filter) === -1) continue;

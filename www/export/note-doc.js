@@ -831,7 +831,8 @@
     if (align && blocks.length === 1 && blocks[0].type === 'paragraph') {
       blocks[0].align = align;
     }
-    return { level: 0, checked: false, blocks: blocks };
+    var hasCheckbox = !!(node.querySelector && node.querySelector('input[type="checkbox"]'));
+    return { level: 0, checked: checkedFromNode(node), task: hasCheckbox, blocks: blocks };
   }
 
   function checkedFromNode(node) {
@@ -1120,6 +1121,7 @@
       var entry = {
         level: level,
         checked: !!item.checked,
+        task: item.task === true || !!item.checked,
         blocks: itemHtmlToBlocks(item.text, warnings, options)
       };
       if (!pendingList || pendingList.ordered !== !!ordered) {
@@ -1165,10 +1167,28 @@
         }
         case 'text': {
           closeList();
+          var hl = headingLevelOf(item);
           var tblocks = itemHtmlToBlocks(item.text, warnings, options);
-          /* Upgrade a titulo cuando el usuario escribio una linea grande y
-           * en negrita (patron habitual al pegar contenido). */
-          blocks = blocks.concat(promoteHeading(tblocks));
+          if (hl) {
+            /* Jerarquía explícita del editor (item.heading 1-5):
+             * cada párrafo se eleva a encabezado semántico. */
+            var hblocks = [];
+            tblocks.forEach(function(b) {
+              if (b && b.type === 'paragraph') hblocks.push({ type: 'heading', level: hl, align: b.align, runs: b.runs });
+              else if (b) hblocks.push(b);
+            });
+            blocks = blocks.concat(hblocks);
+          } else {
+            /* Upgrade a titulo cuando el usuario escribio una linea grande y
+             * en negrita (patron habitual al pegar contenido). */
+            blocks = blocks.concat(promoteHeading(tblocks));
+          }
+          break;
+        }
+        case 'index': {
+          closeList();
+          var toc = tocListFromItems(items, warnings, options);
+          if (toc) blocks.push(toc);
           break;
         }
         default: {
@@ -1185,10 +1205,50 @@
 
   function normalizeItemType(item) {
     var t = item.type;
-    if (t === 'image' || t === 'audio' || t === 'video' || t === 'table' || t === 'text' || t === 'list' || t === 'drawing') return t;
+    if (t === 'image' || t === 'audio' || t === 'video' || t === 'table' || t === 'text' || t === 'list' || t === 'drawing' || t === 'index') return t;
     /* Sin tipo => lista (comportamiento de la app, isListType en script.js). */
     if (t === undefined || t === null || t === '') return 'list';
     return String(t);
+  }
+
+  /* Nivel de jerarquía explícito del editor (0 = texto normal). */
+  function headingLevelOf(item) {
+    var n = parseInt(item && item.heading, 10);
+    if (isNaN(n) || n < 1 || n > 5) return 0;
+    return n;
+  }
+
+  /* Runs combinados de un título para reutilizarlos como entrada del índice. */
+  function headingEntryRuns(item, warnings, options) {
+    var tblocks = itemHtmlToBlocks(item.text, warnings, options);
+    var runs = [];
+    tblocks.forEach(function(b) {
+      if (b && b.runs && b.runs.length) {
+        if (runs.length) runs.push({ type: 'text', text: ' ' });
+        runs = runs.concat(b.runs);
+      }
+    });
+    return normalizeRuns(runs);
+  }
+
+  /* Índice exportado como lista anidada (nivel = jerarquía - 1):
+   * orden y sangría preservados en PDF, DOCX y TXT sin tipos nuevos. */
+  function tocListFromItems(items, warnings, options) {
+    var entries = [];
+    (items || []).forEach(function(item) {
+      if (!item || item.type !== 'text') return;
+      var h = headingLevelOf(item);
+      if (!h) return;
+      var runs = headingEntryRuns(item, warnings, options);
+      if (!runsHaveContent(runs)) return;
+      entries.push({
+        level: h - 1,
+        checked: false,
+        blocks: [{ type: 'paragraph', align: 'left', runs: runs }]
+      });
+    });
+    if (!entries.length) return null;
+    return { type: 'list', ordered: false, start: 1, items: entries };
   }
 
   function itemHtmlToBlocks(html, warnings, options) {

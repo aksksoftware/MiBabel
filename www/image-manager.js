@@ -206,6 +206,13 @@ var ImageManager = (function() {
         if (note.cover && note.cover.indexOf('ref:') === 0) {
           refs[note.cover.substring(4)] = true;
         }
+        if (note.type === 'markdown' && note.markdown) {
+          var reMd = /(?:imagenes|audios|videos)\/[^\s"'()<>]+/g;
+          var mMd;
+          while ((mMd = reMd.exec(String(note.markdown))) !== null) {
+            refs[mMd[0].replace(/[.,;:]+$/, '')] = true;
+          }
+        }
         (note.items || []).forEach(function(item) {
           var itemRef = item.src || item.ref;
           if (itemRef && (item.type === 'image' || item.type === 'audio' || item.type === 'video')) {

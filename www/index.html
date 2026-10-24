@@ -39,6 +39,11 @@
     <span class="header-title-side hidden" id="headerCenteredTitle"></span>
   </div>
   <div class="header-right" id="headerRight">
+    <div class="global-search" id="globalSearchBar">
+      <button class="note-search-btn" id="globalSearchToggle" onclick="toggleGlobalSearch()" title="Buscar">&#x1F50D;</button>
+      <input id="globalSearchInput" class="hidden" type="text" placeholder="Buscar..." autocomplete="off" oninput="onGlobalSearchInput()" onkeydown="if(event.key==='Enter'){event.preventDefault();runGlobalSearch();}else if(event.key==='Escape'){closeGlobalSearch();}">
+      <button class="note-search-btn note-search-clear hidden" id="globalSearchClearBtn" onclick="clearGlobalSearch()">&times;</button>
+    </div>
     <div class="note-search hidden" id="noteSearchBar">
       <input id="noteSearchInput" type="text" placeholder="Buscar en la nota..." onkeydown="if(event.key==='Enter'){event.preventDefault();runNoteSearch();}else if(event.key==='Escape'){clearNoteSearch(true);}" oninput="updateNoteSearchClearBtn();if(!this.value)clearNoteSearch(false);">
       <button class="note-search-btn" id="noteSearchBtn" onclick="runNoteSearch()" title="Buscar">&#x1F50D;</button>
@@ -48,6 +53,8 @@
     <button class="back-btn hidden" id="headerStudyBtn" onclick="var id=state.activeStudySetId;if(id)startStudy(id)"><span id="studyBtnLabel">Estudiar</span></button>
   </div>
 </header>
+
+<div class="gs-results hidden" id="globalSearchResults"></div>
 
 <main>
   <div class="panel panel-notes hidden" id="panelNotes">
@@ -166,8 +173,16 @@
       <button class="create-tab" id="createTabFolder" data-tab="folder" onclick="switchCreateTab('folder')"><span style="margin-right:6px;">&#x1f4c1;</span><span id="createTabFolderLabel">Carpeta</span></button>
     </div>
     <div id="createNotePane">
+      <div class="field">
+        <label id="newNoteTypeLabel">Tipo de nota</label>
+        <div class="note-type-picker" role="group" aria-labelledby="newNoteTypeLabel">
+          <button type="button" class="note-type-opt active" id="newNoteTypeNormal" onclick="selectNewNoteType('normal')">Nota normal</button>
+          <button type="button" class="note-type-opt" id="newNoteTypeMarkdown" onclick="selectNewNoteType('markdown')">Markdown</button>
+        </div>
+      </div>
       <div class="field"><label id="newNoteTitleLabel">Titulo</label><input id="newNoteTitle" placeholder="Titulo de la nota" autofocus onkeydown="if(event.key==='Enter')createNote()"></div>
       <div class="field"><label id="newNotePwdLabel">Contrasena (opcional)</label><input type="password" id="newNotePwd" placeholder="Dejar vacio si no quiere"></div>
+      <div class="field"><label id="newNoteTagsLabel">Etiquetas</label><div class="tag-editor" id="newNoteTags"></div></div>
       <div class="dialog-actions">
         <button class="btn" id="newNoteCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
         <button class="btn btn-primary" id="newNoteCreateBtn" onclick="createNote()">Crear</button>
@@ -193,6 +208,7 @@
         </div>
       </div>
       <div id="folderSubfolderHint" class="hidden" style="font-size:12px;color:var(--text-muted);padding:6px 8px;background:var(--surface-hover);border-radius:4px;margin-top:4px;text-align:center;"></div>
+      <div class="field"><label id="newFolderTagsLabel">Etiquetas</label><div class="tag-editor" id="newFolderTags"></div></div>
       <div class="dialog-actions">
         <button class="btn" id="newFolderCancelBtn" onclick="closeDialog('newNoteDialog')">Cancelar</button>
         <button class="btn btn-primary" id="newFolderCreateBtn" onclick="createFolder()">Crear</button>
@@ -206,6 +222,7 @@
     <h3 id="newBoardTitle">Nuevo Tablero</h3>
     <div class="field"><label id="newBoardNameLabel">Nombre</label><input id="newBoardName" placeholder="Nombre del tablero" autofocus onkeydown="if(event.key==='Enter')createBoard()"></div>
     <div class="field"><label id="newBoardPwdLabel">Contrasena (opcional)</label><input type="password" id="newBoardPwd" placeholder="Dejar vacio si no quiere"></div>
+    <div class="field"><label id="newBoardTagsLabel">Etiquetas</label><div class="tag-editor" id="newBoardTags"></div></div>
     <div class="dialog-actions">
       <button class="btn" id="newBoardCancelBtn" onclick="closeDialog('newBoardDialog')">Cancelar</button>
       <button class="btn btn-primary" id="newBoardCreateBtn" onclick="createBoard()">Crear</button>
@@ -217,6 +234,7 @@
   <div class="dialog">
     <h3 id="newStudySetTitle">New Set</h3>
     <div class="field"><label id="newStudySetNameLabel">Name</label><input id="newStudySetName" placeholder="Set name" autofocus onkeydown="if(event.key==='Enter')createStudySet()"></div>
+    <div class="field"><label id="newStudySetTagsLabel">Etiquetas</label><div class="tag-editor" id="newStudySetTags"></div></div>
     <div class="dialog-actions">
       <button class="btn" id="newStudySetCancelBtn" onclick="closeDialog('newStudySetDialog')">Cancel</button>
       <button class="btn btn-primary" id="newStudySetCreateBtn" onclick="createStudySet()">Create</button>
@@ -229,6 +247,7 @@
     <h3 id="studyCardTitle">Add Card</h3>
     <div class="field"><label id="studyCardFrontLabel">Front</label><div class="study-card-field-row"><div id="studyCardFront" class="study-card-editable" contenteditable="true" data-placeholder="Front"></div><div class="study-card-btn-col"><button id="studyCardImgBtnFront" class="btn-img" onclick="triggerStudyCardImage('front')" title="Insert image">&#x1f5bc;</button><button id="studyCardLatexBtnFront" class="btn-img" onclick="triggerStudyCardLatex('front')" title="Insert equation">&#x2211;</button><button id="studyCardVideoBtnFront" class="btn-img" onclick="triggerStudyCardVideo('front')" title="Insert video">&#x1f3ac;</button><button id="studyCardAudioBtnFront" class="btn-img" onclick="triggerStudyCardAudio('front')" title="Insert audio">&#x1f3a4;</button></div></div></div>
     <div class="field"><label id="studyCardBackLabel">Back</label><div class="study-card-field-row"><div id="studyCardBack" class="study-card-editable" contenteditable="true" data-placeholder="Back"></div><div class="study-card-btn-col"><button id="studyCardImgBtnBack" class="btn-img" onclick="triggerStudyCardImage('back')" title="Insert image">&#x1f5bc;</button><button id="studyCardLatexBtnBack" class="btn-img" onclick="triggerStudyCardLatex('back')" title="Insert equation">&#x2211;</button><button id="studyCardVideoBtnBack" class="btn-img" onclick="triggerStudyCardVideo('back')" title="Insert video">&#x1f3ac;</button><button id="studyCardAudioBtnBack" class="btn-img" onclick="triggerStudyCardAudio('back')" title="Insert audio">&#x1f3a4;</button></div></div></div>
+    <div class="field"><label id="studyCardTagsLabel">Etiquetas</label><div class="tag-editor" id="studyCardTags"></div></div>
     <input type="file" id="studyCardImageInput" accept="image/*" style="display:none" onchange="previewStudyCardImage(this)">
     <input type="file" id="studyCardVideoInput" accept="video/*,.mp4,.webm,.ogg,.mov,.m4v,.3gp" style="display:none" onchange="handleStudyCardVideoFile(this)">
     <input type="file" id="studyCardAudioInput" accept="audio/*,.mp3,.m4a,.aac,.ogg,.wav" style="display:none" onchange="handleStudyCardAudioFile(this)">
@@ -517,7 +536,8 @@
 <input type="file" id="boardAudioInput" accept=".mp3,.m4a,.aac" style="display:none" onchange="insertBoardAudio(this)">
 <input type="file" id="boardVideoInput" accept=".mp4,.webm,.ogg" style="display:none" onchange="insertBoardVideo(this)">
 <input type="file" id="importInput" accept=".anbk" style="display:none" onchange="importData(this)">
-<input type="file" id="importSingleInput" accept=".json" style="display:none" onchange="importSingleItem(this)">
+<input type="file" id="importSingleInput" accept=".json,.md,.markdown,.txt,application/json,text/markdown,text/plain" style="display:none" onchange="importSingleItem(this)">
+<input type="file" id="markdownImportInput" accept=".md,.markdown,.txt,text/markdown,text/plain" style="display:none" onchange="importMarkdownFile(this, true)">
 
 <div class="dialog-overlay hidden" id="statsDialog">
   <div class="dialog" style="max-width:360px;">
@@ -628,6 +648,10 @@
     <div class="field">
       <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;"><input type="checkbox" id="editNoteLockWidth"> <span id="editNoteLockWidthLabel">Bloquear ancho</span></label>
     </div>
+    <div class="field">
+      <label id="editNoteTagsLabel" for="editNoteTags">Etiquetas</label>
+      <div class="tag-editor" id="editNoteTags"></div>
+    </div>
     <div class="dialog-actions">
       <button class="btn" id="editNoteCancelBtn" onclick="closeDialog('editNoteDialog')">Cancelar</button>
       <button class="btn btn-primary" id="editNoteSaveBtn" onclick="saveEditNoteDialog()">Guardar</button>
@@ -658,9 +682,26 @@
         </div>
       </div>
     </div>
+    <div class="field">
+      <label id="folderEditTagsLabel" for="folderEditTags">Etiquetas</label>
+      <div class="tag-editor" id="folderEditTags"></div>
+    </div>
     <div class="dialog-actions">
       <button class="btn" id="folderEditCancelBtn" onclick="closeDialog('folderEditDialog')">Cancelar</button>
       <button class="btn btn-primary" id="folderEditSaveBtn" onclick="saveFolderEditDialog()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="tagsDialog">
+  <div class="dialog">
+    <h3 id="tagsDialogTitle">Etiquetas</h3>
+    <div class="field">
+      <div class="tag-editor" id="tagsDialogTags"></div>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="tagsCancelBtn" onclick="closeDialog('tagsDialog')">Cancelar</button>
+      <button class="btn btn-primary" id="tagsSaveBtn" onclick="saveTagsDialog()">Guardar</button>
     </div>
   </div>
 </div>
@@ -703,9 +744,14 @@ setTimeout(function () {
 <script src="lib/docx.umd.js" defer></script>
 <script src="lib/jszip.min.js" defer></script>
 <script src="lib/katex/katex.min.js" defer></script>
+<script src="lib/marked.umd.js" defer></script>
+<script src="lib/purify.min.js" defer></script>
+<script src="markdown/markdown-engine.js" defer></script>
 <script src="drawing/drawing-engine.js" defer></script>
 <script src="drawing/drawing-canvas.js" defer></script>
+<script src="drawing/drawing-toolbar.js" defer></script>
 <script src="drawing/drawing-editor.js" defer></script>
+<script src="drawing/drawing-board.js" defer></script>
 <script src="drawing/drawing-note.js" defer></script>
 <script src="image-manager.js" defer></script>
 <script src="video-manager.js" defer></script>
@@ -713,6 +759,7 @@ setTimeout(function () {
 <script src="export/txt-exporter.js" defer></script>
 <script src="export/docx-exporter.js" defer></script>
 <script src="export/pdf-exporter.js" defer></script>
+<script src="export/md-exporter.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>

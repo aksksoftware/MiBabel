@@ -662,7 +662,7 @@ var DRAWING_LANG = {
     drawingLoading:'Loading image...', drawingPreview:'Drawing',
     drawingPreviewMissing:'Preview not available', drawingImageTooLarge:'Image too large. Max 5MB.',
     drawingImageError:'Could not load the image', drawingSaveError:'Could not save the drawing',
-    drawingColorPicker:'Custom color', drawingColorHex:'Hex color code'
+    drawingColorPicker:'Custom color', drawingColorHex:'Hex color code', boardDrawing:'Draw on board'
   },
   es: {
     drawing:'Dibujar', drawingCreateTitle:'Nuevo dibujo', drawingEditTitle:'Editar dibujo',
@@ -677,7 +677,7 @@ var DRAWING_LANG = {
     drawingLoading:'Cargando imagen...', drawingPreview:'Dibujo',
     drawingPreviewMissing:'Vista previa no disponible', drawingImageTooLarge:'Imagen demasiado grande. Máximo 5MB.',
     drawingImageError:'No se pudo cargar la imagen', drawingSaveError:'No se pudo guardar el dibujo',
-    drawingColorPicker:'Color personalizado', drawingColorHex:'Código de color hex'
+    drawingColorPicker:'Color personalizado', drawingColorHex:'Código de color hex', boardDrawing:'Dibujar en el tablero'
   },
   fr: {
     drawing:'Dessiner', drawingCreateTitle:'Nouveau dessin', drawingEditTitle:'Modifier le dessin',
@@ -692,7 +692,7 @@ var DRAWING_LANG = {
     drawingLoading:'Chargement de l\'image...', drawingPreview:'Dessin',
     drawingPreviewMissing:'Aperçu indisponible', drawingImageTooLarge:'Image trop volumineuse. Max 5 Mo.',
     drawingImageError:'Impossible de charger l\'image', drawingSaveError:'Impossible d\'enregistrer le dessin',
-    drawingColorPicker:'Couleur personnalisée', drawingColorHex:'Code couleur hexadécimal'
+    drawingColorPicker:'Couleur personnalisée', drawingColorHex:'Code couleur hexadécimal', boardDrawing:'Dessiner sur le tableau'
   },
   pt: {
     drawing:'Desenhar', drawingCreateTitle:'Novo desenho', drawingEditTitle:'Editar desenho',
@@ -707,7 +707,7 @@ var DRAWING_LANG = {
     drawingLoading:'Carregando imagem...', drawingPreview:'Desenho',
     drawingPreviewMissing:'Pré-visualização indisponível', drawingImageTooLarge:'Imagem muito grande. Máx. 5MB.',
     drawingImageError:'Não foi possível carregar a imagem', drawingSaveError:'Não foi possível salvar o desenho',
-    drawingColorPicker:'Cor personalizada', drawingColorHex:'Código de cor hexadecimal'
+    drawingColorPicker:'Cor personalizada', drawingColorHex:'Código de cor hexadecimal', boardDrawing:'Desenhar no quadro'
   },
   ru: {
     drawing:'Рисовать', drawingCreateTitle:'Новый рисунок', drawingEditTitle:'Редактировать рисунок',
@@ -722,7 +722,7 @@ var DRAWING_LANG = {
     drawingLoading:'Загрузка изображения...', drawingPreview:'Рисунок',
     drawingPreviewMissing:'Предпросмотр недоступен', drawingImageTooLarge:'Изображение слишком большое. Макс. 5 МБ.',
     drawingImageError:'Не удалось загрузить изображение', drawingSaveError:'Не удалось сохранить рисунок',
-    drawingColorPicker:'Пользовательский цвет', drawingColorHex:'Шестнадцатеричный код цвета'
+    drawingColorPicker:'Пользовательский цвет', drawingColorHex:'Шестнадцатеричный код цвета', boardDrawing:'Рисовать на доске'
   },
   de: {
     drawing:'Zeichnen', drawingCreateTitle:'Neue Zeichnung', drawingEditTitle:'Zeichnung bearbeiten',
@@ -737,7 +737,7 @@ var DRAWING_LANG = {
     drawingLoading:'Bild wird geladen...', drawingPreview:'Zeichnung',
     drawingPreviewMissing:'Vorschau nicht verfügbar', drawingImageTooLarge:'Bild zu groß. Max. 5MB.',
     drawingImageError:'Bild konnte nicht geladen werden', drawingSaveError:'Zeichnung konnte nicht gespeichert werden',
-    drawingColorPicker:'Eigene Farbe', drawingColorHex:'Hex-Farbcode'
+    drawingColorPicker:'Eigene Farbe', drawingColorHex:'Hex-Farbcode', boardDrawing:'Auf Tafel zeichnen'
   },
   it: {
     drawing:'Disegna', drawingCreateTitle:'Nuovo disegno', drawingEditTitle:'Modifica disegno',
@@ -752,7 +752,7 @@ var DRAWING_LANG = {
     drawingLoading:'Caricamento dell\'immagine...', drawingPreview:'Disegno',
     drawingPreviewMissing:'Anteprima non disponibile', drawingImageTooLarge:'Immagine troppo grande. Max 5MB.',
     drawingImageError:'Impossibile caricare l\'immagine', drawingSaveError:'Impossibile salvare il disegno',
-    drawingColorPicker:'Colore personalizzato', drawingColorHex:'Codice colore esadecimale'
+    drawingColorPicker:'Colore personalizzato', drawingColorHex:'Codice colore esadecimale', boardDrawing:'Disegna sul tabellone'
   }
 };
 (function () {
@@ -760,6 +760,165 @@ var DRAWING_LANG = {
     if (!Object.prototype.hasOwnProperty.call(DRAWING_LANG, code)) continue;
     if (!langData[code]) langData[code] = {};
     var src = DRAWING_LANG[code];
+    for (var k in src) {
+      if (Object.prototype.hasOwnProperty.call(src, k)) langData[code][k] = src[k];
+    }
+  }
+})();
+var MARKDOWN_LANG = {
+  en: {
+    noteType:'Note type', noteTypeNormal:'Normal note', noteTypeMarkdown:'Markdown note',
+    markdownEdit:'Edit', markdownPreview:'Preview', markdownSplit:'Split',
+    markdownPlaceholder:'Write Markdown here...', markdownEmptyPreview:'Nothing to preview yet',
+    markdownImported:'Markdown note imported', markdownImportedAsNormal:'Text imported as a normal note',
+    markdownImportFailed:'Could not import the file', markdownFileEmpty:'The file is empty',
+    markdownFileTooLarge:'The file is too large (max. 5 MB)', markdownInvalidFile:'Unsupported file. Use .md, .markdown or .txt.',
+    markdownExport:'Export Markdown (.md)', markdownExportDone:'Markdown exported',
+    markdownExportWithAssets:'Markdown exported as ZIP with its images',
+    markdownAssetsMissing:'Some referenced files were not found; the .md may contain broken links.',
+    markdownExportError:'Could not export Markdown',
+    convertToMarkdown:'Convert to Markdown', convertToNormal:'Convert to normal note',
+    convertToMarkdownConfirm:'A new Markdown note will be created and the original note will stay unchanged. Continue?',
+    convertToNormalConfirm:'A new normal note will be created and the original Markdown note will stay unchanged. Continue?',
+    convertLossWarn:'Some formatting has no exact Markdown equivalent and may change:',
+    convertDone:'Conversion complete', convertError:'Could not convert the note', markdownContinue:'Continue?',
+    importMarkdownOption:'Import Markdown (.md/.txt)',
+    markdownWords:'words', markdownSourceLabel:'Markdown source', markdownBadge:'MD',
+    markdownNoSource:'This note has no Markdown content yet.', markdownDiscardChanges:'There are unsaved changes. Discard them?',
+    markdownFormatHint:'You can use Markdown and $...$ for formulas', markdownExportPlain:'Export .md'
+  },
+  es: {
+    noteType:'Tipo de nota', noteTypeNormal:'Nota normal', noteTypeMarkdown:'Nota Markdown',
+    markdownEdit:'Editar', markdownPreview:'Vista previa', markdownSplit:'Dividido',
+    markdownPlaceholder:'Escribe Markdown aquí...', markdownEmptyPreview:'Aún no hay nada que previsualizar',
+    markdownImported:'Nota Markdown importada', markdownImportedAsNormal:'Texto importado como nota normal',
+    markdownImportFailed:'No se pudo importar el archivo', markdownFileEmpty:'El archivo está vacío',
+    markdownFileTooLarge:'El archivo es demasiado grande (máx. 5 MB)', markdownInvalidFile:'Archivo no compatible. Usa .md, .markdown o .txt.',
+    markdownExport:'Exportar Markdown (.md)', markdownExportDone:'Markdown exportado',
+    markdownExportWithAssets:'Markdown exportado como ZIP con sus imágenes',
+    markdownAssetsMissing:'No se encontraron algunos archivos referenciados; el .md puede tener enlaces rotos.',
+    markdownExportError:'No se pudo exportar Markdown',
+    convertToMarkdown:'Convertir a Markdown', convertToNormal:'Convertir a nota normal',
+    convertToMarkdownConfirm:'Se creará una nota Markdown nueva y la nota original no se modificará. ¿Continuar?',
+    convertToNormalConfirm:'Se creará una nota normal nueva y la nota Markdown original no se modificará. ¿Continuar?',
+    convertLossWarn:'Algo del formato no tiene equivalente exacto en Markdown y puede cambiar:',
+    convertDone:'Conversión completada', convertError:'No se pudo convertir la nota', markdownContinue:'¿Continuar?',
+    importMarkdownOption:'Importar Markdown (.md/.txt)',
+    markdownWords:'palabras', markdownSourceLabel:'Código Markdown', markdownBadge:'MD',
+    markdownNoSource:'Esta nota aún no tiene contenido Markdown.', markdownDiscardChanges:'Hay cambios sin guardar. ¿Descartarlos?',
+    markdownFormatHint:'Puedes usar Markdown y $...$ para fórmulas', markdownExportPlain:'Exportar .md'
+  },
+  fr: {
+    noteType:'Type de note', noteTypeNormal:'Note normale', noteTypeMarkdown:'Note Markdown',
+    markdownEdit:'Modifier', markdownPreview:'Aperçu', markdownSplit:'Divisé',
+    markdownPlaceholder:'Écrivez du Markdown ici...', markdownEmptyPreview:'Rien à prévisualiser pour le moment',
+    markdownImported:'Note Markdown importée', markdownImportedAsNormal:'Texte importé comme note normale',
+    markdownImportFailed:"Impossible d'importer le fichier", markdownFileEmpty:'Le fichier est vide',
+    markdownFileTooLarge:'Le fichier est trop volumineux (max. 5 Mo)', markdownInvalidFile:'Fichier non pris en charge. Utilisez .md, .markdown ou .txt.',
+    markdownExport:'Exporter Markdown (.md)', markdownExportDone:'Markdown exporté',
+    markdownExportWithAssets:'Markdown exporté en ZIP avec ses images',
+    markdownAssetsMissing:'Certains fichiers référencés sont introuvables ; le .md peut contenir des liens brisés.',
+    markdownExportError:"Impossible d'exporter le Markdown",
+    convertToMarkdown:'Convertir en Markdown', convertToNormal:'Convertir en note normale',
+    convertToMarkdownConfirm:'Une nouvelle note Markdown sera créée et la note originale restera inchangée. Continuer ?',
+    convertToNormalConfirm:'Une nouvelle note normale sera créée et la note Markdown originale restera inchangée. Continuer ?',
+    convertLossWarn:"Certains formats n'ont pas d'équivalent Markdown exact et peuvent changer :",
+    convertDone:'Conversion terminée', convertError:'Impossible de convertir la note', markdownContinue:'Continuer ?',
+    importMarkdownOption:'Importer Markdown (.md/.txt)',
+    markdownWords:'mots', markdownSourceLabel:'Source Markdown', markdownBadge:'MD',
+    markdownNoSource:"Cette note n'a pas encore de contenu Markdown.", markdownDiscardChanges:'Des modifications ne sont pas enregistrées. Les abandonner ?',
+    markdownFormatHint:'Vous pouvez utiliser Markdown et $...$ pour les formules', markdownExportPlain:'Exporter .md'
+  },
+  pt: {
+    noteType:'Tipo de nota', noteTypeNormal:'Nota normal', noteTypeMarkdown:'Nota Markdown',
+    markdownEdit:'Editar', markdownPreview:'Pré-visualizar', markdownSplit:'Dividido',
+    markdownPlaceholder:'Escreva Markdown aqui...', markdownEmptyPreview:'Ainda não há nada para pré-visualizar',
+    markdownImported:'Nota Markdown importada', markdownImportedAsNormal:'Texto importado como nota normal',
+    markdownImportFailed:'Não foi possível importar o arquivo', markdownFileEmpty:'O arquivo está vazio',
+    markdownFileTooLarge:'O arquivo é muito grande (máx. 5 MB)', markdownInvalidFile:'Arquivo não suportado. Use .md, .markdown ou .txt.',
+    markdownExport:'Exportar Markdown (.md)', markdownExportDone:'Markdown exportado',
+    markdownExportWithAssets:'Markdown exportado como ZIP com suas imagens',
+    markdownAssetsMissing:'Alguns arquivos referenciados não foram encontrados; o .md pode ter links quebrados.',
+    markdownExportError:'Não foi possível exportar Markdown',
+    convertToMarkdown:'Converter para Markdown', convertToNormal:'Converter em nota normal',
+    convertToMarkdownConfirm:'Uma nova nota Markdown será criada e a nota original permanecerá inalterada. Continuar?',
+    convertToNormalConfirm:'Uma nova nota normal será criada e a nota Markdown original permanecerá inalterada. Continuar?',
+    convertLossWarn:'Alguns formatos não têm equivalente exato em Markdown e podem mudar:',
+    convertDone:'Conversão concluída', convertError:'Não foi possível converter a nota', markdownContinue:'Continuar?',
+    importMarkdownOption:'Importar Markdown (.md/.txt)',
+    markdownWords:'palavras', markdownSourceLabel:'Código-fonte Markdown', markdownBadge:'MD',
+    markdownNoSource:'Esta nota ainda não tem conteúdo Markdown.', markdownDiscardChanges:'Há alterações não salvas. Descartá-las?',
+    markdownFormatHint:'Você pode usar Markdown e $...$ para fórmulas', markdownExportPlain:'Exportar .md'
+  },
+  de: {
+    noteType:'Notiztyp', noteTypeNormal:'Normale Notiz', noteTypeMarkdown:'Markdown-Notiz',
+    markdownEdit:'Bearbeiten', markdownPreview:'Vorschau', markdownSplit:'Geteilt',
+    markdownPlaceholder:'Markdown hier schreiben...', markdownEmptyPreview:'Noch nichts zur Vorschau',
+    markdownImported:'Markdown-Notiz importiert', markdownImportedAsNormal:'Text als normale Notiz importiert',
+    markdownImportFailed:'Datei konnte nicht importiert werden', markdownFileEmpty:'Die Datei ist leer',
+    markdownFileTooLarge:'Die Datei ist zu groß (max. 5 MB)', markdownInvalidFile:'Nicht unterstützte Datei. Verwenden Sie .md, .markdown oder .txt.',
+    markdownExport:'Markdown exportieren (.md)', markdownExportDone:'Markdown exportiert',
+    markdownExportWithAssets:'Markdown als ZIP mit Bildern exportiert',
+    markdownAssetsMissing:'Einige referenzierte Dateien wurden nicht gefunden; die .md kann defekte Links enthalten.',
+    markdownExportError:'Markdown konnte nicht exportiert werden',
+    convertToMarkdown:'In Markdown umwandeln', convertToNormal:'In normale Notiz umwandeln',
+    convertToMarkdownConfirm:'Es wird eine neue Markdown-Notiz erstellt; die Originalnotiz bleibt unverändert. Fortfahren?',
+    convertToNormalConfirm:'Es wird eine neue normale Notiz erstellt; die ursprüngliche Markdown-Notiz bleibt unverändert. Fortfahren?',
+    convertLossWarn:'Einige Formatierungen haben kein exaktes Markdown-Äquivalent und können sich ändern:',
+    convertDone:'Umwandlung abgeschlossen', convertError:'Notiz konnte nicht umgewandelt werden', markdownContinue:'Fortfahren?',
+    importMarkdownOption:'Markdown importieren (.md/.txt)',
+    markdownWords:'Wörter', markdownSourceLabel:'Markdown-Quelltext', markdownBadge:'MD',
+    markdownNoSource:'Diese Notiz hat noch keinen Markdown-Inhalt.', markdownDiscardChanges:'Es gibt ungespeicherte Änderungen. Verwerfen?',
+    markdownFormatHint:'Sie können Markdown und $...$ für Formeln verwenden', markdownExportPlain:'.md exportieren'
+  },
+  ru: {
+    noteType:'Тип заметки', noteTypeNormal:'Обычная заметка', noteTypeMarkdown:'Заметка Markdown',
+    markdownEdit:'Редактировать', markdownPreview:'Просмотр', markdownSplit:'Разделённый',
+    markdownPlaceholder:'Пишите Markdown здесь...', markdownEmptyPreview:'Пока нечего просматривать',
+    markdownImported:'Заметка Markdown импортирована', markdownImportedAsNormal:'Текст импортирован как обычная заметка',
+    markdownImportFailed:'Не удалось импортировать файл', markdownFileEmpty:'Файл пуст',
+    markdownFileTooLarge:'Файл слишком большой (макс. 5 МБ)', markdownInvalidFile:'Неподдерживаемый файл. Используйте .md, .markdown или .txt.',
+    markdownExport:'Экспорт Markdown (.md)', markdownExportDone:'Markdown экспортирован',
+    markdownExportWithAssets:'Markdown экспортирован в ZIP с изображениями',
+    markdownAssetsMissing:'Некоторые указанные файлы не найдены; в .md могут быть нерабочие ссылки.',
+    markdownExportError:'Не удалось экспортировать Markdown',
+    convertToMarkdown:'Преобразовать в Markdown', convertToNormal:'Преобразовать в обычную заметку',
+    convertToMarkdownConfirm:'Будет создана новая заметка Markdown, исходная заметка останется без изменений. Продолжить?',
+    convertToNormalConfirm:'Будет создана новая обычная заметка, исходная заметка Markdown останется без изменений. Продолжить?',
+    convertLossWarn:'Некоторое форматирование не имеет точного эквивалента Markdown и может измениться:',
+    convertDone:'Преобразование завершено', convertError:'Не удалось преобразовать заметку', markdownContinue:'Продолжить?',
+    importMarkdownOption:'Импорт Markdown (.md/.txt)',
+    markdownWords:'слов', markdownSourceLabel:'Исходный код Markdown', markdownBadge:'MD',
+    markdownNoSource:'В этой заметке пока нет содержимого Markdown.', markdownDiscardChanges:'Есть несохранённые изменения. Отменить их?',
+    markdownFormatHint:'Можно использовать Markdown и $...$ для формул', markdownExportPlain:'Экспорт .md'
+  },
+  it: {
+    noteType:'Tipo di nota', noteTypeNormal:'Nota normale', noteTypeMarkdown:'Nota Markdown',
+    markdownEdit:'Modifica', markdownPreview:'Anteprima', markdownSplit:'Diviso',
+    markdownPlaceholder:'Scrivi Markdown qui...', markdownEmptyPreview:'Ancora nulla da visualizzare',
+    markdownImported:'Nota Markdown importata', markdownImportedAsNormal:'Testo importato come nota normale',
+    markdownImportFailed:'Impossibile importare il file', markdownFileEmpty:'Il file è vuoto',
+    markdownFileTooLarge:'Il file è troppo grande (max 5 MB)', markdownInvalidFile:'File non supportato. Usa .md, .markdown o .txt.',
+    markdownExport:'Esporta Markdown (.md)', markdownExportDone:'Markdown esportato',
+    markdownExportWithAssets:'Markdown esportato come ZIP con le immagini',
+    markdownAssetsMissing:'Alcuni file referenziati non sono stati trovati; il .md potrebbe avere link non validi.',
+    markdownExportError:'Impossibile esportare Markdown',
+    convertToMarkdown:'Converti in Markdown', convertToNormal:'Converti in nota normale',
+    convertToMarkdownConfirm:'Verrà creata una nuova nota Markdown e la nota originale resterà invariata. Continuare?',
+    convertToNormalConfirm:'Verrà creata una nuova nota normale e la nota Markdown originale resterà invariata. Continuare?',
+    convertLossWarn:'Alcune formattazioni non hanno un equivalente Markdown esatto e potrebbero cambiare:',
+    convertDone:'Conversione completata', convertError:'Impossibile convertire la nota', markdownContinue:'Continuare?',
+    importMarkdownOption:'Importa Markdown (.md/.txt)',
+    markdownWords:'parole', markdownSourceLabel:'Sorgente Markdown', markdownBadge:'MD',
+    markdownNoSource:'Questa nota non ha ancora contenuto Markdown.', markdownDiscardChanges:'Ci sono modifiche non salvate. Scartarle?',
+    markdownFormatHint:'Puoi usare Markdown e $...$ per le formule', markdownExportPlain:'Esporta .md'
+  }
+};
+(function () {
+  for (var code in MARKDOWN_LANG) {
+    if (!Object.prototype.hasOwnProperty.call(MARKDOWN_LANG, code)) continue;
+    if (!langData[code]) langData[code] = {};
+    var src = MARKDOWN_LANG[code];
     for (var k in src) {
       if (Object.prototype.hasOwnProperty.call(src, k)) langData[code][k] = src[k];
     }
@@ -908,6 +1067,39 @@ function isPaperSyncDesign(design) {
     for (var k in extraScore[lang]) { if (!langData[lang][k]) langData[lang][k] = extraScore[lang][k]; }
   }
 })();
+/* Traducciones de jerarquías e índice (sin tocar las líneas largas de langData).
+   Patrón existente: bloques extra que completan langData por idioma. */
+(function() {
+  var extraToc = {
+    en: { headingBtn: 'Headings', heading1: 'Heading 1', heading2: 'Heading 2', heading3: 'Heading 3', heading4: 'Heading 4', heading5: 'Heading 5', headingNone: 'Normal text', tocTitle: 'Index', tocEmpty: 'No headings yet. Mark a text block as Heading 1-5 to list it here.', tocNavigateHint: 'Go to heading' },
+    es: { headingBtn: 'Jerarquía', heading1: 'Título 1', heading2: 'Título 2', heading3: 'Título 3', heading4: 'Título 4', heading5: 'Título 5', headingNone: 'Texto normal', tocTitle: 'Índice', tocEmpty: 'Aún no hay títulos. Marcá un bloque de texto como Título 1-5 para listarlo aquí.', tocNavigateHint: 'Ir al título' },
+    fr: { headingBtn: 'Titres', heading1: 'Titre 1', heading2: 'Titre 2', heading3: 'Titre 3', heading4: 'Titre 4', heading5: 'Titre 5', headingNone: 'Texte normal', tocTitle: 'Sommaire', tocEmpty: 'Aucun titre pour le moment. Marquez un bloc comme Titre 1-5 pour l’afficher ici.', tocNavigateHint: 'Aller au titre' },
+    pt: { headingBtn: 'Títulos', heading1: 'Título 1', heading2: 'Título 2', heading3: 'Título 3', heading4: 'Título 4', heading5: 'Título 5', headingNone: 'Texto normal', tocTitle: 'Índice', tocEmpty: 'Ainda não há títulos. Marque um bloco como Título 1-5 para listá-lo aqui.', tocNavigateHint: 'Ir para o título' },
+    de: { headingBtn: 'Überschriften', heading1: 'Überschrift 1', heading2: 'Überschrift 2', heading3: 'Überschrift 3', heading4: 'Überschrift 4', heading5: 'Überschrift 5', headingNone: 'Normaler Text', tocTitle: 'Inhaltsverzeichnis', tocEmpty: 'Noch keine Überschriften. Markiere einen Textblock als Überschrift 1-5.', tocNavigateHint: 'Zur Überschrift' },
+    ru: { headingBtn: 'Заголовки', heading1: 'Заголовок 1', heading2: 'Заголовок 2', heading3: 'Заголовок 3', heading4: 'Заголовок 4', heading5: 'Заголовок 5', headingNone: 'Обычный текст', tocTitle: 'Оглавление', tocEmpty: 'Пока нет заголовков. Отметьте текстовый блок как Заголовок 1-5.', tocNavigateHint: 'Перейти к заголовку' },
+    it: { headingBtn: 'Titoli', heading1: 'Titolo 1', heading2: 'Titolo 2', heading3: 'Titolo 3', heading4: 'Titolo 4', heading5: 'Titolo 5', headingNone: 'Testo normale', tocTitle: 'Indice', tocEmpty: 'Ancora nessun titolo. Contrassegna un blocco come Titolo 1-5.', tocNavigateHint: 'Vai al titolo' }
+  };
+  for (var lang in extraToc) {
+    if (!langData[lang]) continue;
+    for (var k in extraToc[lang]) { if (!langData[lang][k]) langData[lang][k] = extraToc[lang][k]; }
+  }
+})();
+/* Traducciones del buscador global y las etiquetas (mismo patrón extra). */
+(function() {
+  var extraTags = {
+    en: { gSearch: 'Search', gSearchPh: 'Search notes, boards, cards…', tags: 'Tags', tagPh: 'Add tag…', srNote: 'Note', srBoard: 'Board', srSet: 'Card set', srCard: 'Card', srFolder: 'Folder', srInSet: 'in' },
+    es: { gSearch: 'Buscar', gSearchPh: 'Buscar notas, tableros, tarjetas…', tags: 'Etiquetas', tagPh: 'Añadir etiqueta…', srNote: 'Nota', srBoard: 'Tablero', srSet: 'Set', srCard: 'Tarjeta', srFolder: 'Carpeta', srInSet: 'en' },
+    fr: { gSearch: 'Rechercher', gSearchPh: 'Rechercher notes, tableaux, cartes…', tags: 'Étiquettes', tagPh: 'Ajouter une étiquette…', srNote: 'Note', srBoard: 'Tableau', srSet: 'Jeu', srCard: 'Carte', srFolder: 'Dossier', srInSet: 'dans' },
+    pt: { gSearch: 'Buscar', gSearchPh: 'Buscar notas, quadros, cartões…', tags: 'Etiquetas', tagPh: 'Adicionar etiqueta…', srNote: 'Nota', srBoard: 'Quadro', srSet: 'Conjunto', srCard: 'Cartão', srFolder: 'Pasta', srInSet: 'em' },
+    de: { gSearch: 'Suchen', gSearchPh: 'Notizen, Boards, Karten suchen…', tags: 'Tags', tagPh: 'Tag hinzufügen…', srNote: 'Notiz', srBoard: 'Board', srSet: 'Set', srCard: 'Karte', srFolder: 'Ordner', srInSet: 'in' },
+    ru: { gSearch: 'Поиск', gSearchPh: 'Поиск заметок, досок, карточек…', tags: 'Метки', tagPh: 'Добавить метку…', srNote: 'Заметка', srBoard: 'Доска', srSet: 'Набор', srCard: 'Карточка', srFolder: 'Папка', srInSet: 'в' },
+    it: { gSearch: 'Cerca', gSearchPh: 'Cerca note, lavagne, carte…', tags: 'Etichette', tagPh: 'Aggiungi etichetta…', srNote: 'Nota', srBoard: 'Lavagna', srSet: 'Set', srCard: 'Carta', srFolder: 'Cartella', srInSet: 'in' }
+  };
+  for (var lang in extraTags) {
+    if (!langData[lang]) continue;
+    for (var k in extraTags[lang]) { if (!langData[lang][k]) langData[lang][k] = extraTags[lang][k]; }
+  }
+})();
 function setLang(code) { state.lang = code; save(); applyLang(); applyTheme(); renderAll(); document.documentElement.lang = code; }
 function fmtDate(ts) { if (!ts) return ''; var d = new Date(ts); return d.toLocaleDateString(); }
 var Directory = {
@@ -962,6 +1154,9 @@ function saveFile(nombre, data, mime) {
 
 function _collectMediaRefsFromItem(item, type) {
   var refs = {};
+  if (type === 'note' && item.type === 'markdown' && item.markdown) {
+    _mdSourceAssetRefs(item.markdown).forEach(function(ref) { refs[ref] = true; });
+  }
   if (type === 'note' && item.items) {
     item.items.forEach(function(it) {
       var itRef = it.src || it.ref;
@@ -1068,7 +1263,9 @@ function exportSingleFolder(id){
   var pkg={ formatVersion:2, type:'folder', app:'AppNotas', exportedAt:new Date().toISOString(), data: JSON.parse(JSON.stringify(folder)), notes: JSON.parse(JSON.stringify(notes)), hasEmbeddedMedia:true, _media:{}, _localOnlyMedia:{} };
   var refs=[];
   var pushRef=function(r){ if(r && refs.indexOf(r)===-1) refs.push(r); };
-  notes.forEach(function(n){ (n.items||[]).forEach(function(it){
+  notes.forEach(function(n){
+    if(n.type==='markdown' && n.markdown){ _mdSourceAssetRefs(n.markdown).forEach(pushRef); }
+    (n.items||[]).forEach(function(it){
     var r=it.src||it.ref;
     if((it.type==='image'||it.type==='audio'||it.type==='video')&&r){
       if (VideoManager.isHeavyItem(it)) {
@@ -1373,6 +1570,11 @@ function importData(input) {
 function importSingleItem(input) {
   if (!input.files || !input.files[0]) return;
   var file = input.files[0];
+  var fname = String(file.name || '').toLowerCase();
+  if (/\.(md|markdown|txt)$/.test(fname)) {
+    importMarkdownFile(input, false);
+    return;
+  }
   var reader = new FileReader();
   reader.onload = function(e) {
     var jsonStr = e.target.result;
@@ -1575,6 +1777,7 @@ function applyLang() {
   if (cm) cm.querySelector('.label').textContent = 'Expandir la Biblioteca';
   document.getElementById('menuTheme').querySelector('.theme-label').textContent = state.theme === 'light' ? t('lightTheme') : t('darkTheme');
   l('newNoteTitleLabel','title'); l('newNotePwdLabel','passwordOptional');
+  l('newNoteTypeLabel','noteType'); l('newNoteTypeNormal','noteTypeNormal'); l('newNoteTypeMarkdown','noteTypeMarkdown');
   l('newFolderNameLabel','folderName'); l('newFolderPwdLabel','passwordOptional'); l('newFolderColorLabel','folderColor');
   var ctN=document.getElementById('createTabNoteLabel'); if(ctN){ var v=t('countNote'); ctN.textContent=v.charAt(0).toUpperCase()+v.slice(1); }
   var ctF=document.getElementById('createTabFolderLabel'); if(ctF){ var v2=t('folder'); ctF.textContent=v2.charAt(0).toUpperCase()+v2.slice(1); }
@@ -1612,6 +1815,18 @@ function applyLang() {
   if (nsi) nsi.placeholder = t('searchInNote');
   var nsb = document.getElementById('noteSearchBtn');
   if (nsb) nsb.title = t('searchInNote');
+  // Global search (header)
+  var gsi = document.getElementById('globalSearchInput');
+  if (gsi) gsi.placeholder = t('gSearchPh');
+  var gst = document.getElementById('globalSearchToggle');
+  if (gst) gst.title = t('gSearch');
+  // Tags labels
+  l('newNoteTagsLabel','tags'); l('newFolderTagsLabel','tags');
+  l('newBoardTagsLabel','tags'); l('newStudySetTagsLabel','tags');
+  l('studyCardTagsLabel','tags'); l('editNoteTagsLabel','tags');
+  l('folderEditTagsLabel','tags');
+  l('tagsDialogTitle','tags'); l('tagsCancelBtn','cancel'); l('tagsSaveBtn','save');
+  refreshTagEditorPlaceholders();
   // Buttons
   l('newNoteCancelBtn','cancel'); l('newNoteCreateBtn','create');
   l('newBoardCancelBtn','cancel'); l('newBoardCreateBtn','create');
@@ -1974,9 +2189,14 @@ function setDiaryCreateMode(on) {
     if (notePane) notePane.classList.remove('hidden');
     if (folderPane) folderPane.classList.add('hidden');
     if (tabNote) tabNote.classList.add('active');
+    var picker = document.querySelector('.note-type-picker');
+    if (picker) picker.style.display = 'none';
+    selectNewNoteType('normal');
   } else {
     if (tabFolder) tabFolder.style.display = '';
     if (tabs) tabs.style.display = '';
+    var picker2 = document.querySelector('.note-type-picker');
+    if (picker2) picker2.style.display = '';
   }
 }
 
@@ -2439,6 +2659,14 @@ function _base64ToBlob(base64, mime) {
 var _quotaWarned = false;
 function save() {
   try {
+    /* Posición de lectura: cualquier guardado normal de la app ya incluye
+       el valor en memoria, así que el scroll aplazado se cancela aquí
+       para no escribir dos veces el mismo estado. */
+    if (typeof _readPos !== 'undefined' && _readPos && _readPos.saveTimer) {
+      clearTimeout(_readPos.saveTimer);
+      _readPos.saveTimer = null;
+      _readPos.lastSaveAt = Date.now();
+    }
     localStorage.setItem('appnotas', JSON.stringify(state));
   } catch(e) {
     console.error('Error guardando datos:', e);
@@ -2456,6 +2684,11 @@ function load() {
     if (d) { state = JSON.parse(d);
       if (!state.nextId) state.nextId = Date.now();
       if (!state.notes) state.notes = [];
+      state.notes.forEach(function(n) {
+        if (!n) return;
+        if (!n.items) n.items = [];
+        if (n.type === 'markdown' && typeof n.markdown !== 'string') n.markdown = '';
+      });
       if (!state.boards) state.boards = [];
       if (!state.studySets) state.studySets = [];
       if (!state.trash) state.trash = [];
@@ -2604,7 +2837,13 @@ function load() {
       state.rootOrder = filtered;
       if(state.activeFolderId!=null && !validFolderSet[state.activeFolderId] && !state.folders.find(function(f){return f.id===state.activeFolderId;})) state.activeFolderId=null;
     })();
-    if (state.boards) state.boards.forEach(function(b) { if (!b.elements) b.elements = []; });
+    if (state.boards) state.boards.forEach(function(b) {
+      if (!b.elements) b.elements = [];
+      /* Migracion segura: dibujos de tablero con forma inesperada. */
+      if (b.drawing && typeof DrawingEngine !== 'undefined' && DrawingEngine.normalize) {
+        try { b.drawing = DrawingEngine.normalize(b.drawing); } catch (e) { b.drawing = null; }
+      }
+    });
   }
     if (state.notes) state.notes.forEach(function(n) {
       if (!n.events) n.events = [];
@@ -2795,7 +3034,7 @@ function noteSearchIsOpen() {
 function noteSearchRoots() {
   var area = document.querySelector('.items-area');
   if (!area) return [];
-  return area.querySelectorAll('.item-text[contenteditable="true"], .image-caption[contenteditable="true"], .note-table td[contenteditable="true"]');
+  return area.querySelectorAll('.item-text[contenteditable="true"], .image-caption[contenteditable="true"], .note-table td[contenteditable="true"], .md-preview');
 }
 
 function noteSearchClearHighlights() {
@@ -2946,6 +3185,243 @@ document.addEventListener('input', function(e) {
     refreshNoteSearchSilently();
   }, 350);
 });
+
+/* ==================================================
+   BUSCADOR GLOBAL (header) — notas, tableros, sets, tarjetas y
+   carpetas, por texto y por etiqueta (#...). Overlay reactivo con
+   debounce; al elegir un resultado se navega con los mecanismos
+   existentes (selectNote/selectBoard/openFolder/switchView).
+   ================================================== */
+var _gsTimer = null;
+var GS_MAX_PER_KIND = 10;
+function plainSearchText(html) {
+  return String(html == null ? '' : html)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/gi, ' ').replace(/&lt;/gi, '<').replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"').replace(/&#0?39;/gi, "'").replace(/&amp;/gi, '&')
+    .replace(/\s+/g, ' ').trim();
+}
+function isUnlockedNote(n) { return !(n.pwdHash && !unlockedIds['n' + n.id]); }
+function isUnlockedBoard(b) { return !(b.pwdHash && !unlockedIds['b' + b.id]); }
+function isUnlockedFolder(f) { return !(f.pwdHash && !unlockedIds['f' + f.id]); }
+function noteSearchText(note) {
+  if (isMarkdownNote(note)) {
+    try { return MarkdownEngine && MarkdownEngine.plainText ? MarkdownEngine.plainText(note.markdown || '') : String(note.markdown || ''); }
+    catch (e) { return String(note.markdown || ''); }
+  }
+  var parts = [];
+  (note.items || []).forEach(function(it) {
+    if (!it) return;
+    if (it.type === 'text' || !it.type || it.type === 'list') { if (it.text) parts.push(it.text); }
+    else if (it.type === 'table' && (it.cells instanceof Array)) {
+      it.cells.forEach(function(c) { if (c && c.text) parts.push(c.text); });
+    }
+  });
+  return plainSearchText(parts.join('\n'));
+}
+function boardSearchText(board) {
+  var parts = [];
+  (board.postits || []).forEach(function(p) { if (p && p.text) parts.push(p.text); });
+  return plainSearchText(parts.join('\n'));
+}
+function matchSnippet(text, ql, radius) {
+  var i = text.toLowerCase().indexOf(ql);
+  if (i < 0) return '';
+  var r = radius || 40;
+  var a = Math.max(0, i - r), b = Math.min(text.length, i + ql.length + r);
+  var s = text.slice(a, b).replace(/\s+/g, ' ').trim();
+  return (a > 0 ? '…' : '') + s + (b < text.length ? '…' : '');
+}
+/* q con '#' inicial => coincidencia EXACTA contra etiquetas asignadas
+ * (metadatos, nunca menciones en el contenido). El resto => texto. */
+function globalSearch(rawQ) {
+  var q = String(rawQ == null ? '' : rawQ).trim();
+  if (!q) return [];
+  var out = [];
+  function push(kind, id, setId, title, sub, tags) {
+    out.push({ kind: kind, id: id, setId: setId || null, title: title, sub: sub || '', tags: tags || [] });
+  }
+  if (q.charAt(0) === '#') {
+    var key = normalizeTagKey(q);
+    if (!key) return [];
+    state.notes.forEach(function(n) {
+      if (!n || n.trash) return;
+      if (hasTagKey(n, key)) push('note', n.id, null, n.title || t('noContent'), '#' + (tagNameForKey(n, key) || key), getTagsOf(n).map(function(tg) { return tg.n; }));
+    });
+    state.boards.forEach(function(b) {
+      if (hasTagKey(b, key)) push('board', b.id, null, b.name || t('noContent'), '#' + (tagNameForKey(b, key) || key), getTagsOf(b).map(function(tg) { return tg.n; }));
+    });
+    state.studySets.forEach(function(s) {
+      if (!s) return;
+      var setHit = hasTagKey(s, key);
+      if (setHit) push('set', s.id, null, s.name || t('noContent'), '#' + (tagNameForKey(s, key) || key), getTagsOf(s).map(function(tg) { return tg.n; }));
+      (s.cards || []).forEach(function(c) {
+        if (!c) return;
+        /* La tarjeta coincide por etiqueta propia o heredada del set. */
+        if (hasTagKey(c, key) || setHit) push('card', c.id, s.id, plainSearchText(c.front).slice(0, 80) || t('noContent'), '#' + (tagNameForKey(c, key) || tagNameForKey(s, key) || key), getTagsOf(c).map(function(tg) { return tg.n; }));
+      });
+    });
+    (state.folders || []).forEach(function(f) {
+      if (hasTagKey(f, key)) push('folder', f.id, null, f.name || t('noContent'), '#' + (tagNameForKey(f, key) || key), getTagsOf(f).map(function(tg) { return tg.n; }));
+    });
+    return out;
+  }
+  var ql = q.toLowerCase();
+  /* Modo texto: solo nombre y contenido. Las etiquetas solo matchean
+   * con '#' (ver rama de arriba). */
+  state.notes.forEach(function(n) {
+    if (!n || n.trash) return;
+    var title = String(n.title || '');
+    var tags = getTagsOf(n);
+    var unlocked = isUnlockedNote(n) && (!n.diary || diaryUnlocked);
+    var body = unlocked ? noteSearchText(n) : '';
+    if (title.toLowerCase().indexOf(ql) < 0 && body.toLowerCase().indexOf(ql) < 0) return;
+    push('note', n.id, null, title || t('noContent'), matchSnippet(body, ql), tags.map(function(tg) { return tg.n; }));
+  });
+  state.boards.forEach(function(b) {
+    if (!b) return;
+    var name = String(b.name || '');
+    var tags = getTagsOf(b);
+    var body = isUnlockedBoard(b) ? boardSearchText(b) : '';
+    if (name.toLowerCase().indexOf(ql) < 0 && body.toLowerCase().indexOf(ql) < 0) return;
+    push('board', b.id, null, name || t('noContent'), matchSnippet(body, ql), tags.map(function(tg) { return tg.n; }));
+  });
+  state.studySets.forEach(function(s) {
+    if (!s) return;
+    var name = String(s.name || '');
+    var tags = getTagsOf(s);
+    if (name.toLowerCase().indexOf(ql) >= 0) {
+      push('set', s.id, null, name || t('noContent'), '', tags.map(function(tg) { return tg.n; }));
+    }
+    (s.cards || []).forEach(function(c) {
+      if (!c) return;
+      var front = plainSearchText(c.front), back = plainSearchText(c.back);
+      var ctags = getTagsOf(c);
+      if ((front + ' ' + back).toLowerCase().indexOf(ql) < 0) return;
+      push('card', c.id, s.id, front.slice(0, 80) || t('noContent'), matchSnippet(front + ' / ' + back, ql), ctags.map(function(tg) { return tg.n; }));
+    });
+  });
+  (state.folders || []).forEach(function(f) {
+    if (!f) return;
+    var name = String(f.name || '');
+    var tags = getTagsOf(f);
+    if (name.toLowerCase().indexOf(ql) < 0) return;
+    push('folder', f.id, null, name || t('noContent'), '', tags.map(function(tg) { return tg.n; }));
+  });
+  /* Tope por tipo para no inundar el overlay. */
+  var counts = {}, capped = [];
+  out.forEach(function(r) {
+    counts[r.kind] = counts[r.kind] || 0;
+    if (counts[r.kind] < GS_MAX_PER_KIND) { counts[r.kind]++; capped.push(r); }
+  });
+  return capped;
+}
+var GS_KIND_META = {
+  note: { icon: '📝', label: 'srNote' },
+  board: { icon: '📌', label: 'srBoard' },
+  set: { icon: '🗂️', label: 'srSet' },
+  card: { icon: '🃏', label: 'srCard' },
+  folder: { icon: '📁', label: 'srFolder' }
+};
+function toggleGlobalSearch() {
+  var input = document.getElementById('globalSearchInput');
+  if (!input) return;
+  if (input.classList.contains('hidden')) {
+    input.classList.remove('hidden');
+    setTimeout(function() { input.focus(); }, 50);
+    if (input.value.trim()) runGlobalSearch();
+  } else {
+    closeGlobalSearch();
+  }
+}
+function onGlobalSearchInput() {
+  var input = document.getElementById('globalSearchInput');
+  if (!input) return;
+  var clear = document.getElementById('globalSearchClearBtn');
+  if (clear) clear.classList.toggle('hidden', !input.value);
+  if (_gsTimer) clearTimeout(_gsTimer);
+  _gsTimer = setTimeout(function() { _gsTimer = null; runGlobalSearch(); }, 180);
+}
+function runGlobalSearch() {
+  var input = document.getElementById('globalSearchInput');
+  var q = input ? input.value : '';
+  renderGlobalResults(globalSearch(q), q);
+}
+function clearGlobalSearch() {
+  var input = document.getElementById('globalSearchInput');
+  if (input) { input.value = ''; input.focus(); }
+  var clear = document.getElementById('globalSearchClearBtn');
+  if (clear) clear.classList.add('hidden');
+  runGlobalSearch();
+}
+function closeGlobalSearch() {
+  if (_gsTimer) { clearTimeout(_gsTimer); _gsTimer = null; }
+  var input = document.getElementById('globalSearchInput');
+  if (input) { input.value = ''; input.classList.add('hidden'); }
+  var clear = document.getElementById('globalSearchClearBtn');
+  if (clear) clear.classList.add('hidden');
+  var box = document.getElementById('globalSearchResults');
+  if (box) { box.innerHTML = ''; box.classList.add('hidden'); }
+}
+function renderGlobalResults(results, rawQ) {
+  var box = document.getElementById('globalSearchResults');
+  if (!box) return;
+  var q = String(rawQ == null ? '' : rawQ).trim();
+  if (!q) { box.innerHTML = ''; box.classList.add('hidden'); return; }
+  if (!results.length) {
+    box.innerHTML = '<div class="gs-empty">' + escapeHtml(t('searchNoResults')) + '</div>';
+    box.classList.remove('hidden');
+    return;
+  }
+  var order = ['note', 'board', 'set', 'card', 'folder'];
+  var html = '';
+  order.forEach(function(kind) {
+    var group = results.filter(function(r) { return r.kind === kind; });
+    if (!group.length) return;
+    var meta = GS_KIND_META[kind];
+    html += '<div class="gs-group-label">' + meta.icon + ' ' + escapeHtml(t(meta.label)) + '</div>';
+    group.forEach(function(r) {
+      var sub = r.sub ? '<div class="gs-sub">' + escapeHtml(r.sub) + '</div>' : '';
+      var extra = kind === 'card' && r.setId != null
+        ? ' onclick="openGlobalResult(\'card\',' + r.id + ',' + r.setId + ')"'
+        : ' onclick="openGlobalResult(\'' + kind + '\',' + r.id + ')"';
+      html += '<button class="gs-item"' + extra + '>' +
+        '<span class="gs-icon">' + meta.icon + '</span>' +
+        '<span class="gs-main"><div class="gs-title">' + escapeHtml(r.title) + '</div>' + sub + '</span>' +
+        '<span class="gs-kind">' + escapeHtml(t(meta.label)) + '</span></button>';
+    });
+  });
+  box.innerHTML = html;
+  box.classList.remove('hidden');
+}
+function openGlobalResult(kind, id, setId) {
+  closeGlobalSearch();
+  /* Cambiar primero a la vista del elemento (switchView limpia el
+   * activo anterior): acceso directo desde cualquier sección. */
+  if (kind === 'note') { switchView('notes'); selectNote(id); }
+  else if (kind === 'board') { switchView('board'); selectBoard(id); }
+  else if (kind === 'folder') { switchView('notes'); openFolder(id); }
+  else if (kind === 'set') { switchView('study'); selectStudySet(id); }
+  else if (kind === 'card') {
+    switchView('study');
+    selectStudySet(setId);
+    setTimeout(function() {
+      var card = document.querySelector('.study-card-item[data-card-id="' + id + '"]');
+      if (card) {
+        try { card.scrollIntoView({ block: 'center' }); } catch (e) {}
+        card.classList.add('study-card-flash');
+        setTimeout(function() { card.classList.remove('study-card-flash'); }, 1600);
+      }
+    }, 80);
+  }
+}
+/* Clic fuera del buscador => oculta resultados (conserva la consulta). */
+document.addEventListener('click', function(e) {
+  var box = document.getElementById('globalSearchResults');
+  if (!box || box.classList.contains('hidden')) return;
+  if (e.target.closest && (e.target.closest('#globalSearchResults') || e.target.closest('#globalSearchBar'))) return;
+  box.classList.add('hidden');
+}, true);
 
 function toggleTheme() {
   state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -4046,6 +4522,19 @@ function updateBackBtn() {
   var trigger = document.querySelector('.menu-trigger');
   if (trigger) trigger.classList.toggle('compact', compact);
   updateNoteSearchVisibility();
+  updateGlobalSearchVisibility();
+}
+/* El buscador global vive en las listas; dentro de una nota, tablero
+ * o set de estudio se oculta (ahí manda la búsqueda dentro de la nota). */
+function updateGlobalSearchVisibility() {
+  var bar = document.getElementById('globalSearchBar');
+  if (!bar) return;
+  var inside = (state.view === 'notes' && state.activeNoteId) ||
+               (state.view === 'diary' && state.activeNoteId) ||
+               (state.view === 'board' && state.activeBoardId) ||
+               (state.view === 'study' && state.activeStudySetId);
+  bar.classList.toggle('hidden', !!inside);
+  if (inside && typeof closeGlobalSearch === 'function') closeGlobalSearch();
 }
 
 function clearCurrentUnlock() {
@@ -4054,6 +4543,7 @@ function clearCurrentUnlock() {
   if (state.activeFolderId) delete unlockedIds['f' + state.activeFolderId];
 }
 function goBack() {
+  _flushMarkdownSave();
   clearCurrentUnlock();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (state.view === 'notes' && state.activeFolderId!=null && !state.activeNoteId){
@@ -4148,10 +4638,13 @@ function showNewNoteDialog() {
   // Unified create dialog with tabs; default to Note
   _createTab = 'note';
   setDiaryCreateMode(false);
+  selectNewNoteType('normal');
   var pwdEl=document.getElementById('newNotePwd'); if(pwdEl) pwdEl.value='';
   var pwdF=document.getElementById('newFolderPwd'); if(pwdF) pwdF.value='';
   var nameF=document.getElementById('newFolderName'); if(nameF) nameF.value='';
   switchCreateTab('note');
+  openTagEditor('newNoteTags', []);
+  openTagEditor('newFolderTags', []);
   showDialog('newNoteDialog');
   setTimeout(function(){ var el=document.getElementById('newNoteTitle'); if(el) el.focus(); }, 100);
 }
@@ -4170,7 +4663,7 @@ function createFolder(){
   var pwd = pwdEl ? pwdEl.value : '';
   var colorEl = document.getElementById('newFolderColor');
   var color = (colorEl && colorEl.value) ? colorEl.value : '#5b7db5';
-  var folder = { id: genId(), name: name, pwdHash: hashPwd(pwd), createdAt: Date.now(), color: color };
+  var folder = { id: genId(), name: name, pwdHash: hashPwd(pwd), createdAt: Date.now(), color: color, tags: tagEditorCommit('newFolderTags') };
   state.folders.push(folder);
   ensureRootOrder();
   // rootOrder already handled by ensure, but if folder new ensure append
@@ -4280,7 +4773,7 @@ function createNote() {
       refreshDiarySelectorIfOpen();
       return;
     }
-    var dnote = { id: genId(), title: title, diaryDate: ds, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), diary: true, events: [], tasks: [], lockWidth: true, background: { color: 'default', design: 'none' } };
+    var dnote = { id: genId(), title: title, diaryDate: ds, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), diary: true, type: 'normal', events: [], tasks: [], lockWidth: true, background: { color: 'default', design: 'none' }, tags: tagEditorCommit('newNoteTags') };
     state.notes.push(dnote);
     if (pwd) unlockedIds['n' + dnote.id] = true;
     _pendingDiaryDate = null;
@@ -4293,7 +4786,8 @@ function createNote() {
   }
   var folderId = state.activeFolderId != null ? state.activeFolderId : null;
   // if creating from inside folder, ensure folder exists and unlocked (should be already)
-  var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), folderId: folderId, lockWidth: true, background: { color: 'default', design: 'none' } };
+  var note = { id: genId(), title: title, items: [], pwdHash: hashPwd(pwd), cover: '', createdAt: Date.now(), folderId: folderId, lockWidth: true, background: { color: 'default', design: 'none' }, tags: tagEditorCommit('newNoteTags'), type: _newNoteType === 'markdown' ? 'markdown' : 'normal' };
+  if (note.type === 'markdown') note.markdown = '';
   state.notes.push(note);
   if(folderId==null){
     ensureRootOrder();
@@ -4312,12 +4806,14 @@ function createNote() {
   save();
   checkMilestones();
   renderAll();
+  selectNewNoteType('normal');
 }
 
 var pendingUnlock = null;
 var pendingDelete = null;
 
 function selectNote(id) {
+  _flushMarkdownSave();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (preventCardClick) { preventCardClick = false; return; }
   var note = state.notes.find(function(n) { return n.id === id; });
@@ -4598,6 +5094,7 @@ function openFolderEditDialog(id){
   s('folderEditSaveBtn', 'save');
   var nfn = document.getElementById('folderEditName');
   if (nfn) nfn.placeholder = t('folderNamePlaceholder');
+  openTagEditor('folderEditTags', getTagsOf(folder));
   showDialog('folderEditDialog');
   setTimeout(function() { if (nameEl) nameEl.focus(); }, 100);
 }
@@ -4613,6 +5110,7 @@ function saveFolderEditDialog(){
   }
   var colorEl = document.getElementById('folderEditColor');
   if (colorEl && colorEl.value) folder.color = colorEl.value;
+  setTagsOf(folder, tagEditorCommit('folderEditTags'));
   _editFolderId = null;
   closeDialog('folderEditDialog');
   save();
@@ -5090,6 +5588,7 @@ function updateItemText(noteId, itemId, html) {
       try { rebuildRegistroEntriesForDate(registroDateISO(note)); } catch (e) { processRegistroAssignments(note, cleanHtml); }
     }
     save();
+    try { refreshTocForNote(noteId); } catch (e) {}
   }
 }
 /* Evaluador aritmético seguro (shunting-yard) sin eval/Function */
@@ -5237,6 +5736,616 @@ function toggleHighlightPalette() {
   }
 }
 
+/* ==================================================
+   JERARQUÍAS DE TÍTULOS (5 niveles) + ÍNDICE AUTOMÁTICO
+   Modelo: item.heading 0..5 (0 = texto normal). Solo tiene
+   sentido en items type 'text'. Las notas antiguas sin el
+   campo se normalizan a 0 (no destructivo).
+   Índice: item.type 'index', bloque dinámico que se genera
+   en vivo desde los títulos (referencia estable = item.id).
+   ================================================== */
+function normalizeHeading(h) {
+  var n = parseInt(h, 10);
+  if (isNaN(n) || n < 1 || n > 5) return 0;
+  return n;
+}
+/* Selección de formato reutilizable (resaltado y jerarquías).
+ * En escritorio el mousedown preventDefault de fmt-bar ya conserva
+ * el rango; en táctil la selección puede perderse al tocar el
+ * selector, por eso se guarda/restaura de forma localizada. */
+var _fmtSavedRange = null;
+function saveFmtSelection() {
+  try {
+    var sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      var r = sel.getRangeAt(0);
+      var area = document.querySelector('.items-area');
+      if (area && area.contains(r.commonAncestorContainer)) {
+        _fmtSavedRange = r.cloneRange();
+        return true;
+      }
+    }
+  } catch (e) {}
+  return false;
+}
+function restoreFmtSelection() {
+  if (!_fmtSavedRange) return false;
+  try {
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(_fmtSavedRange);
+    return true;
+  } catch (e) { return false; }
+}
+/* Posiciona una paleta flotante junto a su botón, mismo patrón
+ * que el resaltado existente (arriba/abajo según espacio). */
+function positionFmtPalette(palette, btn) {
+  if (!palette || !btn) { if (palette) palette.classList.remove('hidden'); return; }
+  var r = btn.getBoundingClientRect();
+  palette.style.left = r.left + 'px';
+  palette.style.bottom = (window.innerHeight - r.top + 4) + 'px';
+  palette.style.top = 'auto';
+  palette.classList.remove('hidden');
+  try {
+    var ph = palette.offsetHeight;
+    if (r.top < ph + 4) {
+      if (window.innerHeight - r.bottom > ph + 4) {
+        palette.style.bottom = 'auto';
+        palette.style.top = (r.bottom + 4) + 'px';
+      } else {
+        palette.style.top = '4px';
+        palette.style.bottom = 'auto';
+      }
+    }
+  } catch (e) {}
+}
+function toggleHeadingPalette() {
+  saveFmtSelection();
+  var palette = document.getElementById('headingPalette');
+  if (!palette) return;
+  if (palette.classList.contains('hidden')) {
+    positionFmtPalette(palette, document.querySelector('.heading-toggle'));
+  } else {
+    palette.classList.add('hidden');
+  }
+}
+/* Nivel pendiente (análogo a _hlColor del resaltado): mantener pulsado
+ * el botón H abre el selector para elegirlo; el tap aplica el pendiente
+ * a la selección. 1-5 = Título N, 0 = texto normal (quita jerarquía). */
+var _headingLevel = 1;
+function headingToggleLabel() {
+  return (_headingLevel >= 1 && _headingLevel <= 5) ? 'H' + _headingLevel : 'H';
+}
+function selectHeadingLevel(level) {
+  var n = parseInt(level, 10);
+  _headingLevel = (isNaN(n) || n < 0 || n > 5) ? 1 : n;
+  var btn = document.querySelector('.heading-toggle');
+  if (btn) btn.innerHTML = headingToggleLabel() + '&#x25BE;';
+  var pal = document.getElementById('headingPalette');
+  if (pal) pal.classList.add('hidden');
+  updateFmtBar();
+}
+function applyPendingHeading() {
+  if (normalizeHeading(_headingLevel) === 0) removeHeadingLevel();
+  else applyHeadingLevel(_headingLevel);
+}
+/* Unidades de párrafo de nivel superior dentro de un .item-text.
+ * Agrupa nodos inline; corta en bloques (DIV/P/...) y en <BR>.
+ * UL/OL/TABLE y otros compuestos viajan como unidad atómica. */
+var HEADING_BLOCK_TAGS = { DIV: 1, P: 1, LI: 1, H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1, BLOCKQUOTE: 1, PRE: 1, UL: 1, OL: 1, TABLE: 1, HR: 1, FIGURE: 1 };
+function getHeadingParagraphUnits(el) {
+  var units = [];
+  var cur = [];
+  function flush() { if (cur.length) { units.push(cur); cur = []; } }
+  var kids = el.childNodes;
+  for (var i = 0; i < kids.length; i++) {
+    var n = kids[i];
+    if (n.nodeType === 3) { cur.push(n); continue; }
+    if (n.nodeType !== 1) continue;
+    var tag = (n.tagName || '').toUpperCase();
+    if (tag === 'BR') { flush(); continue; }
+    if (HEADING_BLOCK_TAGS[tag]) { flush(); units.push([n]); continue; }
+    cur.push(n);
+  }
+  flush();
+  return units;
+}
+/* Visibilidad de contenido (BR y vacíos no cuentan; media sí). */
+function headingNodeVisible(n) {
+  if (!n) return false;
+  if (n.nodeType === 3) return n.nodeValue.trim() !== '';
+  if (n.nodeType !== 1) return false;
+  var tag = (n.tagName || '').toUpperCase();
+  if (tag === 'BR') return false;
+  if (tag === 'IMG' || tag === 'VIDEO' || tag === 'AUDIO' || tag === 'CANVAS' || tag === 'SVG' || tag === 'IFRAME' || tag === 'INPUT') return true;
+  var kids = n.childNodes;
+  for (var i = 0; i < kids.length; i++) if (headingNodeVisible(kids[i])) return true;
+  return false;
+}
+/* ¿Hay contenido visible después del punto (hasta stopNode exclusivo)? */
+function headingHasVisibleAfter(container, offset, stopNode, el) {
+  var i, sib;
+  if (container.nodeType === 3) {
+    if (container.nodeValue.slice(offset).replace(/\s/g, '') !== '') return true;
+  } else if (container.nodeType === 1) {
+    var kids = container.childNodes;
+    for (i = offset; i < kids.length; i++) { if (kids[i] === stopNode) return false; if (headingNodeVisible(kids[i])) return true; }
+  }
+  var node = container;
+  while (node && node !== el) {
+    var p = node.parentNode;
+    if (!p) break;
+    sib = node.nextSibling;
+    while (sib) { if (sib === stopNode) return false; if (headingNodeVisible(sib)) return true; sib = sib.nextSibling; }
+    node = p;
+  }
+  return false;
+}
+/* ¿Hay contenido visible antes del punto (sin pasar boundNode)? */
+function headingHasVisibleBefore(container, offset, boundNode, el) {
+  var i, sib;
+  if (container.nodeType === 3) {
+    if (container.nodeValue.slice(0, offset).replace(/\s/g, '') !== '') return true;
+  } else if (container.nodeType === 1) {
+    var kids = container.childNodes;
+    for (i = offset - 1; i >= 0; i--) { if (headingNodeVisible(kids[i])) return true; }
+  }
+  var node = container;
+  while (node && node !== el) {
+    if (node === boundNode) return false;
+    var p = node.parentNode;
+    if (!p) break;
+    sib = node.previousSibling;
+    while (sib) { if (headingNodeVisible(sib)) return true; sib = sib.previousSibling; }
+    node = p;
+  }
+  return false;
+}
+/* Índice de la unidad que contiene al hijo directo top (-1 si es separador). */
+function headingUnitOfTop(units, top) {
+  for (var i = 0; i < units.length; i++) {
+    var u = units[i];
+    for (var j = 0; j < u.length; j++) if (u[j] === top) return i;
+  }
+  return -1;
+}
+/* Índice de unidad para un punto del rango. isStart: ante BR/hueco mira
+ * hacia adelante; isEnd: hacia atrás. */
+function headingUnitIndexAt(el, units, container, offset, isStart) {
+  if (!units.length) return -1;
+  if (container === el) {
+    var kids = el.childNodes;
+    var k, idx;
+    if (isStart) {
+      for (k = Math.max(0, offset); k < kids.length; k++) { idx = headingUnitOfTop(units, kids[k]); if (idx >= 0) return idx; }
+      return units.length;
+    }
+    for (k = Math.min(offset, kids.length) - 1; k >= 0; k--) { idx = headingUnitOfTop(units, kids[k]); if (idx >= 0) return idx; }
+    return -1;
+  }
+  var top = container;
+  while (top && top.parentNode !== el) top = top.parentNode;
+  if (!top) return -1;
+  return headingUnitOfTop(units, top);
+}
+/* Bloque .item-text (dentro del editor) que contiene al nodo. */
+function headingBlockOf(node) {
+  var el = (node && node.nodeType === 3) ? node.parentNode : node;
+  while (el && !(el.classList && el.classList.contains && el.classList.contains('item-text'))) el = el.parentNode;
+  if (!el || !el.closest || !el.closest('.items-area')) return null;
+  var box = el.closest('.list-item');
+  if (!box || box.getAttribute('data-id') == null) return null;
+  return { el: el, box: box, id: Number(box.getAttribute('data-id')) };
+}
+/* Rango de unidades [s,e] del bloque para la selección. isStart/isEnd
+ * indican si este bloque contiene el inicio/fin. Recorta unidades
+ * apenas rozadas en el borde. null = nada útil. */
+function headingBlockRange(el, units, isStartBlock, isEndBlock, range) {
+  var last = units.length - 1;
+  var s = 0, e = last;
+  if (isStartBlock) {
+    s = headingUnitIndexAt(el, units, range.startContainer, range.startOffset, true);
+    if (s < 0 || s > last) return null;
+    var nextFirst = (s + 1 <= last) ? units[s + 1][0] : null;
+    if (!headingHasVisibleAfter(range.startContainer, range.startOffset, nextFirst, el)) s++;
+    if (s > last) return null;
+  }
+  if (isEndBlock) {
+    e = headingUnitIndexAt(el, units, range.endContainer, range.endOffset, false);
+    if (e < 0) return null;
+    if (!headingHasVisibleBefore(range.endContainer, range.endOffset, units[e][0], el)) e--;
+    if (e < 0) return null;
+  }
+  if (s > e) return null;
+  return { s: s, e: e };
+}
+/* Fragmentos antes/medio/después para first..last ya recortados.
+ * El fragmento-título conserva el id original (los enlaces del índice
+ * existentes siguen apuntando bien). null si el medio está vacío. */
+function buildHeadingFragments(item, units, first, last, h) {
+  var before = [], middle = [], after = [];
+  for (var j = 0; j < units.length; j++) {
+    var dst = j < first ? before : (j > last ? after : middle);
+    for (var k = 0; k < units[j].length; k++) dst.push(units[j][k]);
+  }
+  var baseLevel = item.level || 0;
+  var origH = normalizeHeading(item.heading);
+  function mk(nodes, hh) {
+    var html = headingFragHtml(nodes);
+    if (!headingFragHasContent(html)) return null;
+    return { id: genId(), text: html, checked: false, level: baseLevel, type: 'text', heading: hh };
+  }
+  var bIt = before.length ? mk(before, origH) : null;
+  var mIt = middle.length ? mk(middle, h) : null;
+  if (!mIt) return null;
+  var aIt = after.length ? mk(after, origH) : null;
+  mIt.id = item.id;
+  var out = [];
+  if (bIt) out.push(bIt);
+  out.push(mIt);
+  if (aIt) out.push(aIt);
+  return { items: out, headingId: item.id };
+}
+function headingFragHtml(nodes) {
+  var d = document.createElement('div');
+  for (var i = 0; i < nodes.length; i++) d.appendChild(nodes[i].cloneNode(true));
+  return unparseNoteLinks(noteSearchStripHtml(d.innerHTML));
+}
+function headingFragHasContent(html) {
+  if (!html) return false;
+  var s = String(html);
+  var t = s.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&').trim();
+  if (t) return true;
+  return /<(img|video|audio|canvas|svg|iframe)\b/i.test(s);
+}
+function getFmtRange() {
+  try {
+    var sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) return { sel: sel, range: sel.getRangeAt(0) };
+  } catch (e) {}
+  return null;
+}
+/* Núcleo común: aplica el nivel h (0 = quitar) solo a los párrafos
+ * alcanzados por la selección, partiendo el bloque si hace falta.
+ * Sin selección (rango colapsado o ausente) no hace nada.
+ * No usa comparación de rangos: ubica los párrafos por
+ * inicio/fin (anchor/focus normalizados) con recorridos del árbol. */
+function setHeadingOnSelection(h) {
+  restoreFmtSelection();
+  var fr = getFmtRange();
+  if (!fr || !fr.range || fr.range.collapsed) return;
+  var range = fr.range;
+  var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
+  if (!note) return;
+  var startInfo = headingBlockOf(range.startContainer);
+  var endInfo = headingBlockOf(range.endContainer);
+  if (!startInfo || !endInfo) return;
+  var els = document.querySelectorAll('.items-area .item-text[contenteditable]');
+  var idxS = -1, idxE = -1;
+  for (var i = 0; i < els.length; i++) {
+    if (els[i] === startInfo.el) idxS = i;
+    if (els[i] === endInfo.el) idxE = i;
+  }
+  if (idxS < 0 || idxE < 0 || idxS > idxE) return;
+  var repl = {};
+  var focusId = null;
+  var changed = false;
+  for (var j = idxS; j <= idxE; j++) {
+    var el = els[j];
+    var box = el.closest ? el.closest('.list-item') : null;
+    if (!box || box.getAttribute('data-id') == null) continue;
+    var id = Number(box.getAttribute('data-id'));
+    var item = null;
+    for (var q = 0; q < note.items.length; q++) { if (note.items[q].id === id) { item = note.items[q]; break; } }
+    if (!item || item.type !== 'text') continue;
+    var units = getHeadingParagraphUnits(el);
+    if (!units.length) continue;
+    var r;
+    if (j === idxS && j === idxE) r = headingBlockRange(el, units, true, true, range);
+    else if (j === idxS) r = headingBlockRange(el, units, true, false, range);
+    else if (j === idxE) r = headingBlockRange(el, units, false, true, range);
+    else r = { s: 0, e: units.length - 1 };
+    if (!r) continue;
+    if (r.s === 0 && r.e === units.length - 1) {
+      if (normalizeHeading(item.heading) !== h) { item.heading = h; changed = true; }
+      if (focusId == null) focusId = item.id;
+    } else {
+      var built = buildHeadingFragments(item, units, r.s, r.e, h);
+      if (!built) continue;
+      repl[item.id] = built.items;
+      if (focusId == null) focusId = built.headingId;
+      changed = true;
+    }
+  }
+  if (!changed) return;
+  var newItems = [];
+  note.items.forEach(function(it) {
+    if (repl[it.id]) repl[it.id].forEach(function(nit) { newItems.push(nit); });
+    else newItems.push(it);
+  });
+  note.items = newItems;
+  if (focusId != null) activeItemId = focusId;
+  save();
+  renderNoteContent();
+}
+function applyHeadingLevel(level) {
+  restoreFmtSelection();
+  var h = normalizeHeading(level);
+  if (!h) { var pal0 = document.getElementById('headingPalette'); if (pal0) pal0.classList.add('hidden'); updateFmtBar(); return; }
+  setHeadingOnSelection(h);
+  var pal = document.getElementById('headingPalette');
+  if (pal) pal.classList.add('hidden');
+  updateFmtBar();
+}
+function removeHeadingLevel() {
+  restoreFmtSelection();
+  setHeadingOnSelection(0);
+  var pal = document.getElementById('headingPalette');
+  if (pal) pal.classList.add('hidden');
+  updateFmtBar();
+}
+/* ---------- Comandos de índice localizados ---------- */
+var INDEX_COMMANDS = {
+  en: '/index',
+  es: '/indice',
+  fr: '/sommaire',
+  pt: '/indice',
+  de: '/inhaltsverzeichnis',
+  ru: '/оглавление',
+  it: '/indice'
+};
+function getIndexCommand(lang) {
+  var l = lang || (typeof state !== 'undefined' && state.lang) || 'en';
+  if (INDEX_COMMANDS[l]) return INDEX_COMMANDS[l];
+  return INDEX_COMMANDS.en;
+}
+function isIndexCommandText(text) {
+  var cmd = getIndexCommand();
+  var s = String(text == null ? '' : text).replace(/ /g, ' ').trim().toLowerCase();
+  return s === cmd;
+}
+/* Texto plano de un título para el índice (sin HTML). */
+function headingPlainText(item) {
+  var raw = item && item.text != null ? String(item.text) : '';
+  var txt = raw.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&quot;/gi, '"').replace(/&#0?39;/gi, "'").replace(/&amp;/gi, '&').trim();
+  return txt;
+}
+function collectHeadings(note) {
+  var out = [];
+  if (!note || !note.items) return out;
+  note.items.forEach(function(item) {
+    if (!item || item.type !== 'text') return;
+    var h = normalizeHeading(item.heading);
+    if (!h) return;
+    var txt = headingPlainText(item);
+    if (!txt) return;
+    out.push({ id: item.id, level: h, text: txt });
+  });
+  return out;
+}
+function tocEntriesHtml(note) {
+  var entries = collectHeadings(note);
+  if (!entries.length) return '<div class="toc-empty">' + escapeHtml(t('tocEmpty')) + '</div>';
+  var html = '';
+  entries.forEach(function(e) {
+    html += '<button class="toc-entry toc-h' + e.level + '" data-target="' + e.id + '" title="' + escapeHtml(t('tocNavigateHint')) + '" onmousedown="event.preventDefault()" onclick="scrollToHeading(' + note.id + ',' + e.id + ')">' + escapeHtml(e.text) + '</button>';
+  });
+  return html;
+}
+/* Re-renderiza solo los índices de la nota (sin reconstruir el
+ * editor, para no perder el caret mientras se escribe). */
+function refreshTocForNote(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  var boxes = document.querySelectorAll('.list-item.toc-item[data-note="' + noteId + '"] .toc-entries');
+  if (!boxes.length) return;
+  var html = tocEntriesHtml(note);
+  for (var i = 0; i < boxes.length; i++) boxes[i].innerHTML = html;
+}
+function scrollToHeading(noteId, targetId) {
+  var box = document.querySelector('.list-item[data-id="' + targetId + '"]');
+  if (!box) return;
+  try { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  catch (e) { try { box.scrollIntoView(); } catch (e2) {} }
+  if (box.classList) {
+    box.classList.add('heading-flash');
+    setTimeout(function() { box.classList.remove('heading-flash'); }, 1300);
+  }
+  try {
+    var el = box.querySelector('.item-text[contenteditable]');
+    if (el) { el.focus({ preventScroll: true }); }
+  } catch (e) {}
+}
+/* Convierte el bloque del comando en índice (o lo limpia si ya hay
+ * uno, para no duplicar). Se dispara con Enter tras el comando. */
+function insertIndexFromCommand(noteId, itemId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return false;
+  var idx = -1;
+  for (var i = 0; i < note.items.length; i++) if (note.items[i].id === itemId) { idx = i; break; }
+  if (idx < 0) return false;
+  var hasIndex = note.items.some(function(it) { return it && it.type === 'index'; });
+  if (hasIndex) {
+    note.items[idx].text = '';
+    if (note.items[idx].type === 'index') note.items[idx] = { id: note.items[idx].id, type: 'text', text: '', checked: false, level: 0, heading: 0 };
+    save();
+    refreshTocForNote(note.id);
+    renderNoteContent();
+    return true;
+  }
+  var id = note.items[idx].id;
+  note.items[idx] = { id: id, type: 'index' };
+  /* Si el índice quedó último, dejar un bloque de texto debajo para seguir escribiendo. */
+  if (idx === note.items.length - 1) {
+    note.items.push({ id: genId(), type: 'text', text: '', checked: false, level: 0, heading: 0 });
+  }
+  save();
+  renderNoteContent();
+  return true;
+}
+/* Enter tras el comando inserta el índice. El comando debe ser la
+ * línea completa (no se dispara al escribir una palabra normal). */
+document.addEventListener('selectionchange', function() {
+  try {
+    var sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      var area = document.querySelector('.items-area');
+      if (area && area.contains(sel.getRangeAt(0).commonAncestorContainer)) saveFmtSelection();
+    }
+  } catch (e) {}
+});
+document.addEventListener('keydown', function(e) {
+  if (!e || e.key !== 'Enter') return;
+  var target = e.target && e.target.closest ? e.target.closest('.item-text[contenteditable]') : null;
+  if (!target) return;
+  var box = target.closest ? target.closest('.list-item') : null;
+  if (!box || box.classList.contains('toc-item')) return;
+  var plain = (target.textContent || '').replace(/ /g, ' ').trim().toLowerCase();
+  if (!isIndexCommandText(plain)) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var noteId = getActiveNoteId();
+  var itemId = box.getAttribute('data-id') != null ? Number(box.getAttribute('data-id')) : activeItemId;
+  if (noteId != null && itemId != null) insertIndexFromCommand(noteId, itemId);
+}, true);
+
+/* ==================================================
+   ETIQUETAS (tags) — metadatos compartidos por notas, tableros,
+   sets, tarjetas y carpetas. Cada etiqueta: {n: visible, k: clave}.
+   k = sin '#' + trim + NFC + minúsculas: la comparación no distingue
+   mayúsculas y conserva tildes/Unicode en la forma visible n.
+   Persisten con save() (elementos antiguos sin `tags` => []).
+   ================================================== */
+function normalizeTagKey(raw) {
+  var s = String(raw == null ? '' : raw).replace(/^#+/, '').trim().replace(/^#+/, '').trim();
+  if (!s) return '';
+  if (s.normalize) { try { s = s.normalize('NFC'); } catch (e) {} }
+  return s.toLowerCase();
+}
+function normalizeTag(raw) {
+  var name = String(raw == null ? '' : raw).replace(/^#+/, '').trim().replace(/^#+/, '').trim();
+  if (!name) return null;
+  if (name.normalize) { try { name = name.normalize('NFC'); } catch (e) {} }
+  var key = name.toLowerCase();
+  if (!key) return null;
+  return { n: name, k: key };
+}
+function getTagsOf(obj) {
+  var out = [], seen = {};
+  if (!obj || !(obj.tags instanceof Array)) return out;
+  obj.tags.forEach(function(tg) {
+    var nt = null;
+    if (typeof tg === 'string') nt = normalizeTag(tg);
+    else if (tg && typeof tg === 'object') nt = normalizeTag(tg.n != null ? tg.n : tg.k);
+    if (nt && !seen[nt.k]) { seen[nt.k] = true; out.push(nt); }
+  });
+  return out;
+}
+function setTagsOf(obj, arr) {
+  if (!obj) return;
+  var out = [], seen = {};
+  (arr || []).forEach(function(tg) {
+    var nt = null;
+    if (typeof tg === 'string') nt = normalizeTag(tg);
+    else if (tg && typeof tg === 'object') nt = normalizeTag(tg.n != null ? tg.n : tg.k);
+    if (nt && !seen[nt.k]) { seen[nt.k] = true; out.push({ n: nt.n, k: nt.k }); }
+  });
+  obj.tags = out;
+}
+function hasTagKey(obj, key) {
+  if (!key) return false;
+  return getTagsOf(obj).some(function(tg) { return tg.k === key; });
+}
+function tagNameForKey(obj, key) {
+  var found = null;
+  getTagsOf(obj).forEach(function(tg) { if (tg.k === key && !found) found = tg.n; });
+  return found;
+}
+
+/* Editor de etiquetas reutilizable (chips + entrada).
+ * Cada diálogo mantiene un borrador en _tagDrafts[boxId]: Cancelar
+ * no toca los datos (solo se escribe al Guardar/Crear). */
+var _tagDrafts = {};
+function openTagEditor(boxId, tagsArr) {
+  _tagDrafts[boxId] = getTagsOf({ tags: tagsArr });
+  renderTagEditor(boxId);
+}
+function renderTagEditor(boxId) {
+  var box = document.getElementById(boxId);
+  if (!box) return;
+  if (!(_tagDrafts[boxId] instanceof Array)) _tagDrafts[boxId] = [];
+  box.innerHTML = '<div class="tag-chips" id="' + boxId + 'Chips"></div>' +
+    '<div class="tag-input-row"><input id="' + boxId + 'Input" placeholder="' + escapeHtml(t('tagPh')) + '" autocomplete="off" onkeydown="if(event.key===\'Enter\'){event.preventDefault();tagEditorAdd(\'' + boxId + '\');}">' +
+    '<button type="button" class="btn btn-sm" onclick="tagEditorAdd(\'' + boxId + '\')" title="+">+</button></div>';
+  renderTagChips(boxId);
+}
+function renderTagChips(boxId) {
+  var chips = document.getElementById(boxId + 'Chips');
+  if (!chips) return;
+  var draft = _tagDrafts[boxId] || [];
+  var html = '';
+  draft.forEach(function(tg, i) {
+    html += '<span class="tag-chip"><span>#' + escapeHtml(tg.n) + '</span><button type="button" onclick="tagEditorRemoveAt(\'' + boxId + '\',' + i + ')" aria-label="×">×</button></span>';
+  });
+  chips.innerHTML = html;
+}
+function tagEditorAdd(boxId) {
+  var input = document.getElementById(boxId + 'Input');
+  if (!input) return;
+  var nt = normalizeTag(input.value);
+  input.value = '';
+  if (nt) {
+    var draft = _tagDrafts[boxId] || (_tagDrafts[boxId] = []);
+    if (!draft.some(function(tg) { return tg.k === nt.k; })) draft.push(nt);
+  }
+  renderTagChips(boxId);
+  var input2 = document.getElementById(boxId + 'Input');
+  if (input2) input2.focus();
+}
+function tagEditorRemoveAt(boxId, idx) {
+  var draft = _tagDrafts[boxId];
+  if (draft && draft[idx]) draft.splice(idx, 1);
+  renderTagChips(boxId);
+  var input = document.getElementById(boxId + 'Input');
+  if (input) input.focus();
+}
+function tagEditorCommit(boxId) {
+  var draft = _tagDrafts[boxId] || [];
+  return draft.map(function(tg) { return { n: tg.n, k: tg.k }; });
+}
+function refreshTagEditorPlaceholders() {
+  ['newNoteTags','newFolderTags','newBoardTags','newStudySetTags','studyCardTags','editNoteTags','folderEditTags','tagsDialogTags'].forEach(function(boxId) {
+    var inp = document.getElementById(boxId + 'Input');
+    if (inp) inp.placeholder = t('tagPh');
+  });
+}
+/* Diálogo genérico de etiquetas (tableros y sets, que editan por
+ * menú contextual en vez de formulario propio). */
+var _tagsDialogTarget = null;
+function tagsTargetObj() {
+  if (!_tagsDialogTarget) return null;
+  var k = _tagsDialogTarget.kind, id = _tagsDialogTarget.id;
+  if (k === 'board') return state.boards.find(function(b) { return b.id === id; });
+  if (k === 'set') return state.studySets.find(function(s) { return s.id === id; });
+  return null;
+}
+function openTagsDialog(kind, id) {
+  _tagsDialogTarget = { kind: kind, id: id };
+  var obj = tagsTargetObj();
+  if (!obj) { _tagsDialogTarget = null; return; }
+  var ttl = document.getElementById('tagsDialogTitle');
+  if (ttl) ttl.textContent = t('tags');
+  openTagEditor('tagsDialogTags', getTagsOf(obj));
+  showDialog('tagsDialog');
+  setTimeout(function() { var inp = document.getElementById('tagsDialogTagsInput'); if (inp) inp.focus(); }, 100);
+}
+function saveTagsDialog() {
+  var obj = tagsTargetObj();
+  if (obj) { setTagsOf(obj, tagEditorCommit('tagsDialogTags')); save(); renderAll(); }
+  _tagsDialogTarget = null;
+  closeDialog('tagsDialog');
+}
+
 var _txColor = '#ff0000';
 function selectTextColor(color) {
   _txColor = color;
@@ -5287,6 +6396,18 @@ function updateFmtBar() {
   if (b) b.classList.toggle('active', document.queryCommandState('bold'));
   if (i) i.classList.toggle('active', document.queryCommandState('italic'));
   if (u) u.classList.toggle('active', document.queryCommandState('underline'));
+  try {
+    var ht = document.querySelector('.heading-toggle');
+    if (ht) {
+      var on = false;
+      if (typeof activeItemId !== 'undefined' && activeItemId != null) {
+        var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
+        var it = note ? note.items.find(function(x) { return x.id === activeItemId; }) : null;
+        on = !!(it && normalizeHeading(it.heading));
+      }
+      ht.classList.toggle('active', on);
+    }
+  } catch (e) {}
 }
 
 function saveActiveItem() {
@@ -5336,6 +6457,7 @@ function openEditNoteDialog(noteId) {
   for (var j = 0; j < designs.length; j++) designs[j].checked = (designs[j].value === bg.design);
   var lockEl = document.getElementById('editNoteLockWidth');
   if (lockEl) lockEl.checked = isNoteWidthLocked(note);
+  openTagEditor('editNoteTags', getTagsOf(note));
   applyEditNoteLang();
   showDialog('editNoteDialog');
   setTimeout(function() { if (nameEl) nameEl.focus(); }, 100);
@@ -5375,6 +6497,7 @@ function saveEditNoteDialog() {
   /* Solo se aplica al presionar Guardar; Cancelar conserva el estado anterior. */
   if (newName) note.title = newName;
   note.background = norm;
+  setTagsOf(note, tagEditorCommit('editNoteTags'));
   var lockEl2 = document.getElementById('editNoteLockWidth');
   if (lockEl2) note.lockWidth = !!lockEl2.checked;
   _editNoteId = null;
@@ -5648,6 +6771,12 @@ function outdentItem(noteId, itemId) {
 
 function getNotePreview(note) {
   if (note.pwdHash && !unlockedIds['n' + note.id]) return t('passwordProtected');
+  if (isMarkdownNote(note)) {
+    var mdText = '';
+    try { mdText = MarkdownEngine && MarkdownEngine.plainText ? MarkdownEngine.plainText(note.markdown || '') : String(note.markdown || ''); } catch (e) { mdText = ''; }
+    if (!mdText) return t('noContent');
+    return escapeHtml(mdText.length > 120 ? mdText.substring(0, 120) + '...' : mdText);
+  }
   if (!note.items || note.items.length === 0) return t('noContent');
   var texts = [];
   for (var i = 0; i < Math.min(note.items.length, 3); i++) {
@@ -5666,6 +6795,618 @@ function getNotePreview(note) {
     if (txt) texts.push(txt.length > 60 ? txt.substring(0, 60) + '...' : txt);
   }
   return texts.length > 0 ? texts.join('<br>') : t('noContent');
+}
+
+
+var _newNoteType = 'normal';
+var _mdEditorMode = 'edit';
+var _mdSaveTimer = null;
+var _mdPreviewTimer = null;
+var _mdBlobUrls = [];
+
+function isMarkdownNote(note) {
+  return !!note && note.type === 'markdown';
+}
+
+function noteTypeBadge(note) {
+  return isMarkdownNote(note) ? '<span class="card-type-badge" title="Markdown">' + t('markdownBadge') + '</span>' : '';
+}
+
+function selectNewNoteType(type) {
+  _newNoteType = type === 'markdown' ? 'markdown' : 'normal';
+  var normal = document.getElementById('newNoteTypeNormal');
+  var md = document.getElementById('newNoteTypeMarkdown');
+  if (normal) normal.classList.toggle('active', _newNoteType === 'normal');
+  if (md) md.classList.toggle('active', _newNoteType === 'markdown');
+}
+
+function _mdUniqueTitle(base) {
+  var title = String(base || t('newNoteLabel')).replace(/^\s+|\s+$/g, '') || t('newNoteLabel');
+  var candidate = title;
+  var n = 2;
+  while (state.notes.some(function(x) { return String(x.title || '') === candidate; })) {
+    candidate = title + ' (' + n + ')';
+    n++;
+  }
+  return candidate;
+}
+
+function _mdCopyNoteMeta(src) {
+  return {
+    pwdHash: src.pwdHash || '',
+    cover: src.cover || '',
+    folderId: src.folderId != null ? src.folderId : null,
+    lockWidth: src.lockWidth !== false,
+    background: normalizeBackground(src.background),
+    tags: src.tags ? JSON.parse(JSON.stringify(src.tags)) : []
+  };
+}
+
+function _mdAddNote(note) {
+  state.notes.push(note);
+  if (!note.diary && note.folderId == null) {
+    ensureRootOrder();
+    if (!state.rootOrder.find(function(e) { return e.type === 'note' && e.id === note.id; })) {
+      state.rootOrder.push({ type: 'note', id: note.id });
+    }
+  }
+}
+
+function _flushMarkdownSave() {
+  if (!_mdSaveTimer && !_mdPreviewTimer) return;
+  if (_mdSaveTimer) { clearTimeout(_mdSaveTimer); _mdSaveTimer = null; }
+  if (_mdPreviewTimer) { clearTimeout(_mdPreviewTimer); _mdPreviewTimer = null; }
+  save();
+}
+
+window.addEventListener('pagehide', function() { _flushMarkdownSave(); });
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') _flushMarkdownSave();
+});
+
+function _mdRevokeBlobUrls() {
+  _mdBlobUrls.forEach(function(url) { try { URL.revokeObjectURL(url); } catch (e) {} });
+  _mdBlobUrls = [];
+}
+
+function markdownNoteAreaHtml(note) {
+  var src = note.markdown || '';
+  var mode = _mdEditorMode;
+  if (['edit', 'preview', 'split'].indexOf(mode) === -1) mode = 'edit';
+  var html = '';
+  html += '<div class="items-area markdown-note" data-note-id="' + note.id + '" data-bg-color="' + getNoteBackground(note).color + '" data-bg-design="' + getNoteBackground(note).design + '">';
+  html += '<div class="md-toolbar">';
+  html += '<div class="md-modes" role="group" aria-label="' + t('noteType') + '">';
+  html += '<button type="button" class="md-mode-btn' + (mode === 'edit' ? ' active' : '') + '" onclick="setMarkdownMode(\'edit\')">' + t('markdownEdit') + '</button>';
+  html += '<button type="button" class="md-mode-btn' + (mode === 'preview' ? ' active' : '') + '" onclick="setMarkdownMode(\'preview\')">' + t('markdownPreview') + '</button>';
+  html += '<button type="button" class="md-mode-btn md-split-btn' + (mode === 'split' ? ' active' : '') + '" onclick="setMarkdownMode(\'split\')">' + t('markdownSplit') + '</button>';
+  html += '</div>';
+  html += '<span class="md-word-count" id="mdWordCount"></span>';
+  html += '<span style="flex:1"></span>';
+  html += '<button type="button" class="btn md-export-btn" onclick="exportMarkdownNote(' + note.id + ')">' + t('markdownExportPlain') + '</button>';
+  html += '</div>';
+  html += '<div class="md-editor md-mode-' + mode + '">';
+  html += '<div class="md-source-wrap">';
+  html += '<div class="md-pane-label">' + t('markdownSourceLabel') + '</div>';
+  html += '<textarea id="mdSource" class="md-source" spellcheck="false" placeholder="' + escapeHtml(t('markdownPlaceholder')) + '" oninput="onMarkdownInput(' + note.id + ', this)" onkeydown="onMarkdownKeydown(event, this)">' + escapeHtml(src) + '</textarea>';
+  html += '</div>';
+  html += '<div class="md-preview-wrap">';
+  html += '<div class="md-pane-label">' + t('markdownPreview') + '</div>';
+  html += '<div class="md-preview" id="mdPreview"></div>';
+  html += '</div>';
+  html += '</div>';
+  html += '<div class="md-hint">' + t('markdownFormatHint') + '</div>';
+  html += '</div>';
+  return html;
+}
+
+function initMarkdownEditor(note) {
+  if (!note) return;
+  updateMarkdownWordCount(note);
+  if (_mdEditorMode === 'preview' || _mdEditorMode === 'split') updateMarkdownPreview(note.id);
+  var ta = document.getElementById('mdSource');
+  if (ta && _mdEditorMode !== 'preview' && ta.offsetHeight < 120) ta.style.minHeight = '240px';
+}
+
+function setMarkdownMode(mode) {
+  if (['edit', 'preview', 'split'].indexOf(mode) === -1) mode = 'edit';
+  _flushMarkdownSave();
+  _mdEditorMode = mode;
+  renderNoteContent();
+}
+
+function updateMarkdownWordCount(note) {
+  var el = document.getElementById('mdWordCount');
+  if (!el) return;
+  var text = MarkdownEngine && MarkdownEngine.plainText ? MarkdownEngine.plainText(note.markdown || '') : String(note.markdown || '');
+  var words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+  el.textContent = words + ' ' + t('markdownWords');
+}
+
+function onMarkdownInput(noteId, el) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note || !isMarkdownNote(note)) return;
+  note.markdown = el.value;
+  updateMarkdownWordCount(note);
+  if (_mdSaveTimer) clearTimeout(_mdSaveTimer);
+  _mdSaveTimer = setTimeout(function() {
+    _mdSaveTimer = null;
+    save();
+  }, 450);
+  if (_noteSearch.term && _noteSearch.noteId === note.id) {
+    if (_mdPreviewTimer) clearTimeout(_mdPreviewTimer);
+    _mdPreviewTimer = setTimeout(function() {
+      _mdPreviewTimer = null;
+      if (_noteSearch.term) refreshNoteSearchSilently();
+    }, 400);
+  }
+  if (_mdEditorMode === 'split') {
+    if (_mdPreviewTimer) clearTimeout(_mdPreviewTimer);
+    _mdPreviewTimer = setTimeout(function() {
+      _mdPreviewTimer = null;
+      updateMarkdownPreview(note.id);
+    }, 180);
+  }
+}
+
+function onMarkdownKeydown(e, el) {
+  if (e.key !== 'Tab') return;
+  e.preventDefault();
+  var start = el.selectionStart || 0;
+  var end = el.selectionEnd || 0;
+  var value = el.value;
+  el.value = value.substring(0, start) + '  ' + value.substring(end);
+  el.selectionStart = el.selectionEnd = start + 2;
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+function updateMarkdownPreview(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  var box = document.getElementById('mdPreview');
+  if (!note || !box) return;
+  _mdRevokeBlobUrls();
+  var src = String(note.markdown || '');
+  if (!src.replace(/\s+/g, '')) {
+    box.innerHTML = '<div class="md-empty">' + escapeHtml(t('markdownEmptyPreview')) + '</div>';
+    return;
+  }
+  if (!MarkdownEngine || !MarkdownEngine.isAvailable || !MarkdownEngine.isAvailable()) {
+    box.innerHTML = '<div class="md-empty">Markdown no disponible.</div>';
+    return;
+  }
+  try {
+    box.innerHTML = MarkdownEngine.render(src).html;
+  } catch (e) {
+    console.error('Error rendering Markdown:', e);
+    box.innerHTML = '<div class="md-empty">' + escapeHtml(t('markdownImportFailed')) + '</div>';
+    return;
+  }
+  loadMarkdownPreviewImages(box);
+  if (_noteSearch.term && _noteSearch.noteId === note.id) refreshNoteSearchSilently();
+}
+
+function loadMarkdownPreviewImages(root) {
+  var imgs = root.querySelectorAll('img[src]');
+  [].forEach.call(imgs, function(img) {
+    var ref = img.getAttribute('src') || '';
+    if (!/^(imagenes|audios|videos)\//.test(ref)) return;
+    ImageManager.read(ref).then(function(base64) {
+      if (!base64) return;
+      var mime = ImageConverter.getMimeFromRef(ref);
+      var blob = _base64ToBlob(base64, mime);
+      var url = URL.createObjectURL(blob);
+      _mdBlobUrls.push(url);
+      img.src = url;
+    }).catch(function() {});
+  });
+}
+
+function markdownMenuItems(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return [];
+  var items = [{ label: t('markdownExport'), action: function() { exportMarkdownNote(noteId); } }];
+  if (isMarkdownNote(note)) {
+    items.push({ label: t('convertToNormal'), action: function() { convertMarkdownToNormal(noteId); } });
+  } else {
+    items.push({ label: t('convertToMarkdown'), action: function() { convertNoteToMarkdown(noteId); } });
+  }
+  return items;
+}
+
+function _mdSourceAssetRefs(source) {
+  var refs = [];
+  var re = /(?:imagenes|audios|videos)\/[^\s"'()<>]+/g;
+  var m;
+  while ((m = re.exec(String(source || ''))) !== null) {
+    var ref = m[0].replace(/[.,;:]+$/, '');
+    if (refs.indexOf(ref) === -1) refs.push(ref);
+  }
+  return refs;
+}
+
+function exportMarkdownNote(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  if (note.pwdHash && !unlockedIds['n' + note.id]) { alert(t('passwordProtected')); return; }
+  var markdown = '';
+  var warnings = [];
+  var doc = null;
+  try {
+    if (isMarkdownNote(note)) {
+      markdown = String(note.markdown || '');
+    } else {
+      if (typeof NoteDoc === 'undefined' || typeof MdExporter === 'undefined') {
+        showToast(t('markdownExportError'));
+        return;
+      }
+      doc = NoteDoc.parse(note, { emptyLabel: t('noContent') });
+      var converted = MdExporter.toMarkdown(doc);
+      markdown = converted.markdown;
+      warnings = (doc.warnings || []).concat(converted.warnings || []);
+    }
+  } catch (e) {
+    console.error('Error exporting Markdown:', e);
+    showToast(t('markdownExportError'));
+    return;
+  }
+  if (warnings.length) {
+    var proceed = confirm(t('convertLossWarn') + '\n\n- ' + warnings.join('\n- ') + '\n\n' + t('markdownContinue'));
+    if (!proceed) return;
+  }
+  if (!markdown) markdown = '';
+  exportMarkdownPackage(note, markdown, doc);
+}
+
+function exportMarkdownPackage(note, markdown, doc) {
+  var name = sanitizeFilename(note.title || t('newNoteLabel')) || 'nota';
+  var refs = _mdSourceAssetRefs(markdown);
+  if (doc && typeof MdExporter !== 'undefined') {
+    MdExporter.collectAssetRefs(doc).forEach(function(ref) {
+      if (refs.indexOf(ref) === -1) refs.push(ref);
+    });
+  }
+  if (!refs.length || typeof JSZip === 'undefined') {
+    saveFile(name + '.md', markdown, 'text/markdown;charset=utf-8').then(function() {
+      showToast(t('markdownExportDone'));
+    });
+    return;
+  }
+  setStatus('Recopilando archivos para Markdown...');
+  Promise.all(refs.map(function(ref) {
+    return ImageManager.read(ref).then(function(base64) {
+      return base64 ? { ref: ref, base64: base64 } : null;
+    }).catch(function() { return null; });
+  })).then(function(results) {
+    var found = results.filter(Boolean);
+    if (!found.length) {
+      return saveFile(name + '.md', markdown, 'text/markdown;charset=utf-8').then(function() {
+        showToast(t('markdownAssetsMissing'));
+      });
+    }
+    var zip = new JSZip();
+    zip.file(name + '.md', markdown);
+    found.forEach(function(asset) { zip.file(asset.ref, asset.base64, { base64: true }); });
+    return zip.generateAsync({ type: 'uint8array' }).then(function(bytes) {
+      return saveFile(name + '.zip', bytes, 'application/zip').then(function() {
+        showToast(found.length < refs.length ? t('markdownAssetsMissing') : t('markdownExportWithAssets'));
+      });
+    });
+  }).catch(function(err) {
+    console.error('Error exporting Markdown package:', err);
+    showToast(t('markdownExportError'));
+  });
+}
+
+function _mdCreateNoteFromSource(title, source, type, meta) {
+  var base = _mdCopyNoteMeta(meta || {});
+  var note = {
+    id: genId(), title: _mdUniqueTitle(title), items: [], pwdHash: base.pwdHash,
+    cover: base.cover, createdAt: Date.now(), folderId: base.folderId,
+    lockWidth: base.lockWidth, background: base.background, tags: base.tags,
+    type: type === 'markdown' ? 'markdown' : 'normal'
+  };
+  if (note.type === 'markdown') note.markdown = String(source || '');
+  _mdAddNote(note);
+  return note;
+}
+
+function convertNoteToMarkdown(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note || isMarkdownNote(note)) return;
+  if (note.pwdHash && !unlockedIds['n' + note.id]) { alert(t('passwordProtected')); return; }
+  var doc, converted;
+  try {
+    doc = NoteDoc.parse(note, { emptyLabel: t('noContent') });
+    converted = MdExporter.toMarkdown(doc);
+  } catch (e) {
+    console.error('Error converting to Markdown:', e);
+    showToast(t('convertError'));
+    return;
+  }
+  var warnings = (doc.warnings || []).concat(converted.warnings || []);
+  if (warnings.length) {
+    if (!confirm(t('convertLossWarn') + '\n\n- ' + warnings.join('\n- ') + '\n\n' + t('markdownContinue'))) return;
+  }
+  if (!confirm(t('convertToMarkdownConfirm'))) return;
+  var created = _mdCreateNoteFromSource(note.title + ' (Markdown)', converted.markdown, 'markdown', note);
+  if (note.pwdHash) unlockedIds['n' + created.id] = true;
+  save();
+  renderAll();
+  state.activeNoteId = created.id;
+  state.activeFolderId = null;
+  save();
+  renderAll();
+  showToast(t('convertDone'));
+}
+
+function _mdImageRefFromSrc(src) {
+  var s = String(src || '');
+  if (/^imagenes\//.test(s)) return s;
+  return null;
+}
+
+function _mdDataUrlToImage(src) {
+  var m = /^data:image\/(png|jpe?g|gif|webp);base64,([\s\S]+)$/i.exec(String(src || ''));
+  if (!m) return Promise.resolve(null);
+  var ext = m[1].toLowerCase();
+  if (ext === 'jpeg') ext = 'jpg';
+  var ref = 'imagenes/md-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '.' + ext;
+  return ImageManager.save(ref, m[2]).then(function() { return ref; }).catch(function() { return null; });
+}
+
+function _mdTableItemFromElement(table, warnings) {
+  var trs = [].slice.call(table.querySelectorAll('tr'));
+  if (!trs.length) return null;
+  var rows = trs.length;
+  var occupied = {};
+  var grid = [];
+  var maxCols = 0;
+  trs.forEach(function(tr, r) {
+    var col = 0;
+    var rowCells = [];
+    [].forEach.call(tr.children, function(cell) {
+      var tag = String(cell.tagName || '').toUpperCase();
+      if (tag !== 'TD' && tag !== 'TH') return;
+      while (occupied[r + ':' + col]) col++;
+      var rs = Math.max(1, parseInt(cell.getAttribute('rowspan'), 10) || 1);
+      var cs = Math.max(1, parseInt(cell.getAttribute('colspan'), 10) || 1);
+      for (var rr = 0; rr < rs; rr++) {
+        for (var cc = 0; cc < cs; cc++) {
+          occupied[(r + rr) + ':' + (col + cc)] = true;
+        }
+      }
+      rowCells.push({ at: col, cell: { text: cell.innerHTML, rowspan: rs, colspan: cs } });
+      col += cs;
+      maxCols = Math.max(maxCols, col);
+    });
+    grid.push(rowCells);
+  });
+  if (!maxCols) return null;
+  var cells = new Array(rows * maxCols);
+  grid.forEach(function(rowCells, r) {
+    rowCells.forEach(function(entry) {
+      cells[r * maxCols + entry.at] = entry.cell;
+    });
+  });
+  if (grid.some(function(row) { return row.some(function(c) { return c.cell.colspan > 1 || c.cell.rowspan > 1; }); })) {
+    warnings.push('tabla con celdas combinadas importada con aproximación');
+  }
+  return { id: genId(), type: 'table', rows: rows, cols: maxCols, cells: cells };
+}
+
+function _mdListText(li) {
+  var clone = li.cloneNode(true);
+  var nested = [];
+  [].slice.call(clone.children).forEach(function(ch) {
+    if (/^(UL|OL)$/.test(ch.tagName)) { nested.push(ch); clone.removeChild(ch); }
+  });
+  var input = clone.querySelector('input[type="checkbox"]');
+  var checked = false;
+  if (input) { checked = !!input.checked || input.hasAttribute('checked'); input.parentNode.removeChild(input); }
+  return { html: clone.innerHTML.trim(), checked: checked, task: !!input, nested: nested };
+}
+
+function _mdWalkList(listEl, level, items, warnings) {
+  var ordered = String(listEl.tagName || '').toUpperCase() === 'OL';
+  var index = 1;
+  [].forEach.call(listEl.children, function(li) {
+    if (String(li.tagName || '').toUpperCase() !== 'LI') return;
+    var data = _mdListText(li);
+    if (data.html) {
+      var text = data.html;
+      if (ordered) text = '<span class="md-ordered-num">' + index + '.</span> ' + text;
+      var item = { id: genId(), type: 'list', text: text, level: level, checked: data.checked, task: data.task };
+      if (ordered) { item.ordered = true; item.orderIndex = index; }
+      items.push(item);
+    }
+    data.nested.forEach(function(n) { _mdWalkList(n, level + 1, items, warnings); });
+    index++;
+  });
+}
+
+function _mdItemsFromHtml(html) {
+  var container = document.createElement('div');
+  container.innerHTML = html || '';
+  var items = [];
+  var warnings = [];
+  var pending = [];
+
+  function addText(inner) {
+    var clean = String(inner || '').trim();
+    if (!clean) return;
+    items.push({ id: genId(), type: 'text', text: clean });
+  }
+
+  function addImage(img) {
+    var src = img.getAttribute('src') || '';
+    var alt = img.getAttribute('alt') || '';
+    var ref = _mdImageRefFromSrc(src);
+    if (ref) {
+      var localItem = { id: genId(), type: 'image', src: ref, width: 0, height: 0, caption: alt };
+      items.push(localItem);
+      pending.push(ImageManager.exists(ref).then(function(ok) {
+        if (!ok) {
+          warnings.push('imagen local no encontrada: ' + ref);
+          var idx = items.indexOf(localItem);
+          if (idx !== -1) items.splice(idx, 1);
+          addText('<i>[' + escapeHtml(alt || 'Imagen') + '] ' + escapeHtml(src) + '</i>');
+        }
+      }));
+      return;
+    }
+    if (/^data:image\//i.test(src)) {
+      var dataItem = { id: genId(), type: 'image', src: '', width: 0, height: 0, caption: alt };
+      items.push(dataItem);
+      pending.push(_mdDataUrlToImage(src).then(function(newRef) {
+        if (newRef) dataItem.src = newRef;
+        else {
+          warnings.push('no se pudo guardar una imagen incrustada');
+          var idx2 = items.indexOf(dataItem);
+          if (idx2 !== -1) items.splice(idx2, 1);
+          addText('<i>[' + escapeHtml(alt || 'Imagen') + ']</i>');
+        }
+      }));
+      return;
+    }
+    if (/^https?:\/\//i.test(src)) {
+      warnings.push('imagen externa convertida en enlace: ' + src);
+      addText('<a href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(alt || src) + '</a>');
+      return;
+    }
+    warnings.push('imagen con ruta no gestionada: ' + src);
+    addText('<i>[' + escapeHtml(alt || 'Imagen') + '] ' + escapeHtml(src) + '</i>');
+  }
+
+  function paragraphToItems(el) {
+    var buf = document.createElement('div');
+    [].forEach.call(el.childNodes, function(node) {
+      if (node.nodeType === 1 && String(node.tagName).toUpperCase() === 'IMG') {
+        if (buf.innerHTML.trim()) { addText(buf.innerHTML); buf.innerHTML = ''; }
+        addImage(node);
+      } else {
+        buf.appendChild(node.cloneNode(true));
+      }
+    });
+    if (buf.innerHTML.trim()) addText(buf.innerHTML);
+  }
+
+  function walk(el) {
+    [].forEach.call(el.children, function(node) {
+      var tag = String(node.tagName || '').toUpperCase();
+      if (/^H[1-6]$/.test(tag)) { addText(node.outerHTML); return; }
+      if (tag === 'P') { paragraphToItems(node); return; }
+      if (tag === 'UL' || tag === 'OL') { _mdWalkList(node, 0, items, warnings); return; }
+      if (tag === 'TABLE') {
+        var tableItem = _mdTableItemFromElement(node, warnings);
+        if (tableItem) items.push(tableItem);
+        return;
+      }
+      if (tag === 'PRE') { addText('<pre>' + escapeHtml(node.textContent || '') + '</pre>'); return; }
+      if (tag === 'BLOCKQUOTE') { addText('<blockquote>' + node.innerHTML + '</blockquote>'); return; }
+      if (tag === 'HR') { addText('<hr>'); return; }
+      if (tag === 'IMG') { addImage(node); return; }
+      if (tag === 'DIV' || tag === 'SECTION' || tag === 'ARTICLE') { walk(node); return; }
+      addText(node.outerHTML);
+    });
+  }
+
+  walk(container);
+  return Promise.all(pending).then(function() { return { items: items, warnings: warnings }; });
+}
+
+function convertMarkdownToNormal(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note || !isMarkdownNote(note)) return;
+  if (note.pwdHash && !unlockedIds['n' + note.id]) { alert(t('passwordProtected')); return; }
+  if (!confirm(t('convertToNormalConfirm'))) return;
+  if (!MarkdownEngine || !MarkdownEngine.isAvailable || !MarkdownEngine.isAvailable()) { showToast(t('convertError')); return; }
+  var html;
+  try { html = MarkdownEngine.renderForConversion(note.markdown || ''); }
+  catch (e) { console.error('Error converting Markdown:', e); showToast(t('convertError')); return; }
+  _mdItemsFromHtml(html).then(function(result) {
+    if (result.warnings.length) {
+      if (!confirm(t('convertLossWarn') + '\n\n- ' + result.warnings.join('\n- ') + '\n\n' + t('markdownContinue'))) return;
+    }
+    var created = _mdCreateNoteFromSource(note.title + ' (Nota)', '', 'normal', note);
+    if (note.pwdHash) unlockedIds['n' + created.id] = true;
+    created.items = result.items;
+    save();
+    renderAll();
+    state.activeNoteId = created.id;
+    state.activeFolderId = null;
+    save();
+    renderAll();
+    showToast(t('convertDone'));
+  });
+}
+
+function _mdImportTitle(file) {
+  var name = String(file && file.name ? file.name : 'nota');
+  name = name.replace(/\.[^.]+$/, '').replace(/^\s+|\s+$/g, '');
+  return name || t('newNoteLabel');
+}
+
+function _mdInsertImportedNote(title, source, asMarkdown) {
+  var note = _mdCreateNoteFromSource(title, source, asMarkdown ? 'markdown' : 'normal', {});
+  if (!asMarkdown) {
+    var parts = String(source || '').replace(/\r\n?/g, '\n').split(/\n{2,}/);
+    note.items = [];
+    parts.forEach(function(part) {
+      var clean = part.replace(/^\s+|\s+$/g, '');
+      if (!clean) return;
+      note.items.push({ id: genId(), type: 'text', text: escapeHtml(clean).replace(/\n/g, '<br>') });
+    });
+  }
+  state.activeNoteId = note.id;
+  state.activeFolderId = null;
+  save();
+  renderAll();
+  showToast(asMarkdown ? t('markdownImported') : t('markdownImportedAsNormal'));
+}
+
+function importMarkdownFile(input, forceMarkdown) {
+  if (!input || !input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var name = String(file.name || '').toLowerCase();
+  var isMarkdown = forceMarkdown === true || /\.(md|markdown)$/.test(name);
+  if (!/\.(md|markdown|txt)$/.test(name)) {
+    alert(t('markdownInvalidFile'));
+    input.value = '';
+    return;
+  }
+  if (file.size === 0) {
+    alert(t('markdownFileEmpty'));
+    input.value = '';
+    return;
+  }
+  if (file.size > 5 * 1024 * 1024) {
+    alert(t('markdownFileTooLarge'));
+    input.value = '';
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var text = String(e.target.result == null ? '' : e.target.result);
+    if (text.charCodeAt(0) === 0xFEFF) text = text.substring(1);
+    if (!text.trim()) {
+      alert(t('markdownFileEmpty'));
+      input.value = '';
+      return;
+    }
+    try {
+      _mdInsertImportedNote(_mdImportTitle(file), text, isMarkdown);
+    } catch (err) {
+      console.error('Markdown import error:', err);
+      alert(t('markdownImportFailed'));
+    }
+    input.value = '';
+  };
+  reader.onerror = function() {
+    console.error('Markdown import read error:', reader.error);
+    alert(t('markdownImportFailed'));
+    input.value = '';
+  };
+  reader.readAsText(file, 'UTF-8');
 }
 
 // --- Study Cards ---
@@ -5690,12 +7431,13 @@ function renderStudySetList(container) {
 function selectStudySet(id) { state.activeStudySetId = id; save(); renderAll(); }
 function showNewStudySetDialog() {
   document.getElementById('newStudySetName').value = '';
+  openTagEditor('newStudySetTags', []);
   showDialog('newStudySetDialog');
   setTimeout(function(){ document.getElementById('newStudySetName').focus(); }, 100);
 }
 function createStudySet() {
   var name = document.getElementById('newStudySetName').value.trim() || t('newSet');
-  state.studySets.push({ id: genId(), name: name, cards: [] });
+  state.studySets.push({ id: genId(), name: name, cards: [], tags: tagEditorCommit('newStudySetTags') });
   closeDialog('newStudySetDialog');
   document.getElementById('newStudySetName').value = '';
   save();
@@ -5850,6 +7592,7 @@ function showAddStudyCard(setId) {
   document.getElementById('studyCardFront').innerHTML = '';
   document.getElementById('studyCardBack').innerHTML = '';
   document.getElementById('studyCardTitle').textContent = t('addCard');
+  openTagEditor('studyCardTags', []);
   showDialog('studyCardDialog');
   setTimeout(function(){ document.getElementById('studyCardFront').focus(); }, 100);
 }
@@ -5865,6 +7608,7 @@ function editStudyCard(setId, cardId) {
   document.getElementById('studyCardFront').innerHTML = card.front;
   document.getElementById('studyCardBack').innerHTML = card.back;
   document.getElementById('studyCardTitle').textContent = t('edit');
+  openTagEditor('studyCardTags', getTagsOf(card));
   showDialog('studyCardDialog');
   loadStudyCardMedia(document.getElementById('studyCardDialog'));
   setTimeout(function(){ document.getElementById('studyCardFront').focus(); }, 100);
@@ -5884,9 +7628,9 @@ function saveStudyCard() {
   if (!set) return;
   if (_editStudyCardId) {
     var card = set.cards.find(function(c) { return c.id === _editStudyCardId; });
-    if (card) { card.front = front; card.back = back; }
+    if (card) { card.front = front; card.back = back; setTagsOf(card, tagEditorCommit('studyCardTags')); }
   } else {
-    set.cards.push({ id: genId(), front: front, back: back });
+    set.cards.push({ id: genId(), front: front, back: back, tags: tagEditorCommit('studyCardTags') });
   }
   closeDialog('studyCardDialog');
   save(); renderStudyContent();
@@ -6324,9 +8068,190 @@ function renderTrashContent() {
   container.innerHTML = html;
 }
 
+/* =========================================================
+   POSICIÓN DE LECTURA POR NOTA
+   ---------------------------------------------------------
+   Cada nota conserva en `readScrollTop` el desplazamiento
+   vertical donde el usuario dejó de leerla. El valor vive en
+   `state` (identificado por `note.id`) y se persiste con el
+   save() existente de la app, por lo que no se crea ningún
+   sistema de almacenamiento paralelo ni registros duplicados.
+
+   - Guardado: el scroll se registra en memoria y se escribe con
+     debounce + tope máximo, nunca en cada evento de scroll.
+   - Restauración: se dispara una sola vez por apertura de nota y
+     espera a que el contenedor tenga layout estable y los medios
+     con dimensiones antes de darse por terminada.
+   - El contenedor desplazable de lectura es `.items-area`
+     (único scroll vertical de la nota).
+   ========================================================= */
+/* ==== READ-POSITION-START ==== */
+var READ_POS_SAVE_DELAY = 500;   /* silencio tras el último scroll */
+var READ_POS_MAX_DELAY = 2500;   /* tope máximo entre guardados */
+var READ_POS_MAX_WAIT = 3000;    /* plazo máximo de la restauración */
+var READ_POS_STABLE_FRAMES = 8;  /* frames con altura estable para cerrarla */
+var READ_POS_TOLERANCE = 2;      /* px: tolerancia propio vs. ajeno */
+var READ_POS_APPLY_GRACE = 600;  /* ms: protección tras un scroll programado */
+var _readPos = {
+  noteId: null, saveTimer: null, lastSaveAt: 0, session: null,
+  restorePending: false,
+  lastAppliedId: null, lastApplied: null, lastAppliedAt: 0
+};
+
+function readPosNote(noteId) {
+  if (noteId == null || !state || !state.notes) return null;
+  return state.notes.find(function(n) { return n.id === noteId; }) || null;
+}
+
+function readPosGet(note) {
+  if (!note) return 0;
+  var v = note.readScrollTop;
+  return (typeof v === 'number' && isFinite(v) && v > 0) ? Math.round(v) : 0;
+}
+
+function readPosSaveNow() {
+  if (_readPos.saveTimer) { clearTimeout(_readPos.saveTimer); _readPos.saveTimer = null; }
+  _readPos.lastSaveAt = Date.now();
+  save();
+}
+
+function readPosScheduleSave() {
+  if (_readPos.saveTimer) clearTimeout(_readPos.saveTimer);
+  /* Debounce con tope: durante scroll continuo se guarda igual como
+     máximo cada READ_POS_MAX_DELAY ms; al parar, tras el delay corto. */
+  var delay = (Date.now() - _readPos.lastSaveAt >= READ_POS_MAX_DELAY) ? 0 : READ_POS_SAVE_DELAY;
+  _readPos.saveTimer = setTimeout(function() { _readPos.saveTimer = null; readPosSaveNow(); }, delay);
+}
+
+/* Vuelca cuanto antes el scroll pendiente (salida de nota, app en segundo plano). */
+function readPosFlush() {
+  if (_readPos.saveTimer) readPosSaveNow();
+}
+
+function readPosArea(noteId) {
+  if (noteId == null) return null;
+  return document.querySelector('.items-area[data-note-id="' + noteId + '"]');
+}
+
+/* ¿Falta contenido por acomodarse (imágenes/videos aún sin dimensiones)? */
+function readPosMediaPending(area) {
+  if (!area) return true;
+  var els = area.querySelectorAll('img, video');
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    if (el.getAttribute('data-ref')) return true; /* aún no solicitada */
+    if (el.tagName === 'IMG') {
+      if (!el.getAttribute('src') || !el.complete) return true;
+    } else if (el.tagName === 'VIDEO') {
+      if (el.getAttribute('src') && el.getAttribute('preload') !== 'none' && el.readyState === 0) return true;
+    }
+  }
+  return false;
+}
+
+function readPosEndRestore() {
+  if (_readPos.session) { _readPos.session.dead = true; _readPos.session = null; }
+}
+
+function readPosApplyRestore(session, area) {
+  var max = (area.scrollHeight || 0) - (area.clientHeight || 0);
+  if (!(max > 0)) max = 0;
+  var want = Math.min(session.target, max); /* nota acortada o vacía: límite válido */
+  if (Math.abs((area.scrollTop || 0) - want) > READ_POS_TOLERANCE) area.scrollTop = want;
+  session.applied = area.scrollTop; /* valor realmente aplicado (puede venir limitado) */
+  /* Se recuerda para no confundir el evento de scroll generado por
+     nuestro propio programático con un scroll del usuario. */
+  _readPos.lastAppliedId = session.noteId;
+  _readPos.lastApplied = session.applied;
+  _readPos.lastAppliedAt = Date.now();
+}
+
+function readPosPump() {
+  var s = _readPos.session;
+  if (!s || s.dead) return;
+  s.frames++;
+  var area = readPosArea(s.noteId);
+  if (!area) { readPosEndRestore(); return; } /* la nota ya no está montada */
+  var h = area.scrollHeight || 0;
+  readPosApplyRestore(s, area);
+  if (h === s.lastHeight) s.stable++; else { s.stable = 0; s.lastHeight = h; }
+  var listo = s.stable >= READ_POS_STABLE_FRAMES && !readPosMediaPending(area);
+  var agotado = (Date.now() - s.startedAt) >= READ_POS_MAX_WAIT || s.frames > 900;
+  if (listo || agotado) { readPosEndRestore(); return; }
+  requestAnimationFrame(readPosPump);
+}
+
+function readPosStartRestore(noteId) {
+  readPosEndRestore();
+  var target = readPosGet(readPosNote(noteId));
+  if (!target) return; /* sin posición guardada: comportamiento habitual */
+  var area = readPosArea(noteId);
+  if (!area) return;
+  _readPos.session = {
+    noteId: noteId, target: target, applied: null,
+    lastHeight: -1, stable: 0, frames: 0, startedAt: Date.now(), dead: false
+  };
+  readPosApplyRestore(_readPos.session, area);
+  requestAnimationFrame(readPosPump);
+}
+
+function readPosOnScroll(area) {
+  if (!area) return;
+  var areaId = Number(area.getAttribute('data-note-id'));
+  var top = area.scrollTop || 0;
+  var s = _readPos.session;
+  if (s && s.noteId === areaId && s.applied != null && Math.abs(top - s.applied) > READ_POS_TOLERANCE) {
+    /* El usuario tomó el control: cortar la restauración. */
+    readPosEndRestore();
+  }
+  /* Scroll generado por la propia restauración: no registrar, para que
+     el valor guardado no se sobrescriba con el clamping inicial. */
+  if (_readPos.lastAppliedId === areaId && _readPos.lastApplied != null &&
+      Math.abs(top - _readPos.lastApplied) <= READ_POS_TOLERANCE &&
+      (Date.now() - _readPos.lastAppliedAt) < READ_POS_APPLY_GRACE) return;
+  var note = readPosNote(areaId);
+  if (!note) return;
+  var pos = Math.round(top);
+  if (pos < 0) pos = 0;
+  var prev = (typeof note.readScrollTop === 'number' && isFinite(note.readScrollTop)) ? note.readScrollTop : null;
+  if (prev !== null && Math.abs(prev - pos) < 1) return; /* sin cambio real */
+  if (pos <= 0 && prev === null) return;                 /* nada que guardar */
+  note.readScrollTop = pos;                              /* en memoria; save() aparte */
+  readPosScheduleSave();
+}
+
+/* Se llama al inicio de cada render: detecta apertura, cambio y cierre de nota. */
+function readPosOnRender(noteId) {
+  if (_readPos.noteId === noteId) return;
+  readPosEndRestore();
+  readPosFlush(); /* la posición de la nota anterior queda persistida */
+  _readPos.noteId = noteId;
+  _readPos.restorePending = (noteId != null); /* apertura (no re-render) */
+}
+
+/* Consume el indicador de apertura: la restauración ocurre una sola vez. */
+function readPosShouldRestore(noteId) {
+  if (!_readPos.restorePending || _readPos.noteId !== noteId) return false;
+  _readPos.restorePending = false;
+  return true;
+}
+
+(function initReadPosListeners() {
+  /* Captura: el scroll burbujea desde el contenedor desplazable. */
+  document.addEventListener('scroll', function(e) {
+    var el = e.target;
+    if (!el || !el.classList || !el.classList.contains('items-area')) return;
+    readPosOnScroll(el);
+  }, true);
+  document.addEventListener('visibilitychange', function() { if (document.hidden) readPosFlush(); });
+  window.addEventListener('pagehide', function() { readPosFlush(); });
+})();
+/* ==== READ-POSITION-END ==== */
+
 function renderNoteContent() {
   var container = document.getElementById('noteContent');
   var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
+  readPosOnRender(note ? note.id : null);
   if (note) { /* handled below */ } else if (state.activeFolderId != null) {
     // Vista dentro de carpeta
     var folder = getFolderById(state.activeFolderId);
@@ -6350,7 +8275,7 @@ function renderNoteContent() {
         var coverUrl = getCoverUrl(n);
         var coverStyle = coverUrl ? ' style="background-image:url('+coverUrl+');background-size:cover;background-position:center;"' : '';
         html+='<div class="card'+(coverUrl?' card-has-cover':'')+'" data-note-id="'+n.id+'" onclick="selectNote('+n.id+')">'+
-          '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>'+lock+fav+
+          '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>'+lock+fav+noteTypeBadge(n)+
           '<span class="card-date">'+fmtDate(n.createdAt)+'</span>'+
           '<div class="card-title">'+escapeHtml(n.title)+'</div>'+
           '<div class="card-preview"'+coverStyle+'>'+(coverUrl?'':getNotePreview(n))+'</div></div>';
@@ -6396,7 +8321,7 @@ function renderNoteContent() {
             var coverStyle = coverUrl ? ' style="background-image:url(' + coverUrl + ');background-size:cover;background-position:center;"' : '';
             html += '<div class="card' + (coverUrl ? ' card-has-cover' : '') + '" data-note-id="' + n.id + '" onclick="selectNote(' + n.id + ')">' +
               '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
-              lock + fav +
+              lock + fav + noteTypeBadge(n) +
               '<span class="card-date">' + fmtDate(n.createdAt) + '</span>' +
               '<div class="card-title">' + escapeHtml(n.title) + '</div>' +
               '<div class="card-preview"' + coverStyle + '>' + (coverUrl ? '' : getNotePreview(n)) + '</div></div>';
@@ -6435,7 +8360,7 @@ function renderNoteContent() {
           var coverStyle = coverUrl ? ' style="background-image:url(' + coverUrl + ');background-size:cover;background-position:center;"' : '';
           html += '<div class="card' + (coverUrl ? ' card-has-cover' : '') + '" data-note-id="' + n.id + '" onclick="selectNote(' + n.id + ')">' +
             '<span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span>' +
-            lock + fav +
+            lock + fav + noteTypeBadge(n) +
             '<span class="card-date">' + fmtDate(n.createdAt) + '</span>' +
             '<div class="card-title">' + escapeHtml(n.title) + '</div>' +
             '<div class="card-preview"' + coverStyle + '>' + (coverUrl ? '' : getNotePreview(n)) + '</div></div>';
@@ -6486,6 +8411,11 @@ function renderNoteContent() {
     } else {
       html += '<div class="note-cover" style="background-image:url(' + note.cover + ');"></div>';
     }
+  }
+  if (isMarkdownNote(note)) {
+    html += markdownNoteAreaHtml(note);
+    finishNoteContentRender(html, note);
+    return;
   }
   var _bg = getNoteBackground(note);
   html += '<div class="items-area" data-note-id="' + note.id + '" data-bg-color="' + _bg.color + '" data-bg-design="' + _bg.design + '">';
@@ -6538,9 +8468,16 @@ function renderNoteContent() {
         html += '<span class="item-actions" style="position:absolute;top:4px;right:4px;">';
         html += '<button class="btn btn-sm" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
         html += '</span></div>';
+      } else if (item.type === 'index') {
+        html += '<div class="list-item toc-item" data-id="' + item.id + '" data-note="' + note.id + '">';
+        html += '<div class="toc-box"><div class="toc-title">' + escapeHtml(t('tocTitle')) + '</div><div class="toc-entries">' + tocEntriesHtml(note) + '</div></div>';
+        html += '<span class="item-actions">';
+        html += '<button class="btn btn-sm btn-icon" onclick="deleteItem(' + note.id + ', ' + item.id + ')">&times;</button>';
+        html += '</span></div>';
       } else {
         var isText = item.type === 'text';
-        html += '<div class="list-item' + (isText ? ' text' : '') + '" data-id="' + item.id + '" data-level="' + item.level + '">';
+        var _h = isText ? normalizeHeading(item.heading) : 0;
+        html += '<div class="list-item' + (isText ? ' text' : '') + (_h ? ' heading-h' + _h : '') + '" data-id="' + item.id + '" data-level="' + item.level + '" data-heading="' + _h + '">';
         if (!isText) html += '<span class="drag-handle">&#x2630;</span>';
         if (!isText) html += '<input type="checkbox" class="item-check"' + (item.checked ? ' checked' : '') + ' onchange="toggleItem(' + note.id + ', ' + item.id + ')" />';
          html += '<div contenteditable="true" class="item-text' + (item.checked ? ' checked' : '') + '" data-placeholder="' + (isText ? t('textPlaceholder') : t('itemPlaceholder')) + '" oninput="updateItemText(' + note.id + ', ' + item.id + ', this.innerHTML);computeOnEquals(this,' + note.id + ',' + item.id + ')" onfocus="activeItemId=' + item.id + '" onblur="if (activeItemId==' + item.id + ') { activeItemId=null; }">' + renderLatexInHtml(parseRegistrosForRender(parseDiaryVariablesForRender(parseNoteLinks(item.text || '')))) + '</div>';
@@ -6646,6 +8583,16 @@ function renderNoteContent() {
   html += '<span class="hl-color" style="background:#90ee90;" onmousedown="event.preventDefault()" onclick="selectHighlightColor(\'#90ee90\');event.stopPropagation();" title="Green"></span>';
   html += '<span class="hl-color" style="background:transparent;border:1px dashed var(--text-muted);display:inline-flex;align-items:center;justify-content:center;font-size:14px;" onmousedown="event.preventDefault()" onclick="selectRemoveHighlight();event.stopPropagation();" title="Remove highlight">&#x2716;</span>';
   html += '</div></div>';
+  html += '<div style="display:inline-block;">';
+  html += '<button class="fmt-btn heading-toggle" onclick="applyPendingHeading()" title="' + t('headingBtn') + '" aria-label="' + t('headingBtn') + '" aria-haspopup="true" style="font-weight:700;">' + headingToggleLabel() + '&#x25BE;</button>';
+  html += '<div id="headingPalette" role="group" aria-label="' + t('headingBtn') + '" class="hidden" style="position:fixed;z-index:10000;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px;display:flex;flex-direction:column;gap:2px;min-width:150px;">';
+  html += '<button class="export-opt" onmousedown="event.preventDefault()" onclick="selectHeadingLevel(1);event.stopPropagation();" style="font-size:19px;font-weight:700;">' + t('heading1') + '</button>';
+  html += '<button class="export-opt" onmousedown="event.preventDefault()" onclick="selectHeadingLevel(2);event.stopPropagation();" style="font-size:17px;font-weight:700;">' + t('heading2') + '</button>';
+  html += '<button class="export-opt" onmousedown="event.preventDefault()" onclick="selectHeadingLevel(3);event.stopPropagation();" style="font-size:15px;font-weight:650;">' + t('heading3') + '</button>';
+  html += '<button class="export-opt" onmousedown="event.preventDefault()" onclick="selectHeadingLevel(4);event.stopPropagation();" style="font-size:14px;font-weight:650;">' + t('heading4') + '</button>';
+  html += '<button class="export-opt" onmousedown="event.preventDefault()" onclick="selectHeadingLevel(5);event.stopPropagation();" style="font-size:13px;font-weight:600;">' + t('heading5') + '</button>';
+  html += '<button class="export-opt" onmousedown="event.preventDefault()" onclick="selectHeadingLevel(0);event.stopPropagation();" style="font-size:12px;">&#x2716; ' + t('headingNone') + '</button>';
+  html += '</div></div>';
   html += '<button class="fmt-btn" onclick="formatBulletList()" title="' + t('bulletList') + '">&#x2022;</button>';
   html += '<button class="fmt-btn" onclick="formatNumberedList()" title="' + t('numberedList') + '">1.</button>';
   html += '<span style="width:1px;height:20px;background:var(--border);margin:0 6px;"></span>';
@@ -6667,12 +8614,17 @@ function renderNoteContent() {
   html += '<button class="export-opt" onclick="exportCurrentNoteToPdf();event.stopPropagation();">PDF</button>';
   html += '<button class="export-opt" onclick="exportCurrentNoteToTxt();event.stopPropagation();">TXT</button>';
   html += '<button class="export-opt" onclick="exportCurrentNoteToDoc();event.stopPropagation();">DOC</button>';
+  html += '<button class="export-opt" onclick="exportMarkdownNote(state.activeNoteId);event.stopPropagation();">MD</button>';
   html += '</div></div>';
   html += '</div>';
+  finishNoteContentRender(html, note);
+}
+
+function finishNoteContentRender(html, note) {
+  var container = document.getElementById('noteContent');
   var savedScrollTop = 0, savedActiveId = activeItemId;
   var oldArea = document.querySelector('.items-area');
   if (oldArea) savedScrollTop = oldArea.scrollTop;
-  /* Liberar videos en reproducción antes de reemplazar el DOM. */
   VideoManager.releaseAllIn(container);
   container.innerHTML = html;
   if (savedScrollTop > 0) { var newArea = document.querySelector('.items-area'); if (newArea) newArea.scrollTop = savedScrollTop; }
@@ -6685,9 +8637,12 @@ function renderNoteContent() {
   loadNoteAudios();
   loadNoteVideos();
   loadNoteCover();
+  if (isMarkdownNote(note)) initMarkdownEditor(note);
+  else _mdRevokeBlobUrls();
   if (_noteSearch.term && _noteSearch.noteId === state.activeNoteId) refreshNoteSearchSilently();
   requestPaperSync();
   updateNoteWidth();
+  if (readPosShouldRestore(note.id)) readPosStartRestore(note.id);
 }
 
 /* Carga los reproductores de video en las notas.
@@ -6825,6 +8780,7 @@ function loadNoteAudios() {
 
 function showNewBoardDialog() {
   document.getElementById('newBoardPwd').value = '';
+  openTagEditor('newBoardTags', []);
   showDialog('newBoardDialog');
   setTimeout(function(){ document.getElementById('newBoardName').focus(); }, 100);
 }
@@ -6832,7 +8788,7 @@ function showNewBoardDialog() {
 function createBoard() {
   var name = document.getElementById('newBoardName').value.trim() || t('newBoardLabel');
   var pwd = document.getElementById('newBoardPwd').value;
-  var board = { id: genId(), name: name, postits: [], connections: [], boardBg: state.defaultBoardBg, pwdHash: hashPwd(pwd), createdAt: Date.now() };
+  var board = { id: genId(), name: name, postits: [], connections: [], boardBg: state.defaultBoardBg, pwdHash: hashPwd(pwd), createdAt: Date.now(), tags: tagEditorCommit('newBoardTags') };
   state.boards.push(board);
   state.activeBoardId = board.id;
   if (pwd) unlockedIds['b' + board.id] = true;
@@ -7131,6 +9087,17 @@ function exportNoteToPdfLegacy(noteId) {
               });
             }
             var rawText = (item.text || '').trim();
+            if (item.type === 'index') {
+              var _hs2 = (typeof collectHeadings === 'function') ? collectHeadings(note) : [];
+              _hs2.forEach(function(h) {
+                if (y < 50) { page = pdfDoc.addPage([595.28, 841.89]); y = 800; }
+                var _ind2 = margin + (h.level - 1) * 20;
+                var _mw2 = 595.28 - _ind2 - margin;
+                if (_mw2 > 0) page.drawText('- ' + h.text, { x: _ind2, y: y, size: 11, font: font, color: PDFLib.rgb(0.3, 0.3, 0.3), maxWidth: _mw2 });
+                y -= 18;
+              });
+              return;
+            }
             if (!rawText) return;
             if (y < 50) { page = pdfDoc.addPage([595.28, 841.89]); y = 800; }
             var indent = margin + (item.level || 0) * 28;
@@ -7153,10 +9120,12 @@ function exportNoteToPdfLegacy(noteId) {
             if (!text) return;
             if (item.type === 'list') text = (item.checked ? '[x] ' : '[ ] ') + text;
             var maxWidth = 595.28 - indent - margin;
+            var _hh2 = (typeof normalizeHeading === 'function') ? normalizeHeading(item.heading) : 0;
+            var _size2 = _hh2 === 1 ? 18 : (_hh2 === 2 ? 15 : (_hh2 === 3 ? 13 : (_hh2 === 4 ? 12 : 11)));
             if (maxWidth > 0) {
-              page.drawText(text, { x: indent, y: y, size: 11, font: font, color: PDFLib.rgb(0.3, 0.3, 0.3), maxWidth: maxWidth });
+              page.drawText(text, { x: indent, y: y, size: _size2, font: font, color: PDFLib.rgb(0.3, 0.3, 0.3), maxWidth: maxWidth });
             }
-            y -= 18;
+            y -= (_hh2 ? 22 : 18);
           });
         }, Promise.resolve());
         setStatus('PDF: 4/5 Generando PDF...');
@@ -7179,6 +9148,18 @@ function getExportText(noteId) {
   if (!note) return '';
   var text = '';
   note.items.forEach(function(item) {
+    if (!item) return;
+    if (item.type === 'index') {
+      var hs = collectHeadings(note);
+      if (!hs.length) return;
+      hs.forEach(function(h) {
+        var pad = '';
+        for (var k = 1; k < h.level; k++) pad += '  ';
+        text += pad + '- ' + h.text + '\n';
+      });
+      text += '\n';
+      return;
+    }
     if (item.type === 'image') {
       text += '[Imagen' + (item.caption ? ': ' + item.caption : '') + ']\n\n';
       return;
@@ -7189,7 +9170,12 @@ function getExportText(noteId) {
     }
     var t = (item.text || '').replace(/<[^>]*>/g, '').trim();
     if (!t) return;
-    if (item.type === 'text') text += t + '\n\n';
+    if (item.type === 'text') {
+      var h = (typeof normalizeHeading === 'function') ? normalizeHeading(item.heading) : 0;
+      if (h === 1) text += t + '\n' + new Array(Math.min(100, t.length) + 1).join('=') + '\n\n';
+      else if (h > 1) { var mk = ''; for (var j = 0; j < h; j++) mk += '#'; text += mk + ' ' + t + '\n\n'; }
+      else text += t + '\n\n';
+    }
     else text +='- ' + t + '\n';
   });
   return text || 'No content';
@@ -7290,6 +9276,18 @@ function exportNoteToDocLegacy(noteId) {
           });
         }
         var rawText = (item.text || '').trim();
+        if (item.type === 'index') {
+          var _hs = (typeof collectHeadings === 'function') ? collectHeadings(note) : [];
+          _hs.forEach(function(h) {
+            var _ind = (h.level - 1) * 28;
+            children.push(new docx.Paragraph({
+              children: [new docx.TextRun({ text: h.text, size: 20 })],
+              indent: { left: _ind },
+              spacing: { before: 60, after: 60 }
+            }));
+          });
+          return;
+        }
         if (!rawText) return;
         if (rawText.indexOf('$') >= 0) {
           /* Contains LaTeX - render to image */
@@ -7311,8 +9309,20 @@ function exportNoteToDocLegacy(noteId) {
         }
         var text = rawText.replace(/<[^>]*>/g, '').trim();
         if (!text) return;
-        if (item.type === 'list') text = (item.checked ? '\u2611 ' : '\u2610 ') + text;
+        if (item.type === 'list') text = (item.checked ? '☑ ' : '☐ ') + text;
         var indent = (item.level || 0) * 28;
+        var _hh = (typeof normalizeHeading === 'function') ? normalizeHeading(item.heading) : 0;
+        if (item.type === 'text' && _hh) {
+          var _sizes = { 1: 32, 2: 28, 3: 24, 4: 22, 5: 20 };
+          var _heads = window.docx && docx.HeadingLevel ? [docx.HeadingLevel.HEADING_1, docx.HeadingLevel.HEADING_2, docx.HeadingLevel.HEADING_3, docx.HeadingLevel.HEADING_4, docx.HeadingLevel.HEADING_5] : null;
+          var _popts = {
+            children: [new docx.TextRun({ text: text, size: _sizes[_hh] || 20, bold: true })],
+            spacing: { before: 120, after: 80 }
+          };
+          if (_heads) _popts.heading = _heads[_hh - 1];
+          children.push(new docx.Paragraph(_popts));
+          return;
+        }
         children.push(new docx.Paragraph({
           children: [new docx.TextRun({ text: text, size: 20 })],
           indent: { left: indent },
@@ -8170,8 +10180,18 @@ function _hvText(es, en) {
   return (typeof state !== 'undefined' && state.lang === 'en') ? en : es;
 }
 
+/* Activa el modo dibujo del tablero activo (capa transparente sobre el
+   contenido, con la fmt-bar de dibujo en la parte inferior). */
+function startBoardDrawing() {
+  if (typeof DrawingBoard === 'undefined') return;
+  DrawingBoard.start();
+}
+
 function renderBoardContent() {
   var container = document.getElementById('boardContent');
+  /* Nunca reconstruir el DOM con el modo dibujo activo sin antes persistir
+     los trazos (el <canvas> vive dentro del DOM que se va a reemplazar). */
+  if (typeof DrawingBoard !== 'undefined' && DrawingBoard.isActive()) DrawingBoard.flush();
   var board = state.boards.find(function(b) { return b.id === state.activeBoardId; });
   if (!board) {
     var html = '<div class="selection-view"><div class="selection-header"><h2>' + t('boards') + '</h2></div><div class="selection-grid">';
@@ -8221,6 +10241,11 @@ function renderBoardContent() {
     if (right > maxX) maxX = right;
     if (bottom > maxY) maxY = bottom;
   });
+  /* La capa de dibujo del tablero es parte de su geometria. */
+  if (board.drawing && board.drawing.width) {
+    if (board.drawing.width > maxX) maxX = board.drawing.width;
+    if (board.drawing.height > maxY) maxY = board.drawing.height;
+  }
   maxX = Math.ceil(maxX / 100) * 100;
   maxY = Math.ceil(maxY / 100) * 100;
 
@@ -8235,6 +10260,8 @@ function renderBoardContent() {
   html += '<button class="btn btn-icon" onclick="triggerBoardAudioInput()" title="' + t('insertBoardAudio') + '">&#x1F3A4;</button>';
   html += '<button class="btn btn-icon" onclick="triggerBoardVideoInput()" title="' + t('insertBoardVideo') + '">&#x1F3AC;</button>';
   html += '<button class="btn btn-icon" onclick="addBoardEquation()" title="' + t('boardInsertEquation') + '" style="font-weight:bold;font-size:15px;">&#x2211;</button>';
+  html += '<span class="sep"></span>';
+  html += '<button class="btn btn-icon board-draw-btn" onclick="startBoardDrawing()" title="' + t('boardDrawing') + '">&#x270F;</button>';
   html += '<span style="flex:1;text-align:center;">';
   html += '<button class="btn" onclick="resetBoardZoom()" title="' + t('resetZoom') + '" style="font-size:11px;">' + Math.round(boardZoom * 100) + '%</button>';
   html += '</span>';
@@ -8318,10 +10345,13 @@ function renderBoardContent() {
       html += '</div>';
     }
   });
+  /* Capa de dibujo persistente: por encima del contenido del tablero. */
+  if (typeof DrawingBoard !== 'undefined') html += DrawingBoard.layerHtml(board, maxX, maxY);
   html += '</div></div></div></div>';
   /* Liberar videos en reproducción antes de reemplazar el DOM. */
   VideoManager.releaseAllIn(container);
   container.innerHTML = html;
+  if (typeof DrawingBoard !== 'undefined') DrawingBoard.mountLayer(container, board);
   applyBoardZoom();
   /* Auto-size equation elements to fit content */
   var eqEls = container.querySelectorAll('.board-equation');
@@ -9022,7 +11052,7 @@ document.addEventListener('mousedown', function(e) {
   if (boardPanState) return;
   var wrap = e.target.closest('.board-canvas-wrap');
   if (!wrap) return;
-  if (e.target.closest('.postit, .board-element, .connection-group, .connection-pin, .board-toolbar, button, input, textarea, [contenteditable]')) return;
+  if (e.target.closest('.postit, .board-element, .connection-group, .connection-pin, .board-toolbar, .board-draw-layer, button, input, textarea, [contenteditable]')) return;
   boardPanState = {
     startX: e.clientX, startY: e.clientY,
     startScrollLeft: wrap.scrollLeft, startScrollTop: wrap.scrollTop,
@@ -9053,7 +11083,7 @@ document.addEventListener('touchstart', function(e) {
   if (e.touches.length !== 1 || boardPanState) return;
   var wrap = e.target.closest('.board-canvas-wrap');
   if (!wrap) return;
-  if (e.target.closest('.postit, .board-element, .connection-group, .connection-pin, .board-toolbar, button, input, textarea, [contenteditable]')) return;
+  if (e.target.closest('.postit, .board-element, .connection-group, .connection-pin, .board-toolbar, .board-draw-layer, button, input, textarea, [contenteditable]')) return;
   var t = e.touches[0];
   boardPanState = {
     startX: t.clientX, startY: t.clientY,
@@ -9152,12 +11182,33 @@ document.addEventListener('click', function(e) {
       e.stopImmediatePropagation();
     }
   }
+  if (e.target.closest('.heading-toggle')) {
+    var hdp = document.getElementById('headingPalette');
+    if (hdp && !hdp.classList.contains('hidden')) {
+      e.stopImmediatePropagation();
+    }
+  }
+}, true);
+
+// Desktop: mantener clic sobre H abre el selector (el tap normal aplica).
+// Espeja el long-press táctil; el mousedown preventDefault de fmt-bar ya
+// conserva la selección.
+var headingMouseTimer = null;
+document.addEventListener('mousedown', function(e) {
+  var hdb = e.target && e.target.closest ? e.target.closest('.heading-toggle') : null;
+  if (!hdb) return;
+  if (headingMouseTimer) clearTimeout(headingMouseTimer);
+  headingMouseTimer = setTimeout(function() { headingMouseTimer = null; toggleHeadingPalette(); }, 500);
+}, true);
+document.addEventListener('mouseup', function(e) {
+  if (headingMouseTimer) { clearTimeout(headingMouseTimer); headingMouseTimer = null; }
 }, true);
 
 // Click outside context menu closes it
 document.addEventListener('click', function(e) {
   if (!e.target.closest('#contextMenu')) hideContextMenu();
   if (!e.target.closest('#hlPalette') && !e.target.closest('.hl-toggle')) { var hl = document.getElementById('hlPalette'); if (hl) hl.classList.add('hidden'); }
+  if (!e.target.closest('#headingPalette') && !e.target.closest('.heading-toggle')) { var hp = document.getElementById('headingPalette'); if (hp) hp.classList.add('hidden'); }
   if (!e.target.closest('#exportPalette') && !e.target.closest('.exp-toggle')) { var exp = document.getElementById('exportPalette'); if (exp) exp.classList.add('hidden'); }
   if (!e.target.closest('.note-table')) {
     if (_activeTableId !== null) { _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = []; renderNoteContent(); }
@@ -9311,6 +11362,8 @@ var folderLongPressTimer = null;
 
 // Long-press on highlight button
 var hlLongPressTimer = null;
+// Long-press on heading button (elige el nivel pendiente, como el resaltado)
+var headingLongPressTimer = null;
 // Long-press on text-color button
 var txLongPressTimer = null;
 // Long-press on board cards
@@ -9324,6 +11377,11 @@ document.addEventListener('touchstart', function(e) {
   var hl = e.target.closest('.hl-toggle');
   if (hl) {
     hlLongPressTimer = setTimeout(function() { hlLongPressTimer = null; toggleHighlightPalette(); }, 500);
+    return;
+  }
+  var hdb = e.target.closest('.heading-toggle');
+  if (hdb) {
+    headingLongPressTimer = setTimeout(function() { headingLongPressTimer = null; toggleHeadingPalette(); }, 500);
     return;
   }
   var txb = e.target.closest('.tx-toggle');
@@ -9349,6 +11407,7 @@ document.addEventListener('touchstart', function(e) {
           { label: coverLabel, action: function() { if (note.cover) { removeCover(noteId); } else { triggerImportCover(noteId); } } },
           { label: t('exportNote'), action: function() { exportSingleNote(noteId); } }
         ];
+        Array.prototype.push.apply(items, markdownMenuItems(noteId));
         if(note.folderId!=null){
           items.push({ label: t('moveToNotes'), action: function(){ moveNoteToFolder(noteId, null); } });
         } else {
@@ -9393,6 +11452,7 @@ document.addEventListener('touchstart', function(e) {
       hideContextMenu();
       showContextMenu(x, y, [
         { label: t('rename'), action: function() { renameBoard(bid); } },
+        { label: t('tags'), action: function() { openTagsDialog('board', bid); } },
         { label: t('exportBoard'), action: function() { exportSingleBoard(bid); } },
         { label: t('del'), action: function() { confirmDeleteBoard(bid); } }
       ]);
@@ -9402,7 +11462,7 @@ document.addEventListener('touchstart', function(e) {
   var studyCard = e.target.closest('.card[data-study-set-id]');
   if (!studyCard) {
     // Study card items long-press
-    var scItem = e.target.closest('#studySetCards .study-card-item');
+    var scItem = e.target.closest('.study-set-cards .study-card-item');
     if (scItem) {
       if (e.target.closest('.card-btn')) return;
       var touch = e.touches[0];
@@ -9414,6 +11474,7 @@ document.addEventListener('touchstart', function(e) {
         studyCardLongPressTimer = null;
         hideContextMenu();
         showContextMenu(x, y, [
+          { label: t('edit'), action: function() { editStudyCard(sid, cardId); } },
           { label: t('del'), action: function() { deleteStudyCard(sid, cardId); } }
         ]);
       }, 500);
@@ -9429,6 +11490,7 @@ document.addEventListener('touchstart', function(e) {
     hideContextMenu();
     showContextMenu(x, y, [
       { label: t('rename'), action: function() { renameStudySet(sid); } },
+      { label: t('tags'), action: function() { openTagsDialog('set', sid); } },
       { label: t('exportStudySet'), action: function() { exportSingleStudySet(sid); } },
       { label: t('del'), action: function() { deleteStudySet(sid); } }
     ]);
@@ -9451,6 +11513,7 @@ document.addEventListener('touchmove', function(e) {
   if (noteLongPressTimer) { clearTimeout(noteLongPressTimer); noteLongPressTimer = null; }
   if (folderLongPressTimer) { clearTimeout(folderLongPressTimer); folderLongPressTimer = null; }
   if (hlLongPressTimer) { clearTimeout(hlLongPressTimer); hlLongPressTimer = null; }
+  if (headingLongPressTimer) { clearTimeout(headingLongPressTimer); headingLongPressTimer = null; }
   if (txLongPressTimer) { clearTimeout(txLongPressTimer); txLongPressTimer = null; }
   if (boardLongPressTimer) { clearTimeout(boardLongPressTimer); boardLongPressTimer = null; }
   if (studyLongPressTimer) { clearTimeout(studyLongPressTimer); studyLongPressTimer = null; }
@@ -9463,6 +11526,7 @@ document.addEventListener('touchend', function(e) {
   if (noteLongPressTimer) { clearTimeout(noteLongPressTimer); noteLongPressTimer = null; }
   if (folderLongPressTimer) { clearTimeout(folderLongPressTimer); folderLongPressTimer = null; }
   if (hlLongPressTimer) { clearTimeout(hlLongPressTimer); hlLongPressTimer = null; }
+  if (headingLongPressTimer) { clearTimeout(headingLongPressTimer); headingLongPressTimer = null; }
   if (txLongPressTimer) { clearTimeout(txLongPressTimer); txLongPressTimer = null; }
   if (boardLongPressTimer) { clearTimeout(boardLongPressTimer); boardLongPressTimer = null; }
   if (studyLongPressTimer) { clearTimeout(studyLongPressTimer); studyLongPressTimer = null; }
@@ -9497,10 +11561,46 @@ document.addEventListener('contextmenu', function(e){
       { label: coverLabel, action: function(){ if(note.cover) removeCover(noteId); else triggerImportCover(noteId); } },
       { label: t('exportNote'), action: function(){ exportSingleNote(noteId); } }
     ];
+    Array.prototype.push.apply(items, markdownMenuItems(noteId));
     if(note.folderId!=null) items.push({ label: t('moveToNotes'), action: function(){ moveNoteToFolder(noteId,null); } });
     else if(state.folders.length>0) items.push({ label: t('moveToFolder'), action: function(){ showMoveToFolderDialog(noteId); } });
     items.push({ label: t('del'), action: function(){ confirmDeleteNote(noteId); } });
     showContextMenu(e.clientX, e.clientY, items);
+    return;
+  }
+  var boardCard = e.target.closest('.card[data-board-id]');
+  if (boardCard) {
+    e.preventDefault();
+    var bid = Number(boardCard.dataset.boardId);
+    showContextMenu(e.clientX, e.clientY, [
+      { label: t('rename'), action: function() { renameBoard(bid); } },
+      { label: t('tags'), action: function() { openTagsDialog('board', bid); } },
+      { label: t('exportBoard'), action: function() { exportSingleBoard(bid); } },
+      { label: t('del'), action: function() { confirmDeleteBoard(bid); } }
+    ]);
+    return;
+  }
+  var setCard = e.target.closest('.card[data-study-set-id]');
+  if (setCard && !e.target.closest('.card-btn')) {
+    e.preventDefault();
+    var sid = Number(setCard.dataset.studySetId);
+    showContextMenu(e.clientX, e.clientY, [
+      { label: t('rename'), action: function() { renameStudySet(sid); } },
+      { label: t('tags'), action: function() { openTagsDialog('set', sid); } },
+      { label: t('exportStudySet'), action: function() { exportSingleStudySet(sid); } },
+      { label: t('del'), action: function() { deleteStudySet(sid); } }
+    ]);
+    return;
+  }
+  var scItem = e.target.closest('.study-set-cards .study-card-item');
+  if (scItem && !e.target.closest('.card-btn')) {
+    e.preventDefault();
+    var scSid = state.activeStudySetId;
+    var scCid = Number(scItem.dataset.cardId);
+    if (scSid) showContextMenu(e.clientX, e.clientY, [
+      { label: t('edit'), action: function() { editStudyCard(scSid, scCid); } },
+      { label: t('del'), action: function() { deleteStudyCard(scSid, scCid); } }
+    ]);
     return;
   }
 });
@@ -10240,7 +12340,10 @@ function getFabMenuItems() {
   if (state.view === 'diary') return [];
   if (state.view === 'habits') return [{ label: t('habitTask')+' ('+t('habitDaily')+')', action: function(){ openHabitDialog('task','daily'); } }, { label: t('habitCounter')+' ('+t('habitDaily')+')', action: function(){ openHabitDialog('counter','daily'); } }, { label: t('habitTask')+' ('+t('habitWeekly')+')', action: function(){ openHabitDialog('task','weekly'); } }, { label: t('habitCounter')+' ('+t('habitWeekly')+')', action: function(){ openHabitDialog('counter','weekly'); } }, { label: t('habitTask')+' ('+t('habitMonthly')+')', action: function(){ openHabitDialog('task','monthly'); } }, { label: t('habitCounter')+' ('+t('habitMonthly')+')', action: function(){ openHabitDialog('counter','monthly'); } }];
   if (state.view === 'registros') return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
-  return [{ label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } }];
+  return [
+    { label: t('import'), action: function() { document.getElementById('importSingleInput').click(); } },
+    { label: t('importMarkdownOption'), action: function() { document.getElementById('markdownImportInput').click(); } }
+  ];
 }
 function updateFab() {
   var fab = document.getElementById('fabBtn');
@@ -10324,7 +12427,9 @@ function closeMenu() {
 }
 
 function switchView(view) {
+  _flushMarkdownSave();
   hideContextMenu();
+  if (typeof closeGlobalSearch === 'function') closeGlobalSearch();
   clearCurrentUnlock();
   closeDiarySelector();
   /* Liberar videos en reproducción al cambiar de vista (decodificadores). */

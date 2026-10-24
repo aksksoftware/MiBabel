@@ -12,7 +12,7 @@
   'use strict';
 
   var SCHEMA = 1;
-  var BG_TYPES = ['solid', 'lined', 'grid', 'dotted', 'image'];
+  var BG_TYPES = ['solid', 'lined', 'grid', 'dotted', 'image', 'transparent'];
   var TOOL_LIST = ['pencil', 'pen', 'marker', 'spray', 'eraser', 'fill'];
 
   var PATTERN_STEP = 32;
@@ -181,6 +181,7 @@
   function paintBackground(ctx, drawing, bgImage) {
     var w = drawing.width, h = drawing.height;
     var bg = drawing.background || { type: 'solid' };
+    if (bg.type === 'transparent') return;
     ctx.fillStyle = PAPER;
     ctx.fillRect(0, 0, w, h);
     if (bg.type === 'image') {
