@@ -6895,7 +6895,6 @@ function markdownNoteAreaHtml(note) {
   html += '<div class="md-preview" id="mdPreview"></div>';
   html += '</div>';
   html += '</div>';
-  html += '<div class="md-hint">' + t('markdownFormatHint') + '</div>';
   html += '</div>';
   return html;
 }
@@ -7422,7 +7421,7 @@ function renderStudySetList(container) {
   var html = '<div class="selection-view"><div class="selection-header"><h2>' + t('studyCards') + '</h2></div><div class="selection-grid">';
   state.studySets.forEach(function(set) {
     var cardCount = set.cards ? set.cards.length : 0;
-    html += '<div class="card" data-study-set-id="' + set.id + '" onclick="selectStudySet(' + set.id + ')" style="cursor:pointer;position:relative;"><span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span><div style="font-weight:600;padding:36px 12px 0;">' + escapeHtml(set.name) + '</div><div style="font-size:12px;opacity:0.6;padding:4px 12px 36px;">' + cardCount + ' ' + t('cardList').toLowerCase() + '</div><button class="card-btn" onclick="event.stopPropagation();renameStudySet(' + set.id + ')" style="position:absolute;bottom:8px;right:8px;" title="' + t('edit') + '">&#x270F;</button></div>';
+    html += '<div class="card" data-study-set-id="' + set.id + '" onclick="selectStudySet(' + set.id + ')" style="cursor:pointer;position:relative;"><span class="card-drag-handle" onclick="event.stopPropagation()"><span class="drag-icon">&#x2630;</span></span><div style="font-weight:600;padding:36px 12px 0;">' + escapeHtml(set.name) + '</div><div style="font-size:12px;opacity:0.6;padding:4px 12px 36px;">' + cardCount + ' ' + t('cardList').toLowerCase() + '</div></div>';
   });
   html += '</div></div>';
   container.innerHTML = html;
@@ -8892,10 +8891,19 @@ function showContextMenu(x, y, items) {
   });
   menu.style.left = x + 'px';
   menu.style.top = y + 'px';
+  menu.style.maxHeight = '';
   menu.classList.remove('hidden');
+  menu.scrollTop = 0;
   var mw = menu.offsetWidth || 140;
   if (x + mw > window.innerWidth - 8) {
     menu.style.left = Math.max(8, x - mw) + 'px';
+  }
+  var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  if (vh > 0) menu.style.maxHeight = Math.max(0, vh - 16) + 'px';
+  var mh = menu.offsetHeight || 0;
+  if (vh > 0) {
+    var top = Math.max(8, Math.min(y, vh - mh - 8));
+    menu.style.top = top + 'px';
   }
   var overlay = document.getElementById('menuOverlay');
   if (overlay) overlay.classList.add('open');
