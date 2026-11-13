@@ -924,6 +924,83 @@ var MARKDOWN_LANG = {
     }
   }
 })();
+
+/* Cadenas del Modo Lectura (se fusionan como MARKDOWN_LANG). */
+var READING_LANG = {
+  en: {
+    readingMode: 'Reading mode', readingModeExit: 'Exit reading mode',
+    readingSelectText: 'Select some text first',
+    readingHideAnnotations: 'Hide annotations', readingShowAnnotations: 'Show annotations',
+    readingCommentTitle: 'Comment', readingCommentQuote: 'Selected fragment',
+    readingCommentPlaceholder: 'Write your comment...', readingCommentDelete: 'Delete comment',
+    readingOrphanComment: 'The original fragment could not be found.',
+    readingDeleteZone: 'Drop here to delete', readingCommentHint: 'Long-press and drag to move'
+  },
+  es: {
+    readingMode: 'Modo lectura', readingModeExit: 'Salir del modo lectura',
+    readingSelectText: 'Selecciona un fragmento de texto',
+    readingHideAnnotations: 'Ocultar anotaciones', readingShowAnnotations: 'Mostrar anotaciones',
+    readingCommentTitle: 'Comentario', readingCommentQuote: 'Fragmento seleccionado',
+    readingCommentPlaceholder: 'Escribe tu comentario...', readingCommentDelete: 'Eliminar comentario',
+    readingOrphanComment: 'No se encontró el fragmento original.',
+    readingDeleteZone: 'Suelta aquí para eliminar', readingCommentHint: 'Mantén pulsado y arrastra para mover'
+  },
+  fr: {
+    readingMode: 'Mode lecture', readingModeExit: 'Quitter le mode lecture',
+    readingSelectText: 'Sélectionnez d’abord un fragment de texte',
+    readingHideAnnotations: 'Masquer les annotations', readingShowAnnotations: 'Afficher les annotations',
+    readingCommentTitle: 'Commentaire', readingCommentQuote: 'Fragment sélectionné',
+    readingCommentPlaceholder: 'Écrivez votre commentaire...', readingCommentDelete: 'Supprimer le commentaire',
+    readingOrphanComment: 'Le fragment d’origine est introuvable.',
+    readingDeleteZone: 'Déposez ici pour supprimer', readingCommentHint: 'Appui long puis glisser pour déplacer'
+  },
+  pt: {
+    readingMode: 'Modo leitura', readingModeExit: 'Sair do modo leitura',
+    readingSelectText: 'Selecione um trecho de texto primeiro',
+    readingHideAnnotations: 'Ocultar anotações', readingShowAnnotations: 'Mostrar anotações',
+    readingCommentTitle: 'Comentário', readingCommentQuote: 'Trecho selecionado',
+    readingCommentPlaceholder: 'Escreva seu comentário...', readingCommentDelete: 'Excluir comentário',
+    readingOrphanComment: 'O trecho original não foi encontrado.',
+    readingDeleteZone: 'Solte aqui para excluir', readingCommentHint: 'Pressione e arraste para mover'
+  },
+  de: {
+    readingMode: 'Lesemodus', readingModeExit: 'Lesemodus beenden',
+    readingSelectText: 'Wähle zuerst einen Textausschnitt aus',
+    readingHideAnnotations: 'Anmerkungen ausblenden', readingShowAnnotations: 'Anmerkungen einblenden',
+    readingCommentTitle: 'Kommentar', readingCommentQuote: 'Ausgewählter Ausschnitt',
+    readingCommentPlaceholder: 'Kommentar schreiben...', readingCommentDelete: 'Kommentar löschen',
+    readingOrphanComment: 'Der ursprüngliche Ausschnitt wurde nicht gefunden.',
+    readingDeleteZone: 'Zum Löschen hier ablegen', readingCommentHint: 'Gedrückt halten und ziehen zum Verschieben'
+  },
+  ru: {
+    readingMode: 'Режим чтения', readingModeExit: 'Выйти из режима чтения',
+    readingSelectText: 'Сначала выделите фрагмент текста',
+    readingHideAnnotations: 'Скрыть пометки', readingShowAnnotations: 'Показать пометки',
+    readingCommentTitle: 'Комментарий', readingCommentQuote: 'Выделенный фрагмент',
+    readingCommentPlaceholder: 'Напишите комментарий...', readingCommentDelete: 'Удалить комментарий',
+    readingOrphanComment: 'Исходный фрагмент не найден.',
+    readingDeleteZone: 'Отпустите здесь, чтобы удалить', readingCommentHint: 'Нажмите и удерживайте, затем перетащите'
+  },
+  it: {
+    readingMode: 'Modalità lettura', readingModeExit: 'Esci dalla modalità lettura',
+    readingSelectText: 'Seleziona prima un frammento di testo',
+    readingHideAnnotations: 'Nascondi annotazioni', readingShowAnnotations: 'Mostra annotazioni',
+    readingCommentTitle: 'Commento', readingCommentQuote: 'Frammento selezionato',
+    readingCommentPlaceholder: 'Scrivi il tuo commento...', readingCommentDelete: 'Elimina commento',
+    readingOrphanComment: 'Il frammento originale non è stato trovato.',
+    readingDeleteZone: 'Rilascia qui per eliminare', readingCommentHint: 'Tieni premuto e trascina per spostare'
+  }
+};
+(function () {
+  for (var code in READING_LANG) {
+    if (!Object.prototype.hasOwnProperty.call(READING_LANG, code)) continue;
+    if (!langData[code]) langData[code] = {};
+    var src = READING_LANG[code];
+    for (var k in src) {
+      if (Object.prototype.hasOwnProperty.call(src, k)) langData[code][k] = src[k];
+    }
+  }
+})();
 function t(key) { var l = langData[state.lang] || langData.en; return l[key] || key; }
 
 /* ==================================================
@@ -1098,6 +1175,22 @@ function isPaperSyncDesign(design) {
   for (var lang in extraTags) {
     if (!langData[lang]) continue;
     for (var k in extraTags[lang]) { if (!langData[lang][k]) langData[lang][k] = extraTags[lang][k]; }
+  }
+})();
+/* Traducciones de la Bandeja rápida y la vista principal (patrón extra). */
+(function() {
+  var extraQuick = {
+    en: { quickInbox:'Quick Inbox', quickPlaceholder:'Write an idea, task or reminder…', quickSend:'Save', quickEmpty:'No pending entries.', quickArchivedFolder:'Archived entries', quickArchivedEmpty:'No archived entries.', quickStatusResolved:'Resolved', quickStatusArchived:'Archived', quickEditTitle:'Edit entry', quickCreateNote:'Create normal note', quickCreateDiary:'Create diary note', quickAddNote:'Add to existing note', quickAddDiary:'Add to existing diary note', quickMarkResolved:'Mark as resolved', quickArchive:'Archive', quickUnarchive:'Unarchive', quickDeleted:'Entry deleted', quickUndo:'Undo', quickNoteFallback:'Entry', quickSelectNote:'Select a note', quickSelectDiary:'Select a diary note', quickNoNotes:'No notes available.', quickNoDiary:'No diary notes available.', quickEmptyContent:'Write something before saving.', quickEntry:'entry', quickEntries:'entries', quickNoteCreated:'Note created from entry', quickDiaryCreated:'Diary note created from entry', quickAddedToNote:'Entry added to note', quickAddedToDiary:'Entry added to diary note', mainView:'Main view' },
+    es: { quickInbox:'Bandeja rápida', quickPlaceholder:'Escribí una idea, tarea o recordatorio…', quickSend:'Guardar', quickEmpty:'No hay entradas pendientes.', quickArchivedFolder:'Entradas archivadas', quickArchivedEmpty:'No hay entradas archivadas.', quickStatusResolved:'Resuelta', quickStatusArchived:'Archivada', quickEditTitle:'Editar entrada', quickCreateNote:'Crear nota normal', quickCreateDiary:'Crear nota diaria', quickAddNote:'Añadir a nota existente', quickAddDiary:'Añadir a nota diaria existente', quickMarkResolved:'Marcar como resuelta', quickArchive:'Archivar', quickUnarchive:'Desarchivar', quickDeleted:'Entrada eliminada', quickUndo:'Deshacer', quickNoteFallback:'Entrada', quickSelectNote:'Seleccionar nota', quickSelectDiary:'Seleccionar nota diaria', quickNoNotes:'No hay notas disponibles.', quickNoDiary:'No hay notas diarias disponibles.', quickEmptyContent:'Escribí algo antes de guardar.', quickEntry:'entrada', quickEntries:'entradas', quickNoteCreated:'Nota creada desde la entrada', quickDiaryCreated:'Nota diaria creada desde la entrada', quickAddedToNote:'Entrada añadida a la nota', quickAddedToDiary:'Entrada añadida a la nota diaria', mainView:'Vista principal' },
+    fr: { quickInbox:'Boîte rapide', quickPlaceholder:'Écrivez une idée, une tâche ou un rappel…', quickSend:'Enregistrer', quickEmpty:'Aucune entrée en attente.', quickArchivedFolder:'Entrées archivées', quickArchivedEmpty:'Aucune entrée archivée.', quickStatusResolved:'Résolue', quickStatusArchived:'Archivée', quickEditTitle:'Modifier l’entrée', quickCreateNote:'Créer une note normale', quickCreateDiary:'Créer une note de journal', quickAddNote:'Ajouter à une note existante', quickAddDiary:'Ajouter à une note de journal existante', quickMarkResolved:'Marquer comme résolue', quickArchive:'Archiver', quickUnarchive:'Désarchiver', quickDeleted:'Entrée supprimée', quickUndo:'Annuler', quickNoteFallback:'Entrée', quickSelectNote:'Sélectionner une note', quickSelectDiary:'Sélectionner une note de journal', quickNoNotes:'Aucune note disponible.', quickNoDiary:'Aucune note de journal disponible.', quickEmptyContent:'Écrivez quelque chose avant d’enregistrer.', quickEntry:'entrée', quickEntries:'entrées', quickNoteCreated:'Note créée à partir de l’entrée', quickDiaryCreated:'Note de journal créée à partir de l’entrée', quickAddedToNote:'Entrée ajoutée à la note', quickAddedToDiary:'Entrée ajoutée à la note de journal', mainView:'Vue principale' },
+    pt: { quickInbox:'Caixa rápida', quickPlaceholder:'Escreva uma ideia, tarefa ou lembrete…', quickSend:'Salvar', quickEmpty:'Nenhuma entrada pendente.', quickArchivedFolder:'Entradas arquivadas', quickArchivedEmpty:'Nenhuma entrada arquivada.', quickStatusResolved:'Resolvida', quickStatusArchived:'Arquivada', quickEditTitle:'Editar entrada', quickCreateNote:'Criar nota normal', quickCreateDiary:'Criar nota do diário', quickAddNote:'Adicionar a nota existente', quickAddDiary:'Adicionar a nota do diário existente', quickMarkResolved:'Marcar como resolvida', quickArchive:'Arquivar', quickUnarchive:'Desarquivar', quickDeleted:'Entrada excluída', quickUndo:'Desfazer', quickNoteFallback:'Entrada', quickSelectNote:'Selecionar nota', quickSelectDiary:'Selecionar nota do diário', quickNoNotes:'Nenhuma nota disponível.', quickNoDiary:'Nenhuma nota do diário disponível.', quickEmptyContent:'Escreva algo antes de salvar.', quickEntry:'entrada', quickEntries:'entradas', quickNoteCreated:'Nota criada a partir da entrada', quickDiaryCreated:'Nota do diário criada a partir da entrada', quickAddedToNote:'Entrada adicionada à nota', quickAddedToDiary:'Entrada adicionada à nota do diário', mainView:'Visualização principal' },
+    de: { quickInbox:'Schnelle Inbox', quickPlaceholder:'Schreibe eine Idee, Aufgabe oder Erinnerung…', quickSend:'Speichern', quickEmpty:'Keine ausstehenden Einträge.', quickArchivedFolder:'Archivierte Einträge', quickArchivedEmpty:'Keine archivierten Einträge.', quickStatusResolved:'Erledigt', quickStatusArchived:'Archiviert', quickEditTitle:'Eintrag bearbeiten', quickCreateNote:'Normale Notiz erstellen', quickCreateDiary:'Tagebuchnotiz erstellen', quickAddNote:'Zu vorhandener Notiz hinzufügen', quickAddDiary:'Zu vorhandener Tagebuchnotiz hinzufügen', quickMarkResolved:'Als erledigt markieren', quickArchive:'Archivieren', quickUnarchive:'Dearchivieren', quickDeleted:'Eintrag gelöscht', quickUndo:'Rückgängig', quickNoteFallback:'Eintrag', quickSelectNote:'Notiz auswählen', quickSelectDiary:'Tagebuchnotiz auswählen', quickNoNotes:'Keine Notizen verfügbar.', quickNoDiary:'Keine Tagebuchnotizen verfügbar.', quickEmptyContent:'Schreibe etwas, bevor du speicherst.', quickEntry:'Eintrag', quickEntries:'Einträge', quickNoteCreated:'Notiz aus Eintrag erstellt', quickDiaryCreated:'Tagebuchnotiz aus Eintrag erstellt', quickAddedToNote:'Eintrag zur Notiz hinzugefügt', quickAddedToDiary:'Eintrag zur Tagebuchnotiz hinzugefügt', mainView:'Hauptansicht' },
+    ru: { quickInbox:'Быстрый ящик', quickPlaceholder:'Напишите идею, задачу или напоминание…', quickSend:'Сохранить', quickEmpty:'Нет ожидающих записей.', quickArchivedFolder:'Архивные записи', quickArchivedEmpty:'Нет архивных записей.', quickStatusResolved:'Выполнено', quickStatusArchived:'В архиве', quickEditTitle:'Редактировать запись', quickCreateNote:'Создать обычную заметку', quickCreateDiary:'Создать запись дневника', quickAddNote:'Добавить в существующую заметку', quickAddDiary:'Добавить в существующую запись дневника', quickMarkResolved:'Отметить как выполненную', quickArchive:'В архив', quickUnarchive:'Из архива', quickDeleted:'Запись удалена', quickUndo:'Отменить', quickNoteFallback:'Запись', quickSelectNote:'Выберите заметку', quickSelectDiary:'Выберите запись дневника', quickNoNotes:'Нет доступных заметок.', quickNoDiary:'Нет доступных записей дневника.', quickEmptyContent:'Напишите что-нибудь перед сохранением.', quickEntry:'запись', quickEntries:'записей', quickNoteCreated:'Заметка создана из записи', quickDiaryCreated:'Запись дневника создана из записи', quickAddedToNote:'Запись добавлена в заметку', quickAddedToDiary:'Запись добавлена в дневник', mainView:'Главный экран' },
+    it: { quickInbox:'Casella rapida', quickPlaceholder:'Scrivi un’idea, un’attività o un promemoria…', quickSend:'Salva', quickEmpty:'Nessuna voce in sospeso.', quickArchivedFolder:'Voci archiviate', quickArchivedEmpty:'Nessuna voce archiviata.', quickStatusResolved:'Risolta', quickStatusArchived:'Archiviata', quickEditTitle:'Modifica voce', quickCreateNote:'Crea nota normale', quickCreateDiary:'Crea nota del diario', quickAddNote:'Aggiungi a nota esistente', quickAddDiary:'Aggiungi a nota del diario esistente', quickMarkResolved:'Segna come risolta', quickArchive:'Archivia', quickUnarchive:'Ripristina', quickDeleted:'Voce eliminata', quickUndo:'Annulla', quickNoteFallback:'Voce', quickSelectNote:'Seleziona una nota', quickSelectDiary:'Seleziona una nota del diario', quickNoNotes:'Nessuna nota disponibile.', quickNoDiary:'Nessuna nota del diario disponibile.', quickEmptyContent:'Scrivi qualcosa prima di salvare.', quickEntry:'voce', quickEntries:'voci', quickNoteCreated:'Nota creata dalla voce', quickDiaryCreated:'Nota del diario creata dalla voce', quickAddedToNote:'Voce aggiunta alla nota', quickAddedToDiary:'Voce aggiunta alla nota del diario', mainView:'Vista principale' }
+  };
+  for (var lang in extraQuick) {
+    if (!langData[lang]) continue;
+    for (var k in extraQuick[lang]) { if (!langData[lang][k]) langData[lang][k] = extraQuick[lang][k]; }
   }
 })();
 function setLang(code) { state.lang = code; save(); applyLang(); applyTheme(); renderAll(); document.documentElement.lang = code; }
@@ -1289,11 +1382,12 @@ function exportSingleFolder(id){
 
 function exportData() {
   var manifest = {
-    formatVersion: 7,
+    formatVersion: 9,
     app: 'AppNotas',
     createdAt: new Date().toISOString(),
     notesCount: state.notes.length,
-    foldersCount: (state.folders||[]).length
+    foldersCount: (state.folders||[]).length,
+    quickEntriesCount: (state.quickEntries||[]).length
   };
   var config = {
     boards: state.boards,
@@ -1301,6 +1395,9 @@ function exportData() {
     trash: state.trash,
     habits: state.habits,
     registros: state.registros || [],
+    quickEntries: state.quickEntries || [],
+    quickDraft: typeof state.quickDraft === 'string' ? state.quickDraft : '',
+    mainView: getMainView(),
     activeRegistroId: state.activeRegistroId || null,
     registrosFilter: state.registrosFilter || { from: null, to: null },
     diaryVariables: state.diaryVariables || {},
@@ -1445,7 +1542,7 @@ function importData(input) {
       return manifestFile.async('string').then(function(manifestStr) {
         var manifest = JSON.parse(manifestStr);
         var version = manifest.formatVersion || 1;
-        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5 && version !== 6 && version !== 7) {
+        if (version !== 1 && version !== 2 && version !== 3 && version !== 4 && version !== 5 && version !== 6 && version !== 7 && version !== 8 && version !== 9) {
           alert('Este archivo fue creado con una versión incompatible de la aplicación.');
           return;
         }
@@ -1488,7 +1585,7 @@ function importData(input) {
       });
       return Promise.all(imgRestorePromises).then(function() {
         state.notes = notas || [];
-        state.notes.forEach(function(n) { if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; n.events = (n.events||[]).filter(function(e){ return e.repetition !== 'daily'; }); n.tasks = (n.tasks||[]).filter(function(t){ return t.repetition !== 'daily'; }); });
+        state.notes.forEach(function(n) { if (!n.events) n.events = []; if (!n.tasks) n.tasks = []; n.events = (n.events||[]).filter(function(e){ return e.repetition !== 'daily'; }); n.tasks = (n.tasks||[]).filter(function(t){ return t.repetition !== 'daily'; }); if (typeof ReadingAnnotations !== 'undefined') ReadingAnnotations.normalizeNote(n); });
         migrateDiaryNotes();
         state.boards = config.boards || [];
         state.studySets = config.studySets || [];
@@ -1520,10 +1617,13 @@ function importData(input) {
           if (!Array.isArray(_a)) { state.diaryVariables[_ik]=[]; continue; }
           _a.sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
         }
-        state.view = config.view || 'notes';
+        state.mainView = normalizeMainView(config.mainView || config.view || 'notes');
+        state.view = config.view || state.mainView || 'notes';
         state.theme = config.theme || 'dark';
         state.lang = config.lang || 'en';
         state.nextId = config.nextId || Date.now();
+        state.quickEntries = normalizeQuickEntries(config.quickEntries || []);
+        state.quickDraft = typeof config.quickDraft === 'string' ? config.quickDraft : '';
         state.activeNoteId = config.activeNoteId || null;
         state.activeBoardId = config.activeBoardId || null;
         state.activeStudySetId = config.activeStudySetId || null;
@@ -1769,6 +1869,7 @@ function applyLang() {
   var l = function(id, key) { var el = document.getElementById(id); if (el) el.textContent = t(key); };
   var ml = function(id, key) { var el = document.querySelector('#' + id + ' .label'); if (el) el.textContent = t(key); };
   ml('menuNotes','notes'); ml('menuDiary','diary'); ml('menuBoard','board');
+  ml('menuQuick','quickInbox');
   var sm = document.getElementById('menuStudy');
   if (sm) sm.querySelector('.label').textContent = t('studyCards');
   var sl = document.querySelector('#menuSettings .settings-label');
@@ -1832,6 +1933,10 @@ function applyLang() {
   l('newBoardCancelBtn','cancel'); l('newBoardCreateBtn','create');
   l('unlockCancelBtn','cancel'); l('unlockConfirmBtn','confirm');
   l('settingsDialogTitle','settings');
+  l('quickEditTitle','quickEditTitle');
+  l('quickEditCancelBtn','cancel');
+  l('quickEditSaveBtn','save');
+  l('quickPickerCancelBtn','cancel');
   l('linkHelpTitle','linkHelpTitle');
   l('linkToNoteDesc','linkToNote');
   l('linkToUrlDesc','linkToUrl');
@@ -1968,6 +2073,13 @@ function applyLang() {
   /* New settings labels */
   l('statsTitle','stats'); l('aboutTitle','about');
   l('statsBtn','showStats'); l('aboutBtn','showAbout');
+  l('mainViewLabel','mainView');
+  l('mainViewQuick','quickInbox');
+  l('mainViewNotes','notes');
+  l('mainViewBoard','boards');
+  l('mainViewDiary','diary');
+  l('mainViewStudy','studyCards');
+  l('mainViewHabits','habits');
   l('weekStartLabel','weekStartsMonday');
   l('boardBgLabel','boardBgLabel'); l('boardShadowsLabel','boardShadowsLabel');
   l('boardAnimationsLabel','boardAnimationsLabel');
@@ -1999,9 +2111,513 @@ function applyLang() {
   updateSettingsToggleStates();
   if (typeof applyEditNoteLang === 'function') applyEditNoteLang();
   if (typeof DrawingEditor !== 'undefined' && DrawingEditor) DrawingEditor.applyLang();
+  if (typeof renderQuickView === 'function') renderQuickView();
 }
 
-var state = { notes: [], boards: [], studySets: [], trash: [], habits: [], registros: [], activeRegistroId: null, activeNoteId: null, activeBoardId: null, activeStudySetId: null, view: 'notes', theme: 'dark', lang: 'en', nextId: Date.now(), _exportCount: 0, _triggeredMilestones: [], diaryPwdHash: '', diaryRecoveryCode: '', firstVisit: true, weekStartsMonday: true, defaultBoardBg: 'cork', boardShowShadows: true, boardShowAnimations: true, lastBackupAt: null, diaryVariables: {}, registrosFilter: { from: null, to: null }, folders: [], activeFolderId: null, rootOrder: [] };
+var state = { notes: [], boards: [], studySets: [], trash: [], habits: [], registros: [], activeRegistroId: null, activeNoteId: null, activeBoardId: null, activeStudySetId: null, view: 'notes', mainView: 'quick', quickEntries: [], quickDraft: '', theme: 'dark', lang: 'en', nextId: Date.now(), _exportCount: 0, _triggeredMilestones: [], diaryPwdHash: '', diaryRecoveryCode: '', firstVisit: true, weekStartsMonday: true, defaultBoardBg: 'cork', boardShowShadows: true, boardShowAnimations: true, lastBackupAt: null, diaryVariables: {}, registrosFilter: { from: null, to: null }, folders: [], activeFolderId: null, rootOrder: [] };
+var _quickArchiveOpen = false;
+
+/* ==== BANDEJA RÁPIDA ==== */
+var QUICK_MAIN_VIEWS = ['quick', 'notes', 'board', 'diary', 'study', 'habits'];
+function normalizeMainView(v) {
+  return QUICK_MAIN_VIEWS.indexOf(v) === -1 ? 'quick' : v;
+}
+function getMainView() {
+  return normalizeMainView(state && state.mainView);
+}
+function normalizeQuickEntries(list) {
+  if (!Array.isArray(list)) return [];
+  var seen = {};
+  var out = [];
+  list.forEach(function(e) {
+    if (!e || typeof e !== 'object') return;
+    if (e.id === undefined || e.id === null || e.id === '') e.id = genId();
+    if (typeof e.id === 'string' && /^\d+$/.test(e.id)) e.id = Number(e.id);
+    if (typeof e.id !== 'number' || !isFinite(e.id)) e.id = genId();
+    if (seen[e.id]) e.id = genId();
+    seen[e.id] = true;
+    e.text = typeof e.text === 'string' ? e.text : (e.text == null ? '' : String(e.text));
+    if (typeof e.createdAt !== 'number' || !isFinite(e.createdAt)) e.createdAt = Date.now();
+    if (e.status !== 'archived') e.status = 'pending';
+    e.resolved = !!e.resolved;
+    if (e.status === 'archived') {
+      if (typeof e.archivedAt !== 'number' || !isFinite(e.archivedAt)) e.archivedAt = e.createdAt;
+    } else {
+      e.archivedAt = null;
+    }
+    out.push(e);
+  });
+  return out;
+}
+function getQuickEntry(id) {
+  return (state.quickEntries || []).find(function(e) { return String(e.id) === String(id); });
+}
+function quickNewestFirst(a, b) { return b.createdAt - a.createdAt; }
+function getPendingQuickEntries() {
+  return (state.quickEntries || []).filter(function(e) { return e.status !== 'archived'; }).sort(quickNewestFirst);
+}
+function getArchivedQuickEntries() {
+  return (state.quickEntries || []).filter(function(e) { return e.status === 'archived'; }).sort(quickNewestFirst);
+}
+function quickHtml(text) {
+  return escapeHtml(String(text == null ? '' : text)).replace(/\r\n?/g, '\n').replace(/\n/g, '<br>');
+}
+function quickFirstWord(text) {
+  var clean = String(text == null ? '' : text).replace(/<[^>]*>/g, ' ').replace(/&nbsp;/gi, ' ').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+  if (!clean) return '';
+  var m = clean.match(/[^\s]+/);
+  if (!m) return '';
+  var word = m[0].replace(/^["'“”‘’.,;:!?¿¡()[\]{}<>]+/, '').replace(/["'“”‘’.,;:!?¿¡()[\]{}<>]+$/, '');
+  return word || '';
+}
+function fmtDateTime(ts) {
+  if (!ts) return '';
+  var d = new Date(ts);
+  if (isNaN(d.getTime())) return '';
+  var hh = String(d.getHours()); if (hh.length < 2) hh = '0' + hh;
+  var mm = String(d.getMinutes()); if (mm.length < 2) mm = '0' + mm;
+  return fmtDate(ts) + ' ' + hh + ':' + mm;
+}
+function quickTextItem(text) {
+  return { id: genId(), type: 'text', text: quickHtml(text), checked: false, level: 0 };
+}
+function quickAppendContent(note, text) {
+  if (!note.items) note.items = [];
+  if (note.items.length > 0) {
+    note.items.push({ id: genId(), type: 'text', text: '<hr>', checked: false, level: 0 });
+  }
+  note.items.push(quickTextItem(text));
+  note.updatedAt = Date.now();
+}
+function quickDateParts(ts) {
+  var d = new Date(ts);
+  return { day: d.getDate(), month: d.getMonth(), year: d.getFullYear() };
+}
+function quickRemoveEntry(id) {
+  state.quickEntries = (state.quickEntries || []).filter(function(e) { return String(e.id) !== String(id); });
+}
+function quickCreateNoteFromEntry(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  var text = String(entry.text || '');
+  if (!text.replace(/\s+/g, '')) { showToast(t('quickEmptyContent')); return; }
+  var prevNotes = state.notes.slice();
+  var prevOrder = state.rootOrder.slice();
+  var prevEntries = state.quickEntries.slice();
+  var note = {
+    id: genId(), title: quickFirstWord(text) || t('quickNoteFallback'),
+    items: [quickTextItem(text)], pwdHash: '', cover: '', createdAt: entry.createdAt,
+    folderId: null, lockWidth: true, background: { color: 'default', design: 'none' },
+    tags: [], type: 'normal'
+  };
+  state.notes.push(note);
+  ensureRootOrder();
+  if (!state.rootOrder.find(function(e) { return e.type === 'note' && e.id === note.id; })) {
+    state.rootOrder.push({ type: 'note', id: note.id });
+  }
+  quickRemoveEntry(id);
+  if (!save()) {
+    state.notes = prevNotes;
+    state.rootOrder = prevOrder;
+    state.quickEntries = prevEntries;
+    renderAll();
+    return;
+  }
+  renderAll();
+  showToast(t('quickNoteCreated'));
+}
+function quickCreateDiaryFromEntry(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  var text = String(entry.text || '');
+  if (!text.replace(/\s+/g, '')) { showToast(t('quickEmptyContent')); return; }
+  if (!diaryUnlockFlow()) return;
+  var p = quickDateParts(entry.createdAt);
+  var ds = dateStr(p.day, p.month, p.year);
+  var existing = getDiaryNotes(p.day, p.month, p.year)[0] || null;
+  var prevNotes = state.notes.slice();
+  var prevEntries = state.quickEntries.slice();
+  var prevItems = existing ? existing.items.slice() : null;
+  var prevUpdated = existing ? existing.updatedAt : null;
+  var note = existing;
+  if (!note) {
+    note = {
+      id: genId(), title: ds, diaryDate: ds, items: [], pwdHash: '', diary: true,
+      events: [], tasks: [], cover: '', createdAt: entry.createdAt, lockWidth: true,
+      background: { color: 'default', design: 'none' }
+    };
+    state.notes.push(note);
+  }
+  quickAppendContent(note, text);
+  quickRemoveEntry(id);
+  if (!save()) {
+    state.notes = prevNotes;
+    if (existing && prevItems) { existing.items = prevItems; existing.updatedAt = prevUpdated; }
+    state.quickEntries = prevEntries;
+    renderAll();
+    return;
+  }
+  renderAll();
+  showToast(t('quickDiaryCreated'));
+}
+function quickAddEntryToNote(id, noteId) {
+  var entry = getQuickEntry(id);
+  var note = state.notes.find(function(n) { return String(n.id) === String(noteId); });
+  if (!entry || !note || note.diary) return;
+  var prevItems = note.items ? note.items.slice() : [];
+  var prevUpdated = note.updatedAt;
+  var prevEntries = state.quickEntries.slice();
+  quickAppendContent(note, entry.text);
+  quickRemoveEntry(id);
+  if (!save()) {
+    note.items = prevItems;
+    note.updatedAt = prevUpdated;
+    state.quickEntries = prevEntries;
+    renderAll();
+    return;
+  }
+  renderAll();
+  showToast(t('quickAddedToNote'));
+}
+function quickAddEntryToDiary(id, noteId) {
+  var entry = getQuickEntry(id);
+  var note = state.notes.find(function(n) { return String(n.id) === String(noteId); });
+  if (!entry || !note || !note.diary) return;
+  if (!diaryUnlockFlow()) return;
+  var prevItems = note.items ? note.items.slice() : [];
+  var prevUpdated = note.updatedAt;
+  var prevEntries = state.quickEntries.slice();
+  quickAppendContent(note, entry.text);
+  quickRemoveEntry(id);
+  if (!save()) {
+    note.items = prevItems;
+    note.updatedAt = prevUpdated;
+    state.quickEntries = prevEntries;
+    renderAll();
+    return;
+  }
+  renderAll();
+  showToast(t('quickAddedToDiary'));
+}
+function quickResolveEntry(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  entry.status = 'archived';
+  entry.resolved = true;
+  entry.archivedAt = Date.now();
+  save();
+  renderAll();
+}
+function quickArchiveEntry(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  entry.status = 'archived';
+  entry.resolved = false;
+  entry.archivedAt = Date.now();
+  save();
+  renderAll();
+}
+function quickUnarchiveEntry(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  entry.status = 'pending';
+  entry.resolved = false;
+  entry.archivedAt = null;
+  save();
+  renderAll();
+}
+function quickDeleteEntry(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  var prevEntries = state.quickEntries.slice();
+  var prevTrash = state.trash.slice();
+  var trashItem = { type: 'quickEntry', data: entry, deletedAt: Date.now() };
+  state.trash.push(trashItem);
+  quickRemoveEntry(id);
+  if (!save()) {
+    state.quickEntries = prevEntries;
+    state.trash = prevTrash;
+    renderAll();
+    return;
+  }
+  renderAll();
+  showToast(t('quickDeleted'), t('quickUndo'), function() {
+    var idx = state.trash.indexOf(trashItem);
+    if (idx === -1) return;
+    state.trash.splice(idx, 1);
+    if (!getQuickEntry(entry.id)) state.quickEntries.push(entry);
+    save();
+    renderAll();
+  });
+}
+var _quickEditId = null;
+function openQuickEditDialog(id) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  _quickEditId = id;
+  var title = document.getElementById('quickEditTitle');
+  if (title) title.textContent = t('quickEditTitle');
+  var input = document.getElementById('quickEditText');
+  if (input) input.value = entry.text || '';
+  var cancel = document.getElementById('quickEditCancelBtn');
+  if (cancel) cancel.textContent = t('cancel');
+  var saveBtn = document.getElementById('quickEditSaveBtn');
+  if (saveBtn) saveBtn.textContent = t('save');
+  var ph = document.getElementById('quickEditText');
+  if (ph) ph.placeholder = t('quickPlaceholder');
+  showDialog('quickEditDialog');
+  setTimeout(function() { var el = document.getElementById('quickEditText'); if (el) el.focus(); }, 80);
+}
+function closeQuickEditDialog() {
+  _quickEditId = null;
+  closeDialog('quickEditDialog');
+}
+function saveQuickEdit() {
+  var entry = getQuickEntry(_quickEditId);
+  if (!entry) { closeQuickEditDialog(); return; }
+  var input = document.getElementById('quickEditText');
+  var text = input ? input.value : '';
+  if (!text.replace(/\s+/g, '')) { showToast(t('quickEmptyContent')); if (input) input.focus(); return; }
+  var prevText = entry.text;
+  entry.text = text;
+  if (!save()) { entry.text = prevText; return; }
+  closeQuickEditDialog();
+  renderAll();
+}
+function quickEntryHtml(entry, archived) {
+  var status = '';
+  if (entry.resolved) status = '<span class="quick-status quick-status-resolved">' + escapeHtml(t('quickStatusResolved')) + '</span>';
+  else if (archived) status = '<span class="quick-status quick-status-archived">' + escapeHtml(t('quickStatusArchived')) + '</span>';
+  return '<div class="quick-entry' + (entry.resolved ? ' resolved' : '') + '" data-quick-id="' + escapeHtml(String(entry.id)) + '" data-quick-archived="' + (archived ? '1' : '0') + '"' +
+    ' oncontextmenu="event.preventDefault();showQuickEntryContextMenu(' + entry.id + ',event.clientX,event.clientY,' + (archived ? 'true' : 'false') + ');return false;"' +
+    ' ondblclick="openQuickEditDialog(' + entry.id + ')">' +
+    '<div class="quick-entry-main">' +
+    '<div class="quick-entry-text">' + quickHtml(entry.text) + '</div>' +
+    '<div class="quick-entry-meta"><span class="quick-entry-date">' + escapeHtml(fmtDateTime(entry.createdAt)) + '</span>' + status + '</div>' +
+    '</div>' +
+    '<button type="button" class="quick-entry-menu" title="' + escapeHtml(t('edit')) + '" onclick="event.stopPropagation();showQuickEntryMenuButton(' + entry.id + ',this,' + (archived ? 'true' : 'false') + ')">&#x22EF;</button>' +
+    '</div>';
+}
+function renderQuickList() {
+  var list = document.getElementById('quickList');
+  if (!list) return;
+  var archived = !!_quickArchiveOpen;
+  var entries = archived ? getArchivedQuickEntries() : getPendingQuickEntries();
+  var html = '';
+  if (archived) {
+    html += '<div class="quick-archive-heading"><span>' + escapeHtml(t('quickArchivedFolder')) + '</span><span>' + entries.length + '</span></div>';
+  }
+  if (entries.length === 0) {
+    html += '<div class="quick-empty">' + escapeHtml(t(archived ? 'quickArchivedEmpty' : 'quickEmpty')) + '</div>';
+  } else {
+    entries.forEach(function(e) { html += quickEntryHtml(e, archived); });
+  }
+  if (!archived) html += quickArchiveFolderCardHtml();
+  list.innerHTML = html;
+}
+function renderQuickView() {
+  var input = document.getElementById('quickInput');
+  if (input) {
+    input.placeholder = t('quickPlaceholder');
+    if (document.activeElement !== input) input.value = state.quickDraft || '';
+  }
+  var sendBtn = document.getElementById('quickSendBtn');
+  if (sendBtn) {
+    sendBtn.textContent = t('quickSend');
+    sendBtn.title = t('quickSend');
+  }
+  var capture = document.querySelector('#panelQuick .quick-capture');
+  if (capture) capture.classList.toggle('hidden', !!_quickArchiveOpen);
+  renderQuickList();
+}
+function focusQuickInput() {
+  setTimeout(function() {
+    var input = document.getElementById('quickInput');
+    if (input) {
+      input.focus();
+      try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {}
+    }
+  }, 40);
+}
+var _quickDraftTimer = null;
+function onQuickInput() {
+  var input = document.getElementById('quickInput');
+  state.quickDraft = input ? input.value : '';
+  if (_quickDraftTimer) clearTimeout(_quickDraftTimer);
+  _quickDraftTimer = setTimeout(function() {
+    _quickDraftTimer = null;
+    save();
+  }, 400);
+}
+function quickFlushDraft() {
+  if (_quickDraftTimer) {
+    clearTimeout(_quickDraftTimer);
+    _quickDraftTimer = null;
+    save();
+  }
+}
+function saveQuickEntry() {
+  var input = document.getElementById('quickInput');
+  var text = input ? input.value : '';
+  if (!text.replace(/\s+/g, '')) {
+    showToast(t('quickEmptyContent'));
+    if (input) input.focus();
+    return;
+  }
+  var entry = { id: genId(), text: text, createdAt: Date.now(), status: 'pending', resolved: false, archivedAt: null };
+  state.quickEntries.push(entry);
+  state.quickDraft = '';
+  if (input) input.value = '';
+  if (_quickDraftTimer) {
+    clearTimeout(_quickDraftTimer);
+    _quickDraftTimer = null;
+  }
+  if (!save()) {
+    quickRemoveEntry(entry.id);
+    state.quickDraft = text;
+    if (input) input.value = text;
+    return;
+  }
+  renderQuickList();
+  if (input) input.focus();
+}
+function showQuickEntryContextMenu(id, x, y, archived) {
+  var entry = getQuickEntry(id);
+  if (!entry) return;
+  var items = [
+    { label: t('edit'), action: function() { openQuickEditDialog(id); } },
+    { label: t('quickCreateNote'), action: function() { quickCreateNoteFromEntry(id); } },
+    { label: t('quickCreateDiary'), action: function() { quickCreateDiaryFromEntry(id); } },
+    { label: t('quickAddNote'), action: function() { showQuickNotePicker('note', function(noteId) { quickAddEntryToNote(id, noteId); }); } },
+    { label: t('quickAddDiary'), action: function() { showQuickNotePicker('diary', function(noteId) { quickAddEntryToDiary(id, noteId); }); } }
+  ];
+  if (archived) {
+    items.push({ label: t('quickUnarchive'), action: function() { quickUnarchiveEntry(id); } });
+  } else {
+    items.push({ label: t('quickMarkResolved'), action: function() { quickResolveEntry(id); } });
+    items.push({ label: t('quickArchive'), action: function() { quickArchiveEntry(id); } });
+  }
+  items.push({ label: t('del'), action: function() { quickDeleteEntry(id); } });
+  showContextMenu(x, y, items);
+}
+function showQuickEntryMenuButton(id, btn, archived) {
+  if (!btn) { showQuickEntryContextMenu(id, 20, 80, archived); return; }
+  var r = btn.getBoundingClientRect();
+  var x = Math.max(8, Math.min(r.left, (window.innerWidth || 800) - 160));
+  var y = Math.min((window.innerHeight || 600) - 40, r.bottom + 4);
+  showQuickEntryContextMenu(id, x, y, archived);
+}
+var _quickLongPressTimer = null;
+document.addEventListener('touchstart', function(e) {
+  var el = e.target.closest ? e.target.closest('.quick-entry[data-quick-id]') : null;
+  if (!el || (e.target.closest && e.target.closest('.quick-entry-menu'))) return;
+  var touch = e.touches[0];
+  var id = Number(el.getAttribute('data-quick-id'));
+  var archived = el.getAttribute('data-quick-archived') === '1';
+  _quickLongPressTimer = setTimeout(function() {
+    _quickLongPressTimer = null;
+    hideContextMenu();
+    showQuickEntryContextMenu(id, touch.clientX, touch.clientY, archived);
+  }, 500);
+}, { passive: true });
+document.addEventListener('touchmove', function() {
+  if (_quickLongPressTimer) { clearTimeout(_quickLongPressTimer); _quickLongPressTimer = null; }
+}, { passive: true });
+document.addEventListener('touchend', function() {
+  if (_quickLongPressTimer) { clearTimeout(_quickLongPressTimer); _quickLongPressTimer = null; }
+});
+function quickArchiveFolderCardHtml() {
+  var count = getArchivedQuickEntries().length;
+  return '<div class="quick-archive-card" data-quick-archive="1" onclick="openQuickArchive()">' +
+    '<div class="quick-archive-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v3h20V6a2 2 0 0 0-2-2zm2 7H2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7zm-6 3H8v-2h8v2z"/></svg></div>' +
+    '<div class="quick-archive-info"><div class="quick-archive-title">' + escapeHtml(t('quickArchivedFolder')) + '</div>' +
+    '<div class="quick-archive-count">' + count + ' ' + escapeHtml(count === 1 ? t('quickEntry') : t('quickEntries')) + '</div></div>' +
+    '<div class="quick-archive-chevron">&#x203A;</div></div>';
+}
+function openQuickArchive() {
+  _quickArchiveOpen = true;
+  state.view = 'quick';
+  state.activeNoteId = null;
+  state.activeFolderId = null;
+  save();
+  renderAll();
+}
+function closeQuickArchive() {
+  _quickArchiveOpen = false;
+  save();
+  renderAll();
+  focusQuickInput();
+}
+var _quickPicker = null;
+function showQuickNotePicker(kind, cb) {
+  _quickPicker = { kind: kind === 'diary' ? 'diary' : 'note', cb: cb };
+  if (_quickPicker.kind === 'diary' && !diaryUnlockFlow()) { _quickPicker = null; return; }
+  var title = document.getElementById('quickPickerTitle');
+  if (title) title.textContent = t(_quickPicker.kind === 'diary' ? 'quickSelectDiary' : 'quickSelectNote');
+  var search = document.getElementById('quickPickerSearch');
+  if (search) {
+    search.value = '';
+    search.placeholder = t('gSearchPh');
+  }
+  var cancel = document.getElementById('quickPickerCancelBtn');
+  if (cancel) cancel.textContent = t('cancel');
+  renderQuickPickerList();
+  showDialog('quickPickerDialog');
+  setTimeout(function() { if (search) search.focus(); }, 80);
+}
+function closeQuickPicker() {
+  _quickPicker = null;
+  closeDialog('quickPickerDialog');
+}
+function quickDiarySortValue(note) {
+  var p = String(getDiaryDateKey(note) || '').split('-').map(function(x) { return parseInt(x, 10); });
+  if (p.length === 3 && !isNaN(p[0]) && !isNaN(p[1]) && !isNaN(p[2])) {
+    var d = new Date(p[2], p[1] - 1, p[0]);
+    if (!isNaN(d.getTime())) return d.getTime();
+  }
+  return note.createdAt || 0;
+}
+function renderQuickPickerList() {
+  var list = document.getElementById('quickPickerList');
+  if (!list || !_quickPicker) return;
+  var search = document.getElementById('quickPickerSearch');
+  var term = (search && search.value ? search.value : '').replace(/^\s+|\s+$/g, '').toLowerCase();
+  var notes = state.notes.filter(function(n) {
+    if (n.pwdHash && !unlockedIds['n' + n.id]) return false;
+    if (_quickPicker.kind === 'diary') return !!n.diary;
+    return !n.diary && n.type !== 'markdown';
+  });
+  notes = notes.filter(function(n) {
+    if (!term) return true;
+    var title = String(n.title || '').toLowerCase();
+    var preview = String(getNotePreview(n) || '').replace(/<[^>]*>/g, ' ').toLowerCase();
+    return title.indexOf(term) !== -1 || preview.indexOf(term) !== -1;
+  });
+  notes.sort(function(a, b) {
+    if (_quickPicker.kind === 'diary') return quickDiarySortValue(b) - quickDiarySortValue(a);
+    return (b.createdAt || 0) - (a.createdAt || 0);
+  });
+  if (notes.length === 0) {
+    list.innerHTML = '<div class="quick-picker-empty">' + escapeHtml(t(_quickPicker.kind === 'diary' ? 'quickNoDiary' : 'quickNoNotes')) + '</div>';
+    return;
+  }
+  var html = '';
+  notes.forEach(function(n) {
+    var sub = _quickPicker.kind === 'diary' ? getDiaryDateKey(n) : getNotePreview(n);
+    html += '<div class="quick-picker-item" onclick="quickPickerChoose(' + n.id + ')">' +
+      '<div class="quick-picker-item-title">' + escapeHtml(n.title || '') + '</div>' +
+      '<div class="quick-picker-item-preview">' + sub + '</div></div>';
+  });
+  list.innerHTML = html;
+}
+function quickPickerChoose(noteId) {
+  var picker = _quickPicker;
+  if (!picker) return;
+  var note = state.notes.find(function(n) { return String(n.id) === String(noteId); });
+  if (!note) return;
+  closeQuickPicker();
+  if (typeof picker.cb === 'function') picker.cb(note.id);
+}
 var dragState = null;
 var cardDragState = null;
 var connectState = null;
@@ -2668,6 +3284,7 @@ function save() {
       _readPos.lastSaveAt = Date.now();
     }
     localStorage.setItem('appnotas', JSON.stringify(state));
+    return true;
   } catch(e) {
     console.error('Error guardando datos:', e);
     if (!_quotaWarned) {
@@ -2676,6 +3293,7 @@ function save() {
         alert('No se pudo guardar: el almacenamiento local está lleno. Elimina contenido multimedia o notas para liberar espacio.');
       } catch(e2) {}
     }
+    return false;
   }
 }
 function load() {
@@ -2688,10 +3306,14 @@ function load() {
         if (!n) return;
         if (!n.items) n.items = [];
         if (n.type === 'markdown' && typeof n.markdown !== 'string') n.markdown = '';
+        if (typeof ReadingAnnotations !== 'undefined') ReadingAnnotations.normalizeNote(n);
       });
       if (!state.boards) state.boards = [];
       if (!state.studySets) state.studySets = [];
       if (!state.trash) state.trash = [];
+      state.quickEntries = normalizeQuickEntries(state.quickEntries);
+      if (typeof state.quickDraft !== 'string') state.quickDraft = '';
+      state.mainView = normalizeMainView(state.mainView);
       if (!state.view) state.view = 'notes';
       if (!state.theme) state.theme = 'dark';
       if (!state.lang) state.lang = 'en';
@@ -3009,12 +3631,32 @@ function welcomeDone() {
   closeDialog('welcomeDialog');
 }
 function setStatus(msg) { if (msg) console.log('[AppNotas] ' + msg); }
-function showToast(msg) {
+function showToast(msg, actionLabel, action) {
   var el = document.createElement('div');
-  el.textContent = msg;
-  el.style.cssText = 'position:fixed;bottom:100px;left:16px;right:16px;background:rgba(0,0,0,0.85);color:#fff;padding:14px 20px;border-radius:10px;text-align:center;z-index:9999;font-size:15px';
+  el.style.cssText = 'position:fixed;bottom:100px;left:16px;right:16px;background:rgba(0,0,0,0.85);color:#fff;padding:14px 20px;border-radius:10px;text-align:center;z-index:9999;font-size:15px;display:flex;align-items:center;justify-content:center;gap:12px;';
+  var text = document.createElement('span');
+  text.textContent = msg;
+  text.style.cssText = 'flex:1;min-width:0;';
+  el.appendChild(text);
+  var removed = false;
+  function removeToast() {
+    if (removed) return;
+    removed = true;
+    el.remove();
+  }
+  if (actionLabel && typeof action === 'function') {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = actionLabel;
+    btn.style.cssText = 'background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.35);color:#fff;border-radius:6px;padding:6px 10px;font-size:14px;font-weight:600;cursor:pointer;flex-shrink:0;';
+    btn.onclick = function() {
+      removeToast();
+      action();
+    };
+    el.appendChild(btn);
+  }
   document.body.appendChild(el);
-  setTimeout(function() { el.remove(); }, 4000);
+  setTimeout(removeToast, 4500);
 }
 
 /* === Búsqueda de texto dentro de la nota actualmente abierta ===
@@ -4400,7 +5042,9 @@ function navigateToNoteLink(target) {
 }
 
 function openFolder(id){
+  if (_readingMode) readingResetSession();
   if(preventCardClick){ preventCardClick=false; return; }
+  _quickArchiveOpen = false;
   var folder=getFolderById(id); if(!folder) return;
   if(folder.pwdHash && !unlockedIds['f'+id]){
     pendingUnlock={type:'folder', id:id, action:'open'};
@@ -4447,6 +5091,16 @@ function updateBackBtn() {
         else titleEl.classList.add('hidden');
       } else titleEl.classList.add('hidden');
     }
+  }
+  else if (state.view === 'quick') {
+    if (_quickArchiveOpen) {
+      btn.classList.remove('hidden');
+      btn.onclick = closeQuickArchive;
+    } else {
+      btn.classList.add('hidden');
+    }
+    if (studyBtn) studyBtn.classList.add('hidden');
+    if (titleEl) { titleEl.textContent = t(_quickArchiveOpen ? 'quickArchivedFolder' : 'quickInbox'); titleEl.classList.remove('hidden'); }
   }
   else if (state.view === 'board') {
     btn.classList.toggle('hidden', !state.activeBoardId);
@@ -4532,7 +5186,8 @@ function updateGlobalSearchVisibility() {
   var inside = (state.view === 'notes' && state.activeNoteId) ||
                (state.view === 'diary' && state.activeNoteId) ||
                (state.view === 'board' && state.activeBoardId) ||
-               (state.view === 'study' && state.activeStudySetId);
+               (state.view === 'study' && state.activeStudySetId) ||
+               (state.view === 'quick');
   bar.classList.toggle('hidden', !!inside);
   if (inside && typeof closeGlobalSearch === 'function') closeGlobalSearch();
 }
@@ -4543,9 +5198,11 @@ function clearCurrentUnlock() {
   if (state.activeFolderId) delete unlockedIds['f' + state.activeFolderId];
 }
 function goBack() {
+  if (_readingMode) readingResetSession();
   _flushMarkdownSave();
   clearCurrentUnlock();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
+  if (state.view === 'quick' && _quickArchiveOpen) { closeQuickArchive(); return; }
   if (state.view === 'notes' && state.activeFolderId!=null && !state.activeNoteId){
     state.activeFolderId=null;
     save(); renderAll(); return;
@@ -4571,7 +5228,7 @@ function goBack() {
   save();
   renderAll();
 }
-function backToNotes() { clearCurrentUnlock(); state.activeNoteId = null; save(); renderAll(); }
+function backToNotes() { if (_readingMode) readingResetSession(); clearCurrentUnlock(); state.activeNoteId = null; save(); renderAll(); }
 function backToBoards() { clearCurrentUnlock(); state.activeBoardId = null; save(); renderAll(); }
 
 function todayDateStr() { var d = new Date(); return d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear(); }
@@ -4813,9 +5470,11 @@ var pendingUnlock = null;
 var pendingDelete = null;
 
 function selectNote(id) {
+  if (_readingMode) readingResetSession();
   _flushMarkdownSave();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (preventCardClick) { preventCardClick = false; return; }
+  _quickArchiveOpen = false;
   var note = state.notes.find(function(n) { return n.id === id; });
   if (!note) return;
   if (note.diary && !diaryUnlockFlow()) return;
@@ -4847,6 +5506,7 @@ function selectNote(id) {
 }
 
 function selectBoard(id) {
+  if (_readingMode) readingResetSession();
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   var board = state.boards.find(function(b) { return b.id === id; });
   if (!board) return;
@@ -5052,6 +5712,7 @@ function deleteNote(id) {
   // remove from rootOrder if present
   if(state.rootOrder) state.rootOrder = state.rootOrder.filter(function(e){ return !(e.type==='note'&&e.id===id); });
   if (state.activeNoteId === id){
+    if (_readingMode) readingResetSession();
     var wasFolder = note.folderId;
     state.activeNoteId = null;
     // if note was in folder, stay in folder view (goBack logic will handle but here we are deleting)
@@ -5215,6 +5876,7 @@ function restoreFromTrash(index) {
     if(item.data.folderId===undefined) item.data.folderId=null;
     if(item.data.folderId!=null && !getFolderById(item.data.folderId)) item.data.folderId=null;
     if (item.data.diary) { item.data.folderId = undefined; }
+    if (typeof ReadingAnnotations !== 'undefined') ReadingAnnotations.normalizeNote(item.data);
     state.notes.push(item.data);
     migrateDiaryNotes();
     // Restauración: re-aplicar asignaciones de la nota (inverso del Caso B)
@@ -5228,6 +5890,10 @@ function restoreFromTrash(index) {
   }
   else if (item.type === 'board') state.boards.push(item.data);
   else if (item.type === 'studySet') state.studySets.push(item.data);
+  else if (item.type === 'quickEntry') {
+    if (!getQuickEntry(item.data.id)) state.quickEntries.push(item.data);
+    state.quickEntries = normalizeQuickEntries(state.quickEntries);
+  }
   else if (item.type === 'registro') {
     state.registros.push(item.data);
     // Restaurar registro: reconstruir todas sus fechas desde las notas existentes
@@ -5357,6 +6023,11 @@ var _isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 var _tableLongPressTimer = null;
 var _skipNextTableMouseDown = false;
 
+function clearActiveItemForTableRender() {
+  saveActiveItem();
+  activeItemId = null;
+}
+
 // Desktop: click table cell to set single selection
 document.addEventListener('mousedown', function(e) {
   var td = e.target.closest('.note-table td');
@@ -5369,6 +6040,7 @@ document.addEventListener('mousedown', function(e) {
     var pos = _tableSelection.cells.indexOf(idx);
     if (pos >= 0) _tableSelection.cells.splice(pos, 1);
     else _tableSelection.cells.push(idx);
+    clearActiveItemForTableRender();
     renderNoteContent();
   } else {
     _tableSelection.itemId = tableId; _tableSelection.cells = [idx];
@@ -5404,6 +6076,7 @@ if (_isTouchDevice) {
       var pos = _tableSelection.cells.indexOf(idx);
       if (pos >= 0) _tableSelection.cells.splice(pos, 1);
       else _tableSelection.cells.push(idx);
+      clearActiveItemForTableRender();
       renderNoteContent();
     }, 500);
   }, { passive: true });
@@ -5490,6 +6163,7 @@ function mergeSelectedCells(noteId, itemId) {
     }
   }
   _tableSelection.itemId = null; _tableSelection.cells = []; _activeTableId = null;
+  clearActiveItemForTableRender();
   save(); renderNoteContent();
 }
 function splitTableCells(noteId, itemId) {
@@ -5512,6 +6186,7 @@ function splitTableCells(noteId, itemId) {
     }
   }
   _tableSelection.itemId = null; _tableSelection.cells = [];
+  clearActiveItemForTableRender();
   save(); renderNoteContent();
 }
 
@@ -5528,6 +6203,7 @@ function deleteItem(noteId, itemId) {
   });
   // Si se eliminó una caja de texto del diario, reconstruir la fecha (Caso A parcial)
   if (wasDiaryText && dateISO) { try { rebuildRegistroEntriesForDate(dateISO); } catch (e) {} }
+  if (typeof ReadingAnnotations !== 'undefined') ReadingAnnotations.pruneItem(note, itemId);
   save();
   renderNoteContent();
   if (removed && removed.type === 'drawing' && typeof DrawingNote !== 'undefined' && DrawingNote) {
@@ -5678,6 +6354,7 @@ function cycleAlignment() {
       if (item && item.type === 'table') {
         if (align === 'left') delete item.align;
         else item.align = align;
+        clearActiveItemForTableRender();
         save(); renderNoteContent();
         var btn = document.querySelector('.fmt-align-btn');
         if (btn) btn.textContent = icons[align];
@@ -6422,8 +7099,12 @@ function getActiveNoteId() {
   return area ? Number(area.dataset.noteId) : null;
 }
 
-function placeCaretAtEnd(el) {
-  el.focus();
+function placeCaretAtEnd(el, preventScroll) {
+  if (preventScroll) {
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+  } else {
+    el.focus();
+  }
   if (typeof window.getSelection !== 'undefined' && typeof document.createRange !== 'undefined') {
     var range = document.createRange();
     range.selectNodeContents(el);
@@ -6510,6 +7191,8 @@ function saveEditNoteDialog() {
 /* ==================================================
    SINCRONIZACIÓN PAPEL 32px (solo visual, no altera el modelo)
    - Texto/wrap: CSS line-height 32px -> altura n*32 automática.
+   - Jerarquías: 1 renglón exacto (32px, sin márgenes) vía CSS.
+   - Índice: filas de 32px sin tarjeta (override CSS de .toc-*).
    - Bloques: CSS margins 32px, listas sin gap interno.
    - Imágenes/LaTeX: 32px antes + snap al siguiente renglón + 32px.
    - Tablas: filas en múltiplos de 32px en lined/grid/dotted, columnas en grid/dotted.
@@ -6859,9 +7542,9 @@ function _flushMarkdownSave() {
   save();
 }
 
-window.addEventListener('pagehide', function() { _flushMarkdownSave(); });
+window.addEventListener('pagehide', function() { _flushMarkdownSave(); quickFlushDraft(); });
 document.addEventListener('visibilitychange', function() {
-  if (document.visibilityState === 'hidden') _flushMarkdownSave();
+  if (document.visibilityState === 'hidden') { _flushMarkdownSave(); quickFlushDraft(); }
 });
 
 function _mdRevokeBlobUrls() {
@@ -6999,6 +7682,845 @@ function loadMarkdownPreviewImages(root) {
     }).catch(function() {});
   });
 }
+
+/* ==================================================
+   MODO LECTURA Y ANOTACIONES
+   Las anotaciones viven en note.annotations (metadatos). El contenido
+   de la nota no se modifica: en cada render se envuelven nodos de texto
+   del DOM de lectura con spans temporales. Al salir del modo lectura,
+   el render normal reconstruye la nota desde el modelo intacto.
+   ================================================== */
+var _readingMode = false;
+var _raSelectionSegments = null;
+var _raSavedRange = null;
+var _raPendingCommentSegments = null;
+var _raPress = null;
+var _raDrag = null;
+var _raLongPressTimer = null;
+
+var RA_HIGHLIGHT_COLORS = ['#ffff00', '#87ceeb', '#ffb6c1', '#ffa500', '#90ee90', '#c8a2c8'];
+var RA_TEXT_COLORS = ['#000000', '#ffffff', '#0000ff', '#00bfff', '#ff69b4', '#c8a2c8', '#800080', '#32cd32', '#006400', '#8b4513', '#ff0000', '#ff8c00', '#ffd700'];
+
+function readingActiveNote() {
+  if (!state.activeNoteId) return null;
+  return state.notes.find(function(n) { return n.id === state.activeNoteId; }) || null;
+}
+
+function readingResetSession() {
+  _readingMode = false;
+  _raSelectionSegments = null;
+  _raSavedRange = null;
+  _raPendingCommentSegments = null;
+  _raPress = null;
+  _raDrag = null;
+  if (_raLongPressTimer) { clearTimeout(_raLongPressTimer); _raLongPressTimer = null; }
+  closeReadingPalettes();
+  raShowDeleteZone(false);
+}
+
+function openNoteInReadingMode(noteId) {
+  var note = state.notes.find(function(n) { return n.id === noteId; });
+  if (!note) return;
+  if (state.activeNoteId !== noteId) {
+    preventCardClick = false;
+    selectNote(noteId);
+    if (state.activeNoteId !== noteId) return;
+  }
+  _flushMarkdownSave();
+  _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
+  _readingMode = true;
+  _raSelectionSegments = null;
+  _raSavedRange = null;
+  closeReadingPalettes();
+  save();
+  renderAll();
+  updateBackBtn();
+}
+
+function raSwatch(type, color, title) {
+  return '<span class="hl-color ra-swatch" role="button" tabindex="0" aria-label="' + escapeHtml(title || color) +
+    '" style="background:' + color + ';" onmousedown="event.preventDefault()" onclick="readingApplyFormat(\'' +
+    type + '\',\'' + color + '\');event.stopPropagation();" title="' + escapeHtml(title || color) + '"></span>';
+}
+
+function raRemoveSwatch(type) {
+  return '<span class="hl-color ra-swatch ra-swatch-none" role="button" tabindex="0" aria-label="' + escapeHtml(t('del')) +
+    '" onmousedown="event.preventDefault()" onclick="readingApplyFormat(\'' + type +
+    '\',null);event.stopPropagation();" title="' + escapeHtml(t('del')) + '">&#x2716;</span>';
+}
+
+function raPaletteHtml(type, colors) {
+  var html = '';
+  colors.forEach(function(c) { html += raSwatch(type, c, c); });
+  html += raRemoveSwatch(type);
+  return html;
+}
+
+function readingFmtBarHtml(note) {
+  var hidden = !!(note && note.annotationsHidden);
+  var html = '';
+  html += '<div class="fmt-bar reading-fmt-bar" id="readingFmtBar">';
+  html += '<div class="ra-tool-wrap">';
+  html += '<button type="button" class="fmt-btn ra-tool" id="raHighlightBtn" onmousedown="event.preventDefault();readingCaptureSelection()" onclick="toggleReadingPalette(\'highlight\',this)" title="' + t('highlight') + '"><span class="ra-hl-glyph" style="background:' + RA_HIGHLIGHT_COLORS[0] + ';">A</span></button>';
+  html += '<div id="raHighlightPalette" class="ra-palette hidden" role="group" aria-label="' + t('highlight') + '">' + raPaletteHtml('highlight', RA_HIGHLIGHT_COLORS) + '</div>';
+  html += '</div>';
+  html += '<div class="ra-tool-wrap">';
+  html += '<button type="button" class="fmt-btn ra-tool" id="raTextColorBtn" onmousedown="event.preventDefault();readingCaptureSelection()" onclick="toggleReadingPalette(\'textColor\',this)" title="' + t('textColor') + '"><span class="ra-text-glyph">A</span><span class="ra-color-bar" style="background:' + RA_TEXT_COLORS[0] + ';"></span></button>';
+  html += '<div id="raTextPalette" class="ra-palette hidden" role="group" aria-label="' + t('textColor') + '">' + raPaletteHtml('textColor', RA_TEXT_COLORS) + '</div>';
+  html += '</div>';
+  html += '<button type="button" class="fmt-btn ra-tool" id="raUnderlineBtn" onmousedown="event.preventDefault();readingCaptureSelection()" onclick="readingToggleFormat(\'underline\')" title="' + t('underline') + '"><u>U</u></button>';
+  html += '<button type="button" class="fmt-btn ra-tool" id="raBoldBtn" onmousedown="event.preventDefault();readingCaptureSelection()" onclick="readingToggleFormat(\'bold\')" title="' + t('bold') + '"><b>B</b></button>';
+  html += '<button type="button" class="fmt-btn ra-tool" id="raCommentBtn" onmousedown="event.preventDefault();readingCaptureSelection()" onclick="readingStartComment()" title="' + t('readingCommentTitle') + '">&#x1F4AC;</button>';
+  html += '<button type="button" class="fmt-btn ra-tool ra-hide-btn' + (hidden ? ' active' : '') + '" id="readingHideBtn" onmousedown="event.preventDefault()" onclick="toggleReadingAnnotationsVisibility()" title="' + escapeHtml(hidden ? t('readingShowAnnotations') : t('readingHideAnnotations')) + '">' + (hidden ? '&#x1F441;&#x0338;' : '&#x1F441;') + '</button>';
+  html += '</div>';
+  return html;
+}
+
+function toggleReadingPalette(type, btn) {
+  readingCaptureSelection();
+  var id = type === 'highlight' ? 'raHighlightPalette' : 'raTextPalette';
+  var pal = document.getElementById(id);
+  if (!pal) return;
+  var wasHidden = pal.classList.contains('hidden');
+  closeReadingPalettes();
+  if (wasHidden) positionFmtPalette(pal, btn);
+}
+
+function closeReadingPalettes() {
+  var pals = document.querySelectorAll('.ra-palette');
+  for (var i = 0; i < pals.length; i++) pals[i].classList.add('hidden');
+}
+
+function readingLiveRange(area) {
+  var sel = window.getSelection();
+  if (!sel || !sel.rangeCount) return null;
+  try {
+    var r = sel.getRangeAt(0);
+    if (!r.collapsed && area.contains(r.commonAncestorContainer)) return r;
+  } catch (e) {}
+  return null;
+}
+
+function readingSegmentsFromRange(area, range) {
+  var roots = area.querySelectorAll('[data-reading-root]');
+  var segs = [];
+  for (var i = 0; i < roots.length; i++) {
+    var root = roots[i];
+    var text = ReadingAnnotations.textOf(root);
+    if (!text) continue;
+    var intersects = true;
+    try { intersects = range.intersectsNode(root); } catch (e3) { intersects = true; }
+    if (!intersects) continue;
+    var start = root.contains(range.startContainer) ? ReadingAnnotations.offsetAtPoint(root, range.startContainer, range.startOffset) : 0;
+    var end = root.contains(range.endContainer) ? ReadingAnnotations.offsetAtPoint(root, range.endContainer, range.endOffset) : text.length;
+    start = Number(start) || 0;
+    end = Number(end) || 0;
+    if (start > end) { var tmp = start; start = end; end = tmp; }
+    start = Math.max(0, Math.min(text.length, start));
+    end = Math.max(0, Math.min(text.length, end));
+    if (end <= start) continue;
+    var seg = ReadingAnnotations.makeSegment(text, start, end, root.getAttribute('data-item-id'));
+    if (seg) segs.push(seg);
+  }
+  return segs;
+}
+
+function readingRememberSelection() {
+  if (!_readingMode) return null;
+  var area = document.querySelector('.items-area.reading-mode');
+  if (!area) return null;
+  var range = readingLiveRange(area);
+  if (!range) return null;
+  try { _raSavedRange = range.cloneRange(); } catch (e) {}
+  var segs = readingSegmentsFromRange(area, range);
+  if (segs && segs.length) {
+    _raSelectionSegments = segs;
+    return segs;
+  }
+  return null;
+}
+
+function readingClearSelection() {
+  _raSelectionSegments = null;
+  _raSavedRange = null;
+}
+
+function readingCaptureSelection() {
+  var area = document.querySelector('.items-area.reading-mode');
+  if (!area) return null;
+  var range = readingLiveRange(area);
+  if (!range && _raSavedRange) {
+    try {
+      if (area.contains(_raSavedRange.commonAncestorContainer)) range = _raSavedRange;
+    } catch (e2) {}
+  }
+  if (range) {
+    var segs = readingSegmentsFromRange(area, range);
+    if (segs && segs.length) {
+      _raSelectionSegments = segs;
+      try { _raSavedRange = range.cloneRange(); } catch (e4) {}
+      return segs;
+    }
+  }
+  return _raSelectionSegments && _raSelectionSegments.length ? _raSelectionSegments : null;
+}
+
+function readingCurrentSegments() {
+  var remembered = readingRememberSelection();
+  if (remembered && remembered.length) return remembered;
+  if (_raSelectionSegments && _raSelectionSegments.length) return _raSelectionSegments;
+  return readingCaptureSelection();
+}
+
+function readingTextForItem(itemId) {
+  var root = readingRootFor(itemId);
+  return root ? ReadingAnnotations.textOf(root) : '';
+}
+
+function readingAnnotationOverlaps(note, ann, segs) {
+  if (!note || !ann || !ann.segments) return false;
+  for (var i = 0; i < ann.segments.length; i++) {
+    var as = ann.segments[i];
+    var text = readingTextForItem(as.itemId);
+    if (!text) continue;
+    var ar = ReadingAnnotations.findRange(text, as);
+    if (!ar) continue;
+    for (var j = 0; j < segs.length; j++) {
+      var ss = segs[j];
+      if (String(as.itemId) !== String(ss.itemId)) continue;
+      var sr = ReadingAnnotations.findRange(text, ss);
+      if (!sr) continue;
+      if (ReadingAnnotations.rangesOverlap(ar.start, ar.end, sr.start, sr.end)) return true;
+    }
+  }
+  return false;
+}
+
+function readingSelectionCoveredBy(note, type, segs) {
+  for (var i = 0; i < segs.length; i++) {
+    var seg = segs[i];
+    var text = readingTextForItem(seg.itemId);
+    var sr = ReadingAnnotations.findRange(text, seg);
+    if (!sr) return false;
+    var intervals = [];
+    note.annotations.forEach(function(a) {
+      if (a.type !== type) return;
+      (a.segments || []).forEach(function(as) {
+        if (String(as.itemId) !== String(seg.itemId)) return;
+        var ar = ReadingAnnotations.findRange(text, as);
+        if (ar) intervals.push(ar);
+      });
+    });
+    intervals.sort(function(a, b) { return a.start - b.start; });
+    var cursor = sr.start;
+    for (var k = 0; k < intervals.length; k++) {
+      if (intervals[k].start <= cursor && intervals[k].end > cursor) cursor = intervals[k].end;
+    }
+    if (cursor < sr.end) return false;
+  }
+  return true;
+}
+
+function readingApplyFormat(type, color) {
+  var note = readingActiveNote();
+  if (!note) return;
+  var segs = readingCurrentSegments();
+  if (!segs) { showToast(t('readingSelectText')); return; }
+  var remove = (color === null || color === undefined || color === '' || color === 'none');
+  note.annotations = (note.annotations || []).filter(function(a) {
+    if (a.type !== type) return true;
+    return !readingAnnotationOverlaps(note, a, segs);
+  });
+  if (!remove) {
+    note.annotations.push({
+      id: ReadingAnnotations.uid('ra'),
+      type: type,
+      noteId: note.id,
+      color: color,
+      segments: ReadingAnnotations.cloneSegments(segs),
+      createdAt: Date.now()
+    });
+  }
+  save();
+  closeReadingPalettes();
+  _raSelectionSegments = null;
+  _raSavedRange = null;
+  renderNoteContent();
+}
+
+function readingToggleFormat(type) {
+  var note = readingActiveNote();
+  if (!note) return;
+  var segs = readingCurrentSegments();
+  if (!segs) { showToast(t('readingSelectText')); return; }
+  var covered = readingSelectionCoveredBy(note, type, segs);
+  note.annotations = (note.annotations || []).filter(function(a) {
+    if (a.type !== type) return true;
+    return !readingAnnotationOverlaps(note, a, segs);
+  });
+  if (!covered) {
+    note.annotations.push({
+      id: ReadingAnnotations.uid('ra'),
+      type: type,
+      noteId: note.id,
+      segments: ReadingAnnotations.cloneSegments(segs),
+      createdAt: Date.now()
+    });
+  }
+  save();
+  _raSelectionSegments = null;
+  _raSavedRange = null;
+  renderNoteContent();
+}
+
+function toggleReadingAnnotationsVisibility() {
+  var note = readingActiveNote();
+  if (!note) return;
+  note.annotationsHidden = !note.annotationsHidden;
+  save();
+  applyReadingHiddenState(note);
+}
+
+function applyReadingHiddenState(note) {
+  var area = document.querySelector('.items-area.reading-mode');
+  if (area) area.classList.toggle('ra-hidden-annotations', !!(note && note.annotationsHidden));
+  var btn = document.getElementById('readingHideBtn');
+  if (btn) {
+    var hidden = !!(note && note.annotationsHidden);
+    btn.innerHTML = hidden ? '&#x1F441;&#x0338;' : '&#x1F441;';
+    btn.title = hidden ? t('readingShowAnnotations') : t('readingHideAnnotations');
+    btn.classList.toggle('active', hidden);
+  }
+}
+
+function applyReadingCommentLang() {
+  var s = function(id, key) { var el = document.getElementById(id); if (el) el.textContent = t(key); };
+  s('readingCommentTitle', 'readingCommentTitle');
+  s('readingCommentQuoteLabel', 'readingCommentQuote');
+  s('readingCommentTextLabel', 'readingCommentTitle');
+  s('readingCommentCancelBtn', 'cancel');
+  s('readingCommentSaveBtn', 'save');
+  var ta = document.getElementById('readingCommentText');
+  if (ta) ta.placeholder = t('readingCommentPlaceholder');
+}
+
+function readingStartComment() {
+  var note = readingActiveNote();
+  if (!note) return;
+  var segs = readingCurrentSegments();
+  if (!segs) { showToast(t('readingSelectText')); return; }
+  _raPendingCommentSegments = ReadingAnnotations.cloneSegments(segs);
+  var quote = segs.map(function(s) { return s.quote; }).join(' … ');
+  var qEl = document.getElementById('readingCommentQuote');
+  if (qEl) qEl.textContent = quote;
+  var ta = document.getElementById('readingCommentText');
+  if (ta) ta.value = '';
+  applyReadingCommentLang();
+  showDialog('readingCommentDialog');
+  setTimeout(function() { if (ta) ta.focus(); }, 80);
+}
+
+function closeReadingCommentDialog() {
+  closeDialog('readingCommentDialog');
+  _raPendingCommentSegments = null;
+}
+
+function saveReadingComment() {
+  var note = readingActiveNote();
+  var ta = document.getElementById('readingCommentText');
+  var text = ta ? String(ta.value || '').replace(/^\s+|\s+$/g, '') : '';
+  if (!note || !text || !_raPendingCommentSegments || !_raPendingCommentSegments.length) return;
+  note.annotations = note.annotations || [];
+  note.annotations.push({
+    id: ReadingAnnotations.uid('rc'),
+    type: 'comment',
+    noteId: note.id,
+    segments: ReadingAnnotations.cloneSegments(_raPendingCommentSegments),
+    text: text,
+    y: null,
+    expanded: false,
+    createdAt: Date.now()
+  });
+  save();
+  closeReadingCommentDialog();
+  _raSelectionSegments = null;
+  _raSavedRange = null;
+  renderNoteContent();
+}
+
+function deleteReadingComment(id) {
+  var note = readingActiveNote();
+  if (!note) return;
+  note.annotations = (note.annotations || []).filter(function(a) {
+    return !(a.type === 'comment' && a.id === id);
+  });
+  save();
+  renderNoteContent();
+}
+
+function readingRootFor(itemId) {
+  var area = document.querySelector('.items-area.reading-mode');
+  if (!area) return null;
+  var roots = area.querySelectorAll('[data-reading-root]');
+  var target = String(itemId);
+  for (var i = 0; i < roots.length; i++) {
+    if (String(roots[i].getAttribute('data-item-id')) === target) return roots[i];
+  }
+  return null;
+}
+
+function readingDeleteZoneHtml() {
+  return '<div class="ra-delete-zone" id="readingDeleteZone"><span class="ra-delete-zone-icon">&#x1F5D1;</span><span>' +
+    escapeHtml(t('readingDeleteZone')) + '</span></div>';
+}
+
+function markdownReadingAreaHtml(note) {
+  var src = String(note.markdown || '');
+  var rendered = '';
+  if (!src.replace(/\s+/g, '')) {
+    rendered = '<div class="md-empty">' + escapeHtml(t('markdownEmptyPreview')) + '</div>';
+  } else if (typeof MarkdownEngine === 'undefined' || !MarkdownEngine.isAvailable || !MarkdownEngine.isAvailable()) {
+    rendered = '<div class="md-empty">Markdown no disponible.</div>';
+  } else {
+    try { rendered = MarkdownEngine.render(src).html; }
+    catch (e) { rendered = '<div class="md-empty">' + escapeHtml(t('markdownImportFailed')) + '</div>'; }
+  }
+  var bg = getNoteBackground(note);
+  var html = '';
+  html += '<div class="items-area reading-mode markdown-note reading-md-area" data-note-id="' + note.id + '" data-bg-color="' + bg.color + '" data-bg-design="' + bg.design + '">';
+  html += '<div class="reading-layout"><div class="reading-body" id="readingBody"><div class="md-body reading-md-body" id="readingMdBody" data-reading-root="1" data-item-id="md">' + rendered + '</div></div><div class="reading-margin" id="readingMargin"></div></div>';
+  html += '</div>';
+  html += readingFmtBarHtml(note);
+  html += readingDeleteZoneHtml();
+  return html;
+}
+
+function enhanceReadingView(note) {
+  var container = document.getElementById('noteContent');
+  if (!container) return;
+  var area = container.querySelector('.items-area');
+  if (!area) return;
+  var oldBar = container.querySelector('.fmt-bar:not(.reading-fmt-bar)');
+  if (oldBar && oldBar.parentNode) oldBar.parentNode.removeChild(oldBar);
+  area.classList.add('reading-mode');
+
+  var layout = document.createElement('div');
+  layout.className = 'reading-layout';
+  var body = document.createElement('div');
+  body.className = 'reading-body';
+  body.id = 'readingBody';
+  while (area.firstChild) body.appendChild(area.firstChild);
+  var margin = document.createElement('div');
+  margin.className = 'reading-margin';
+  margin.id = 'readingMargin';
+  layout.appendChild(body);
+  layout.appendChild(margin);
+  area.appendChild(layout);
+
+  var editable = body.querySelectorAll('[contenteditable]');
+  for (var i = 0; i < editable.length; i++) editable[i].removeAttribute('contenteditable');
+  var actions = body.querySelectorAll('.item-actions, .drag-handle');
+  for (var j = actions.length - 1; j >= 0; j--) {
+    if (actions[j].parentNode) actions[j].parentNode.removeChild(actions[j]);
+  }
+  var checks = body.querySelectorAll('input.item-check');
+  for (var k = 0; k < checks.length; k++) checks[k].disabled = true;
+
+  var itemEls = body.querySelectorAll('.list-item');
+  for (var m = 0; m < itemEls.length; m++) {
+    var itemEl = itemEls[m];
+    var id = itemEl.getAttribute('data-id');
+    if (id == null) continue;
+    var txt = itemEl.querySelector('.item-text');
+    if (txt) {
+      txt.setAttribute('data-reading-root', '1');
+      txt.setAttribute('data-item-id', id);
+      txt.removeAttribute('oninput');
+      txt.removeAttribute('onfocus');
+      txt.removeAttribute('onblur');
+    }
+    var cap = itemEl.querySelector('.image-caption');
+    if (cap) {
+      cap.setAttribute('data-reading-root', '1');
+      cap.setAttribute('data-item-id', id);
+      cap.removeAttribute('oninput');
+    }
+    if (itemEl.classList.contains('table-item')) {
+      itemEl.setAttribute('data-reading-root', '1');
+      itemEl.setAttribute('data-item-id', id);
+    }
+  }
+  var cells = body.querySelectorAll('.note-table td, .note-table th');
+  for (var c = 0; c < cells.length; c++) {
+    cells[c].removeAttribute('contenteditable');
+    cells[c].removeAttribute('oninput');
+  }
+
+  container.insertAdjacentHTML('beforeend', readingFmtBarHtml(note));
+  container.insertAdjacentHTML('beforeend', readingDeleteZoneHtml());
+  applyReadingHiddenState(note);
+  applyReadingAnnotations(note);
+}
+
+function applyReadingAnnotations(note) {
+  var area = document.querySelector('.items-area.reading-mode');
+  if (!area || !note) return;
+  ReadingAnnotations.normalizeNote(note);
+  ReadingAnnotations.pruneMissing(note);
+  var mdFailed = isMarkdownNote(note) && !String(note.markdown || '').trim();
+  if (!mdFailed && isMarkdownNote(note)) {
+    var mdBody = document.getElementById('readingMdBody');
+    mdFailed = !mdBody || !!mdBody.querySelector('.md-empty');
+  }
+  var anchorEls = {};
+  var removed = {};
+  note.annotations.forEach(function(ann) {
+    var any = false;
+    (ann.segments || []).forEach(function(seg) {
+      var root = readingRootFor(seg.itemId);
+      if (!root) return;
+      var res = ReadingAnnotations.applySegment(root, ann, seg);
+      if (res) {
+        any = true;
+        if (ann.type === 'comment' && !anchorEls[ann.id]) anchorEls[ann.id] = res.first;
+      }
+    });
+    if (!any && ann.type !== 'comment' && !mdFailed) removed[ann.id] = true;
+  });
+  var changed = false;
+  for (var id in removed) {
+    if (Object.prototype.hasOwnProperty.call(removed, id)) { changed = true; break; }
+  }
+  if (changed) {
+    note.annotations = note.annotations.filter(function(a) { return !removed[a.id]; });
+    save();
+  }
+  buildReadingCommentBubbles(note, anchorEls);
+  layoutReadingComments(note);
+}
+
+function buildReadingCommentBubbles(note, anchorEls) {
+  var margin = document.getElementById('readingMargin');
+  if (!margin) return;
+  margin.innerHTML = '';
+  var comments = (note.annotations || []).filter(function(a) { return a.type === 'comment'; });
+  comments.forEach(function(c) {
+    var bubble = document.createElement('div');
+    bubble.className = 'ra-bubble' + (c.expanded ? ' expanded' : '') + (anchorEls[c.id] ? '' : ' ra-orphan');
+    bubble.setAttribute('data-comment-id', c.id);
+    bubble.title = t('readingCommentHint');
+    var icon = document.createElement('div');
+    icon.className = 'ra-bubble-icon';
+    icon.innerHTML = '&#x1F4AC;';
+    var card = document.createElement('div');
+    card.className = 'ra-bubble-card';
+    var txt = document.createElement('div');
+    txt.className = 'ra-bubble-text';
+    txt.textContent = c.text || '';
+    card.appendChild(txt);
+    if (!anchorEls[c.id]) {
+      var orphan = document.createElement('div');
+      orphan.className = 'ra-bubble-orphan';
+      orphan.textContent = t('readingOrphanComment');
+      card.appendChild(orphan);
+    }
+    var del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'ra-bubble-del';
+    del.innerHTML = '&times;';
+    del.title = t('readingCommentDelete');
+    del.onclick = function(e) { e.stopPropagation(); deleteReadingComment(c.id); };
+    card.appendChild(del);
+    bubble.appendChild(icon);
+    bubble.appendChild(card);
+    bubble.addEventListener('pointerdown', raBubblePointerDown);
+    margin.appendChild(bubble);
+  });
+}
+
+function layoutReadingComments(note) {
+  var margin = document.getElementById('readingMargin');
+  var body = document.getElementById('readingBody');
+  if (!margin || !note) return;
+  var bubbles = margin.querySelectorAll('.ra-bubble');
+  if (!bubbles.length) { margin.style.height = ''; return; }
+  var marginRect = margin.getBoundingClientRect();
+  var bodyHeight = body ? body.scrollHeight : 0;
+  var items = [];
+  for (var i = 0; i < bubbles.length; i++) {
+    var bubble = bubbles[i];
+    var id = bubble.getAttribute('data-comment-id');
+    var comment = null;
+    for (var n = 0; n < note.annotations.length; n++) {
+      if (note.annotations[n].id === id) { comment = note.annotations[n]; break; }
+    }
+    var desired = 0;
+    if (comment && typeof comment.y === 'number') desired = comment.y;
+    else {
+      var anchor = margin.ownerDocument.querySelector('.ra-comment-anchor[data-ra-comment-id="' + id + '"]');
+      if (anchor) {
+        var ar = anchor.getBoundingClientRect();
+        desired = ar.top - marginRect.top;
+      }
+    }
+    items.push({ bubble: bubble, desired: desired });
+  }
+  items.sort(function(a, b) { return a.desired - b.desired; });
+  var gap = 8;
+  var cursor = 0;
+  var maxBottom = bodyHeight;
+  for (var j = 0; j < items.length; j++) {
+    var it = items[j];
+    var h = it.bubble.offsetHeight || 34;
+    var top = Math.max(it.desired, cursor);
+    if (top < 0) top = 0;
+    it.bubble.style.top = Math.round(top) + 'px';
+    cursor = top + h + gap;
+    if (top + h > maxBottom) maxBottom = top + h;
+  }
+  margin.style.height = Math.max(bodyHeight, maxBottom + 16) + 'px';
+}
+
+function raShowDeleteZone(show) {
+  var zone = document.getElementById('readingDeleteZone');
+  if (!zone) return;
+  zone.classList.toggle('visible', !!show);
+  if (!show) zone.classList.remove('active');
+}
+
+function raIsOverDeleteZone(e) {
+  var zone = document.getElementById('readingDeleteZone');
+  if (!zone) return false;
+  var r = zone.getBoundingClientRect();
+  return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+}
+
+function raBubblePointerDown(e) {
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  var bubble = e.currentTarget;
+  if (e.target && e.target.closest && e.target.closest('.ra-bubble-del')) return;
+  e.preventDefault();
+  e.stopPropagation();
+  _raPress = {
+    bubble: bubble,
+    id: bubble.getAttribute('data-comment-id'),
+    startX: e.clientX,
+    startY: e.clientY,
+    pointerId: e.pointerId,
+    started: false
+  };
+  if (_raLongPressTimer) clearTimeout(_raLongPressTimer);
+  _raLongPressTimer = setTimeout(function() {
+    _raLongPressTimer = null;
+    if (!_raPress) return;
+    _raPress.started = true;
+    raBeginDrag(_raPress);
+  }, 450);
+  try { bubble.setPointerCapture(e.pointerId); } catch (err) {}
+}
+
+function raBeginDrag(press) {
+  var bubble = press.bubble;
+  if (!bubble || !bubble.parentNode) return;
+  _raDrag = {
+    id: press.id,
+    bubble: bubble,
+    startY: press.startY,
+    startTop: parseFloat(bubble.style.top) || 0,
+    pointerId: press.pointerId,
+    overDelete: false
+  };
+  bubble.classList.add('dragging');
+  raShowDeleteZone(true);
+  document.body.classList.add('ra-dragging-comment');
+}
+
+function raBubblePointerMove(e) {
+  if (!_raPress || e.pointerId !== _raPress.pointerId) return;
+  if (!_raDrag) {
+    if (Math.abs(e.clientX - _raPress.startX) > 8 || Math.abs(e.clientY - _raPress.startY) > 8) {
+      if (_raLongPressTimer) { clearTimeout(_raLongPressTimer); _raLongPressTimer = null; }
+      _raPress = null;
+    }
+    return;
+  }
+  if (e.cancelable) e.preventDefault();
+  var d = _raDrag;
+  if (!d) return;
+  var margin = document.getElementById('readingMargin');
+  var maxTop = Math.max(0, (margin ? margin.scrollHeight : 0) - (d.bubble.offsetHeight || 34));
+  var top = Math.max(0, Math.min(maxTop, d.startTop + (e.clientY - d.startY)));
+  d.bubble.style.top = Math.round(top) + 'px';
+  d.overDelete = raIsOverDeleteZone(e);
+  var zone = document.getElementById('readingDeleteZone');
+  if (zone) zone.classList.toggle('active', d.overDelete);
+}
+
+function raFindFreeTop(note, excludeId, desired) {
+  var margin = document.getElementById('readingMargin');
+  if (!margin) return desired;
+  var bubbles = margin.querySelectorAll('.ra-bubble');
+  var rects = [];
+  for (var i = 0; i < bubbles.length; i++) {
+    var b = bubbles[i];
+    if (b.getAttribute('data-comment-id') === excludeId) continue;
+    var top = parseFloat(b.style.top) || 0;
+    rects.push({ top: top, bottom: top + (b.offsetHeight || 34) });
+  }
+  rects.sort(function(a, b) { return a.top - b.top; });
+  var bubble = margin.querySelector('.ra-bubble[data-comment-id="' + excludeId + '"]');
+  var h = bubble ? (bubble.offsetHeight || 34) : 34;
+  var gap = 8;
+  var candidate = Math.max(0, desired);
+  var moved = true;
+  var guard = 0;
+  while (moved && guard++ < 100) {
+    moved = false;
+    for (var j = 0; j < rects.length; j++) {
+      if (candidate < rects[j].bottom + gap && candidate + h > rects[j].top - gap) {
+        candidate = rects[j].bottom + gap;
+        moved = true;
+      }
+    }
+  }
+  return candidate;
+}
+
+function raBubblePointerUp(e) {
+  if (!_raPress || e.pointerId !== _raPress.pointerId) return;
+  if (_raLongPressTimer) { clearTimeout(_raLongPressTimer); _raLongPressTimer = null; }
+  var press = _raPress;
+  _raPress = null;
+  var drag = _raDrag;
+  if (drag) {
+    _raDrag = null;
+    drag.bubble.classList.remove('dragging');
+    raShowDeleteZone(false);
+    document.body.classList.remove('ra-dragging-comment');
+    if (drag.overDelete) { deleteReadingComment(drag.id); return; }
+    var note = readingActiveNote();
+    if (!note) return;
+    var comment = null;
+    for (var i = 0; i < note.annotations.length; i++) {
+      if (note.annotations[i].id === drag.id) { comment = note.annotations[i]; break; }
+    }
+    if (comment) {
+      var top = parseFloat(drag.bubble.style.top) || 0;
+      comment.y = Math.round(raFindFreeTop(note, drag.id, top));
+      drag.bubble.style.top = comment.y + 'px';
+      save();
+      layoutReadingComments(note);
+    }
+    return;
+  }
+  if (press && Math.abs(e.clientX - press.startX) < 8 && Math.abs(e.clientY - press.startY) < 8) {
+    var note2 = readingActiveNote();
+    if (!note2) return;
+    var c = null;
+    for (var j = 0; j < note2.annotations.length; j++) {
+      if (note2.annotations[j].id === press.id) { c = note2.annotations[j]; break; }
+    }
+    if (c) {
+      c.expanded = !c.expanded;
+      save();
+      renderNoteContent();
+    }
+  }
+}
+
+(function initReadingModeEvents() {
+  if (window._readingEventsReady) return;
+  window._readingEventsReady = true;
+  var selTimer = null;
+  var resizeTimer = null;
+  /* En táctil el primer toque sobre la barra puede colapsar la selección
+   * antes de mousedown/click. En fase de captura todavía está viva, así
+   * que se guarda antes de que el WebView la pierda. */
+  document.addEventListener('pointerdown', function(e) {
+    if (!_readingMode) return;
+    var target = e.target;
+    if (!target || !target.closest) return;
+    if (target.closest('.reading-fmt-bar') || target.closest('.ra-palette')) {
+      readingCaptureSelection();
+      return;
+    }
+    if (target.closest('.items-area.reading-mode') &&
+        !target.closest('.ra-bubble') && !target.closest('.ra-delete-zone')) {
+      readingClearSelection();
+    }
+  }, true);
+  document.addEventListener('pointerdown', function(e) {
+    if (!_readingMode) return;
+    if (e.target && e.target.closest && (
+      e.target.closest('.ra-tool-wrap') || e.target.closest('.ra-palette') ||
+      e.target.closest('.ra-bubble') || e.target.closest('.ra-delete-zone'))) return;
+    closeReadingPalettes();
+  }, { passive: true });
+  document.addEventListener('selectionchange', function() {
+    if (!_readingMode) return;
+    var area = document.querySelector('.items-area.reading-mode');
+    if (!area) return;
+    var range = readingLiveRange(area);
+    if (range) {
+      try { _raSavedRange = range.cloneRange(); } catch (e) {}
+    }
+    if (selTimer) clearTimeout(selTimer);
+    selTimer = setTimeout(function() {
+      selTimer = null;
+      if (_readingMode) readingRememberSelection();
+    }, 100);
+  });
+  function rememberOnRelease(e) {
+    if (!_readingMode) return;
+    var target = e && e.target;
+    if (target && target.closest && target.closest('.reading-fmt-bar, .ra-palette')) return;
+    var segs = readingRememberSelection();
+    if (!segs && target && target.closest && target.closest('.items-area.reading-mode') &&
+        !target.closest('.ra-bubble') && !target.closest('.ra-delete-zone')) {
+      readingClearSelection();
+    }
+  }
+  document.addEventListener('pointerup', rememberOnRelease, true);
+  document.addEventListener('touchend', rememberOnRelease, { passive: true, capture: true });
+  document.addEventListener('mouseup', rememberOnRelease, true);
+  document.addEventListener('click', function(e) {
+    if (!_readingMode) return;
+    var anchor = e.target && e.target.closest ? e.target.closest('.ra-comment-anchor') : null;
+    if (!anchor) return;
+    var sel = window.getSelection();
+    if (sel && !sel.isCollapsed) return;
+    var id = anchor.getAttribute('data-ra-comment-id');
+    var note = readingActiveNote();
+    if (!note || !id) return;
+    var c = null;
+    for (var i = 0; i < note.annotations.length; i++) {
+      if (note.annotations[i].id === id) { c = note.annotations[i]; break; }
+    }
+    if (!c) return;
+    c.expanded = !c.expanded;
+    save();
+    renderNoteContent();
+  });
+  document.addEventListener('pointermove', raBubblePointerMove, { passive: false });
+  document.addEventListener('pointerup', raBubblePointerUp);
+  document.addEventListener('pointercancel', raBubblePointerUp);
+  window.addEventListener('resize', function() {
+    if (!_readingMode) return;
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      resizeTimer = null;
+      var note = readingActiveNote();
+      if (note) layoutReadingComments(note);
+    }, 150);
+  });
+  window.addEventListener('orientationchange', function() {
+    if (!_readingMode) return;
+    setTimeout(function() {
+      var note = readingActiveNote();
+      if (note) layoutReadingComments(note);
+    }, 300);
+  });
+})();
 
 function markdownMenuItems(noteId) {
   var note = state.notes.find(function(n) { return n.id === noteId; });
@@ -8042,8 +9564,8 @@ function renderCafecitoContent() {
 }
 function renderTrashContent() {
   var container = document.getElementById('trashContent');
-  var typeIcons = { note: '\uD83D\uDCC4', board: '\uD83D\uDCCB', studySet: '\uD83C\uDCC7', registro: '📊' };
-  var typeLabels = { note: t('trashTypeNote'), board: t('trashTypeBoard'), studySet: t('trashTypeStudySet'), registro: t('trashTypeRegistro') };
+  var typeIcons = { note: '\uD83D\uDCC4', board: '\uD83D\uDCCB', studySet: '\uD83C\uDCC7', registro: '📊', quickEntry: '\uD83D\uDCE5' };
+  var typeLabels = { note: t('trashTypeNote'), board: t('trashTypeBoard'), studySet: t('trashTypeStudySet'), registro: t('trashTypeRegistro'), quickEntry: t('quickEntry') };
   var html = '<div class="selection-view"><div class="selection-header"><h2>&#x1f5d1; ' + t('trash') + '</h2></div>';
   html += '<div style="font-size:12px;color:var(--text-muted);padding:12px 20px;border-bottom:1px solid var(--border);">' + t('trashSubtitle') + '</div>';
   if (state.trash.length === 0) {
@@ -8051,7 +9573,9 @@ function renderTrashContent() {
   } else {
     html += '<div class="trash-list">';
     state.trash.forEach(function(item, i) {
-      var title = item.data.name || item.data.title || '(sin t\u00edtulo)';
+      var title = item.type === 'quickEntry'
+        ? (String(item.data.text || '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '').slice(0, 80) || '(sin t\u00edtulo)')
+        : (item.data.name || item.data.title || '(sin t\u00edtulo)');
       var daysLeft = Math.max(0, 30 - Math.floor((Date.now() - item.deletedAt) / (24*60*60*1000)));
       html += '<div class="trash-item" style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--border);">' +
         '<div class="trash-item-info" style="flex:1;min-width:0;">' +
@@ -8247,9 +9771,24 @@ function readPosShouldRestore(noteId) {
 })();
 /* ==== READ-POSITION-END ==== */
 
+var _listScrollByKey = {};
+
+function rememberVisibleListScroll() {
+  var grid = document.getElementById('rootGrid');
+  var key = 'root';
+  if (!grid) {
+    grid = document.querySelector('.selection-grid[data-folder-grid]');
+    if (grid) key = 'folder:' + grid.getAttribute('data-folder-grid');
+  }
+  if (!grid) return;
+  _listScrollByKey[key] = grid.scrollTop || 0;
+}
+
 function renderNoteContent() {
   var container = document.getElementById('noteContent');
   var note = state.notes.find(function(n) { return n.id === state.activeNoteId; });
+  if (!note && _readingMode) readingResetSession();
+  rememberVisibleListScroll();
   readPosOnRender(note ? note.id : null);
   if (note) { /* handled below */ } else if (state.activeFolderId != null) {
     // Vista dentro de carpeta
@@ -8290,12 +9829,12 @@ function renderNoteContent() {
       });
     }
     html+='</div></div>';
-    var savedGridTop=document.querySelector('.selection-grid');
-    var savedGridScroll=savedGridTop?savedGridTop.scrollTop:0;
     container.innerHTML=html;
     updateBackBtn();
     // enable long-press on notes inside folder for "Sacar" and also drag handle
-    if(savedGridScroll>0){ var ng=document.querySelector('.selection-grid'); if(ng) ng.scrollTop=savedGridScroll; }
+    var newFolderGrid=container.querySelector('.selection-grid[data-folder-grid="'+folder.id+'"]');
+    var folderScroll=_listScrollByKey['folder:'+folder.id];
+    if(newFolderGrid && folderScroll!=null) newFolderGrid.scrollTop=folderScroll;
     return;
   } else if (!note) {
     ensureRootOrder();
@@ -8395,11 +9934,10 @@ function renderNoteContent() {
       });
     }
     html += '</div></div>';
-    var savedGridTop = document.querySelector('.selection-grid');
-    var savedGridScroll = savedGridTop ? savedGridTop.scrollTop : 0;
     container.innerHTML = html;
     updateBackBtn();
-    if (savedGridScroll > 0) { var ng = document.querySelector('.selection-grid'); if (ng) ng.scrollTop = savedGridScroll; }
+    var newRootGrid = document.getElementById('rootGrid');
+    if (newRootGrid && _listScrollByKey.root != null) newRootGrid.scrollTop = _listScrollByKey.root;
     return;
   }
   updateBackBtn();
@@ -8412,7 +9950,7 @@ function renderNoteContent() {
     }
   }
   if (isMarkdownNote(note)) {
-    html += markdownNoteAreaHtml(note);
+    html += _readingMode ? markdownReadingAreaHtml(note) : markdownNoteAreaHtml(note);
     finishNoteContentRender(html, note);
     return;
   }
@@ -8617,30 +10155,57 @@ function renderNoteContent() {
   html += '</div></div>';
   html += '</div>';
   finishNoteContentRender(html, note);
+  if (_readingMode) enhanceReadingView(note);
 }
 
 function finishNoteContentRender(html, note) {
   var container = document.getElementById('noteContent');
-  var savedScrollTop = 0, savedActiveId = activeItemId;
+  var savedScrollTop = 0, savedScrollLeft = 0, savedActiveId = activeItemId;
   var oldArea = document.querySelector('.items-area');
-  if (oldArea) savedScrollTop = oldArea.scrollTop;
+  var sameNote = !!(oldArea && note && String(oldArea.dataset.noteId) === String(note.id));
+  if (sameNote) {
+    savedScrollTop = oldArea.scrollTop || 0;
+    savedScrollLeft = oldArea.scrollLeft || 0;
+  }
   VideoManager.releaseAllIn(container);
   container.innerHTML = html;
-  if (savedScrollTop > 0) { var newArea = document.querySelector('.items-area'); if (newArea) newArea.scrollTop = savedScrollTop; }
+  var newArea = document.querySelector('.items-area');
+  if (sameNote && newArea) {
+    newArea.scrollTop = savedScrollTop;
+    newArea.scrollLeft = savedScrollLeft;
+  }
   if (savedActiveId !== null && savedActiveId !== undefined) {
     var targetEl = document.querySelector('.list-item[data-id="' + savedActiveId + '"] .item-text[contenteditable]');
-    if (targetEl) { targetEl.focus(); placeCaretAtEnd(targetEl); }
+    if (targetEl) placeCaretAtEnd(targetEl, true);
+    newArea = document.querySelector('.items-area');
+    if (sameNote && newArea) {
+      newArea.scrollTop = savedScrollTop;
+      newArea.scrollLeft = savedScrollLeft;
+    }
   }
   updateTableFab();
   loadNoteImages();
   loadNoteAudios();
   loadNoteVideos();
   loadNoteCover();
-  if (isMarkdownNote(note)) initMarkdownEditor(note);
-  else _mdRevokeBlobUrls();
+  if (isMarkdownNote(note)) {
+    if (_readingMode) {
+      _mdRevokeBlobUrls();
+      var mdRoot = document.getElementById('readingMdBody') || container;
+      loadMarkdownPreviewImages(mdRoot);
+    } else {
+      initMarkdownEditor(note);
+    }
+  } else {
+    _mdRevokeBlobUrls();
+  }
   if (_noteSearch.term && _noteSearch.noteId === state.activeNoteId) refreshNoteSearchSilently();
   requestPaperSync();
   updateNoteWidth();
+  if (_readingMode && isMarkdownNote(note)) {
+    applyReadingHiddenState(note);
+    applyReadingAnnotations(note);
+  }
   if (readPosShouldRestore(note.id)) readPosStartRestore(note.id);
 }
 
@@ -9371,13 +10936,6 @@ function toggleExportPalette() {
   } else {
     palette.classList.add('hidden');
   }
-}
-
-function changePostitColor(boardId, postitId, color) {
-  var board = state.boards.find(function(b) { return b.id === boardId; });
-  if (!board) return;
-  var p = board.postits.find(function(p) { return p.id === postitId; });
-  if (p) { p.color = color; save(); renderBoardContent(); }
 }
 
 function deleteConnection(boardId, fromId, toId) {
@@ -10294,12 +11852,8 @@ function renderBoardContent() {
   html += '</svg>';
   /* Render post-its existentes */
   (board.postits || []).forEach(function(p) {
-    html += '<div class="postit ' + p.color + '" data-id="' + p.id + '" style="left:' + p.x + 'px;top:' + p.y + 'px;width:' + p.w + 'px;height:' + p.h + 'px;" onclick="if(event.target.closest(\'.postit-close\') || event.target.closest(\'.postit-color-dot\'))return;startConnection(' + p.id + ')">';
-    html += '<div class="postit-header">';
-    POSTIT_COLORS.forEach(function(c) {
-      html += '<span class="postit-color-dot ' + (c === p.color ? 'active' : '') + '" style="background:' + COLOR_VALS[c] + '" onclick="event.stopPropagation();changePostitColor(' + board.id + ', ' + p.id + ', \'' + c + '\')"></span>';
-    });
-    html += '</div>';
+    html += '<div class="postit ' + p.color + '" data-id="' + p.id + '" style="left:' + p.x + 'px;top:' + p.y + 'px;width:' + p.w + 'px;height:' + p.h + 'px;" onclick="if(event.target.closest(\'.postit-close\'))return;startConnection(' + p.id + ')">';
+    html += '<div class="postit-header"><span class="postit-drag-handle" aria-hidden="true">&#x2630;</span></div>';
     html += '<button class="postit-close" onclick="deletePostit(' + board.id + ', ' + p.id + ')">&times;</button>';
     html += '<div class="postit-body"><div contenteditable="true" class="postit-text" data-placeholder="' + t('itemPlaceholder') + '" oninput="updatePostitText(' + board.id + ', ' + p.id + ', this.innerHTML)">' + renderLatexInHtml(parseRegistrosForRender(parseDiaryVariablesForRender(parseNoteLinks(p.text || '')))) + '</div></div>';
     html += '</div>';
@@ -11303,8 +12857,8 @@ document.addEventListener('touchstart', function(e) {
   var boardEl = e.target.closest('.board-element');
   if (!postit && !boardEl) return;
   if (postit) {
-    if (e.target.closest('.postit-close') || e.target.closest('.postit-color-dot') || e.target.closest('[contenteditable]')) return;
-    if (e.target.closest('.postit-header')) return; // let header handle drag
+    if (e.target.closest('.postit-close')) return;
+    if (!e.target.closest('.postit-header')) return;
   }
   if (boardEl) {
     if (e.target.closest('.edit-handle, .board-el-close, .audio-player, button')) return;
@@ -11315,6 +12869,10 @@ document.addEventListener('touchstart', function(e) {
   var boardId = state.activeBoardId;
   longPressTimer = setTimeout(function() {
     longPressTimer = null;
+    if (postitDragState) {
+      postitDragState.el.classList.remove('dragging');
+      postitDragState = null;
+    }
     hideContextMenu();
     if (postit) {
       showContextMenu(touch.clientX, touch.clientY, [
@@ -11411,6 +12969,7 @@ document.addEventListener('touchstart', function(e) {
         var coverLabel = note.cover ? t('removeCover') : t('addCover');
         var items = [
           { label: t('edit'), action: function() { openEditNoteDialog(noteId); } },
+          { label: t('readingMode'), action: function() { openNoteInReadingMode(noteId); } },
           { label: favLabel, action: function() { toggleFavorite(noteId); } },
           { label: coverLabel, action: function() { if (note.cover) { removeCover(noteId); } else { triggerImportCover(noteId); } } },
           { label: t('exportNote'), action: function() { exportSingleNote(noteId); } }
@@ -11565,6 +13124,7 @@ document.addEventListener('contextmenu', function(e){
     var coverLabel = note.cover ? t('removeCover') : t('addCover');
     var items=[
       { label: t('edit'), action: function(){ openEditNoteDialog(noteId); } },
+      { label: t('readingMode'), action: function(){ openNoteInReadingMode(noteId); } },
       { label: favLabel, action: function(){ toggleFavorite(noteId); } },
       { label: coverLabel, action: function(){ if(note.cover) removeCover(noteId); else triggerImportCover(noteId); } },
       { label: t('exportNote'), action: function(){ exportSingleNote(noteId); } }
@@ -12225,8 +13785,14 @@ ensureRootOrder();
 // (asignaciones de notas ya eliminadas) por reconstrucción idempotente.
 // Compatible: solo elimina fechas sin nota origen; preserva datos válidos.
 try { rebuildAllRegistroEntries(); } catch (e) { console.warn('registro rebuild', e); }
-// Al reabrir tras cierre completo, siempre arrancar en Notas (no dentro de nota/tablero protegido)
-state.view = 'notes';
+// Al reabrir tras cierre completo, arrancar en la vista principal configurada
+state.quickEntries = normalizeQuickEntries(state.quickEntries);
+state.mainView = normalizeMainView(state.mainView);
+if (typeof state.quickDraft !== 'string') state.quickDraft = '';
+_quickArchiveOpen = false;
+var _startView = getMainView();
+if (_startView === 'diary' && state.diaryPwdHash && !diaryUnlocked) _startView = 'notes';
+state.view = _startView;
 state.activeNoteId = null;
 state.activeBoardId = null;
 state.activeStudySetId = null;
@@ -12238,6 +13804,7 @@ renderAll();
 applyTheme();
 applyLang();
 document.documentElement.lang = state.lang || 'en';
+if (state.view === 'quick') focusQuickInput();
 /* La interfaz principal ya está lista: la intro de inicio puede cerrarse */
 try { if (window.BabelIntro) BabelIntro.markReady(); } catch (e) { console.warn('Intro markReady', e); }
 
@@ -12362,6 +13929,7 @@ function updateFab() {
   if (state.view==='notes' && state.activeFolderId!=null && !state.activeNoteId) insideItem=false;
   if (inStudying) { fab.classList.add('hidden'); return; }
   var diaryCalendar = state.view === 'diary' && !state.activeNoteId;
+  var quickArchive = state.view === 'quick' && _quickArchiveOpen;
   if (state.view === 'habits') { if(isHabitHistoryOpen()){ fab.classList.add('hidden'); return; } fab.classList.remove('hidden'); fab.className = 'fab fab-add'; return; }
   if (state.view === 'registros') {
     var inRegistroDetail = !!state.activeRegistroId;
@@ -12378,7 +13946,7 @@ function updateFab() {
   // Asignar clase base antes de aplicar visibilidad para no sobrescribir 'hidden'
   if (state.view !== 'habits') fab.className = 'fab fab-add';
   document.body.classList.remove('registro-edit-mode');
-  fab.classList.toggle('hidden', (state.view !== 'notes' && state.view !== 'board' && state.view !== 'diary' && state.view !== 'study') || insideItem || diaryCalendar);
+  fab.classList.toggle('hidden', (state.view !== 'notes' && state.view !== 'board' && state.view !== 'diary' && state.view !== 'study') || insideItem || diaryCalendar || quickArchive);
 }
 function updateTableFab() {
   var fab = document.getElementById('tableFabBtn');
@@ -12435,17 +14003,23 @@ function closeMenu() {
 }
 
 function switchView(view) {
+  if (_readingMode) readingResetSession();
   _flushMarkdownSave();
   hideContextMenu();
   if (typeof closeGlobalSearch === 'function') closeGlobalSearch();
   clearCurrentUnlock();
+  if (state.view === 'quick' && view !== 'quick') quickFlushDraft();
+  _quickArchiveOpen = false;
   closeDiarySelector();
   /* Liberar videos en reproducción al cambiar de vista (decodificadores). */
   VideoManager.releaseAllIn(document);
   if(view!=='habits' && isHabitHistoryOpen()) _habitHistory.uuid=null;
+  if(view!=='habits' && isHabitHistoryOpen()) _habitHistory.uuid=null;
   _activeTableId = null; _tableSelection.itemId = null; _tableSelection.cells = [];
   if (state.view === 'diary' && view !== 'diary') diaryUnlocked = false;
+  if (view === 'quick') { state.activeNoteId = null; state.activeFolderId = null; }
   if (view === 'notes') { state.activeNoteId = null; state.activeFolderId=null; }
+
   if (view === 'board') state.activeBoardId = null;
   if (view === 'diary') {
     if (!diaryUnlockFlow()) return;
@@ -12459,6 +14033,7 @@ function switchView(view) {
   }
   state.view = view;
   var inDiaryNote = view === 'diary' && state.activeNoteId;
+  document.getElementById('panelQuick').classList.toggle('hidden', view !== 'quick');
   document.getElementById('panelNotes').classList.toggle('hidden', view !== 'notes' && !inDiaryNote);
   document.getElementById('panelDiary').classList.toggle('hidden', view !== 'diary' || inDiaryNote);
   document.getElementById('panelBoard').classList.toggle('hidden', view !== 'board');
@@ -12469,6 +14044,8 @@ function switchView(view) {
   if (hp) hp.classList.toggle('hidden', view !== 'habits');
   var rp = document.getElementById('panelRegistros');
   if (rp) rp.classList.toggle('hidden', view !== 'registros');
+  var qm = document.getElementById('menuQuick');
+  if (qm) qm.classList.toggle('active', view === 'quick');
   document.getElementById('menuNotes').classList.toggle('active', view === 'notes');
   document.getElementById('menuBoard').classList.toggle('active', view === 'board');
   var dm = document.getElementById('menuDiary');
@@ -12492,6 +14069,7 @@ function switchView(view) {
   else if (view === 'trash') { renderTrashContent(); }
   else if (view === 'habits') { processHabitsDayChange(); renderHabitsView(); }
   else if (view === 'registros') { renderRegistrosView(); }
+  else if (view === 'quick') { renderQuickView(); focusQuickInput(); }
   else { renderNoteContent(); }
   // Garantía de sincronía header/vista (idempotente; cada render ya lo llama,
   // pero el calendario no lo hacía y dejaba el header de Registros persistente).
@@ -12505,6 +14083,7 @@ function renderAll() {
   renderCafecitoContent();
   var view = state.view || 'notes';
   var inDiaryNote = view === 'diary' && state.activeNoteId;
+  document.getElementById('panelQuick').classList.toggle('hidden', view !== 'quick');
   document.getElementById('panelNotes').classList.toggle('hidden', view !== 'notes' && !inDiaryNote);
   document.getElementById('panelDiary').classList.toggle('hidden', view !== 'diary' || inDiaryNote);
   document.getElementById('panelBoard').classList.toggle('hidden', view !== 'board');
@@ -12518,6 +14097,9 @@ function renderAll() {
   renderTrashContent();
   if (view === 'habits') renderHabitsView();
   if (view === 'registros') renderRegistrosView();
+  if (view === 'quick') renderQuickView();
+  var qm = document.getElementById('menuQuick');
+  if (qm) qm.classList.toggle('active', view === 'quick');
   document.getElementById('menuNotes').classList.toggle('active', view === 'notes');
   document.getElementById('menuBoard').classList.toggle('active', view === 'board');
   var dm = document.getElementById('menuDiary');
@@ -14571,6 +16153,13 @@ function setWeekStart(val) {
   renderCalendarGrid();
 }
 
+/* Main view */
+function setMainView(val) {
+  state.mainView = normalizeMainView(val);
+  save();
+  updateSettingsToggleStates();
+}
+
 /* Default board bg */
 function setDefaultBoardBg(val) {
   state.defaultBoardBg = val;
@@ -14608,6 +16197,9 @@ function updateSettingsToggleStates() {
   // Week start select
   var ws = document.getElementById('weekStartSelect');
   if (ws) ws.value = state.weekStartsMonday ? 'monday' : 'sunday';
+  // Main view select
+  var mv = document.getElementById('mainViewSelect');
+  if (mv) mv.value = getMainView();
   // Default board bg buttons
   var bgBtns = document.getElementById('boardBgBtns');
   if (bgBtns) {

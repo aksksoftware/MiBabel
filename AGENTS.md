@@ -26,7 +26,7 @@ MiBabel is an offline Android notes app. The real app is vanilla HTML/CSS/JS in 
 ## Data and migrations
 
 - All app data is a single `localStorage` key: `appnotas`.
-- Backups are `.anbk` ZIPs with `manifest.json` (`formatVersion` currently 7), `notas.json`, `configuracion.json`, and media. `importData()` accepts versions 1–7.
+- Backups are `.anbk` ZIPs with `manifest.json` (`formatVersion` currently 9), `notas.json`, `configuracion.json`, and media. `importData()` accepts versions 1–9.
 - Schema changes require updating `exportData`, `importData`, and `load()` migrations together.
 - UI strings live in `langData` for en/es/fr/pt/ru/de/it. `t(key)` falls back to the key, so missing translations render raw keys.
 

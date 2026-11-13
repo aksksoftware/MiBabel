@@ -57,6 +57,18 @@
 <div class="gs-results hidden" id="globalSearchResults"></div>
 
 <main>
+  <div class="panel hidden" id="panelQuick">
+    <div class="panel-body">
+      <div class="quick-view">
+        <div class="quick-capture">
+          <textarea id="quickInput" class="quick-input" rows="3" placeholder="Escribe una idea, tarea o recordatorio..." oninput="onQuickInput()" onkeydown="if(event.key==='Enter'&&(event.ctrlKey||event.metaKey)){event.preventDefault();saveQuickEntry();}"></textarea>
+          <button type="button" class="btn btn-primary quick-send" id="quickSendBtn" onclick="saveQuickEntry()" title="Guardar">Guardar</button>
+        </div>
+        <div class="quick-list" id="quickList"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="panel panel-notes hidden" id="panelNotes">
     <div class="panel-body">
       <div class="notes-content" id="noteContent">
@@ -127,6 +139,9 @@
 <div class="menu-sidebar" id="menuSidebar">
   <div class="menu-header"><img class="menu-logo" id="sidebarLogo" src="Logotipo1.png" alt="MiBabel"></div>
   <div class="menu-items">
+    <div class="menu-item" id="menuQuick" onclick="switchView('quick');closeMenu()">
+      <span class="icon">&#x1f4e5;</span><span class="label">Bandeja rápida</span>
+    </div>
     <div class="menu-item active" id="menuNotes" onclick="switchView('notes');closeMenu()">
       <span class="icon">&#x1f4dd;</span><span class="label">Notas</span>
     </div>
@@ -454,6 +469,18 @@
     </div>
     <div class="settings-sep"></div>
     <div class="field" style="margin-bottom:4px;">
+      <label id="mainViewLabel" style="font-size:12px;color:var(--text-muted);">Vista principal</label>
+      <select id="mainViewSelect" onchange="setMainView(this.value)" style="margin-top:4px;">
+        <option value="quick" id="mainViewQuick">Bandeja rápida</option>
+        <option value="notes" id="mainViewNotes">Notas</option>
+        <option value="board" id="mainViewBoard">Tableros</option>
+        <option value="diary" id="mainViewDiary">Diario</option>
+        <option value="study" id="mainViewStudy">Tarjetas de estudio</option>
+        <option value="habits" id="mainViewHabits">Hábitos</option>
+      </select>
+    </div>
+    <div class="settings-sep"></div>
+    <div class="field" style="margin-bottom:4px;">
       <label id="weekStartLabel" style="font-size:12px;color:var(--text-muted);">Primer d&iacute;a de la semana</label>
       <select id="weekStartSelect" onchange="setWeekStart(this.value)" style="margin-top:4px;">
         <option value="monday" id="weekStartMonday">Lunes</option>
@@ -622,6 +649,24 @@
   </div>
 </div>
 
+<div class="dialog-overlay hidden" id="readingCommentDialog">
+  <div class="dialog reading-comment-dialog">
+    <h3 id="readingCommentTitle">Comentario</h3>
+    <div class="field">
+      <label id="readingCommentQuoteLabel">Fragmento seleccionado</label>
+      <div id="readingCommentQuote" class="reading-comment-quote"></div>
+    </div>
+    <div class="field">
+      <label id="readingCommentTextLabel" for="readingCommentText">Comentario</label>
+      <textarea id="readingCommentText" rows="4" placeholder="Escribe tu comentario..." onkeydown="if(event.key==='Enter'&&(event.ctrlKey||event.metaKey)){event.preventDefault();saveReadingComment();}"></textarea>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="readingCommentCancelBtn" onclick="closeReadingCommentDialog()">Cancelar</button>
+      <button class="btn btn-primary" id="readingCommentSaveBtn" onclick="saveReadingComment()">Guardar</button>
+    </div>
+  </div>
+</div>
+
 <div class="dialog-overlay hidden" id="editNoteDialog">
   <div class="dialog">
     <h3 id="editNoteTitle">Editar nota</h3>
@@ -706,6 +751,32 @@
   </div>
 </div>
 
+<div class="dialog-overlay hidden" id="quickEditDialog">
+  <div class="dialog">
+    <h3 id="quickEditTitle">Editar entrada</h3>
+    <div class="field">
+      <textarea id="quickEditText" rows="6" placeholder="Contenido de la entrada"></textarea>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" id="quickEditCancelBtn" onclick="closeQuickEditDialog()">Cancelar</button>
+      <button class="btn btn-primary" id="quickEditSaveBtn" onclick="saveQuickEdit()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-overlay hidden" id="quickPickerDialog">
+  <div class="dialog quick-picker-dialog">
+    <h3 id="quickPickerTitle">Seleccionar nota</h3>
+    <div class="field">
+      <input id="quickPickerSearch" type="text" placeholder="Buscar..." autocomplete="off" oninput="renderQuickPickerList()">
+    </div>
+    <div id="quickPickerList" class="quick-picker-list"></div>
+    <div class="dialog-actions">
+      <button class="btn" id="quickPickerCancelBtn" onclick="closeQuickPicker()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
 <div class="dialog-overlay hidden" id="welcomeDialog">
   <div class="dialog dialog-welcome">
     <h3 id="welcomeTitle">Bienvenido a MiBabel</h3>
@@ -760,6 +831,7 @@ setTimeout(function () {
 <script src="export/docx-exporter.js" defer></script>
 <script src="export/pdf-exporter.js" defer></script>
 <script src="export/md-exporter.js" defer></script>
+<script src="reading/reading-annotations.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>

@@ -32,6 +32,7 @@ Las notas cuentan con diferentes herramientas de edición y personalización, en
 * Fondos punteados.
 * Adaptación automática del contenido al cambiar la orientación de la pantalla.
 * Búsqueda de contenido dentro de las notas.
+* Modo lectura con resaltado, color de texto, subrayado, negrita y comentarios marginales arrastrables.
 
 ### 🔎 Búsqueda
 
@@ -274,7 +275,6 @@ MiBabel continúa en desarrollo. Algunas de las funciones contempladas para futu
 * Biblioteca para los libros leidos.
 * Crear una versión para PC que sea sincronizable con el celular. Por ahí será otra aplicación pero onlina, para mantener la privacidad que ofrece una aplicación de notas offline.
 * Agregar más comandos útiles dentro de las notas y tableros(ej. crear una nota solo con [[nuevaNota]]).
-* Modo lectura.
 * Visualización de conexiones entre notas.
 * Nota de bandeja para escribir cosas rápido.
 
